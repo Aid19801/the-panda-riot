@@ -1,5 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -14,8 +15,10 @@ class Firebase {
   constructor() {
     app.initializeApp(config);
     this.auth = app.auth();
-    console.log('this auth: ', this.auth)
+    this.db = app.database();
 }
+
+    // Firebase *Authentication*
 
     // create user
     doCreateUserWithEmailAndPassword = (email, password) => {
@@ -37,15 +40,10 @@ class Firebase {
     doPasswordUpdate = (password) =>
     this.auth.currentUser.updatePassword(password);
 
-    // get a unique ID back from firebase - so we can use it as a ref in other databases.
-    doGetFirebaseUIDandEmailForRedux = () => {
-      let obj = {
-        email: this.auth.currentUser.email,
-        uid: this.auth.O
-      };
-      return obj;
-    }
 
+    // Firebase *Database*
+    user = uid => this.db.ref(`users/${uid}`);
+    users = () => this.db.ref(`users`);
     
 }
 
