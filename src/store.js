@@ -5,7 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { all } from 'redux-saga/effects';
 
 import RootReducer from './redux/reducers';
-import * as sagas from './redux/sagas';
+// import * as sagas from './redux/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 

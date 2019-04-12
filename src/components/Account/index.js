@@ -44,7 +44,7 @@ class AccountChangeForm extends React.Component {
     console.log('this.propf.firebase', this.props.firebase)
     const { tagline, profilePicture } = this.state;
 
-    const isInvalid = tagline === '';
+    const isInvalid = tagline === '' || profilePicture === '';
 
     return (
       <form onSubmit={this.onSubmit}>
