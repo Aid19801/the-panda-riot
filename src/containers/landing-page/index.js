@@ -34,7 +34,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  isLoading: state.aboutPage.isLoading,
+  isLoading: state.landingPage.isLoading,
 })
 
 const mapDispatchToProps = dispatch => ({

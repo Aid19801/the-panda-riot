@@ -14,7 +14,7 @@ import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 import * as actions from './constants';
 
-const App = ({ appLoading, appLoaded, appFailed, error, isLoading }) => {
+const App = ({ appLoading, appLoaded }) => {
 
   
   useEffect(() => {
