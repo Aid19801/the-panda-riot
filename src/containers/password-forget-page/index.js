@@ -91,7 +91,7 @@ const PasswordForgetLink = () => (
 export default PasswordForgetPage;
 
 const mapStateToProps = state => ({
-  isLoading: state.signinPage.isLoading,
+  isLoading: state.passwordForgetPage.isLoading,
 })
 const mapDispatchToProps = dispatch => ({
   pageLoading: () => dispatch({ type: actions.PW_FORGET_PAGE_LOADING }),

@@ -120,7 +120,7 @@ class SignUpFormBase extends Component {
 }
 
 const mapStateToProps = state => ({
-  isLoading: state.signinPage.isLoading,
+  isLoading: state.signupPage.isLoading,
 })
 const mapDispatchToProps = dispatch => ({
   pageLoading: () => dispatch({ type: actions.SIGNUP_PAGE_LOADING }),
