@@ -6,23 +6,23 @@ const initialState = {
     error: null,
 }
 
-const accountPageReducer = (state = initialState, action) => {
+const adminPageReducer = (state = initialState, action) => {
     switch(action.type) {
-        case actions.ACCOUNT_PAGE_LOADING:
+        case actions.ADMIN_PAGE_LOADING:
         return {
             ...state,
             isLoading: true,
         }
         break;
 
-        case actions.ACCOUNT_PAGE_LOADED:
+        case actions.ADMIN_PAGE_LOADED:
         return {
             ...state,
             isLoading: false,
         }
         break;
 
-        case actions.ACCOUNT_PAGE_FAILED:
+        case actions.ADMIN_PAGE_FAILED:
         return {
             ...state,
             isLoading: false,
@@ -35,4 +35,4 @@ const accountPageReducer = (state = initialState, action) => {
     }
 }
 
-export default accountPageReducer;
+export default adminPageReducer;

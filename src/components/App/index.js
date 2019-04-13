@@ -6,14 +6,13 @@ import {
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import Navigation from '../Navigation';
-import AdminPage from '../Admin';
 
-import { AboutPage, AccountPage, HomePage, LandingPage, SignInPage, SignUpPage, PasswordForgetPage } from '../../containers';
+
+import { AboutPage, AdminPage, AccountPage, HomePage, LandingPage, SignInPage, SignUpPage, PasswordForgetPage } from '../../containers';
 
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 import * as actions from './constants';
-import withProgressBar from '../ProgressBar/with-progressBar';
 
 const App = ({ appLoading, appLoaded, appFailed, error, isLoading }) => {
 

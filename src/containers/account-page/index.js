@@ -1,11 +1,13 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { PasswordForgetForm } from '../../containers/password-forget-page';
 import PasswordChangeForm from './pw-change-form';
 import { withAuthorization } from '../../components/Session';
 import { withFirebase } from '../../components/Firebase';
 
 import * as ROUTES from '../../constants/routes';
+import * as actions from './constants';
+import { compose } from 'recompose';
 
 class AccountChangeForm extends React.Component {
   constructor() {
@@ -80,15 +82,40 @@ class AccountChangeForm extends React.Component {
 }
 
 
-const AccountPage = (props) => (
-    <div>
-      <h1>Account Page</h1>
-      <PasswordForgetForm />
-      <PasswordChangeForm />
-      <AccountChangeForm {...props} />
-    </div>
-);
+const AccountPage = (props) => {
+
+  useEffect(() => {
+    props.pageLoading();
+  });
+
+  useEffect(() => {
+    props.pageLoaded();
+  });
+
+  return (
+      <div>
+        <h1>Account Page</h1>
+        <PasswordForgetForm />
+        <PasswordChangeForm />
+        <AccountChangeForm {...props} />
+      </div>
+  );
+}
+
+
+const mapStateToProps = state => ({
+  isLoading: state.accountPage.isLoading,
+});
+
+const mapDispatchToProps = dispatch => ({
+  pageLoading: () => dispatch({ type: actions.ACCOUNT_PAGE_LOADING }),
+  pageLoaded: () => dispatch({ type: actions.ACCOUNT_PAGE_LOADED }),
+});
 
 const condition = authUser => !!authUser;
 
-export default withAuthorization(condition)(withFirebase(AccountPage));
+export default compose(
+  withFirebase,
+  withAuthorization(condition),
+  connect(mapStateToProps, mapDispatchToProps),
+)(AccountPage);
