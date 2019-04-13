@@ -1,28 +1,28 @@
-export const APP_LOADING = 'APP_LOADING';
-export const APP_LOADED = 'APP_LOADED';
-export const APP_FAILED = 'APP_FAILED';
+import * as actions from './constants';
 
 const initialState = {
     isLoading: false,
+    progressBarStatus: false,
+    error: null,
 }
 
-const appStateReducer = (state = initialState, action) => {
+const aboutPageReducer = (state = initialState, action) => {
     switch(action.type) {
-        case APP_LOADING:
+        case actions.ABOUT_PAGE_LOADING:
         return {
             ...state,
             isLoading: true,
         }
         break;
 
-        case APP_LOADED:
+        case actions.ABOUT_PAGE_LOADED:
         return {
             ...state,
             isLoading: false,
         }
         break;
 
-        case APP_FAILED:
+        case actions.ABOUT_PAGE_FAILED:
         return {
             ...state,
             isLoading: false,
@@ -35,4 +35,4 @@ const appStateReducer = (state = initialState, action) => {
     }
 }
 
-export default appStateReducer;
+export default aboutPageReducer;

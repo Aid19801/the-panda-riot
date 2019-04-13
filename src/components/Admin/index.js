@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../Firebase';
-
+import TopBarProgress from 'react-topbar-progress-indicator';
+ 
+TopBarProgress.config({
+  barColors: {
+    "0": "#fff",
+    "1.0": "#fff",
+  },
+  shadowBlur: 5,
+})
 
 const UserList = ({ users }) => (
   <ul>
@@ -58,8 +66,8 @@ class AdminPage extends Component {
 
     return (
       <div>
+        { loading && <TopBarProgress /> } 
         <h1>Admin</h1>
-        { loading && <div>Loading ...</div>}
 
         <UserList users={users} />
       </div>
