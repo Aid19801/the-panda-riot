@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-import { withFirebase } from '../Firebase';
+import { withFirebase } from '../../components/Firebase';
+import withProgressBar from '../../components/ProgressBar/with-progressBar';
 import * as ROUTES from '../../constants/routes';
+import * as actions from './constants';
 
 const INITIAL_STATE = {
   username: '',
@@ -20,6 +23,19 @@ class SignUpFormBase extends Component {
       ...INITIAL_STATE,
     }
   }
+
+  componentWillMount() {
+    this.props.showProgressBar(true);
+    this.props.pageLoading();
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.props.showProgressBar(false);
+    }, 100) 
+    this.props.pageLoaded();
+  }
+
 
   onSubmit = event => {
     const { username, email, passwordOne } = this.state;
@@ -103,9 +119,20 @@ class SignUpFormBase extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isLoading: state.signinPage.isLoading,
+})
+const mapDispatchToProps = dispatch => ({
+  pageLoading: () => dispatch({ type: actions.SIGNUP_PAGE_LOADING }),
+  pageLoaded: () => dispatch({ type: actions.SIGNUP_PAGE_LOADED }),
+})
+
+
 const SignUpForm = compose(
   withRouter,
   withFirebase,
+  withProgressBar,
+  connect(mapStateToProps, mapDispatchToProps),
 )(SignUpFormBase);
 
 const SignUpPage = () => (

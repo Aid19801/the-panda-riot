@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import { SignUpLink } from '../SignUp';
-import { withFirebase } from '../Firebase';
+import { SignUpLink } from '../signup-page';
+import { withFirebase } from '../../components/Firebase';
+import withProgressBar from '../../components/ProgressBar/with-progressBar';
 import * as ROUTES from '../../constants/routes';
-import { PasswordForgetLink } from '../PasswordForget';
+import * as actions from './constants';
+import { PasswordForgetLink } from '../password-forget-page';
 
 const INITIAL_STATE = {
   email: '',
@@ -13,19 +16,35 @@ const INITIAL_STATE = {
   error: null,
 };
 
+console.log('withFirebase is ', withFirebase);
+
 class SignInFormBase extends Component {
   constructor(props) {
     super(props);
-
     this.state = { ...INITIAL_STATE };
   }
+  
 
+  componentWillMount() {
+    this.props.showProgressBar(true);
+    this.props.pageLoading();
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.props.showProgressBar(false);
+    }, 100) 
+    this.props.pageLoaded();
+  }
+  
+  
   onSubmit = event => {
+    console.log('this props. ', this.props);
     const { email, password } = this.state;
-
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
-      .then(() => {
+      .then((res) => {
+        console.log('res is ', res);
         this.setState({ ...INITIAL_STATE });
         this.props.history.push(ROUTES.HOME);
       })
@@ -42,6 +61,7 @@ class SignInFormBase extends Component {
 
   render() {
     const { email, password, error } = this.state;
+    console.log('this props ', this.props);
 
     const isInvalid = password === '' || email === '';
 
@@ -71,20 +91,30 @@ class SignInFormBase extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isLoading: state.signinPage.isLoading,
+})
+const mapDispatchToProps = dispatch => ({
+  pageLoading: () => dispatch({ type: actions.SIGNIN_PAGE_LOADING }),
+  pageLoaded: () => dispatch({ type: actions.SIGNIN_PAGE_LOADED }),
+})
+
+
 const SignInForm = compose(
   withRouter,
   withFirebase,
+  withProgressBar,
+  connect(mapStateToProps, mapDispatchToProps),
 )(SignInFormBase);
 
 const SignInPage = () => (
-  <div>
-    <h1>SignIn</h1>
-    <SignInForm />
-    <PasswordForgetLink />
-    <SignUpLink />
-  </div>
+    <div>
+      <h1>SignIn</h1>
+      <SignInForm />
+      <PasswordForgetLink />
+      <SignUpLink />
+    </div>
 );
-
 
 export default SignInPage;
 

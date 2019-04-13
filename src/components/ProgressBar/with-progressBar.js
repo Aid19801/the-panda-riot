@@ -3,8 +3,8 @@ import TopBarProgress from 'react-topbar-progress-indicator';
 
 const withProgressBar = PlatformSpecificComponent => {
   return class extends Component {
-    constructor() {
-      super()
+    constructor(props) {
+      super(props)
       this.state = {
         isLoading: false,
       }
@@ -19,7 +19,7 @@ const withProgressBar = PlatformSpecificComponent => {
       return (
         <div className="prog-bar">
           { isLoading && <TopBarProgress /> }
-          <PlatformSpecificComponent showProgressBar={this.handleProgressBar}/>
+          <PlatformSpecificComponent showProgressBar={this.handleProgressBar} {...this.props} />
         </div>
       )
     }

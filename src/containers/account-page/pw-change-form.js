@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-
-import { withFirebase } from '../Firebase';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
+import { withFirebase } from '../../components/Firebase';
+import * as actions from './constants';
 
 const INITIAL_STATE = {
   passwordOne: '',
@@ -13,6 +15,14 @@ class PasswordChangeForm extends Component {
     super(props);
 
     this.state = { ...INITIAL_STATE };
+  }
+
+  componentWillMount() {
+    this.props.pageLoading();
+  }
+
+  componentDidMount() {
+    this.props.pageLoaded();
   }
 
   onSubmit = event => {
@@ -66,4 +76,17 @@ class PasswordChangeForm extends Component {
   }
 }
 
-export default withFirebase(PasswordChangeForm);
+const mapStateToProps = state => ({
+  isLoading: state.signinPage.isLoading,
+})
+const mapDispatchToProps = dispatch => ({
+  pageLoading: () => dispatch({ type: actions.PW_CHANGE_FORM_LOADING }),
+  pageLoaded: () => dispatch({ type: actions.PW_CHANGE_FORM_LOADED }),
+})
+
+
+export default compose(
+  withFirebase,
+  connect(mapStateToProps, mapDispatchToProps),
+)(PasswordChangeForm);
+

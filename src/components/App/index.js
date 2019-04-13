@@ -6,14 +6,9 @@ import {
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import Navigation from '../Navigation';
-
-import SignUpPage from '../SignUp';
-import SignInPage from '../SignIn';
-import PasswordForgetPage from '../PasswordForget';
-import AccountPage from '../Account';
 import AdminPage from '../Admin';
 
-import { AboutPage, HomePage, LandingPage } from '../../containers';
+import { AboutPage, AccountPage, HomePage, LandingPage, SignInPage, SignUpPage, PasswordForgetPage } from '../../containers';
 
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';

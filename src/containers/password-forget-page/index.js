@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
-import { withFirebase } from '../Firebase';
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
+import withProgressBar from '../../components/ProgressBar/with-progressBar';
+import { withFirebase } from '../../components/Firebase';
 import * as ROUTES from '../../constants/routes';
+import * as actions from './constants';
 
 const PasswordForgetPage = () => (
   <div>
@@ -22,6 +25,19 @@ class PasswordForgetFormBase extends Component {
 
     this.state = { ...INITIAL_STATE };
   }
+
+  componentWillMount() {
+    this.props.showProgressBar(true);
+    this.props.pageLoading();
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.props.showProgressBar(false);
+    }, 100) 
+    this.props.pageLoaded();
+  }
+  
 
   onSubmit = event => {
     const { email } = this.state;
@@ -74,6 +90,19 @@ const PasswordForgetLink = () => (
 
 export default PasswordForgetPage;
 
-const PasswordForgetForm = withFirebase(PasswordForgetFormBase);
+const mapStateToProps = state => ({
+  isLoading: state.signinPage.isLoading,
+})
+const mapDispatchToProps = dispatch => ({
+  pageLoading: () => dispatch({ type: actions.PW_FORGET_PAGE_LOADING }),
+  pageLoaded: () => dispatch({ type: actions.PW_FORGET_PAGE_LOADED }),
+})
+
+
+const PasswordForgetForm = compose(
+  withFirebase,
+  withProgressBar,
+  connect(mapStateToProps, mapDispatchToProps),
+)(PasswordForgetFormBase);
 
 export { PasswordForgetForm, PasswordForgetLink };

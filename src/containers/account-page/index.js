@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { PasswordForgetForm } from '../PasswordForget';
-import PasswordChangeForm from '../PasswordChange';
-import { withAuthorization } from '../Session';
-import { withFirebase } from '../Firebase';
+import { PasswordForgetForm } from '../../containers/password-forget-page';
+import PasswordChangeForm from './pw-change-form';
+import { withAuthorization } from '../../components/Session';
+import { withFirebase } from '../../components/Firebase';
 
 import * as ROUTES from '../../constants/routes';
+
 class AccountChangeForm extends React.Component {
   constructor() {
     super();
