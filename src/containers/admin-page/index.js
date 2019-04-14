@@ -66,7 +66,7 @@ class AdminPage extends Component {
 
   render() {
 
-    const { users, loading } = this.state;
+    const { users } = this.state;
 
     return (
       <div>

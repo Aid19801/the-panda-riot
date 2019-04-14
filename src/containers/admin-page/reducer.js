@@ -6,6 +6,7 @@ const initialState = {
     error: null,
 }
 
+/* eslint-disable */
 const adminPageReducer = (state = initialState, action) => {
     switch(action.type) {
         case actions.ADMIN_PAGE_LOADING:

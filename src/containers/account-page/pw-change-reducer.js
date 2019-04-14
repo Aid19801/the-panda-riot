@@ -5,7 +5,7 @@ const initialState = {
     progressBarStatus: false,
     error: null,
 }
-
+/* eslint-disable*/
 const passwordChangeFormReducer = (state = initialState, action) => {
     switch(action.type) {
         case actions.PW_CHANGE_FORM_LOADING:

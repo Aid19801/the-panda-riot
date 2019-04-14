@@ -6,6 +6,7 @@ const initialState = {
     error: null,
 }
 
+/* eslint-disable */
 const homePageReducer = (state = initialState, action) => {
     switch(action.type) {
         case actions.HOME_PAGE_LOADING:

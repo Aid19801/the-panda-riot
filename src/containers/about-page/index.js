@@ -26,8 +26,6 @@ class AboutPage extends React.Component {
 
   render() {
 
-    const { isLoading } = this.props;
-
     return (
       <div className="container">
          <h1>ABOUT PAGE and i am a progress bar</h1>

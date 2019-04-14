@@ -5,7 +5,7 @@ const initialState = {
     progressBarStatus: false,
     error: null,
 }
-
+/* eslint-disable */
 const passwordForgetPageReducer = (state = initialState, action) => {
     switch(action.type) {
         case actions.PW_FORGET_PAGE_LOADING:

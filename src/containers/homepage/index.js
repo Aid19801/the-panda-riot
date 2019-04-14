@@ -5,6 +5,12 @@ import { withAuthorization } from '../../components/Session';
 import * as actions from './constants';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+import { theme } from '../../theme';
+
 class HomePage extends Component {
   constructor() {
     super()
@@ -23,12 +29,45 @@ class HomePage extends Component {
     }, 100)
   }
 
+
   render() {
     return (
-      <div>
-        <h1>Home Page</h1>
-        <p> is a thing and stuff... every signed-in user.</p>
-      </div>
+      <Container>
+        <Row>
+          <Col sm={4}>
+            <p style={theme.paragraph}>
+              i am a 4 one i am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 one
+            </p>
+          </Col>
+          <Col sm={4}>
+            <p>
+              i am a 4 one i am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 one
+            </p>
+          </Col>
+          <Col sm={4}>
+            <p>
+              i am a 4 one i am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 one
+            </p>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm={4}>
+            <p>
+              i am a 4 one i am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 one
+            </p>
+          </Col>
+          <Col sm={4}>
+            <p>
+              i am a 4 one i am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 one
+            </p>
+          </Col>
+          <Col sm={4}>
+            <p>
+              i am a 4 one i am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 one
+            </p>
+          </Col>
+        </Row>
+      </Container>
     )
   }
 }

@@ -6,6 +6,7 @@ const initialState = {
     error: null,
 }
 
+/* eslint-disable */
 const accountPageReducer = (state = initialState, action) => {
     switch(action.type) {
         case actions.ACCOUNT_PAGE_LOADING:

@@ -6,6 +6,8 @@ const initialState = {
     error: null,
 }
 
+/* eslint-disable*/
+
 const aboutPageReducer = (state = initialState, action) => {
     switch(action.type) {
         case actions.ABOUT_PAGE_LOADING:
@@ -32,7 +34,7 @@ const aboutPageReducer = (state = initialState, action) => {
 
         default:
         return state;
-    }
+    }; 
 }
 
 export default aboutPageReducer;

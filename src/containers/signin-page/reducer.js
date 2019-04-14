@@ -6,6 +6,7 @@ const initialState = {
     error: null,
 }
 
+/* eslint-disable */
 const signinPageReducer = (state = initialState, action) => {
     switch(action.type) {
         case actions.SIGNIN_PAGE_LOADING:
