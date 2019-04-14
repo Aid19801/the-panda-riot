@@ -2,10 +2,10 @@ import * as actions from './constants';
 
 const initialState = {
     isLoading: false,
-    progressBarStatus: false,
     error: null,
 }
 
+/* eslint-disable */
 const appStateReducer = (state = initialState, action) => {
     switch(action.type) {
         case actions.APP_LOADING:
@@ -27,13 +27,6 @@ const appStateReducer = (state = initialState, action) => {
             ...state,
             isLoading: false,
             error: action.error,
-        }
-        break;
-
-        case actions.SET_PROGRESS_BAR:
-        return {
-            ...state,
-            progressBarStatus: action.isOpen,
         }
         break;
 
