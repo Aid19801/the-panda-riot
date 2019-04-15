@@ -9,8 +9,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import { theme } from '../../theme';
-
 class HomePage extends Component {
   constructor() {
     super()
@@ -35,7 +33,7 @@ class HomePage extends Component {
       <Container>
         <Row>
           <Col sm={4}>
-            <p style={theme.paragraph}>
+            <p>
               i am a 4 one i am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 one
             </p>
           </Col>
