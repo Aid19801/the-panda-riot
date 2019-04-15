@@ -1,6 +1,67 @@
+@import '../../color';
+
 .map-container {
     overflow: hidden;
     height: 75%;
+    max-height: 800px;
     margin-top: 20px;
     border: 2px solid white;
 }
+
+.mapMeMarkerStyle {
+    background-color: blue;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    left: -0.5rem;
+    top: -0.5rem;
+    position: relative;
+    border-radius: 1.5rem 1.5rem 0;
+    transform: rotate(45deg);
+    border: 3px solid skyblue;
+}
+
+.info-container {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    max-height: 800px;
+    overflow: hidden;
+}
+
+.info-container .img-container {
+    // width: 80% !important;
+    // position: absolute;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+
+.info-container .img-container img {
+    width: 100% !important;
+    border: 1px solid red;
+}
+
+
+.info-container .info h1 {
+    margin-bottom: 20px;    
+}
+
+.info-container .info p {
+    margin-bottom: 20px;    
+    // background-color: orange;
+    letter-spacing: 0.0625em;
+    line-height: 2;
+    color: white;
+    text-shadow: 1px;
+    text-align: start;
+}
+
+
+
+
+
