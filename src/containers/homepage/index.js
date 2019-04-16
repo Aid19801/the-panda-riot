@@ -9,10 +9,14 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import './styles.scss';
+
 class HomePage extends Component {
   constructor() {
     super()
-    this.state = {};
+    this.state = {
+      isSelected: false,
+    };
   }
 
   componentWillMount() {
@@ -27,45 +31,30 @@ class HomePage extends Component {
     }, 100)
   }
 
+  handleClick = () => {
+    this.setState({ isSelected: !this.state.isSelected });
+  }
+
 
   render() {
     return (
+      <>
+      <button onClick={this.handleClick}>Click Me</button>
       <Container className="height-100">
         <Row>
-          <Col sm={4}>
-            <p>
-              i am a 4 one i am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 one
-            </p>
-          </Col>
-          <Col sm={4}>
-            <p>
-              i am a 4 one i am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 one
-            </p>
-          </Col>
-          <Col sm={4}>
-            <p>
-              i am a 4 one i am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 one
-            </p>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={4}>
-            <p>
-              i am a 4 one i am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 one
-            </p>
-          </Col>
-          <Col sm={4}>
-            <p>
-              i am a 4 one i am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 one
-            </p>
-          </Col>
-          <Col sm={4}>
-            <p>
-              i am a 4 one i am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 onei am a 4 one
-            </p>
+          <Col sm={8} className="all">
+            <div className="cube" id={this.state.isSelected && 'flipit'}>
+              <div className="flippety">
+                <h1>top</h1>
+              </div>
+              <div className="flop">
+                <h2>bottom</h2>
+              </div>
+            </div>
           </Col>
         </Row>
       </Container>
+      </>
     )
   }
 }

@@ -1,0 +1,59 @@
+.all {
+    color: rgb(6, 106, 117);
+	text-transform: uppercase;
+	font-family: sans-serif;
+	font-size: 100%;
+	background: #F4F6F8;
+	padding: 13em 0 0 0;
+	line-height: 62px;
+	-webkit-perspective: 1000px;
+}
+
+.cube {
+	width: 30%;
+	text-align: center;
+	margin: 0 auto;
+	height: 200px;
+
+	-webkit-transition: -webkit-transform .33s;
+	transition: transform .33s; /* Animate the transform properties */
+
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d; /* <-NB */
+}
+
+/* The two faces of the cube */
+.flippety, .flop {
+	background: rgb(247, 247, 247);
+	border: 1px solid rgba(147, 184, 189, .8);
+
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+
+	-webkit-box-shadow: 0 5px 20px rgba(105, 108, 109, .3), 0 0 8px 5px rgba(208, 223, 226, .4) inset;
+	box-shadow: 0 5px 20px rgba(105, 108, 109, .3), 0 0 8px 5px rgba(208, 223, 226, .4) inset;
+	height: 200px;
+}
+
+/* Position the faces */
+.flippety {
+	-webkit-transform: translateZ(100px);
+	transform: translateZ(100px);
+}
+
+.flop {
+	-webkit-transform: rotateX(-90deg) translateZ(-100px);
+	transform: rotateX(-90deg) translateZ(-100px);
+}
+
+/* Rotate the cube */
+// .cube:hover {
+// 	-webkit-transform: rotateX(90deg);
+// 	transform: rotateX(90deg); /* Text bleed at 90º */
+// }
+
+/* Rotate the cube */
+#flipit {
+	-webkit-transform: rotateX(90deg);
+	transform: rotateX(90deg); /* Text bleed at 90º */
+}
