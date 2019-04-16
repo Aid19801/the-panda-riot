@@ -4,14 +4,19 @@ import { connect } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import posed from 'react-pose';
 
 import { withAuthorization } from '../../components/Session';
-import { Divider } from '../../components';
 import * as actions from './constants';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
-import { trimString } from '../../lib/utils';
 import MapBox from './map';
 import './styles.scss';
+
+const Box = posed.div({
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 }
+});
+
 
 class DataMapPage extends Component {
   constructor() {
@@ -34,10 +39,11 @@ class DataMapPage extends Component {
   }
 
   componentDidMount() {
-    this.props.pageLoaded();
+    
     setTimeout(() => {
       this.props.showProgressBar(false);
     }, 100)
+    this.props.pageLoaded();
   }
 
   handleSelectMarker = (data) => {
@@ -52,33 +58,29 @@ class DataMapPage extends Component {
   }
 
   render() {
+    const { isOpen, paneInfo } = this.state;
+    const { heading, subheading, paragraph, nights, img } = paneInfo;
+
     return (
       <Container className="aid-cont">
         <Row className="aid-row">
-          <Col className="aid-col" sm={6}>
+          <Col className="aid-col" sm={7}>
             <MapBox selectMarker={this.handleSelectMarker} />
           </Col>
 
 
-          <Col className="aid-col" sm={6}>
-
-            <div className="rotating-div">
+          <Col className="aid-col" sm={5}>
+            <Box className="info-pane" pose={isOpen ? 'visible' : 'hidden'}>
               <div className="meta">
-                <img src={this.state.paneInfo.img} />
-                <h3>{this.state.paneInfo.heading}</h3>
-                <h4>{this.state.paneInfo.subheading}</h4>
+                <h1>{this.state.paneInfo.heading}</h1>
+                <p>{this.state.paneInfo.subheading}</p>
                 <p>{this.state.paneInfo.paragraph}</p>
-
-                <div className="nights-container">
-                  <ul>
-                    {this.state.paneInfo.nights.map((each, i) => {
-                      return <li key={i}>{each}</li>
-                    })}
-                  </ul>
-                </div>
               </div>
-            </div>
+              <div className="bg-img-div">
+                <img className="bg-img" src={this.state.paneInfo.img} />
+              </div>
 
+            </Box>
           </Col>
         </Row>
       </Container>

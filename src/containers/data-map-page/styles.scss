@@ -3,20 +3,20 @@
 .map-container {
     margin-top: 20px;
     display: flex;
-    border: 2px solid red;
+    // border: 2px solid red;
     width: 100%;
 }
 
 .aid-cont {
-    border: 2px solid green;
+    // border: 2px solid green;
 }
 
 .aid-row {
-    border: 2px solid blue;
+    // border: 2px solid blue;
 }
 
 .aid-col {
-    border: 2px solid purple;
+    // border: 2px solid purple;
     display: flex;
 }
 
@@ -34,29 +34,49 @@
 }
 
 
-
-
-
-.rotating-div {
+.info-pane {
+    width: 100%;
     display: flex;
     justify-content: center;
-    padding: 20px;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    height: auto;
+    background: orange;
+    transform-origin: 50% 50%;
+    border: 1px solid white;
     margin-top: 20px;
-}
+  }
+
 
 .meta {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     width: 90%;
-    // border: 1px solid pink;
+    background: rgba(0, 0, 0, 0.5);
+    margin-top: 10px;
+    // border: 1px solid green;
+    position: absolute;
 }
 
-.meta img {
-    width: 80%;
-    height: 80%;
+.meta h1 {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.bg-img-div {
+    // position: relative;
+    width: 100%;
+    height: 100%;
+    height: auto;
+    // border: 1px solid red;
+
+}
+
+.bg-img {
+    margin-top: 10px;
+    width: 100%;
     opacity: 0.2;
-    position: absolute;
-    // border: 1px solid pink;
+    // position: absolute;
+    // border: 1px solid purple;
 }
 
 .meta h3, .meta h4 {

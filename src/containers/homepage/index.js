@@ -43,14 +43,7 @@ class HomePage extends Component {
       <Container className="height-100">
         <Row>
           <Col sm={8} className="all">
-            <div className="cube" id={this.state.isSelected && 'flipit'}>
-              <div className="flippety">
-                <h1>top</h1>
-              </div>
-              <div className="flop">
-                <h2>bottom</h2>
-              </div>
-            </div>
+          home page
           </Col>
         </Row>
       </Container>
