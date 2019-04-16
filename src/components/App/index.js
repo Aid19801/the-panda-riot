@@ -12,6 +12,8 @@ import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 import * as actions from './constants';
 
+import './styles.scss';
+
 const App = ({ appLoading, appLoaded }) => {
 
   useEffect(() => {
@@ -25,7 +27,7 @@ const App = ({ appLoading, appLoaded }) => {
   return (
     <Router>
 
-      <div>
+      <div className="app-div">
         <Navigation />
         <Route exact path={ROUTES.LANDING} component={LandingPage} />
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />

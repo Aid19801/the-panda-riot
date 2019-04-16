@@ -30,7 +30,7 @@ class HomePage extends Component {
 
   render() {
     return (
-      <Container>
+      <Container className="height-100">
         <Row>
           <Col sm={4}>
             <p>

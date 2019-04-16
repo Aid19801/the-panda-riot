@@ -9,8 +9,8 @@ import { withAuthorization } from '../../components/Session';
 import { Divider } from '../../components';
 import * as actions from './constants';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
-
-import Map from './map';
+import { trimString } from '../../lib/utils';
+import MapBox from './map';
 import './styles.scss';
 
 class DataMapPage extends Component {
@@ -18,7 +18,13 @@ class DataMapPage extends Component {
     super()
     this.state = {
         isOpen: false,
-        selectedMarkerData: {}
+        paneInfo: {
+          heading: 'select a marker',
+          subheading: 'for more information',
+          paragraph: 'about that gig...',
+          nights: [],
+          img: '',
+        }
     };
   }
 
@@ -35,44 +41,45 @@ class DataMapPage extends Component {
   }
 
   handleSelectMarker = (data) => {
-      this.setState({ isOpen: !this.state.isOpen, selectedMarkerData: data });
+    let newPaneInfo = {
+      heading: data.name,
+      subheading: data.venue,
+      paragraph: data.blurb,
+      nights: data.nights,
+      img: data.img,
+    }
+    this.setState({ isOpen: !this.state.isOpen, paneInfo: newPaneInfo });
   }
 
   render() {
     return (
-      <Container>
-        <Row>
-          { !this.state.isOpen && 
-          <Col sm={12}>
-            <Map selectMarker={this.handleSelectMarker}/>
+      <Container className="aid-cont">
+        <Row className="aid-row">
+          <Col className="aid-col" sm={6}>
+            <MapBox selectMarker={this.handleSelectMarker} />
           </Col>
-          }
-          {
-            this.state.isOpen && (
-                <>
-                <Col sm={4}>
-                    <div className="info-container">
-                      
-                      <div className="img-container">
-                        <img className="img" src={this.state.selectedMarkerData.img} />
-                      </div>
-
-                      <Divider />
-
-                      <div className="info">
-                        <h1>{this.state.selectedMarkerData.name}</h1>
-                        <p>{this.state.selectedMarkerData.blurb}</p>
-                      </div>
 
 
-                    </div>
-                </Col>
-                <Col sm={8}>
-                    <Map selectMarker={this.handleSelectMarker}/>
-                </Col>
-                </>
-            )
-          }
+          <Col className="aid-col" sm={6}>
+
+            <div className="rotating-div">
+              <div className="meta">
+                <img src={this.state.paneInfo.img} />
+                <h3>{this.state.paneInfo.heading}</h3>
+                <h4>{this.state.paneInfo.subheading}</h4>
+                <p>{this.state.paneInfo.paragraph}</p>
+
+                <div className="nights-container">
+                  <ul>
+                    {this.state.paneInfo.nights.map((each, i) => {
+                      return <li key={i}>{each}</li>
+                    })}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </Col>
         </Row>
       </Container>
     )

@@ -3,34 +3,42 @@
         { 
             "id": 1,
             "name": "We Are Funny Project",
-            "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Yxd6yzvpNLeYSDkHssPY3Dw6e-4R2Q42MNLTPjZ9S6IYdqwD",
-            "blurb": "London property has gone through the roof and is now more expensive than some other houses somewhere else Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "lat": 51.5074,
-            "lng": -0.1278
+            "venue": "Farrs School of Dance",
+            "img": "http://static1.squarespace.com/static/57b31fb45016e16882ac0fc9/t/57e3b1b5197aeac8122b37b4/1536853866236/?format=1500w",
+            "blurb": "Stretch your brain, open your mind and laugh. Or think. Maybe Both. We Are Funny Project runs free comedy nights every Monday and Tuesdays at Farrs in Dalston. Most weekends we run a one day workshop on some aspect of performance and comedy... from “MCing” to “Improv Fun and Games”, “Comedy Storytelling” to “Writing A Sit-Com” and a whole load more.",
+            "lat": 51.5464,
+            "lng": -0.0737,
+            "nights": ["Mon", "Tue"]
         },
         { 
             "id": 2,
-            "name": "Cavendish Arms",
-            "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Yxd6yzvpNLeYSDkHssPY3Dw6e-4R2Q42MNLTPjZ9S6IYdqwD",
-            "blurb": "London property has gone through the roof and is now more expensive than some other houses somewhere else Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "lat": 51.517420,
-            "lng": -0.080690
+            "name": "Comedy Virgins!",
+            "venue": "The Cavendish Arms",
+            "img": "http://www.thecavendisharmsstockwell.co.uk/images/comedy_virgins_logo.jpg?crc=458167020",
+            "blurb": "It's the Comedy Virgins show featuring newish acts doing 5 min sets and the crowd voting for the best in the Infamous clap-off. Hosts keep it rolling with free drinks for their favourite audience members!",
+            "lat": 51.4766,
+            "lng": -0.1276,
+            "nights": ["Mon", "Tue", "Wed"]
         },
         { 
             "id": 3,
-            "name": "Bills Open Mic!",
-            "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Yxd6yzvpNLeYSDkHssPY3Dw6e-4R2Q42MNLTPjZ9S6IYdqwD",
-            "blurb": "London property has gone through the roof and is now more expensive than some other houses somewhere else Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "lat": 51.5079,
-            "lng": -0.1205
+            "name": "Angel Comedy",
+            "venue": "The Bill Murray",
+            "img": "https://ksr-ugc.imgix.net/assets/012/447/260/f15853729ab624ac6245c6dd45958469_original.png?ixlib=rb-1.1.0&crop=faces&w=1552&h=873&fit=crop&v=1469118113&auto=format&frame=1&q=92&s=701a35dad4a511a48e4b0c264e7db9be",
+            "blurb": "Angel Comedy has grown from a once a week gig into a seven nights a week “Comedy Institution” (according to Timeout). And we've opened our own permanent venue, the Bill Murray. We're in Islington, London, England. We have free and funny shows every single night. We support new talent and big name acts. We believe in making comedy more accessible for audiences and comedians.",
+            "lat": 51.5356,
+            "lng": -0.1029,
+            "nights": ["Mon", "Tue", "Wed", "Thu"]
         },
         { 
             "id": 4,
-            "name": "Comedy Car Crash",
-            "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Entrance_to_underground_station%2C_west_side_of_Moorgate%2C_London_-_geograph.org.uk_-_1408534.jpg/265px-Entrance_to_underground_station%2C_west_side_of_Moorgate%2C_London_-_geograph.org.uk_-_1408534.jpg",
-            "blurb": "TFL have announced that Moorgate Tube Station will be turned into a garden. The move is expected to please birds and squirrels, London property has gone through the roof and is now more expensive than some other houses somewhere else Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "lat": 51.518430,
-            "lng": -0.088610
+            "name": "The Comedy Car Crash",
+            "venue": "Bar Rumba",
+            "img": "https://www.lionsdencomedy.co.uk/images/logocarcrash_on_black_295x295px.jpg",
+            "blurb": "The Lion's Den Comedy Car Crash is a spontaneous Open Mic Comedy night. None of the acts (Except 10 minute Headliners & groups) are booked in advance and the line-up is chosen from names drawn at random from a hat at the end of each act. We've been dubbed many times as the Biggest and Best Open Mic Night in Central London and we'd love you to come along so you can see why! Anyone can participate on the night as long as there are places left. Registration starts at 6.30pm.",
+            "lat": 51.5112,
+            "lng": -0.1334,
+            "nights": ["Tue"]
         }
     ]
 }

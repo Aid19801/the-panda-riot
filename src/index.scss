@@ -9,7 +9,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(#696969, #A8A8A8);
-  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 h1 {
@@ -26,4 +29,14 @@ h3, p {
 
 h2, h4 {
   font-family: 'Raleway';
+}
+
+.height-100 {
+  height: 100vh;
+}
+
+@media screen and (max-width: 1120px) {
+  p {
+    font-size: 12px;
+  }
 }

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import Markers from './markers';
-import './styles.scss';
 import mockGigs from './mock-gigs.json';
+import './styles.scss';
 
 const Map = ReactMapboxGl({
     accessToken: process.env.REACT_APP_MAPBOX_KEY,
@@ -10,18 +10,15 @@ const Map = ReactMapboxGl({
 
 
 const MapBox = ({ selectMarker }) => {
-
     // const { markers, setMarkers } = useState([]);
-    
-    console.log(mockGigs.gigs);
       return (
           <div className="map-container">
             <Map
                 style="mapbox://styles/mapbox/streets-v9"
-                center={[-0.103, 51.450]}
+                center={[-0.0826, 51.5160]}
                 containerStyle={{
-                    height: "100vh",
-                    width: "100vw"
+                    height: "450px",
+                    width: "100%"
             }}>
                 { mockGigs.gigs.map((each, i) => {
                     return <Markers
