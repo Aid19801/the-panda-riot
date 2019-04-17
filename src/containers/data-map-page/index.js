@@ -9,17 +9,11 @@ import posed from 'react-pose';
 import { withAuthorization } from '../../components/Session';
 import * as actions from './constants';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
+import { useSpring, animated } from 'react-spring';
+import { InfoCard } from './info-card';
+
 import MapBox from './map';
 import './styles.scss';
-
-const Box = posed.div({
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-  idle: { width: 0, border: 0 },
-  hovered: { width: '100%' },
-
-});
-
 
 class DataMapPage extends Component {
   constructor() {
@@ -29,7 +23,7 @@ class DataMapPage extends Component {
         paneInfo: {
           heading: 'select a marker',
           subheading: 'for more information',
-          paragraph: 'about that gig...',
+          paragraph: 'about a gig...',
           nights: [],
           img: '',
         }
@@ -52,7 +46,7 @@ class DataMapPage extends Component {
   handleSelectMarker = (data) => {
     let newPaneInfo = {
       heading: data.name,
-      subheading: data.venue,
+      subheading: `@ ${data.venue}`,
       paragraph: data.blurb,
       nights: data.nights,
       img: data.img,
@@ -62,7 +56,6 @@ class DataMapPage extends Component {
 
   render() {
     const { isOpen, paneInfo } = this.state;
-    const { heading, subheading, paragraph, nights, img } = paneInfo;
 
     return (
       <Container className="aid-cont">
@@ -73,22 +66,7 @@ class DataMapPage extends Component {
 
 
           <Col className="aid-col" sm={5}>
-            <Box
-                className="info-pane"
-                pose={this.state.hovering ? "hovered" : "idle"}
-                onMouseEnter={() => this.setState({ hovering: true })}
-                onMouseLeave={() => this.setState({ hovering: false })}
-              >
-              <div className="meta">
-                <h1>{this.state.paneInfo.heading}</h1>
-                <p>{this.state.paneInfo.subheading}</p>
-                <p>{this.state.paneInfo.paragraph}</p>
-              </div>
-              <div className="bg-img-div">
-                <img className="bg-img" src={this.state.paneInfo.img} />
-              </div>
-
-            </Box>
+            <InfoCard paneInfo={paneInfo} />
           </Col>
         </Row>
       </Container>
