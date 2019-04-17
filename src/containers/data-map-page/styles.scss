@@ -55,7 +55,18 @@
     margin-top: 10px;
     // border: 1px solid green;
     position: absolute;
+    animation: example 0.5s;
+    animation-timing-function: ease-out;
 }
+
+// from { margin-top: 10px; }
+// to { margin-top: 0; }
+
+@keyframes example {
+    from { margin-top: 120vh; }
+    to { margin-top: 10px; }
+}
+
 
 .meta h1 {
     margin-bottom: 0;
@@ -102,10 +113,6 @@ table tr th {
     display: flex;
     justify-content: center;
 }
-
-// .nights-container:hover {
-//     transform: rotate3d(5, 5, 5, 240deg);
-// }
 
 .nights-container ul {
     list-style-type: none;

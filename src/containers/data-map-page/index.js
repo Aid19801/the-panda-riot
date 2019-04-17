@@ -14,7 +14,10 @@ import './styles.scss';
 
 const Box = posed.div({
   hidden: { opacity: 0 },
-  visible: { opacity: 1 }
+  visible: { opacity: 1 },
+  idle: { width: 0, border: 0 },
+  hovered: { width: '100%' },
+
 });
 
 
@@ -70,7 +73,12 @@ class DataMapPage extends Component {
 
 
           <Col className="aid-col" sm={5}>
-            <Box className="info-pane" pose={isOpen ? 'visible' : 'hidden'}>
+            <Box
+                className="info-pane"
+                pose={this.state.hovering ? "hovered" : "idle"}
+                onMouseEnter={() => this.setState({ hovering: true })}
+                onMouseLeave={() => this.setState({ hovering: false })}
+              >
               <div className="meta">
                 <h1>{this.state.paneInfo.heading}</h1>
                 <p>{this.state.paneInfo.subheading}</p>
