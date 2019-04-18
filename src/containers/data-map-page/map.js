@@ -9,7 +9,7 @@ const Map = ReactMapboxGl({
   });
 
 //   center={[-0.0826, 51.5160]}
-const MapBox = ({ selectMarker, lng, lat }) => {
+export const MapBox = ({ selectMarker, lng, lat }) => {
     // const { markers, setMarkers } = useState([]);
       return (
           <div className="map-container">
@@ -33,4 +33,4 @@ const MapBox = ({ selectMarker, lng, lat }) => {
       )
   }
 
-  export default MapBox;
+  

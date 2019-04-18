@@ -1,0 +1,27 @@
+
+ .simple-trans-main {
+    height: 300px;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    
+ }
+
+.simple-trans-main > div {
+    border: 12px solid black;
+    border-radius: 16px;
+    cursor: pointer;
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 800;
+    font-size: 10em;
+    will-change: transform,opacity;
+  }
+  
+ 

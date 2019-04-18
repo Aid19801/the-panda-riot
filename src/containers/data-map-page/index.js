@@ -4,15 +4,14 @@ import { connect } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import posed from 'react-pose';
 
 import { withAuthorization } from '../../components/Session';
-import * as actions from './constants';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
-import { useSpring, animated } from 'react-spring';
 import { InfoCard } from './info-card';
+import { MapBox } from './map';
+import { Carousel } from '../../components';
+import * as actions from './constants';
 
-import MapBox from './map';
 import './styles.scss';
 
 class DataMapPage extends Component {
@@ -65,8 +64,8 @@ class DataMapPage extends Component {
     const { paneInfo } = this.props;
 
     return (
-      <Container className="aid-cont">
-        <Row className="aid-row">
+      <Container>
+        <Row>
           <Col className="aid-col" sm={7}>
             <MapBox
               selectMarker={this.handleSelectMarker}
@@ -81,6 +80,13 @@ class DataMapPage extends Component {
               paneInfo={paneInfo}
               toggleMarker={toggleMarker}
               />
+          </Col>
+        </Row>
+        <Row className="centered-row">
+          <Col sm={12}>
+            <div className="foo">
+                <Carousel />
+            </div>
           </Col>
         </Row>
       </Container>
