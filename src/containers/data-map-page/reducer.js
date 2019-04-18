@@ -3,6 +3,15 @@ import * as actions from './constants';
 const initialState = {
     isLoading: false,
     progressBarStatus: false,
+    paneInfo: {
+        heading: 'select a marker',
+        subheading: 'for more information',
+        paragraph: 'about a gig...',
+        nights: [],
+        img: '',
+        lng: -0.0826,
+        lat: 51.5160,
+    },
     error: null,
 }
 
@@ -28,6 +37,13 @@ const dataMapPageReducer = (state = initialState, action) => {
             ...state,
             isLoading: false,
             error: action.error,
+        }
+        break;
+
+        case actions.USER_CLICKED_MARKER:
+        return {
+            ...state,
+            paneInfo: action.paneInfo,
         }
         break;
 

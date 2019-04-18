@@ -8,14 +8,14 @@ const Map = ReactMapboxGl({
     accessToken: process.env.REACT_APP_MAPBOX_KEY,
   });
 
-
-const MapBox = ({ selectMarker }) => {
+//   center={[-0.0826, 51.5160]}
+const MapBox = ({ selectMarker, lng, lat }) => {
     // const { markers, setMarkers } = useState([]);
       return (
           <div className="map-container">
             <Map
                 style="mapbox://styles/mapbox/streets-v9"
-                center={[-0.0826, 51.5160]}
+                center={[lng, lat]}
                 containerStyle={{
                     height: "450px",
                     width: "100%"

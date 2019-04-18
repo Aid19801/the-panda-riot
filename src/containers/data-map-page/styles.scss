@@ -11,6 +11,26 @@
     display: flex;
 }
 
+@keyframes fadeIn {
+    from {
+        width: 30%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.effect {
+    animation: fadeIn;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+}
+
+
+.map-container {
+    border: 12px solid orange;
+}
+
 .mapMeMarkerStyle {
     background-color: blue;
     width: 1.5rem;
@@ -77,6 +97,7 @@
 
  .h1-heading {
     margin-bottom: 0;
+    z-index: 10;
     text-align: center;
     color: white;
 }
@@ -84,6 +105,7 @@
 .h2-subheading {
     text-align: end;
     margin-right: 19px;
+    z-index: 10;
 }
 
 .bg-img-div {
@@ -117,4 +139,5 @@ h3, h4 {
     margin-left: 10px;
     margin-top: 10px;
     color: white;
+    z-index: 10;
 }

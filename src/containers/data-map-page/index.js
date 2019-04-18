@@ -19,17 +19,10 @@ class DataMapPage extends Component {
   constructor() {
     super()
     this.state = {
-        isOpen: false,
-        paneInfo: {
-          heading: 'select a marker',
-          subheading: 'for more information',
-          paragraph: 'about a gig...',
-          nights: [],
-          img: '',
-        }
+        toggleMarker: false,
     };
   }
-
+  
   componentWillMount() {
     this.props.showProgressBar(true);
     this.props.pageLoading();
@@ -44,29 +37,50 @@ class DataMapPage extends Component {
   }
 
   handleSelectMarker = (data) => {
+    
     let newPaneInfo = {
       heading: data.name,
       subheading: `@ ${data.venue}`,
       paragraph: data.blurb,
       nights: data.nights,
       img: data.img,
+      lng: data.lng,
+      lat: data.lat,
     }
-    this.setState({ isOpen: !this.state.isOpen, paneInfo: newPaneInfo });
+
+    this.props.toggleMarker(newPaneInfo);
+    this.setState({ toggleMarker: !this.state.toggleMarker });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.paneInfo !== this.props.paneInfo) {
+      setTimeout(() => {
+        this.setState({ toggleMarker: !this.state.toggleMarker });
+      }, 1000);
+    }
   }
 
   render() {
-    const { isOpen, paneInfo } = this.state;
+    const { toggleMarker } = this.state;
+    const { paneInfo } = this.props;
 
     return (
       <Container className="aid-cont">
         <Row className="aid-row">
           <Col className="aid-col" sm={7}>
-            <MapBox selectMarker={this.handleSelectMarker} />
+            <MapBox
+              selectMarker={this.handleSelectMarker}
+              lng={paneInfo.lng}
+              lat={paneInfo.lat}
+              />
           </Col>
 
 
           <Col className="aid-col" sm={5}>
-            <InfoCard paneInfo={paneInfo} />
+            <InfoCard
+              paneInfo={paneInfo}
+              toggleMarker={toggleMarker}
+              />
           </Col>
         </Row>
       </Container>
@@ -78,11 +92,13 @@ const condition = authUser => !!authUser;
 
 const mapStateToProps = state => ({
   isLoading: state.homePage.isLoading,
+  paneInfo: state.dataMapPage.paneInfo,
 });
 
 const mapDispatchToProps = dispatch => ({
   pageLoading: () => dispatch({ type: actions.DATAMAP_PAGE_LOADING }),
   pageLoaded: () => dispatch({ type: actions.DATAMAP_PAGE_LOADED }),
+  toggleMarker: (paneInfo) => dispatch({ type: actions.USER_CLICKED_MARKER, paneInfo }),
 });
 
 export default compose(
