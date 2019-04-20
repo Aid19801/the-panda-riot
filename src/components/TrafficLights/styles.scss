@@ -1,0 +1,184 @@
+.traffic-lights-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 20;
+    margin-left: 0;
+    margin-top: 20px;
+
+    position: absolute;
+    width: 95%;
+    height: 200px;
+}
+
+.traffic-light-title {
+    font-size: 42px;
+    text-align: start;
+    margin-bottom: 0;
+}
+.flex-stack {
+    height: 100%;
+    font-size: 12px;
+    position: absolute;
+    z-index: 1;
+}
+
+.traffic-lights-ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    z-index: 11;
+    margin-left: 0;
+} 
+
+.traffic-light-li {
+    margin-top: 5px;
+    font-size: 170%;
+    border: 1px solid white;
+    box-shadow: 4px 5px 27px white;
+    background: rgba(0, 0, 0, 0.4);
+    width: 50%;
+    margin-bottom: 5px;
+    color: orange;
+}
+
+.flex-col table {
+    margin-top: 30px;
+}
+
+table tr th {
+    font-weight: 700;
+    font-size: 23px;
+}
+
+table tr td {
+    border: 1px solid white;
+    box-shadow: 4px 5px 27px white;
+    width: 10px;
+    font-weight: 700;
+    background: rgba(248, 148, 6, 0.8);
+}
+
+
+@keyframes enter {
+    30% {
+        box-shadow: 2px 2px 100px white;
+    }
+    50% {
+        box-shadow: 12px 12px 40px white;
+    }
+    
+    80% {
+        box-shadow: 4px 4px 65px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+
+    .flex-stack {
+        display: flex;
+        justify-content: center;
+    }
+
+    .flex-stack div.flex-row {
+        height: 100%;
+    }
+
+    .flex-col {
+        padding-left: 0;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    div.flex-col table {
+        margin-top: 30px;
+        // border: 4px solid purple;
+    }
+
+    .traffic-lights-container {
+        display: flex;
+        flex-direction: row;
+        // padding-left: 10px;
+        // margin-left: 20px;
+        margin-top: 10px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .traffic-light-title {
+        text-align: start;
+        font-size: 20px;
+        margin-bottom: 5px;
+        margin-left: 18px;
+    }
+
+    .traffic-lights-ul {
+        padding-left: 0;
+        margin-left: 18px;
+        margin-bottom: 5px;
+        flex-direction: column;
+        display: flex;
+        list-style-type: none;
+        width: 70%;
+    }
+    .traffic-light-li {
+        margin-top: 5px;
+        font-size: 170%;
+        border: 1px solid white;
+        box-shadow: 4px 5px 27px white;
+        background: rgba(0, 0, 0, 0.4);
+        width: 50%;
+        margin-bottom: 5px;
+        color: orange;
+    }
+    div.table {
+        left: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .carousel-heading {
+        left: 48px;
+    }
+    .flex-row {
+        height: 80%;
+        width: 100%;
+    }
+
+    table tr th {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .flex-col {
+        padding-left: 0;
+        height: 50%;
+        margin-bottom: 20px;
+    }
+    .flex-col table {
+        // border: 1px solid grey;
+    }
+
+    table tr th {
+        font-size: 20px;
+    }
+
+    .traffic-light-li {
+        width: 88%;
+    }
+    .traffic-lights-ul {
+        margin-left: 10px;
+    }
+}   
+
+@media screen and (max-width: 768px) {
+    table tr th {
+        font-size: 14px;
+    }
+
+}

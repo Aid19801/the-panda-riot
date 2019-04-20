@@ -2,6 +2,7 @@
 
 
 .centered-row {
+    margin-top: 40px;
     align-items: center;
     align-content: center;
     display: flex;
@@ -9,21 +10,6 @@
     text-align: center;
     padding: 20px;
 }
-
-    .foo {
-        height: 300px;
-        width: 100%;
-        
-    }
-
-
-
-
-
-
-
-
-
 
 .map-container {
     margin-top: 20px;
@@ -53,6 +39,7 @@
 
 .map-container {
     border: 12px solid orange;
+    box-shadow: 1px 2px 3px rgba(255,255,255,.5);
 }
 
 .mapMeMarkerStyle {
@@ -76,6 +63,7 @@
     background: orange;
     transform-origin: 50% 50%;
     border: 1px solid white;
+    box-shadow: 1px 2px 3px rgba(255,255,255,.5);
     margin-top: 20px;
   }
 
@@ -92,9 +80,9 @@
     height: 8px;
     width: 80%;
     background: orange;
-    border: 1px solid white;
+    box-shadow: 1px 2px 3px rgba(255,255,255,.5);
     position: absolute;
-    margin-top: 95%;
+    bottom: 20px;
     animation: expandLine;
     animation-duration: 0.8s;
 }
@@ -111,6 +99,7 @@
     transition: box-shadow 0.5s;
     will-change: transform;
     border: 20px solid orange;
+    box-shadow: 1px 2px 3px rgba(255,255,255,.5);
     animation: slideIn;
     animation-duration: 0.4s;
   }

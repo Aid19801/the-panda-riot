@@ -43,8 +43,15 @@ class DataMapPage extends Component {
       paragraph: data.blurb,
       nights: data.nights,
       img: data.img,
+      imgs: data.imgs,
       lng: data.lng,
       lat: data.lat,
+      walkins: data.walkins,
+      walkinSignUp: data.walkinSignUp,
+      prebook: data.prebook,
+      prebookSignUp: data.prebookSignUp,
+      bringer: data.bringer,
+      nearestTubes: data.nearestTubes,
     }
 
     this.props.toggleMarker(newPaneInfo);
@@ -84,9 +91,7 @@ class DataMapPage extends Component {
         </Row>
         <Row className="centered-row">
           <Col sm={12}>
-            <div className="foo">
-                <Carousel />
-            </div>
+            <Carousel info={paneInfo} />
           </Col>
         </Row>
       </Container>
