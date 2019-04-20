@@ -1,5 +1,6 @@
 
  .simple-trans-main {
+    margin-top: 20px;
     height: 300px;
     width: 100%;
     position: absolute;
@@ -73,4 +74,9 @@
   position: absolute;
   z-index: 1;
   left: 200px;
+ }
+
+ .tweet-row {
+  height: 100%;
+  overflow: hidden;
  }

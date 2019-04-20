@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import { useTransition, animated } from 'react-spring'
 import './styles.scss'
 import { TrafficLights, CarouselColumnTwo } from '../index';
+import TwitterEmbed from '../TwitterEmbed';
 
 export default function Carousel({ info }) {
 
@@ -28,6 +29,7 @@ export default function Carousel({ info }) {
   const pages = [
     ({ style }) => (
     
+    // 1. NIGHTS OF WEEK *AND* BRINGER / WALKINS ETC
     <animated.div style={{ ...style, background: 'lightgrey', position: 'inherit' }}>
     
       <Container className="flex-stack">
@@ -59,13 +61,15 @@ export default function Carousel({ info }) {
       
     </animated.div>
     ),
+
+    // 2. TWITTER OR FB
     ({ style }) => (
       <animated.div style={{ ...style, background: 'lightblue', position: 'inherit' }}>
   
         <Container className="flex-stack">
-          <Row>
+          <Row className="tweet-row">
             <Col sm={6}>
-              i am a 6 col container
+              <TwitterEmbed twitterHandle={info.twitterHandle} />
             </Col>
             <Col sm={6}>i am a 6 col container</Col>
           </Row>

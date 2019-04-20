@@ -13,6 +13,7 @@ import { Carousel } from '../../components';
 import * as actions from './constants';
 
 import './styles.scss';
+import TwitterEmbed from '../../components/TwitterEmbed';
 
 class DataMapPage extends Component {
   constructor() {
@@ -52,6 +53,7 @@ class DataMapPage extends Component {
       prebookSignUp: data.prebookSignUp,
       bringer: data.bringer,
       nearestTubes: data.nearestTubes,
+      twitterHandle: data.twitterHandle,
     }
 
     this.props.toggleMarker(newPaneInfo);
@@ -71,6 +73,7 @@ class DataMapPage extends Component {
     const { paneInfo } = this.props;
 
     return (
+      <>
       <Container>
         <Row>
           <Col className="aid-col" sm={7}>
@@ -80,8 +83,6 @@ class DataMapPage extends Component {
               lat={paneInfo.lat}
               />
           </Col>
-
-
           <Col className="aid-col" sm={5}>
             <InfoCard
               paneInfo={paneInfo}
@@ -90,11 +91,19 @@ class DataMapPage extends Component {
           </Col>
         </Row>
         <Row className="centered-row">
-          <Col sm={12}>
+          <Col className="carousel-columns" sm={12}>
             <Carousel info={paneInfo} />
           </Col>
         </Row>
       </Container>
+      <Container>
+        <Row className="centered-row">
+          <Col sm={12}>
+
+          </Col>
+        </Row>
+      </Container>
+      </>
     )
   }
 }

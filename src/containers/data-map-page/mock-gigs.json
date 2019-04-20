@@ -15,7 +15,8 @@
             "prebook": true,
             "prebookSignUp": "contact via email - booked a month in advance",
             "bringer": false,
-            "nearestTubes": ["Dalston Junction"]
+            "nearestTubes": ["Dalston Junction"],
+            "twitterHandle": "WeRFunnyProject"
             
         },
         { 
@@ -33,7 +34,8 @@
             "prebook": true,
             "prebookSignUp": "contact via email - booked a month in advance",
             "bringer": true,
-            "nearestTubes": ["Stockwell"]
+            "nearestTubes": ["Stockwell"],
+            "twitterHandle": "comedyVirgins"
         },
         { 
             "id": 3,
@@ -50,7 +52,8 @@
             "prebook": true,
             "prebookSignUp": "contact via email - booked a month in advance",
             "bringer": true,
-            "nearestTubes": ["Angel"]
+            "nearestTubes": ["Angel"],
+            "twitterHandle": "angelComedy"
         },
         { 
             "id": 4,
@@ -67,7 +70,8 @@
             "prebook": true,
             "prebookSignUp": "contact via email - booked a month in advance",
             "bringer": false,
-            "nearestTubes": ["Picadilly Circus", "Leics Square"]
+            "nearestTubes": ["Picadilly Circus", "Leics Square"],
+            "twitterHandle": "LionsDenComedy"
         }
     ]
 }

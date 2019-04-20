@@ -16,6 +16,7 @@
     "react-scripts": "2.1.8",
     "react-spring": "^8.0.19",
     "react-topbar-progress-indicator": "^2.0.0",
+    "react-twitter-widgets": "^1.7.1",
     "recompose": "^0.30.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.7",
