@@ -34,24 +34,34 @@ export default function Carousel({ info }) {
     
       <Container className="flex-stack">
           <Row className="flex-row">
-            <Col className="flex-col" sm={6}>
+            <Col className="flex-col-neartop" sm={6}>
               <TrafficLights nights={info.nights} />
             </Col>
             
             <Col className="flex-col" sm={6}>
-              <table>
-                <tr>
-                  <th>Bringer</th>
-                  <th>WalkIns</th>
-                  <th>Prebook</th>
-                </tr>
 
-                <tr>
-                  <td>{ info.bringer ? "yes" : "no" }</td>
-                  <td>{ info.walkins ? "yes" : "no" }</td>
-                  <td>{ info.prebook ? "yes" : "no" }</td>
-                </tr>
-              </table>
+              <div className="col-1">
+                <table>
+                  <tr>
+                    <th>Bringer</th>
+                    <th>WalkIns</th>
+                    <th>Prebook</th>
+                  </tr>
+
+                  <tr>
+                    <td>{ info.bringer ? "yes" : "no" }</td>
+                    <td>{ info.walkins ? "yes" : "no" }</td>
+                    <td>{ info.prebook ? "yes" : "no" }</td>
+                  </tr>
+                </table>
+              </div>
+              <div className="col-2">
+                <p>Nearest Tube/s</p>
+                {info.nearestTubes.map((each, i) => <h4 style={{ marginBottom: 2 }}>{each}</h4>)}
+              </div>
+            
+      
+
             </Col>
             
           </Row>
@@ -71,7 +81,11 @@ export default function Carousel({ info }) {
             <Col sm={6}>
               <TwitterEmbed twitterHandle={info.twitterHandle} />
             </Col>
-            <Col sm={6}>i am a 6 col container</Col>
+            <Col sm={6}>
+              <div className="flex-mini-stack">
+
+              </div>
+            </Col>
           </Row>
         </Container>
         <img src={info.imgs[1]} height="100%" width="100%" />
