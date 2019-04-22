@@ -3,6 +3,8 @@
         { 
             "id": 1,
             "name": "We Are Funny Project",
+            "website": "wearefunnyproject.co.uk",
+            "howToBook": "http://wearefunnyproject.com/contact#block-83a2e05c69a653d2dad5",
             "venue": "Farrs School of Dance",
             "img": "http://static1.squarespace.com/static/57b31fb45016e16882ac0fc9/t/57e3b1b5197aeac8122b37b4/1536853866236/?format=1500w",
             "imgs": ["https://media.timeout.com/images/100449091/image.jpg", "https://media.timeout.com/images/24664/image.jpg", "https://media-cdn.tripadvisor.com/media/photo-s/11/75/dc/f7/mr-trevor-lock.jpg"],

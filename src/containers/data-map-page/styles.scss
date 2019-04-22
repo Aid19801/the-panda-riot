@@ -1,7 +1,14 @@
 @import '../../color';
 
+.map-and-info-pane-row {
+    width: 100%;
+}
+
 .container {
-    // border: 2px solid pink;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .carousel-columns {
@@ -9,13 +16,20 @@
 }
 
 .centered-row {
-    margin-top: 40px;
+    margin-top: 20px;
     align-items: center;
     align-content: center;
     display: flex;
     justify-content: center;
     text-align: center;
     padding: 20px;
+}
+
+.more-info-row {
+    border: 2px solid gold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .map-container {
@@ -160,4 +174,33 @@ h3, h4 {
     margin-top: 10px;
     color: white;
     z-index: 10;
+}
+
+.more-info-each-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.more-info-each-row p {
+    margin-left: 10px;
+    margin-bottom: 0;
+    color: white;
+}
+
+@media screen and (max-width: 991px) {
+    .more-info-each-row {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .more-info-each-row {
+        flex-direction: column;
+    }
+
+    .more-info-row {
+        width: 90%;
+    }
+
 }

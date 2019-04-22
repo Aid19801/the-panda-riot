@@ -21,7 +21,8 @@
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.7",
     "redux-saga": "^0.16.2",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "youtube-api-search": "^0.0.5"
   },
   "scripts": {
     "start": "react-scripts start",

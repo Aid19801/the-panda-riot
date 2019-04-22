@@ -9,17 +9,17 @@ import { withAuthorization } from '../../components/Session';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 import { InfoCard } from './info-card';
 import { MapBox } from './map';
-import { Carousel } from '../../components';
+import { YouTubeEmbed, TwitterEmbed } from '../../components';
 import * as actions from './constants';
 
 import './styles.scss';
-import TwitterEmbed from '../../components/TwitterEmbed';
 
 class DataMapPage extends Component {
   constructor() {
     super()
     this.state = {
         toggleMarker: false,
+        showPanels: false,
     };
   }
   
@@ -54,10 +54,13 @@ class DataMapPage extends Component {
       bringer: data.bringer,
       nearestTubes: data.nearestTubes,
       twitterHandle: data.twitterHandle,
+      website: data.website,
+      howToBook: data.howToBook,
+      venue: data.venue,
     }
 
     this.props.toggleMarker(newPaneInfo);
-    this.setState({ toggleMarker: !this.state.toggleMarker });
+    this.setState({ toggleMarker: !this.state.toggleMarker, showPanels: true });
   }
 
   componentDidUpdate(prevProps) {
@@ -69,13 +72,13 @@ class DataMapPage extends Component {
   }
 
   render() {
-    const { toggleMarker } = this.state;
+    const { toggleMarker, showPanels } = this.state;
     const { paneInfo } = this.props;
 
     return (
       <>
       <Container>
-        <Row>
+        <Row className="map-and-info-pane-row">
           <Col className="aid-col" sm={7}>
             <MapBox
               selectMarker={this.handleSelectMarker}
@@ -90,16 +93,49 @@ class DataMapPage extends Component {
               />
           </Col>
         </Row>
-        <Row className="centered-row">
-          <Col className="carousel-columns" sm={12}>
-            <Carousel info={paneInfo} />
-          </Col>
-        </Row>
-      </Container>
-      <Container>
-        <Row className="centered-row">
-          <Col sm={12}>
 
+        { showPanels && 
+        <Row className="centered-row more-info-row">
+          <Col className="more-info-cols" sm={4}>
+            <div className="more-info-each-row">
+              <h3>Website: </h3><p>{paneInfo.website ? paneInfo.website : 'tbc'}</p>
+            </div>
+            <div className="more-info-each-row">
+              <h3>How To Book: </h3>{paneInfo.howToBook ? <p>Click <a href={paneInfo.howToBook}>Here</a></p> : <p>tbc</p> }
+            </div>
+            <div className="more-info-each-row">
+              <h3>Venue: </h3><p>{paneInfo.venue ? paneInfo.venue : 'tbc'}</p>
+            </div>
+          </Col>
+          <Col className="more-info-cols" sm={4}>
+            <div className="more-info-each-row">
+              <h3>Bringer: </h3>
+              <p>{paneInfo.bringer ? 'yes' : 'no'}</p>
+            </div>
+            <div className="more-info-each-row">
+              <h3>Walk Ins: </h3>
+              <p>{paneInfo.walkins ? 'yes' : 'no'}</p>
+            </div>
+            <div className="more-info-each-row">
+              <h3>Pre Book: </h3>
+              <p>{paneInfo.prebook ? 'yes' : 'no'}</p>
+            </div>
+          </Col>
+          <Col className="more-info-cols" sm={4}>
+            <div className="more-info-each-row">
+              <h3>Rating: </h3><p>coming soon...</p>
+            </div>
+            <div className="more-info-each-row">
+              <h3 style={{ color: 'black' }}>Get My Gig Here For Free! </h3>
+            </div>
+          </Col>
+        </Row> }
+        <Row className="centered-row">
+          <Col className="carousel-columns" sm={6}>
+            { showPanels && <TwitterEmbed twitterHandle={paneInfo.twitterHandle} /> }
+          </Col>
+          <Col className="carousel-columns" sm={6}>
+            { showPanels && <YouTubeEmbed heading={paneInfo.heading} term={`${paneInfo.heading} London standup comedy`} /> }
           </Col>
         </Row>
       </Container>

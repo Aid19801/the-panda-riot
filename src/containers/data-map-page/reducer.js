@@ -12,6 +12,7 @@ const initialState = {
         img: '',
         lng: -0.0826,
         lat: 51.5160,
+        twitterHandle: '',
     },
     error: null,
 }

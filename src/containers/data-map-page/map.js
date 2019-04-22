@@ -8,8 +8,6 @@ const Map = ReactMapboxGl({
     accessToken: process.env.REACT_APP_MAPBOX_KEY,
   });
 
-console.log('FUCK ', process.env.REACT_APP_MAPBOX_KEY);
-
 //   center={[-0.0826, 51.5160]}
 export const MapBox = ({ selectMarker, lng, lat }) => {
     // const { markers, setMarkers } = useState([]);
