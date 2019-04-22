@@ -37,8 +37,32 @@ class ActsPage extends Component {
         })
     }
 
-    upvoteAct = uid => {
-        return;
+    upvoteAct = actObject => {
+
+        let chosenUser = {};
+        // 1. GET THE ACT YOUVE CHOSEN TO UPVOTE
+        this.props.firebase.user(actObject.uid)
+            .on('value', snapshot => {
+                chosenUser = snapshot.val();
+            })
+
+            // set their record to be the same but with
+            // rating incremented by +1
+
+        const { username, email, tagline, profilePicture, rating, includeInActRater } = chosenUser;
+        
+        console.log('chosen user object we\'re updating ', chosenUser);
+
+        this.props.firebase
+            .user(actObject.uid)
+            .set({
+                username,
+                email,
+                tagline,
+                profilePicture,
+                includeInActRater,
+                rating: rating + 1,
+            })
     }
 
     downvoteAct = uid => {
@@ -65,6 +89,7 @@ class ActsPage extends Component {
 
     componentWillUnmount() {
         this.props.firebase.users().off();
+        this.props.firebase.user().off();
     }
         
   render() {
@@ -77,7 +102,12 @@ class ActsPage extends Component {
                             <div key={i} className="each-act-container">
 
                                 <div className="each-act-row">
+
+                                <div className="each-act-rating-container">
+                                    <button onClick={() => this.upvoteAct(each)}>Up</button>
                                     <h1 className="each-act-rating">{each.rating}</h1>
+                                    <button onClick={() => null}>Down</button>
+                                </div>
 
                                     <img
                                         src={each.profilePicture}

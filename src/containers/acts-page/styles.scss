@@ -19,6 +19,14 @@
     justify-content: space-evenly;
 }
 
+.each-act-rating-container {
+    width: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
 .each-act-rating {
     // border: 1px solid green;
     color: white;

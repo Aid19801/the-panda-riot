@@ -25,12 +25,8 @@ class AccountChangeForm extends React.Component {
   }
 
   componentWillMount = () => {
-    // get current info
-    // if rating !== 0 rating = me.rating
-    // submit
-
-
-    this.props.firebase.user('seVFOFwaXJh8z20Mx6vdmut7SuI2')
+    let meUid = this.props.firebase.auth.currentUser.uid;
+    this.props.firebase.user(meUid)
       .on('value', snapshot => {
           const me = snapshot.val();
           const { username, tagline, profilePicture, rating, includeInActRater } = me;
