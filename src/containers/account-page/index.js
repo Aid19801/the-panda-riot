@@ -34,7 +34,7 @@ class AccountChangeForm extends React.Component {
       .on('value', snapshot => {
           const me = snapshot.val();
           const { username, tagline, profilePicture, rating, includeInActRater } = me;
-          let persistRatingFromDb = rating !== 0 ? rating : 0;
+          let persistRatingFromDb = rating !== 0 && rating ? rating : 0;
           this.setState({
             username,
             tagline,
