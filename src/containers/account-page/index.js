@@ -9,22 +9,48 @@ import * as ROUTES from '../../constants/routes';
 import * as actions from './constants';
 import { compose } from 'recompose';
 
+import './styles.scss';
 class AccountChangeForm extends React.Component {
   constructor() {
     super();
     this.state = {
+      me: {},
       username: '',
       tagline: '',
       profilePicture: '',
+      rating: 0,
       updated: false,
+      includeInActRater: false,
     }
   }
 
+  componentWillMount = () => {
+    // get current info
+    // if rating !== 0 rating = me.rating
+    // submit
+
+
+    this.props.firebase.user('seVFOFwaXJh8z20Mx6vdmut7SuI2')
+      .on('value', snapshot => {
+          const me = snapshot.val();
+          const { username, tagline, profilePicture, rating, includeInActRater } = me;
+          let persistRatingFromDb = rating !== 0 ? rating : 0;
+          this.setState({
+            username,
+            tagline,
+            profilePicture,
+            includeInActRater,
+            email: this.props.firebase.auth.currentUser.email,
+            rating: persistRatingFromDb,
+          })
+      })
+    
+  }
+
   onSubmit = event => {
-    const { tagline, profilePicture, username } = this.state;
+    const { tagline, profilePicture, username, includeInActRater } = this.state;
     let uid = this.props.firebase.auth.currentUser.uid;
     let email = this.props.firebase.auth.currentUser.email;
-
     this.props.firebase
       .user(uid)
         .set({
@@ -32,6 +58,8 @@ class AccountChangeForm extends React.Component {
           email,
           tagline,
           profilePicture,
+          includeInActRater,
+          rating: this.state.rating,
         })
 
     event.preventDefault();
@@ -43,8 +71,12 @@ class AccountChangeForm extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  handleIncludeInActRater = (event) => {
+    this.setState({ includeInActRater: !this.state.includeInActRater });
+  }
+
   render() {
-    console.log('this.propf.firebase', this.props.firebase)
+
     const { tagline, profilePicture } = this.state;
 
     const isInvalid = tagline === '' || profilePicture === '';
@@ -56,7 +88,7 @@ class AccountChangeForm extends React.Component {
           value={this.state.username}
           onChange={this.onChange}
           type="text"
-          placeholder="username"
+          placeholder="act name eg. Lily Savage"
         />
         <input
           name="tagline"
@@ -70,8 +102,18 @@ class AccountChangeForm extends React.Component {
           value={this.state.profilePicture}
           onChange={this.onChange}
           type="text"
-          placeholder="profilePicture..."
+          placeholder="img URL eg https://my-pics/1_pic.jpg"
         />
+
+        <div className="horizontal-two-elements">
+          <p>include me in Act Rater?: </p>
+          <input
+            type="checkbox"
+            checked={this.state.includeInActRater}
+            onChange={this.handleIncludeInActRater}
+          />
+        </div>
+        <p>submit: </p>
         <button disabled={isInvalid} type="submit">
           Update My Deets
         </button>

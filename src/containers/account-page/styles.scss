@@ -1,0 +1,15 @@
+.horizontal-two-elements {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 300px;
+    margin-top: 20px;
+    align-content: center;
+    align-items: center;
+    
+}
+
+.horizontal-two-elements p{
+    margin-bottom: 0;
+    color: black;
+}

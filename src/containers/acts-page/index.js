@@ -33,6 +33,12 @@ class ActsPage extends Component {
 
                 this.setState({ acts: usersList });
         })
+
+        this.props.firebase.user('seVFOFwaXJh8z20Mx6vdmut7SuI2')
+            .on('value', snapshot => {
+                const me = snapshot.val();
+                console.log('me is', me);
+            })
     }
 
     upvoteAct = uid => {
