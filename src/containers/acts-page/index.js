@@ -8,8 +8,12 @@ import withProgressBar from '../../components/ProgressBar/with-progressBar';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import { tooSoon } from '../../lib/utils';
 
 import './styles.scss';
+import { UpArrow, DownArrow } from './svgs';
 
 class ActsPage extends Component {
 
@@ -17,15 +21,8 @@ class ActsPage extends Component {
         super()
         this.state = {
           acts: [],
-          timer: null,
+          showModal: false,
         };
-    }
-
-    startTimer = () => {
-        this.setState({ timer: 10 });
-        setInterval(() => {
-            this.setState({ timer: this.state.timer - 1 })
-        }, 1000);
     }
 
     renderActs = () => {
@@ -48,15 +45,12 @@ class ActsPage extends Component {
         
     }
 
-    upvoteAct = actObject => {
+    // eg. voteAct('up', actObject)
+    voteAct = (upOrDownString, actObject) => {
         let chosenUser = {};
-
-        const lastTimeVoted = localStorage.getItem('timevoted');
-        const timeNow = Date.now();
-        const differenceBetween = timeNow - parseInt(lastTimeVoted);
-
-        // if it was longer than 
-        if (differenceBetween >= 9999) {
+        let isTooSoon = tooSoon();
+        // if it was longer than 10 seconds
+        if (!isTooSoon) {
             
                     // 1. GET THE ACT YOUVE CHOSEN TO UPVOTE
                     this.props.firebase.user(actObject.uid)
@@ -78,22 +72,19 @@ class ActsPage extends Component {
                             tagline,
                             profilePicture,
                             includeInActRater,
-                            rating: rating + 1,
+                            rating:
+                                upOrDownString === 'up' ?
+                                rating + 1 : rating - 1,
                         })
             
                     // 3. SAVE LOCALSTORAGE TO STOP PERSISTENT VOTING
                     localStorage.setItem('timevoted', Date.now())
 
         } else {
-            alert('voting too often');
+            return this.setState({ showModal: true });
         }
-
-        
     }
 
-    downvoteAct = uid => {
-        return;
-    }
 
     updateActs = () => {
         return;
@@ -119,11 +110,11 @@ class ActsPage extends Component {
     }
         
   render() {
+      const { showModal } = this.state;
     return (
         <Container>
             <Row className="act-rows">
-                <Col sm={9}>
-                <h1>seconds: {this.state.timer}</h1>
+                <Col id={showModal ? 'fadeContainer' : ''} sm={9}>
                     { this.state.acts.map((each, i) => {
                         return (
                             <div key={i} className="each-act-container">
@@ -131,9 +122,16 @@ class ActsPage extends Component {
                                 <div className="each-act-row">
 
                                 <div className="each-act-rating-container">
-                                    <button onClick={() => this.upvoteAct(each)}>Up</button>
-                                    <h1 className="each-act-rating">{each.rating}</h1>
-                                    <button onClick={() => null}>Down</button>
+
+                                    <div className="up-svg-container" onClick={() => this.voteAct('up', each)}>
+                                        <UpArrow />
+                                    </div>
+
+                                        <h1 className="each-act-rating">{each.rating}</h1>
+
+                                    <div className="down-svg-container" onClick={() => this.voteAct('down', each)}>
+                                        <DownArrow />
+                                    </div>
                                 </div>
 
                                     <img
@@ -142,6 +140,7 @@ class ActsPage extends Component {
                                         />
                                     <div className="each-act-name">
                                         <h1>{each.username}</h1>
+                                        <p>{each.tagline}</p>
                                     </div>
                                 </div>
                                 
@@ -152,6 +151,21 @@ class ActsPage extends Component {
                     })}
                 </Col>
             </Row>
+                { showModal && 
+                    <Modal.Dialog id="warning-modal">
+                        <Modal.Header>
+                            <Modal.Title>Ah BUGGER...</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body>
+                            <p>Alas, you cannot vote more than once every six hours...</p>
+                        </Modal.Body>
+
+                        <Modal.Footer className="mx-auto">
+                            <Button onClick={() => this.setState({ showModal: false })} variant="secondary">Close</Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                    }
         </Container>
     )
   }

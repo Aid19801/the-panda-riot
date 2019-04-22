@@ -5,3 +5,14 @@ export const trimString = str => {
     }
     return str;
 }
+
+export const tooSoon = () => {
+    const lastTimeVoted = localStorage.getItem('timevoted');
+    const timeNow = Date.now();
+    const differenceBetween = timeNow - parseInt(lastTimeVoted);
+    if (differenceBetween <= 9999) {
+        return true;
+    } else {
+        return false;
+    }
+}

@@ -1,3 +1,13 @@
+#warning-modal {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+}
+
+#fadeContainer {
+    opacity: 0.2;
+}
+
 .act-rows{
     width: 100%;
     justify-content: center;
@@ -25,6 +35,7 @@
     margin-right: 10px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .each-act-rating {
@@ -55,5 +66,43 @@
 .each-act-name h1 {
     font-size: 122%;
     margin-bottom: 0;
-    text-align: center;
+    text-align: start;
+}
+.each-act-name p {
+    font-size: 90%;
+    margin-bottom: 0;
+    text-align: start;
+}
+
+@media screen and (min-width: 576px) {
+    .act-rows {
+        width: 140%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .act-rows {
+        width: 120%;
+        max-width: 800px;
+    }
+}
+
+@media screen and (max-width: 488px) {
+    .each-act-row {
+        height: 100px;
+    }
+
+    .each-act-img {
+        width: 100px;
+        height: 85px;
+    }
+    .each-act-name h1 {
+        text-align: center;
+    }
+    .each-act-name p {
+        text-align: start;
+        margin-left: 10px;
+        font-size: 55%;
+        color: black;
+    }
 }
