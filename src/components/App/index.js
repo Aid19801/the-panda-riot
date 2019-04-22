@@ -6,7 +6,7 @@ import {
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import Navigation from '../Navigation';
-import { AboutPage, AdminPage, AccountPage, DataMapPage, HomePage, LandingPage, SignInPage, SignUpPage, PasswordForgetPage } from '../../containers';
+import { AdminPage, ActsPage, AccountPage, DataMapPage, HomePage, LandingPage, SignInPage, SignUpPage, PasswordForgetPage } from '../../containers';
 
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
@@ -38,7 +38,7 @@ const App = ({ appLoading, appLoaded }) => {
         <Route path={ROUTES.DATAMAP} component={DataMapPage} />
 
         <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-        <Route path={ROUTES.ABOUT} component={AboutPage} />
+        <Route path={ROUTES.ACTS} component={ActsPage} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
       </div>
     </Router>

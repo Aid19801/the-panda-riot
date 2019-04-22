@@ -44,7 +44,7 @@ class NavigationAuth extends Component {
             </div>
 
             <div className="nav-option-wrapper">
-              <Link to={ROUTES.ABOUT}>About</Link>
+              <Link to={ROUTES.ACTS}>Acts</Link>
             </div>
 
             <div className="nav-option-wrapper">

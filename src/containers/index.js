@@ -1,4 +1,4 @@
-import AboutPage from './about-page';
+import ActsPage from './acts-page';
 import AccountPage from './account-page';
 import AdminPage from './admin-page';
 import DataMapPage from './data-map-page';
@@ -9,7 +9,7 @@ import SignInPage from './signin-page';
 import SignUpPage from './signup-page';
 
 export {
-    AboutPage,
+    ActsPage,
     AccountPage,
     AdminPage,
     DataMapPage,
