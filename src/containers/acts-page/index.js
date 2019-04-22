@@ -31,14 +31,10 @@ class ActsPage extends Component {
                     uid: key
                 }));
 
-                this.setState({ acts: usersList });
+                
+                let sortedActs = usersList.sort((a, b) => a.rating - b.rating).reverse();
+                this.setState({ acts: sortedActs });
         })
-
-        this.props.firebase.user('seVFOFwaXJh8z20Mx6vdmut7SuI2')
-            .on('value', snapshot => {
-                const me = snapshot.val();
-                console.log('me is', me);
-            })
     }
 
     upvoteAct = uid => {
@@ -74,9 +70,30 @@ class ActsPage extends Component {
   render() {
     return (
         <Container>
-            <Row>
-                <Col sm={6}>blah</Col>
-                <Col sm={6}>blah</Col>
+            <Row className="act-rows">
+                <Col sm={9}>
+                    { this.state.acts.map((each, i) => {
+                        return (
+                            <div key={i} className="each-act-container">
+
+                                <div className="each-act-row">
+                                    <h1 className="each-act-rating">{each.rating}</h1>
+
+                                    <img
+                                        src={each.profilePicture}
+                                        className="each-act-img"
+                                        />
+                                    <div className="each-act-name">
+                                        <h1>{each.username}</h1>
+                                    </div>
+                                </div>
+                                
+                            
+                            </div>
+
+                        )
+                    })}
+                </Col>
             </Row>
         </Container>
     )
