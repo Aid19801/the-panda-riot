@@ -3,6 +3,8 @@ import appStateReducer from '../components/App/reducer';
 import accountPageReducer from '../containers/account-page/reducer';
 import adminPageReducer from '../containers/admin-page/reducer';
 import aboutPageReducer from '../containers/about-page/reducer';
+import dataMapPageReducer from '../containers/data-map-page/reducer';
+
 import homePageReducer from '../containers/homepage/reducer';
 import landingPageReducer from '../containers/landing-page/reducer';
 import passwordChangeFormReducer from '../containers/account-page/pw-change-reducer';
@@ -15,6 +17,7 @@ const RootReducer = combineReducers({
     accountPage: accountPageReducer,
     adminPage: adminPageReducer,
     aboutPage: aboutPageReducer,
+    dataMapPage: dataMapPageReducer,
     homePage: homePageReducer,
     landingPage: landingPageReducer,
     passwordForgetPage: passwordForgetPageReducer,

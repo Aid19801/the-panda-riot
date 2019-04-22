@@ -16,7 +16,7 @@ const INITIAL_STATE = {
   error: null,
 };
 
-console.log('withFirebase is ', withFirebase);
+// console.log('withFirebase is ', withFirebase);
 
 class SignInFormBase extends Component {
   constructor(props) {
@@ -39,12 +39,12 @@ class SignInFormBase extends Component {
   
   
   onSubmit = event => {
-    console.log('this props. ', this.props);
+    // console.log('this props. ', this.props);
     const { email, password } = this.state;
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then((res) => {
-        console.log('res is ', res);
+        // console.log('res is ', res);
         this.setState({ ...INITIAL_STATE });
         this.props.history.push(ROUTES.HOME);
       })
@@ -61,7 +61,7 @@ class SignInFormBase extends Component {
 
   render() {
     const { email, password, error } = this.state;
-    console.log('this props ', this.props);
+    // console.log('this props ', this.props);
 
     const isInvalid = password === '' || email === '';
 

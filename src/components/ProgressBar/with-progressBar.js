@@ -17,10 +17,10 @@ const withProgressBar = PlatformSpecificComponent => {
     render() {
       const { isLoading } = this.state;
       return (
-        <div className="prog-bar">
-          { isLoading && <TopBarProgress /> }
+        <>
           <PlatformSpecificComponent showProgressBar={this.handleProgressBar} {...this.props} />
-        </div>
+          { isLoading && <TopBarProgress /> }
+        </>
       )
     }
   

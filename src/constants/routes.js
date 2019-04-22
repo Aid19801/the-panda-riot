@@ -5,4 +5,5 @@ export const HOME = '/home';
 export const ABOUT = '/about';
 export const ACCOUNT = '/account';
 export const ADMIN = '/admin';
+export const DATAMAP = '/datamap';
 export const PASSWORD_FORGET = '/pw-forget';

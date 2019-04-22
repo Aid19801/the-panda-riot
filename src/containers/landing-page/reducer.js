@@ -5,7 +5,8 @@ const initialState = {
     progressBarStatus: false,
     error: null,
 }
-/* eslint-disable no-console */
+
+/* eslint-disable */
 const landingPageReducer = (state = initialState, action) => {
     switch(action.type) {
         case actions.LANDING_PAGE_LOADING:

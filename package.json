@@ -5,17 +5,24 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "firebase": "^5.7.3",
+    "mapbox-gl": "^0.53.1",
+    "node-sass": "^4.11.0",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
+    "react-mapbox-gl": "^4.2.1",
     "react-redux": "^6.0.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "react-spring": "^8.0.19",
     "react-topbar-progress-indicator": "^2.0.0",
+    "react-twitter-widgets": "^1.7.1",
     "recompose": "^0.30.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.7",
-    "redux-saga": "^0.16.2"
+    "redux-saga": "^0.16.2",
+    "supertest": "^4.0.2",
+    "youtube-api-search": "^0.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
