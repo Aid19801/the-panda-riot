@@ -17,10 +17,19 @@ class ActsPage extends Component {
         super()
         this.state = {
           acts: [],
+          timer: null,
         };
     }
 
+    startTimer = () => {
+        this.setState({ timer: 10 });
+        setInterval(() => {
+            this.setState({ timer: this.state.timer - 1 })
+        }, 1000);
+    }
+
     renderActs = () => {
+
         this.props.firebase.users().on('value', snapshot => {
             const usersObject = snapshot.val();
             console.log('usersObject: ', usersObject);
@@ -35,34 +44,51 @@ class ActsPage extends Component {
                 let sortedActs = usersList.sort((a, b) => a.rating - b.rating).reverse();
                 this.setState({ acts: sortedActs });
         })
+
+        
     }
 
     upvoteAct = actObject => {
-
         let chosenUser = {};
-        // 1. GET THE ACT YOUVE CHOSEN TO UPVOTE
-        this.props.firebase.user(actObject.uid)
-            .on('value', snapshot => {
-                chosenUser = snapshot.val();
-            })
 
-            // set their record to be the same but with
-            // rating incremented by +1
+        const lastTimeVoted = localStorage.getItem('timevoted');
+        const timeNow = Date.now();
+        const differenceBetween = timeNow - parseInt(lastTimeVoted);
 
-        const { username, email, tagline, profilePicture, rating, includeInActRater } = chosenUser;
+        // if it was longer than 
+        if (differenceBetween >= 9999) {
+            
+                    // 1. GET THE ACT YOUVE CHOSEN TO UPVOTE
+                    this.props.firebase.user(actObject.uid)
+                        .on('value', snapshot => {
+                            chosenUser = snapshot.val();
+                        })
+            
+                        // set their record to be the same but with
+                        // rating incremented by +1
+            
+                    const { username, email, tagline, profilePicture, rating, includeInActRater } = chosenUser;
+            
+                    // 2. SET THE ACT WITH ITS NEW RATING IN DB
+                    this.props.firebase
+                        .user(actObject.uid)
+                        .set({
+                            username,
+                            email,
+                            tagline,
+                            profilePicture,
+                            includeInActRater,
+                            rating: rating + 1,
+                        })
+            
+                    // 3. SAVE LOCALSTORAGE TO STOP PERSISTENT VOTING
+                    localStorage.setItem('timevoted', Date.now())
+
+        } else {
+            alert('voting too often');
+        }
+
         
-        console.log('chosen user object we\'re updating ', chosenUser);
-
-        this.props.firebase
-            .user(actObject.uid)
-            .set({
-                username,
-                email,
-                tagline,
-                profilePicture,
-                includeInActRater,
-                rating: rating + 1,
-            })
     }
 
     downvoteAct = uid => {
@@ -97,6 +123,7 @@ class ActsPage extends Component {
         <Container>
             <Row className="act-rows">
                 <Col sm={9}>
+                <h1>seconds: {this.state.timer}</h1>
                     { this.state.acts.map((each, i) => {
                         return (
                             <div key={i} className="each-act-container">
