@@ -27,7 +27,6 @@ class HomePage extends Component {
       firstRow: [],
       secondRow: [],
       thirdRow: [],
-      fourthRow: [],
     };
   }
 
@@ -61,32 +60,33 @@ class HomePage extends Component {
 
   fetchNews() {
     request
-      .get(mockNews)
+      .get('https://the-panda-riot-news-server.herokuapp.com/articles')
       .then(res => {
-        let firstRow = res.req.url.slice(0, 3);
-        let secondRow = res.req.url.slice(3, 6);
-        this.setState({ firstRow, secondRow })
+        console.log('res is ', res.body)
+        let firstRow = res.body.slice(0, 3);
+        let secondRow = res.body.slice(3, 6);
+        let thirdRow = res.body.slice(6, 9);
+        return this.setState({ firstRow, secondRow, thirdRow })
       })
       .catch(err => {
-        console.log('err is ', err);
+        return console.log('err is ', err);
       })
   }
 
   render() {
     
-    const { firstRow, secondRow } = this.state;
+    const { firstRow, secondRow, thirdRow } = this.state;
 
     return (
       <>
-      <button onClick={this.handleClick}>Click Me</button>
       <Container>
         <Row className="top-row">
 
             { firstRow.map((each, i) => {
               return (
                 <>
-                <Col sm={4}>
-                  <BoxCard key={i} img={each.img} headline={each.headline} blurb={each.blurb} />
+                <Col key={i} className="mob-margin-bottom" sm={4}>
+                  <BoxCard key={i} link={each.link} img={each.img} headline={each.headline} blurb={each.blurb} src={each.src} />
                 </Col>
                 </>
               )
@@ -98,8 +98,8 @@ class HomePage extends Component {
             { secondRow.map((each, i) => {
               return (
                 <>
-                <Col sm={4}>
-                  <BoxCard key={i} img={each.img} headline={each.headline} blurb={each.blurb} />
+                <Col key={i} className="mob-margin-bottom" sm={4}>
+                  <BoxCard key={i} link={each.link} img={each.img} headline={each.headline} blurb={each.blurb}  src={each.src} />
                 </Col>
                 </>
               )
@@ -108,11 +108,11 @@ class HomePage extends Component {
 
         <Row className="bottom-row">
 
-            { firstRow.map((each, i) => {
+            { thirdRow.map((each, i) => {
               return (
                 <>
-                <Col sm={4}>
-                  <BoxCard key={i} img={each.img} headline={each.headline} blurb={each.blurb} />
+                <Col key={i} className="mob-margin-bottom" sm={4}>
+                  <BoxCard key={i} link={each.link} img={each.img} headline={each.headline} blurb={each.blurb}  src={each.src} />
                 </Col>
                 </>
               )
