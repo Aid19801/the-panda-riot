@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
-import { withAuthorization } from '../../components/Session';
-import * as actions from './constants';
-import withProgressBar from '../../components/ProgressBar/with-progressBar';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
+import { withAuthorization } from '../../components/Session';
+import { BoxCard } from '../../components/';
+import * as actions from './constants';
+import withProgressBar from '../../components/ProgressBar/with-progressBar';
+import { mockNews } from '../../mock-news';
 
 import request from 'superagent';
 
@@ -21,12 +24,17 @@ class HomePage extends Component {
     this.state = {
       isSelected: false,
       photos: [],
+      firstRow: [],
+      secondRow: [],
+      thirdRow: [],
+      fourthRow: [],
     };
   }
 
   componentWillMount() {
     this.props.showProgressBar(true);
     this.props.pageLoading();
+    this.fetchNews();
     this.fetchPhotos();
   }
 
@@ -51,25 +59,64 @@ class HomePage extends Component {
       })
   }
 
+  fetchNews() {
+    request
+      .get(mockNews)
+      .then(res => {
+        let firstRow = res.req.url.slice(0, 3);
+        let secondRow = res.req.url.slice(3, 6);
+        this.setState({ firstRow, secondRow })
+      })
+      .catch(err => {
+        console.log('err is ', err);
+      })
+  }
+
   render() {
+    
+    const { firstRow, secondRow } = this.state;
+
     return (
       <>
       <button onClick={this.handleClick}>Click Me</button>
-      <Container className="height-100">
-        <Row>
-          <Col sm={8} className="all">
-          { this.state.photos.map((photo, key) => {
-            return (
-              <div key={photo.id}>
-              
-                <img src={photo.images.standard_resolution.url} alt={photo.caption} />
-                <div style={{width:'600px', margin: '24px auto', fontStyle: 'italic'}}>
-                  {photo.caption !== null ? photo.caption.text : ''}
-                </div>
-              </div>
-            )
-          })}
-          </Col>
+      <Container>
+        <Row className="top-row">
+
+            { firstRow.map((each, i) => {
+              return (
+                <>
+                <Col sm={4}>
+                  <BoxCard key={i} img={each.img} headline={each.headline} blurb={each.blurb} />
+                </Col>
+                </>
+              )
+              }) }
+        </Row>
+
+        <Row className="mid-row">
+
+            { secondRow.map((each, i) => {
+              return (
+                <>
+                <Col sm={4}>
+                  <BoxCard key={i} img={each.img} headline={each.headline} blurb={each.blurb} />
+                </Col>
+                </>
+              )
+              }) }
+        </Row>
+
+        <Row className="bottom-row">
+
+            { firstRow.map((each, i) => {
+              return (
+                <>
+                <Col sm={4}>
+                  <BoxCard key={i} img={each.img} headline={each.headline} blurb={each.blurb} />
+                </Col>
+                </>
+              )
+              }) }
         </Row>
       </Container>
       </>
