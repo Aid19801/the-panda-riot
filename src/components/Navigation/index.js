@@ -8,7 +8,7 @@ import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
-
+import { withFirebase } from '../Firebase/index'
 import './styles.scss';
 
 const Navigation = (props) => (
@@ -23,6 +23,7 @@ const Navigation = (props) => (
 
 class NavigationAuth extends Component {
   render() {
+    // console.log('this props NAV firebase: ', this.props.firebase);
     return (
         <Navbar bg="dark" expand="lg">
         
@@ -47,10 +48,12 @@ class NavigationAuth extends Component {
               <Link to={ROUTES.ACTS}>Acts</Link>
             </div>
 
-            <div className="nav-option-wrapper">
-              <Link to={ROUTES.ADMIN}>Admin</Link>
-            </div>
-            
+            { 
+              <div className="nav-option-wrapper">
+                <Link to={ROUTES.ADMIN}>Admin</Link>
+              </div>
+
+             }
             <div className="nav-option-wrapper">
               <SignOutButton />
             </div>
@@ -87,4 +90,4 @@ class NavigationNonAuth extends Component {
 }
 
 
-export default Navigation;
+export default withFirebase(Navigation);
