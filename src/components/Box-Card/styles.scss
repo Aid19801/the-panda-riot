@@ -6,6 +6,12 @@
  padding: 10px;
 }
 
+.box-card:hover {
+ border: 3px solid orange;
+ background-color: rgba(0, 0, 0, 0.4);
+ 
+}
+
 .card-h4 {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.2);
@@ -29,6 +35,19 @@
     width: 86%;
 }
 
+.card-h3 {
+    position: absolute;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    font-weight: 700;
+    margin-bottom: 0;
+    padding: 5px;
+    z-index: 1;
+    bottom: 20px;
+    right: 20px;
+    color: orange;
+    // width: 36%;
+}
 .card-img-container {
     width: 100%;
     height: 70%;
@@ -46,6 +65,16 @@
 }
 
 
+@media screen and (min-width: 0px) {
+
+    .card-h3 {
+        text-shadow: 1px 1px 1px black;
+        // width: 32%;
+        // border: 1px solid red;
+        transform: rotate(-10deg);
+    }
+}
+
 @media screen and (min-width: 576px) {
     .card-h4 {
         margin-left: 0;
@@ -59,7 +88,8 @@
     }
     .card-h3 {
         // border: 1px solid red;
-        text-align: end;
+        // text-align: end;
+        margin-top: 10px;
     }
 }
 
@@ -69,6 +99,9 @@
         margin-top: 0;
         width: 150px;
         font-size: 25px;
+    }
+    .card-h3 {
+        text-align: end;
     }
 }
 
