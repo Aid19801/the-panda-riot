@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSpring, animated, Spring } from 'react-spring';
+import { useSpring, animated } from 'react-spring';
 
 const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.1];
 const trans = (x, y, s) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
@@ -21,7 +21,7 @@ export function InfoCard({ paneInfo, toggleMarker }) {
       <p className="p-blurb">{paneInfo.paragraph}</p>
 
       <div className={ toggleMarker ? "bg-img-div effect" : "bg-img-div" }>
-        <img className="bg-img" src={ paneInfo.img === '' ? require('./mic.jpg') : paneInfo.img } />
+        <img alt="open mic comedy venue promo" className="bg-img" src={ paneInfo.img === '' ? require('./mic.jpg') : paneInfo.img } />
       </div>
     </animated.div>
   )

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react';
 import { trimStringSpecifically } from '../../lib/utils';
 import './styles.scss';
 
@@ -9,7 +9,7 @@ const BoxCard = ({ img, blurb, headline, link, src }) => (
         <h3 className="card-h3" >{src}</h3>
 
         <div className="card-img-container">
-            <img className="card-img" src={img} />
+            <img alt="open mic comedy news" className="card-img" src={img} />
         </div>
     </div>
 

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
+import React from 'react';
+import ReactMapboxGl from "react-mapbox-gl";
 import Markers from './markers';
 import mockGigs from './mock-gigs.json';
 import './styles.scss';

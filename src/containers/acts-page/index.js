@@ -135,6 +135,7 @@ class ActsPage extends Component {
                                 </div>
 
                                     <img
+                                        alt="open mic comedy act profile"
                                         src={each.profilePicture}
                                         className="each-act-img"
                                         />

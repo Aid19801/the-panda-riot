@@ -1,5 +1,4 @@
-import { render } from 'react-dom'
-import React, { useState, useCallback, useEffect } from 'react';
+import React from 'react';
 import YTSearch from 'youtube-api-search';
 import './styles.scss'
 
@@ -14,7 +13,7 @@ const VideoListItem = ({ video, index }) => {
             <div className="video-list media">
 
             <div className="media-left">
-                <img className="media-object" src={imgURL} />
+                <img alt="open mic comedy youtube set thumbnail" className="media-object" src={imgURL} />
             </div>
 
             <div className="media-body">
