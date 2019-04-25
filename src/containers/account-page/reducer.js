@@ -4,6 +4,8 @@ const initialState = {
     isLoading: false,
     progressBarStatus: false,
     error: null,
+    uid: '',
+    email: '',
 }
 
 /* eslint-disable */
@@ -13,6 +15,13 @@ const accountPageReducer = (state = initialState, action) => {
         return {
             ...state,
             isLoading: true,
+        }
+        break;
+
+        case actions.STORE_USER_PROFILE:
+        return {
+            uid: action.uid,
+            email: action.email,
         }
         break;
 

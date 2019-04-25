@@ -25,10 +25,12 @@ class App extends React.Component {
   componentWillMount() {
     this.props.appLoading();
     this.props.firebase.auth.onAuthStateChanged((user) => {
-      console.log('uid is ', user.uid);
+      
+      // user.uid ? console.log('uid is ', user.uid) : console.log('no user / uid');
+
       console.log('env var says ', process.env.REACT_APP_PANDA_RIOT_ADMINI)
-      if (user.uid === process.env.REACT_APP_PANDA_RIOT_ADMINI) {
-        console.log('i am an admin.');
+      if (user && user.uid === process.env.REACT_APP_PANDA_RIOT_ADMINI) {
+        this.props.isAdmin();
       } else {
         console.log('i am NOT admin.');
       }
@@ -41,11 +43,13 @@ class App extends React.Component {
   }
 
   render() {
+
+    const { privs } = this.props;
     return (
       <Router>
   
         <div className="app-div">
-          <Navigation />
+          <Navigation isAdmin={privs} />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
@@ -66,6 +70,7 @@ class App extends React.Component {
 
 const mapStateToProps = state => ({
   isLoading: state.appState.isLoading,
+  privs: state.appState.privs,
   error: state.appState.error,
 })
 

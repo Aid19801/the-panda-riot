@@ -92,7 +92,9 @@ export default PasswordForgetPage;
 
 const mapStateToProps = state => ({
   isLoading: state.passwordForgetPage.isLoading,
+  email: state.accountPage.email,
 })
+
 const mapDispatchToProps = dispatch => ({
   pageLoading: () => dispatch({ type: actions.PW_FORGET_PAGE_LOADING }),
   pageLoaded: () => dispatch({ type: actions.PW_FORGET_PAGE_LOADED }),

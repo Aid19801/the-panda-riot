@@ -131,10 +131,17 @@ class DataMapPage extends Component {
           </Col>
         </Row> }
         <Row className="centered-row">
+        
+        { paneInfo.twitterHandle ? (
+          <>
           <Col className="carousel-columns" sm={6}>
-            { showPanels && <TwitterEmbed twitterHandle={paneInfo.twitterHandle} /> }
+            { showPanels && paneInfo.twitterHandle && <TwitterEmbed twitterHandle={paneInfo.twitterHandle} /> }
           </Col>
-          <Col className="carousel-columns" sm={6}>
+          </>
+        )
+          : null
+        }
+          <Col className="carousel-columns" sm={ paneInfo.twitterHandle ? 6 : 12}>
             { showPanels && <YouTubeEmbed heading={paneInfo.heading} term={`${paneInfo.heading} London standup comedy`} /> }
           </Col>
         </Row>

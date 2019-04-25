@@ -25,8 +25,7 @@ const TwitterEmbed = ({ twitterHandle }) => {
         );
     } else {
         return (
-        <div className="twitter-embed">
-            youtube section    
+        <div>
         </div>
         )
     }

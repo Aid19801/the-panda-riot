@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import { withFirebase } from '../../components/Firebase';
+import { withAuthorization } from '../../components/Session';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 import * as actions from './constants';
+import * as ROUTES from '../../constants/routes';
 
 const UserList = ({ users }) => (
   <ul>
@@ -36,6 +38,9 @@ class AdminPage extends Component {
   componentWillMount() {
     this.props.showProgressBar(true);
     this.props.pageLoading();
+    if (!this.props.privs) {
+      this.props.history.push(ROUTES.HOME);
+    }
   }
 
   componentDidMount() {
@@ -79,6 +84,7 @@ class AdminPage extends Component {
 
 const mapStateToProps = state => ({
     isLoading: state.adminPage.isLoading,
+    privs: state.appState.privs,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -86,9 +92,11 @@ const mapDispatchToProps = dispatch => ({
     pageLoaded: () => dispatch({ type: actions.ADMIN_PAGE_LOADED }),
 });
 
+const condition = authUser => !!authUser;
 
 export default compose(
     withFirebase,
     withProgressBar,
+    withAuthorization(condition),
     connect(mapStateToProps, mapDispatchToProps),
 )(AdminPage);

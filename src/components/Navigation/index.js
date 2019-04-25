@@ -11,11 +11,11 @@ import Button from 'react-bootstrap/Button';
 import { withFirebase } from '../Firebase/index'
 import './styles.scss';
 
-const Navigation = (props) => (
+const Navigation = ({ isAdmin }) => (
   <div className="nav-container">
     <AuthUserContext.Consumer>
       {authUser => 
-        authUser ? <NavigationAuth /> : <NavigationNonAuth />
+        authUser ? <NavigationAuth isAdmin={isAdmin} /> : <NavigationNonAuth />
       }
     </AuthUserContext.Consumer>
   </div>
@@ -23,7 +23,6 @@ const Navigation = (props) => (
 
 class NavigationAuth extends Component {
   render() {
-    // console.log('this props NAV firebase: ', this.props.firebase);
     return (
         <Navbar bg="dark" expand="lg">
         
@@ -48,11 +47,10 @@ class NavigationAuth extends Component {
               <Link to={ROUTES.ACTS}>Acts</Link>
             </div>
 
-            { 
+            { this.props.isAdmin && 
               <div className="nav-option-wrapper">
                 <Link to={ROUTES.ADMIN}>Admin</Link>
               </div>
-
              }
             <div className="nav-option-wrapper">
               <SignOutButton />

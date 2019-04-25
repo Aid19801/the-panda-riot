@@ -1,15 +1,43 @@
-.horizontal-two-elements {
+#account-page-container {
+    // border: 1px solid red;
+    height: 100vh;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 300px;
-    margin-top: 20px;
-    align-content: center;
+    flex-direction: column;
     align-items: center;
-    
 }
 
-.horizontal-two-elements p{
-    margin-bottom: 0;
-    color: black;
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.account-page-title {
+    
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    width: 70%;
+    margin-top: 20px;
+}
+// .horizontal-two-elements {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-around;
+//     width: 300px;
+//     margin-top: 20px;
+//     align-content: center;
+//     align-items: center;
+    
+// }
+
+// .horizontal-two-elements p{
+//     margin-bottom: 0;
+//     color: black;
+// }
+
+
+input {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid grey;
 }

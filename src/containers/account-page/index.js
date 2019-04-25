@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 import { PasswordForgetForm } from '../../containers/password-forget-page';
 import PasswordChangeForm from './pw-change-form';
 import { withAuthorization } from '../../components/Session';
@@ -124,18 +129,32 @@ const AccountPage = (props) => {
 
   useEffect(() => {
     props.pageLoading();
-  });
+    const cu = props.firebase.auth.currentUser;
+    props.storeUserProfile(cu.uid, cu.email);
+  }, []);
 
   useEffect(() => {
     props.pageLoaded();
-  });
+  }, []);
 
   return (
-      <div>
-        <h1>Account Page</h1>
-        <PasswordForgetForm />
-        <PasswordChangeForm />
-        <AccountChangeForm {...props} />
+      <div id="account-page-container">
+        <div className="account-page-title">
+          <h1>My Account</h1>
+        </div>
+
+        <Container className="margin-top-20" >
+          <Row>
+            <Col sm={6}>
+              <PasswordForgetForm />
+              <PasswordChangeForm />
+            </Col>
+            <Col sm={6}>
+              <AccountChangeForm {...props} />
+            </Col>
+          </Row>
+        </Container>
+        
       </div>
   );
 }
@@ -143,11 +162,13 @@ const AccountPage = (props) => {
 
 const mapStateToProps = state => ({
   isLoading: state.accountPage.isLoading,
+
 });
 
 const mapDispatchToProps = dispatch => ({
   pageLoading: () => dispatch({ type: actions.ACCOUNT_PAGE_LOADING }),
   pageLoaded: () => dispatch({ type: actions.ACCOUNT_PAGE_LOADED }),
+  storeUserProfile: (uid, email) => dispatch({ type: actions.STORE_USER_PROFILE, uid, email }),
 });
 
 const condition = authUser => !!authUser;
