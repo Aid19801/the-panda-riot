@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactMapboxGl from "react-mapbox-gl";
 import Markers from './markers';
-import mockGigs from './mock-gigs.json';
+
 import './styles.scss';
 
 const Map = ReactMapboxGl({
@@ -9,7 +9,7 @@ const Map = ReactMapboxGl({
   });
 
 //   center={[-0.0826, 51.5160]}
-export const MapBox = ({ selectMarker, lng, lat }) => {
+export const MapBox = ({ selectMarker, lng, lat, mockGigs }) => {
     // const { markers, setMarkers } = useState([]);
       return (
           <div className="map-container">
@@ -20,7 +20,7 @@ export const MapBox = ({ selectMarker, lng, lat }) => {
                     height: "450px",
                     width: "100%"
             }}>
-                { mockGigs.gigs.map((each, i) => {
+                { mockGigs.map((each, i) => {
                     return <Markers
                                 key={i}
                                 data={each}

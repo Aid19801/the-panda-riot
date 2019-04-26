@@ -12,7 +12,10 @@ import { MapBox } from './map';
 import { YouTubeEmbed, TwitterEmbed } from '../../components';
 import * as actions from './constants';
 
+import mockGigs from './mock-gigs.json';
+
 import './styles.scss';
+import Filters from './filters';
 
 class DataMapPage extends Component {
   constructor() {
@@ -20,10 +23,16 @@ class DataMapPage extends Component {
     this.state = {
         toggleMarker: false,
         showPanels: false,
+        mockGigs: [],
     };
   }
   
   componentWillMount() {
+
+    this.setState({
+      mockGigs: mockGigs.gigs,
+    });
+
     this.props.showProgressBar(true);
     this.props.pageLoading();
   }
@@ -71,19 +80,70 @@ class DataMapPage extends Component {
     }
   }
 
+  filterBringers = () => {
+    let bringers = this.state.mockGigs.filter(each => each.bringer === true);
+    this.setState({ mockGigs: bringers })
+  }
+  
+  filterNonBringers = () => {
+    let nonBringers = this.state.mockGigs.filter(each => each.bringer === false);
+    this.setState({ mockGigs: nonBringers })
+  }
+
+  clearFilters = () => this.setState({ mockGigs: mockGigs.gigs });
+
+  filterDayOfWeek = (day) => {
+    let theDaysGigs = this.state.mockGigs.filter(each => each.nights.includes(day));
+    this.setState({ mockGigs: theDaysGigs });
+  }
+
+  onSelectFilter = (filterName) => {
+    switch(filterName) {
+      case 'bringers':
+        console.log('you filtered bringers');
+        this.filterBringers();
+        break;
+      
+      case 'all':
+        console.log('clear filters');
+        this.clearFilters();
+        break;
+
+      case 'non-bringers':
+        console.log('non bringers filtered');
+        this.filterNonBringers();
+        break;
+
+      case 'Mon':
+        console.log('monday filtered');
+        this.filterDayOfWeek(filterName);
+        break;
+      
+      case 'Tue':
+        console.log('tuesday filtered');
+        this.filterDayOfWeek(filterName);
+        break;
+
+      default:
+      console.log('not filtering bringers');
+      return;
+    }
+  }
+
   render() {
-    const { toggleMarker, showPanels } = this.state;
+    const { toggleMarker, showPanels, mockGigs } = this.state;
     const { paneInfo } = this.props;
 
     return (
       <>
       <Container>
-        <Row className="map-and-info-pane-row">
+        <Row className="full-width-row">
           <Col className="aid-col" sm={7}>
             <MapBox
               selectMarker={this.handleSelectMarker}
               lng={paneInfo.lng}
               lat={paneInfo.lat}
+              mockGigs={mockGigs}
               />
           </Col>
           <Col className="aid-col" sm={5}>
@@ -92,6 +152,10 @@ class DataMapPage extends Component {
               toggleMarker={toggleMarker}
               />
           </Col>
+        </Row>
+
+        <Row className="full-width-row">
+          <Filters onSelectFilter={this.onSelectFilter} />
         </Row>
 
         { showPanels && 

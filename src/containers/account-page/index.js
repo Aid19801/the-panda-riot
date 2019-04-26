@@ -83,7 +83,7 @@ class AccountChangeForm extends React.Component {
     const isInvalid = tagline === '' || profilePicture === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="act-profile-form" onSubmit={this.onSubmit}>
         <input
           name="username"
           value={this.state.username}
@@ -107,14 +107,14 @@ class AccountChangeForm extends React.Component {
         />
 
         <div className="horizontal-two-elements">
-          <p>include me in Act Rater?: </p>
           <input
+            className="checkbox"
             type="checkbox"
             checked={this.state.includeInActRater}
             onChange={this.handleIncludeInActRater}
           />
+          <p>include me in Act Rater?: </p>
         </div>
-        <p>submit: </p>
         <button disabled={isInvalid} type="submit">
           Update My Deets
         </button>
@@ -147,7 +147,6 @@ const AccountPage = (props) => {
           <Row>
             <Col sm={6}>
               <PasswordForgetForm />
-              <PasswordChangeForm />
             </Col>
             <Col sm={6}>
               <AccountChangeForm {...props} />

@@ -1,6 +1,16 @@
 @import '../../color';
 
-.map-and-info-pane-row {
+
+.filters-container {
+    border: 1px solid red;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+
+.full-width-row {
+    border: 1px solid green;
+    justify-content: center;
     width: 100%;
 }
 
