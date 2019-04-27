@@ -1,18 +1,89 @@
 @import '../../color';
+// @import '../../buttons';
 
-
-.filters-container {
-    border: 1px solid red;
-    margin-top: 50px;
+.div__filters-outer-container {
+    // border: 1px solid red;
+    margin-top: 20px;
     margin-bottom: 50px;
-
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
+
+
+.div__filters-outer-container > p {
+    color: white;
+}
+
+.div__filters-inner-container {
+    // border: 1px solid blue;
+}
+
+.div__filters-row {
+    // border: 1px solid green;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.div__filters-row p {
+    text-align: center;
+    color: orange;
+}
+
+// FILTERS 
+
+.p__filter {
+    background: grey;
+    color: orange;
+    font-size: 9px;
+    width: 100%;
+}
+
+.p__filter-active {
+    background: lightgreen;
+    color: black;
+    font-size: 9px;
+    width: 100%;
+}
+
+
+.p__filter-days-active {
+    background: orange;
+    color: black;
+    font-size: 9px;
+    width: 100%;
+}
+
+.p__filter-days {
+    background: orange;
+    color: black;
+    font-size: 9px;
+    width: 100%;
+}
+
+
 .full-width-row {
-    border: 1px solid green;
+    // border: 1px solid green;
     justify-content: center;
     width: 100%;
 }
+
+.row-short-height {
+    // border: 1px solid red;
+    height: 200px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
 
 .container {
     align-items: center;
