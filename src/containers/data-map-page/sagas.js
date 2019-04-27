@@ -111,8 +111,30 @@ function* workerFiltersUpdateGigsResults({ filters }) {
         updatedGigs = gigs.filter(each => each.bringer !== true);
     }
 
-    if (activeFilter === 'Mon') {
-        updatedGigs = gigs.filter(each => each.nights.includes(activeFilter[0].filterName));
+    if (activeFilter === 'Mon' || activeFilter === 'Tue') {
+        console.log('filtering Monday or Tues gigs')
+        updatedGigs = gigs.filter(each => each.nights.includes(activeFilter));
+    } 
+
+    if (activeFilter === 'Wed' || activeFilter === 'Thu') {
+        console.log('filtering Wed or Thu gigs')
+        updatedGigs = gigs.filter(each => each.nights.includes(activeFilter));
+        console.log('Wed updated ', updatedGigs);
+    }
+
+    if (activeFilter === 'Fri' || activeFilter === 'Sat') {
+        console.log('filtering Fri or Sat gigs')
+        updatedGigs = gigs.filter(each => each.nights.includes(activeFilter));
+    }
+
+    if (activeFilter === 'Sun') {
+        console.log('filtering Sunday gigs')
+        updatedGigs = gigs.filter(each => each.nights.includes(activeFilter));
+    }
+    
+    if (activeFilter === 'All') {
+        console.log('re-setting to show ALL gigs')
+        updatedGigs = gigs;
     }
 
     yield put({ type: actions.GIGS_FILTERED_DONE, gigs: updatedGigs });
