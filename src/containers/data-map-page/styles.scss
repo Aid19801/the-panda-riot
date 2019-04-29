@@ -76,12 +76,12 @@
 
 .row-short-height {
     // border: 1px solid red;
-    height: 200px;
+    height: auto;
     width: 100%;
 
     display: flex;
     justify-content: center;
-    align-content: center;
+    // align-content: center;
 }
 
 
@@ -211,6 +211,7 @@
   }
 
  .h1-heading {
+    // font-family: monospace !important;
     margin-bottom: 0;
     z-index: 10;
     text-align: center;
@@ -267,6 +268,10 @@ h3, h4 {
     margin-left: 10px;
     margin-bottom: 0;
     color: white;
+}
+
+.slightly-smaller {
+    font-size: 16px;
 }
 
 @media screen and (max-width: 991px) {

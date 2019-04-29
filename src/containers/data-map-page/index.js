@@ -11,6 +11,14 @@ import { InfoCard } from './info-card';
 import { MapBox } from './map';
 import { YouTubeEmbed, TwitterEmbed, Filters } from '../../components';
 
+import LaptopIcon from './icons/laptop-icon';
+import CalendarIcon from './icons/calendar-icon';
+import VenueIcon from './icons/venue-icon';
+import BringerIcon from './icons/bringer-icon';
+import WalkinsIcon from './icons/walkins-icon';
+import PrebookIcon from './icons/prebook-icon';
+import RatingIcon from './icons/rating-icon';
+
 import * as actions from './constants';
 
 import './styles.scss';
@@ -103,32 +111,42 @@ class DataMapPage extends Component {
         { showPanels && 
         <Row className="centered-row more-info-row">
           <Col className="more-info-cols" sm={4}>
+            
             <div className="more-info-each-row">
-              <h3>Website: </h3><p>{paneInfo.website ? paneInfo.website : 'tbc'}</p>
+              <LaptopIcon />
+              <h3>Website: </h3>{paneInfo.website ? <p onClick={() => window.open(paneInfo.website,'_newtab')}>Click Here</p> : <p>tbc</p> }
             </div>
+
             <div className="more-info-each-row">
-              <h3>How To Book: </h3>{paneInfo.howToBook ? <p>Click <a href={paneInfo.howToBook}>Here</a></p> : <p>tbc</p> }
+              <CalendarIcon />
+              <h3 className="slightly-smaller">How To Book: </h3>{paneInfo.howToBook ? <p onClick={() => window.open(paneInfo.howToBook,'_newtab')}>Click Here</p>  : <p>tbc</p> }
             </div>
+
             <div className="more-info-each-row">
+              <VenueIcon />
               <h3>Venue: </h3><p>{paneInfo.venue ? paneInfo.venue : 'tbc'}</p>
             </div>
           </Col>
           <Col className="more-info-cols" sm={4}>
             <div className="more-info-each-row">
+              <BringerIcon />
               <h3>Bringer: </h3>
               <p>{paneInfo.bringer ? 'yes' : 'no'}</p>
             </div>
             <div className="more-info-each-row">
+              <WalkinsIcon />
               <h3>Walk Ins: </h3>
               <p>{paneInfo.walkins ? 'yes' : 'no'}</p>
             </div>
             <div className="more-info-each-row">
+              <PrebookIcon />
               <h3>Pre Book: </h3>
               <p>{paneInfo.prebook ? 'yes' : 'no'}</p>
             </div>
           </Col>
           <Col className="more-info-cols" sm={4}>
             <div className="more-info-each-row">
+              <RatingIcon />
               <h3>Rating: </h3><p>coming soon...</p>
             </div>
             <div className="more-info-each-row">

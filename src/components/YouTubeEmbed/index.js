@@ -6,10 +6,13 @@ const YOUTUBE_KEY = process.env.REACT_APP_YOUTUBE_KEY;
 
 const VideoListItem = ({ video, index }) => {
     const imgURL = video.snippet.thumbnails.default.url;
+    console.log('id is here ', video.id.videoId);
+    const { id } = video;
+    const { videoId } = id;
 
     return (
         <>
-        <li className={index % 3 === 0 ? "list-group-item" : "list-group-item dark"}>
+        <li onClick={() => window.open(`https://www.youtube.com/watch?v=${videoId}`)} className={index % 3 === 0 ? "list-group-item" : "list-group-item dark"}>
             <div className="video-list media">
 
             <div className="media-left">

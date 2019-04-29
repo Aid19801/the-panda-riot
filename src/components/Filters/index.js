@@ -14,38 +14,66 @@ const Filters = ({ userFiltered, filters }) => {
 
     useEffect(() => {
         // console.log('filters: ', filters);
-        setFirstRow(filters.slice(0, 3))
-        setSecondRow(filters.slice(3, 7))
+        setFirstRow(filters.slice(0, 4))
+        setSecondRow(filters.slice(4, 7))
         setThirdRow(filters.slice(7, 10))
     }, [filters])
 
     return (
         <div className="col-sm-12 div__filters-outer-container">
             <p>filters</p>
-            { firstRow.map(((each, i) => {
-                return (
-                    <React.Fragment key={i}>
-                        <button className={each.active ? 'btn__active' : 'btn__notactive'} onClick={() => userFiltered(each)}>{each.filterName}</button>
-                    </React.Fragment>
 
-                )
-            })) }
+            <div className="div__responsive-btns-container container">
+                <div className="div__responsive-btns-row row">
+                    { firstRow.map(((each, i) => {
+                        return (
+                            <React.Fragment key={i}>
+                                <Col className="center-column" sm={3}>
+                                    <button className={each.active ? 'btn__active' : 'btn__notactive'} onClick={() => userFiltered(each)}>{each.filterName}</button>
+                                </Col>
+                            </React.Fragment>
+                        )
+                    })) }
+                </div>
+            </div>
+
+
+            <div className="div__responsive-btns-container container">
+                <div className="div__responsive-btns-row row">
+
+
             { secondRow.map(((each, i) => {
                 return (
                     <React.Fragment key={i}>
-                        <button className={each.active ? 'btn__active' : 'btn__notactive'} onClick={() => userFiltered(each)}>{each.filterName}</button>
+                        <Col className="center-column" sm={3}>
+                            <button className={each.active ? 'btn__active' : 'btn__notactive'} onClick={() => userFiltered(each)}>{each.filterName}</button>
+                        </Col>
                     </React.Fragment>
 
                 )
             })) }
+
+                </div>
+            </div>
+
+            <div className="div__responsive-btns-container container">
+                <div className="div__responsive-btns-row row">
+
+
             { thirdRow.map(((each, i) => {
                 return (
                     <React.Fragment key={i}>
-                        <button className={each.active ? 'btn__active' : 'btn__notactive'} onClick={() => userFiltered(each)}>{each.filterName}</button>
+                        <Col className="center-column" sm={3}>
+                            <button className={each.active ? 'btn__active' : 'btn__notactive'} onClick={() => userFiltered(each)}>{each.filterName}</button>                    
+                        </Col>
                     </React.Fragment>
 
                 )
             })) }
+
+                </div>
+            </div>
+
         </div>
     )
 }
