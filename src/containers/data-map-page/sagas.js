@@ -2,6 +2,7 @@ import { all, takeLatest, call, put } from 'redux-saga/effects';
 import * as actions from './constants';
 import { allFilterButtonObjects } from '../../lib/utils';
 
+import gigsDirectlyImportedStaticFile from '../../mocks/gigs.json';
 
 export function* watcherFetchGigs() {
     yield takeLatest(actions.DATAMAP_PAGE_LOADING, workerFetchGigs);
@@ -10,20 +11,20 @@ export function* watcherFetchGigs() {
 function* workerFetchGigs() {
     yield put({ type: actions.DATAMAP_FETCHING_GIGS });
 
-    let gigs = [];
-    let error = null;
+    // let gigs = [];
+    // let error = null;
 
-    yield fetch('http://localhost:3001/gigs')
-        .then(res => res.json())
-        .then(json => {
-            return gigs = json;
-        })
-        .catch(err => error = err);
+    // yield fetch('http://localhost:3001/gigs')
+    //     .then(res => res.json())
+    //     .then(json => {
+    //         return gigs = json;
+    //     })
+    //     .catch(err => error = err);
 
-        gigs.length > 0 ?
-        yield put({ type: actions.DATAMAP_GIGS_SUCCESS, gigs: gigs })
-        :
-        yield put({ type: actions.DATAMAP_GIGS_FAILED, error: error })
+        // gigs.length > 0 ?
+        yield put({ type: actions.DATAMAP_GIGS_SUCCESS, gigs: gigsDirectlyImportedStaticFile.gigs })
+        // :
+        // yield put({ type: actions.DATAMAP_GIGS_FAILED, error: error })
 }
 
 export function* watcherFetchFilters() {
