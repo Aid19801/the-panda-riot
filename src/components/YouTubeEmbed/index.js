@@ -21,12 +21,12 @@ const VideoListItem = ({ video, index }) => {
 
             <div className="media-body">
                 <div className="media-heading">
-                    <p className="p-blurb youtube-p">
+                    <p className="p__gig-blurb youtube-p">
                         {video.snippet.title}
                     </p>
                 </div>
                 <div className="media-description">
-                    <p className="p-blurb youtube-p">
+                    <p className="p__gig-blurb youtube-p">
                         {video.snippet.description}
                     </p>
                 </div>

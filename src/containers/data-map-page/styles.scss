@@ -251,7 +251,7 @@ h3, h4 {
     margin-top: 10px;
 }
 
-.p-blurb {
+.p__gig-blurb {
     margin-left: 10px;
     margin-top: 10px;
     color: white;
@@ -278,6 +278,9 @@ h3, h4 {
     .more-info-each-row {
         flex-direction: column;
     }
+    .card .p__gig-blurb {
+        font-size: 8px;
+    }
 }
 
 @media screen and (max-width: 576px) {
@@ -287,6 +290,10 @@ h3, h4 {
 
     .more-info-row {
         width: 90%;
+    }
+
+    .card .p__gig-blurb {
+        font-size: 16px;
     }
 
 }
