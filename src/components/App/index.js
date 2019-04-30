@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -6,47 +6,71 @@ import {
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import Navigation from '../Navigation';
-import { AboutPage, AdminPage, AccountPage, DataMapPage, HomePage, LandingPage, SignInPage, SignUpPage, PasswordForgetPage } from '../../containers';
+import { AdminPage, ActsPage, AccountPage, DataMapPage, HomePage, LandingPage, SignInPage, SignUpPage, PasswordForgetPage } from '../../containers';
 
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 import * as actions from './constants';
-
 import './styles.scss';
 
-const App = ({ appLoading, appLoaded }) => {
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      isAdmin: false,
+    }
+  }
 
-  useEffect(() => {
-    appLoading();
-  })
+  
+  componentWillMount() {
+    this.props.appLoading();
+    this.props.firebase.auth.onAuthStateChanged((user) => {
+      
+      // user.uid ? console.log('uid is ', user.uid) : console.log('no user / uid');
 
-  useEffect(() => {
-    appLoaded();
-  })
+      console.log('env var says ', process.env.REACT_APP_PANDA_RIOT_ADMINI)
+      if (user && user.uid === process.env.REACT_APP_PANDA_RIOT_ADMINI) {
+        this.props.isAdmin();
+      } else {
+        console.log('i am NOT admin.');
+      }
+    })
+  }
+  
+  
+  componentDidMount() {
+   this.props.appLoaded(); 
+  }
 
-  return (
-    <Router>
+  render() {
 
-      <div className="app-div">
-        <Navigation />
-        <Route exact path={ROUTES.LANDING} component={LandingPage} />
-        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-        <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-        <Route path={ROUTES.HOME} component={HomePage} />
+    const { privs } = this.props;
+    return (
+      <Router>
+  
+        <div className="app-div">
+          <Navigation isAdmin={privs} />
+          <Route exact path={ROUTES.LANDING} component={LandingPage} />
+          <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+          <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+          <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+          <Route path={ROUTES.HOME} component={HomePage} />
+  
+          <Route path={ROUTES.DATAMAP} component={DataMapPage} />
+  
+          <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+          <Route path={ROUTES.ACTS} component={ActsPage} />
+          <Route path={ROUTES.ADMIN} component={AdminPage} />
+        </div>
+      </Router>
+        );
+  }
 
-        <Route path={ROUTES.DATAMAP} component={DataMapPage} />
-
-        <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-        <Route path={ROUTES.ABOUT} component={AboutPage} />
-        <Route path={ROUTES.ADMIN} component={AdminPage} />
-      </div>
-    </Router>
-      );
 }
 
 const mapStateToProps = state => ({
   isLoading: state.appState.isLoading,
+  privs: state.appState.privs,
   error: state.appState.error,
 })
 
@@ -54,6 +78,7 @@ const mapDispatchToProps = dispatch => ({
   appLoading: () => dispatch({ type: actions.APP_LOADING }),
   appLoaded: () => dispatch({ type: actions.APP_LOADED }),
   appFailed: () => dispatch({ type: actions.APP_FAILED }),
+  isAdmin: () => dispatch({ type: actions.IS_ADMIN, privs: true }),
 })
 
 

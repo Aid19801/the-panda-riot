@@ -7,6 +7,7 @@ import { withFirebase } from '../../components/Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as actions from './constants';
 
+import './styles.scss';
 const PasswordForgetPage = () => (
   <div>
     <h1>PasswordForget</h1>
@@ -64,16 +65,16 @@ class PasswordForgetFormBase extends Component {
     const isInvalid = email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="email-me-form" onSubmit={this.onSubmit}>
         <input
           name="email"
-          value={this.state.email}
+          value={this.props.email}
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
         />
-        <button disabled={isInvalid} type="submit">
-          Reset My Password
+        <button type="submit">
+          Email Me A Password Re-set
         </button>
 
         {error && <p>{error.message}</p>}
@@ -92,7 +93,9 @@ export default PasswordForgetPage;
 
 const mapStateToProps = state => ({
   isLoading: state.passwordForgetPage.isLoading,
+  email: state.accountPage.email,
 })
+
 const mapDispatchToProps = dispatch => ({
   pageLoading: () => dispatch({ type: actions.PW_FORGET_PAGE_LOADING }),
   pageLoaded: () => dispatch({ type: actions.PW_FORGET_PAGE_LOADED }),

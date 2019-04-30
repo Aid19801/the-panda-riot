@@ -1,5 +1,4 @@
-import { render } from 'react-dom'
-import React, { useState, useCallback, useEffect } from 'react';
+import React from 'react';
 import YTSearch from 'youtube-api-search';
 import './styles.scss'
 
@@ -7,24 +6,27 @@ const YOUTUBE_KEY = process.env.REACT_APP_YOUTUBE_KEY;
 
 const VideoListItem = ({ video, index }) => {
     const imgURL = video.snippet.thumbnails.default.url;
+    console.log('id is here ', video.id.videoId);
+    const { id } = video;
+    const { videoId } = id;
 
     return (
         <>
-        <li className={index % 3 === 0 ? "list-group-item" : "list-group-item dark"}>
+        <li onClick={() => window.open(`https://www.youtube.com/watch?v=${videoId}`)} className={index % 3 === 0 ? "list-group-item" : "list-group-item dark"}>
             <div className="video-list media">
 
             <div className="media-left">
-                <img className="media-object" src={imgURL} />
+                <img alt="open mic comedy youtube set thumbnail" className="media-object" src={imgURL} />
             </div>
 
             <div className="media-body">
                 <div className="media-heading">
-                    <p className="p-blurb youtube-p">
+                    <p className="p__gig-blurb youtube-p">
                         {video.snippet.title}
                     </p>
                 </div>
                 <div className="media-description">
-                    <p className="p-blurb youtube-p">
+                    <p className="p__gig-blurb youtube-p">
                         {video.snippet.description}
                     </p>
                 </div>

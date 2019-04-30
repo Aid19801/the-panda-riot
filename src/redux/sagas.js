@@ -1,10 +1,11 @@
-// import { watcherLandingPage } from '../components/Landing/sagas';
-// import { watcherCreateMongoActProfile } from '../components/SignUp/sagas';
-// import { watcherGetActDetailsFromMongoDB } from '../components/AddMe/sagas';
-
+import { watcherFetchGigs } from '../containers/data-map-page/sagas';
+import { watcherFetchFilters } from '../containers/data-map-page/sagas';
+import { watcherUserFilteringGigs } from '../containers/data-map-page/sagas';
+import { watcherFiltersUpdateGigsResults } from '../containers/data-map-page/sagas';
 
 export {
-    // watcherLandingPage,
-    // watcherCreateMongoActProfile,
-    // watcherGetActDetailsFromMongoDB,
+    watcherFetchGigs,
+    watcherFetchFilters,
+    watcherUserFilteringGigs,
+    watcherFiltersUpdateGigsResults,
 }

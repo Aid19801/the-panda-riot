@@ -1,0 +1,26 @@
+.email-me-form input {
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+
+.pw-me-form input {
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+
+
+
+@media screen and (max-width: 570px) {
+    .email-me-form input {
+        height: 50px;
+        margin-bottom: 5px;
+    }
+}
+@media screen and (max-width: 570px) {
+    .pw-me-form input {
+        height: 50px;
+        margin-bottom: 5px;
+    }
+}

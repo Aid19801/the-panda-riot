@@ -8,14 +8,14 @@ import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
-
+import { withFirebase } from '../Firebase/index'
 import './styles.scss';
 
-const Navigation = (props) => (
+const Navigation = ({ isAdmin }) => (
   <div className="nav-container">
     <AuthUserContext.Consumer>
       {authUser => 
-        authUser ? <NavigationAuth /> : <NavigationNonAuth />
+        authUser ? <NavigationAuth isAdmin={isAdmin} /> : <NavigationNonAuth />
       }
     </AuthUserContext.Consumer>
   </div>
@@ -44,21 +44,18 @@ class NavigationAuth extends Component {
             </div>
 
             <div className="nav-option-wrapper">
-              <Link to={ROUTES.ABOUT}>About</Link>
+              <Link to={ROUTES.ACTS}>Acts</Link>
             </div>
 
-            <div className="nav-option-wrapper">
-              <Link to={ROUTES.ADMIN}>Admin</Link>
-            </div>
-            
+            { this.props.isAdmin && 
+              <div className="nav-option-wrapper">
+                <Link to={ROUTES.ADMIN}>Admin</Link>
+              </div>
+             }
             <div className="nav-option-wrapper">
               <SignOutButton />
             </div>
           </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-success">Search</Button>
-          </Form>
         </Navbar.Collapse>
       </Navbar>
     );
@@ -91,4 +88,4 @@ class NavigationNonAuth extends Component {
 }
 
 
-export default Navigation;
+export default withFirebase(Navigation);

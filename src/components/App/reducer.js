@@ -3,6 +3,7 @@ import * as actions from './constants';
 const initialState = {
     isLoading: false,
     error: null,
+    privs: false,
 }
 
 /* eslint-disable */
@@ -27,6 +28,13 @@ const appStateReducer = (state = initialState, action) => {
             ...state,
             isLoading: false,
             error: action.error,
+        }
+        break;
+
+        case actions.IS_ADMIN:
+        return {
+            ...state,
+            privs: action.privs,
         }
         break;
 

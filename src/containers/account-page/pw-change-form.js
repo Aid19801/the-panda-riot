@@ -51,7 +51,7 @@ class PasswordChangeForm extends Component {
       passwordOne !== passwordTwo || passwordOne === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="margin-top-20 pw-me-form" onSubmit={this.onSubmit}>
         <input
           name="passwordOne"
           value={passwordOne}

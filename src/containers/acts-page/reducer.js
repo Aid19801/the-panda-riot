@@ -10,21 +10,21 @@ const initialState = {
 
 const aboutPageReducer = (state = initialState, action) => {
     switch(action.type) {
-        case actions.ABOUT_PAGE_LOADING:
+        case actions.ACTS_PAGE_LOADING:
         return {
             ...state,
             isLoading: true,
         }
         break;
 
-        case actions.ABOUT_PAGE_LOADED:
+        case actions.ACTS_PAGE_LOADED:
         return {
             ...state,
             isLoading: false,
         }
         break;
 
-        case actions.ABOUT_PAGE_FAILED:
+        case actions.ACTS_PAGE_FAILED:
         return {
             ...state,
             isLoading: false,
