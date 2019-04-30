@@ -1,8 +1,11 @@
 import { all, takeLatest, call, put } from 'redux-saga/effects';
 import * as actions from './constants';
 import { allFilterButtonObjects } from '../../lib/utils';
-
 import gigsDirectlyImportedStaticFile from '../../mocks/gigs.json';
+
+// 1. currently setup for direclty pulling in static json file
+// 2. at some point deploy json-server style thing to heroku
+// 3. code for that is commented out lines 17-30 & 
 
 export function* watcherFetchGigs() {
     yield takeLatest(actions.DATAMAP_PAGE_LOADING, workerFetchGigs);
@@ -90,15 +93,16 @@ function* workerFiltersUpdateGigsResults({ filters }) {
     
     yield put({ type: actions.GIGS_BEING_FILTERED });
 
-    let gigs = [];
-    let error = null;
+    let gigs = gigsDirectlyImportedStaticFile.gigs;
+    // let gigs = [];
+    // let error = null;
 
-    yield fetch('http://localhost:3001/gigs')
-    .then(res => res.json())
-    .then(json => {
-        gigs = json;
-    })
-    .catch(err => error = err);
+    // yield fetch('http://localhost:3001/gigs')
+    // .then(res => res.json())
+    // .then(json => {
+    //     gigs = json;
+    // })
+    // .catch(err => error = err);
 
     let activeFilter = filters.filter(each => each.active === true)[0].filterName;
     
