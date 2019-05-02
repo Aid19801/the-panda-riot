@@ -12,7 +12,6 @@ import { AdvertBox, BoxCard } from '../../components/';
 import * as actions from './constants';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 // import { mockNews } from '../../mock-news';
-import placeholder from '../../mocks/placeholder.png';
 import './styles.scss';
 
 class HomePage extends Component {
@@ -80,15 +79,15 @@ class HomePage extends Component {
       <Row className="adverts-row">      
           <Col className="mob-margin-bottom" sm={4}>
             <AdvertBox
-              link="https://google.com" src={require('../../mocks/placeholder.png')} text="You Wont Believe What Kim Basinger Looks Like Now!" />
+              link="https://google.com" src="https://via.placeholder.com/300" text="You Wont Believe What Kim Basinger Looks Like Now!" />
           </Col>
           <Col className="mob-margin-bottom" sm={4}>
             <AdvertBox
-              link="https://google.com" src={require('../../mocks/placeholder.png')} text="You Wont Believe What Kim Basinger Looks Like Now!" />
+              link="https://google.com" src="https://via.placeholder.com/300" text="You Wont Believe What Kim Basinger Looks Like Now!" />
           </Col>
           <Col className="mob-margin-bottom" sm={4}>
             <AdvertBox
-              link="https://google.com" src={require('../../mocks/placeholder.png')} text="You Wont Believe What Kim Basinger Looks Like Now!" />
+              link="https://google.com" src="https://via.placeholder.com/300" text="You Wont Believe What Kim Basinger Looks Like Now!" />
           </Col>
         </Row>
         <Row className="top-row">
