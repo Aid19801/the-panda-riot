@@ -8,11 +8,11 @@ import Col from 'react-bootstrap/Col';
 import request from 'superagent';
 
 import { withAuthorization } from '../../components/Session';
-import { BoxCard } from '../../components/';
+import { AdvertBox, BoxCard } from '../../components/';
 import * as actions from './constants';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 // import { mockNews } from '../../mock-news';
-
+import placeholder from '../../mocks/placeholder.png';
 import './styles.scss';
 
 class HomePage extends Component {
@@ -76,6 +76,21 @@ class HomePage extends Component {
     return (
       <>
       <Container>
+
+      <Row className="adverts-row">      
+          <Col className="mob-margin-bottom" sm={4}>
+            <AdvertBox
+              link="https://google.com" src={require('../../mocks/placeholder.png')} text="You Wont Believe What Kim Basinger Looks Like Now!" />
+          </Col>
+          <Col className="mob-margin-bottom" sm={4}>
+            <AdvertBox
+              link="https://google.com" src={require('../../mocks/placeholder.png')} text="You Wont Believe What Kim Basinger Looks Like Now!" />
+          </Col>
+          <Col className="mob-margin-bottom" sm={4}>
+            <AdvertBox
+              link="https://google.com" src={require('../../mocks/placeholder.png')} text="You Wont Believe What Kim Basinger Looks Like Now!" />
+          </Col>
+        </Row>
         <Row className="top-row">
 
             { firstRow.map((each, i) => {
@@ -114,6 +129,7 @@ class HomePage extends Component {
               )
               }) }
         </Row>
+
       </Container>
       </>
     )

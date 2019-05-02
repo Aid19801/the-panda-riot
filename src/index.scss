@@ -31,6 +31,64 @@ h2, h4 {
   font-family: 'Raleway';
 }
 
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: start;
+}
+
+.padding-on {
+  padding: 20px;
+}
+
+.padding-off {
+  padding: 0;
+}
+
+.padding-left {
+  padding-left: 20px;
+}
+
+.padding-right {
+  padding-right: 20px;
+}
+
+.padding-top {
+  padding-top: 20px;
+}
+
+.padding-bottom {
+  padding-bottom: 20px;
+}
+
+
+.margin-on {
+  margin: 20px !important;
+}
+
+.margin-off {
+  margin: 0 !important;
+}
+
+.margin-left {
+  margin-left: 20px;
+}
+
+.margin-right {
+  margin-right: 20px;
+}
+
+.margin-top {
+  margin-top: 20px;
+}
+
+.margin-bottom {
+  margin-bottom: 20px;
+}
+
+
 
 @media screen and (max-width: 1120px) {
   p {

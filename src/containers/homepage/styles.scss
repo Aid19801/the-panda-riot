@@ -17,6 +17,12 @@
     animation-duration: 2s;
 }
 
+.adverts-row {
+    margin-bottom: 20px;
+    animation-name: fadeIn;
+    animation-duration: 2s;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
