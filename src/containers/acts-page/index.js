@@ -48,6 +48,7 @@ class ActsPage extends Component {
 
     // eg. voteAct('up', actObject)
     voteAct = (upOrDownString, actObject) => {
+        console.log('act obj coming through ', actObject);
         let chosenUser = {};
         let isTooSoon = tooSoon();
         // if it was longer than 10 seconds

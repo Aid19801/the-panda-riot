@@ -21,4 +21,15 @@ input {
     background: orange;
     color: black;
     border-radius: 12px;
+    transform: rotate(-10deg);
+    max-width: 190px;
+}
+
+.div__signin-page-container > p, a {
+    padding-top: 20px;
+    color: orange;
+}
+.div__signin-page-container a:hover {
+    font-weight: 700;
+    color: black;
 }
