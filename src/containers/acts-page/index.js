@@ -13,7 +13,7 @@ import Button from 'react-bootstrap/Button';
 import { tooSoon } from '../../lib/utils';
 
 import './styles.scss';
-import { UpArrow, DownArrow } from './svgs';
+import { UpArrow, DownArrow, ClapIcon } from './svgs';
 
 class ActsPage extends Component {
 
@@ -22,6 +22,7 @@ class ActsPage extends Component {
         this.state = {
           acts: [],
           showModal: false,
+          downVoteSwitchedOn: false,
         };
     }
 
@@ -109,9 +110,10 @@ class ActsPage extends Component {
     }
         
   render() {
-      const { showModal } = this.state;
+      const { showModal, downVoteSwitchedOn } = this.state;
     return (
         <Container>
+            <h1 className="h1__page-title padding-on">#ClapOff</h1>
             <Row className="act-rows">
                 <Col id={showModal ? 'fadeContainer' : ''} sm={9}>
                     { this.state.acts.map((each, i) => {
@@ -123,14 +125,14 @@ class ActsPage extends Component {
                                 <div className="each-act-rating-container">
 
                                     <div className="up-svg-container" onClick={() => this.voteAct('up', each)}>
-                                        <UpArrow />
+                                        <ClapIcon />
                                     </div>
 
                                         <h1 className="each-act-rating">{each.rating}</h1>
 
-                                    <div className="down-svg-container" onClick={() => this.voteAct('down', each)}>
+                                    { downVoteSwitchedOn && <div className="down-svg-container" onClick={() => this.voteAct('down', each)}>
                                         <DownArrow />
-                                    </div>
+                                    </div> }
                                 </div>
 
                                     <img
