@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import appStateReducer from '../components/App/reducer';
 import accountPageReducer from '../containers/account-page/reducer';
 import adminPageReducer from '../containers/admin-page/reducer';
+import chatPageReducer from '../containers/chat-page/reducer';
 // import aboutPageReducer from '../containers/about-page/reducer';
 import dataMapPageReducer from '../containers/data-map-page/reducer';
 
@@ -16,6 +17,7 @@ const RootReducer = combineReducers({
     appState: appStateReducer,
     accountPage: accountPageReducer,
     adminPage: adminPageReducer,
+    chatPage: chatPageReducer,
     // aboutPage: aboutPageReducer,
     dataMapPage: dataMapPageReducer,
     homePage: homePageReducer,

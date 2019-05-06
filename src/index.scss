@@ -31,6 +31,31 @@ h2, h4 {
   font-family: 'Raleway';
 }
 
+.h5__tpr-subheading {
+  font-family: 'Raleway' !important;
+}
+
+.p__tpr-blurb {
+
+}
+
+.white {
+  color: white !important;
+}
+
+.black {
+  color: black !important;
+}
+
+.grey {
+  color: grey !important;
+}
+
+.orange {
+  color: orange !important;
+}
+
+
 .center {
   text-align: center;
 }
@@ -88,6 +113,9 @@ h2, h4 {
   margin-bottom: 20px;
 }
 
+.full-width {
+  width: 90%;
+}
 
 
 @media screen and (max-width: 1120px) {
