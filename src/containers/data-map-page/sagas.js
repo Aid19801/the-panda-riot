@@ -1,4 +1,4 @@
-import { all, takeLatest, call, put } from 'redux-saga/effects';
+import { takeLatest, put } from 'redux-saga/effects';
 import * as actions from './constants';
 import { allFilterButtonObjects } from '../../lib/utils';
 import gigsDirectlyImportedStaticFile from '../../mocks/gigs.json';

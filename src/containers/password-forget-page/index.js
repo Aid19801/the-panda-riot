@@ -73,11 +73,11 @@ class PasswordForgetFormBase extends Component {
           type="text"
           placeholder="Email Address"
         />
-        <button type="submit">
+        <button disabled={isInvalid} type="submit">
           Email Me A Password Re-set
         </button>
 
-        {error && <p>{error.message}</p>}
+        { error && <p>{error.message}</p> }
       </form>
     );
   }

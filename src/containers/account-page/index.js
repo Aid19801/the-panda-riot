@@ -6,7 +6,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import { PasswordForgetForm } from '../../containers/password-forget-page';
-import PasswordChangeForm from './pw-change-form';
 import { withAuthorization } from '../../components/Session';
 import { withFirebase } from '../../components/Firebase';
 

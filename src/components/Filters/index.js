@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import * as actions from '../../containers/data-map-page/constants';
 import './styles.scss';
@@ -13,7 +11,6 @@ const Filters = ({ userFiltered, filters }) => {
     const [ thirdRow, setThirdRow ] = useState([]);
 
     useEffect(() => {
-        // console.log('filters: ', filters);
         setFirstRow(filters.slice(0, 4))
         setSecondRow(filters.slice(4, 7))
         setThirdRow(filters.slice(7, 10))
