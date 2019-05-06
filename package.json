@@ -6,14 +6,6 @@
     "node": "10.15.0"
   },
   "dependencies": {
-    
-    "apollo-client-preset": "^1.0.6",
-    "apollo-link-ws": "^1.0.4",
-    "graphql": "^0.12.3",
-    "graphql-tag": "^2.6.1",
-    "react-apollo": "^2.0.4",
-    "subscriptions-transport-ws": "^0.9.4",
-
     "bootstrap": "^4.3.1",
     "express": "^4.16.4",
     "express-favicon": "^2.0.1",

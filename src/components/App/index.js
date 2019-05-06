@@ -9,7 +9,7 @@ import Navigation from '../Navigation';
 
 import { AdminPage, ActsPage, AccountPage, DataMapPage,
   HomePage, LandingPage, SignInPage, SignUpPage,
-  PasswordForgetPage, ChatPage } from '../../containers';
+  PasswordForgetPage } from '../../containers';
 import * as ROUTES from '../../constants/routes';
 
 import { withAuthentication } from '../Session';
@@ -63,7 +63,6 @@ class App extends React.Component {
   
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route path={ROUTES.ACTS} component={ActsPage} />
-          <Route path={ROUTES.CHAT} component={ChatPage} />
           <Route path={ROUTES.ADMIN} component={AdminPage} />
         </div>
       </Router>

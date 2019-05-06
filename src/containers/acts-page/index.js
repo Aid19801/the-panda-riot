@@ -85,7 +85,6 @@ class ActsPage extends Component {
         }
     }
 
-
     updateActs = () => {
         return;
     }
@@ -101,7 +100,7 @@ class ActsPage extends Component {
         this.props.pageLoaded();
         setTimeout(() => {
             this.props.showProgressBar(false);
-        }, 100)
+        }, 1000)
     }
 
     componentWillUnmount() {
