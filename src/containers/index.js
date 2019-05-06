@@ -1,5 +1,6 @@
 import ActsPage from './acts-page';
 import AccountPage from './account-page';
+import ChatPage from './chat-page';
 import AdminPage from './admin-page';
 import DataMapPage from './data-map-page';
 import HomePage from './homepage';
@@ -12,6 +13,7 @@ export {
     ActsPage,
     AccountPage,
     AdminPage,
+    ChatPage,
     DataMapPage,
     HomePage,
     LandingPage,

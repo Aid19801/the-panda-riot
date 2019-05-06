@@ -6,9 +6,12 @@ import {
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import Navigation from '../Navigation';
-import { AdminPage, ActsPage, AccountPage, DataMapPage, HomePage, LandingPage, SignInPage, SignUpPage, PasswordForgetPage } from '../../containers';
 
+import { AdminPage, ActsPage, AccountPage, DataMapPage,
+  HomePage, LandingPage, SignInPage, SignUpPage,
+  PasswordForgetPage, ChatPage } from '../../containers';
 import * as ROUTES from '../../constants/routes';
+
 import { withAuthentication } from '../Session';
 import * as actions from './constants';
 import './styles.scss';
@@ -60,6 +63,7 @@ class App extends React.Component {
   
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route path={ROUTES.ACTS} component={ActsPage} />
+          <Route path={ROUTES.CHAT} component={ChatPage} />
           <Route path={ROUTES.ADMIN} component={AdminPage} />
         </div>
       </Router>
