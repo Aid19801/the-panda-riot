@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import { PasswordForgetForm } from '../../containers/password-forget-page';
 import { withAuthorization } from '../../components/Session';
 import { withFirebase } from '../../components/Firebase';
-
+import { PageTitle } from '../../components';
 import * as ROUTES from '../../constants/routes';
 import * as actions from './constants';
 import { compose } from 'recompose';
@@ -138,9 +138,7 @@ const AccountPage = (props) => {
 
   return (
       <div id="account-page-container">
-        <div className="account-page-title">
-          <h1>My Account</h1>
-        </div>
+        <PageTitle text="#myAccount" />
 
         <Container className="margin-top-20" >
           <Row>

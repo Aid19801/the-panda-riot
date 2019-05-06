@@ -14,6 +14,7 @@ import { tooSoon } from '../../lib/utils';
 
 import './styles.scss';
 import { UpArrow, DownArrow, ClapIcon } from './svgs';
+import { PageTitle } from '../../components';
 
 class ActsPage extends Component {
 
@@ -114,7 +115,7 @@ class ActsPage extends Component {
       const { showModal, downVoteSwitchedOn } = this.state;
     return (
         <Container>
-            <h1 className="h1__page-title padding-on">#ClapOff</h1>
+            <PageTitle text="#clapOff" />
             <Row className="act-rows">
                 <Col id={showModal ? 'fadeContainer' : ''} sm={9}>
                     { this.state.acts.map((each, i) => {

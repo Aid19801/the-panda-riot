@@ -9,7 +9,7 @@ import { withAuthorization } from '../../components/Session';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 import { InfoCard } from './info-card';
 import { MapBox } from './map';
-import { YouTubeEmbed, TwitterEmbed, Filters } from '../../components';
+import { YouTubeEmbed, TwitterEmbed, Filters, PageTitle } from '../../components';
 
 import LaptopIcon from './icons/laptop-icon';
 import CalendarIcon from './icons/calendar-icon';
@@ -87,6 +87,7 @@ class DataMapPage extends Component {
     return (
       <>
       <Container>
+        <PageTitle text="#gigs" />
         <Row className="full-width-row">
           <Col className="aid-col" sm={7}>
             <MapBox

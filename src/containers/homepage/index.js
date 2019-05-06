@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import request from 'superagent';
 
 import { withAuthorization } from '../../components/Session';
-import { AdvertBox, BoxCard } from '../../components/';
+import { AdvertBox, BoxCard, PageTitle } from '../../components/';
 import * as actions from './constants';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 // import { mockNews } from '../../mock-news';
@@ -81,6 +81,7 @@ class HomePage extends Component {
       <>
       <Container>
 
+        <PageTitle text="#news" />
 
         { showSpinner && (
           <>

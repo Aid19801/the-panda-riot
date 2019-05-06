@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { withFirebase } from '../../components/Firebase';
+import { PageTitle } from '../../components';
 import { withAuthorization } from '../../components/Session';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 import * as actions from './constants';
@@ -74,10 +78,16 @@ class AdminPage extends Component {
     const { users } = this.state;
 
     return (
-      <div>
-        <h1>Admin</h1>
-        <UserList users={users} />
-      </div>
+      <>
+      <Container>
+        <PageTitle text="#admin" />
+          <Row className="act-rows">
+            <div>
+              <UserList users={users} />
+            </div>
+          </Row>
+      </Container>
+      </>
     );
   }
 }
