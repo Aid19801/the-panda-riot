@@ -1,0 +1,19 @@
+.div__signin-page-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+input {
+    // border: 1px solid red;
+    max-width: 300px;
+    margin: 10px;
+    height: 45px;
+}
+
+.form__signin {
+    display: flex;
+    flex-direction: column;
+
+}
