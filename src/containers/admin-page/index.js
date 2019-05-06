@@ -3,7 +3,6 @@ import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { withFirebase } from '../../components/Firebase';
 import { PageTitle } from '../../components';
 import { withAuthorization } from '../../components/Session';

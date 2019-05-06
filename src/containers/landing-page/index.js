@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
+import { withRouter } from 'react-router-dom';
+import request from 'superagent';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import * as ROUTES from '../../constants/routes';
+
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 import * as actions from './constants';
-
-import './styles.css';
+import ParallaxCard from './parallax-card';
+import './styles.scss';
 
 class App extends Component {
 
@@ -16,6 +22,7 @@ class App extends Component {
   componentWillMount() {
     this.props.pageLoading();
     this.props.showProgressBar(true);
+    this.fetchPhotos();
   }
 
   componentDidMount() {
@@ -26,10 +33,31 @@ class App extends Component {
   }
   
 
+  
+  fetchPhotos() {
+    request
+      .get(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${process.env.REACT_APP_INSTA_KEY}`)
+      .then((res) => {
+        this.setState({
+          photos: res.body.data
+        })
+      })
+  }
+
+  handleClick = () => {
+    console.log('clicked signin')
+    this.props.history.push(ROUTES.SIGN_IN);
+  }
+
   render() {
+
     return (
-      <div className="div__landing-page">
-        <h1>Landing Page</h1>
+      <div id="landing-page">
+        <Container>
+            <Row className="div__landing-page-row">
+              <ParallaxCard onClick={this.handleClick} />
+            </Row>
+        </Container>
       </div>
     )
   }
@@ -46,5 +74,6 @@ const mapDispatchToProps = dispatch => ({
 
 export default compose(
   withProgressBar,
+  withRouter,
   connect(mapStateToProps, mapDispatchToProps),
 )(App);

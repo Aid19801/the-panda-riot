@@ -13,7 +13,7 @@ import Button from 'react-bootstrap/Button';
 import { tooSoon } from '../../lib/utils';
 
 import './styles.scss';
-import { UpArrow, DownArrow, ClapIcon } from './svgs';
+import { DownArrow, ClapIcon } from './svgs';
 import { PageTitle } from '../../components';
 
 class ActsPage extends Component {
