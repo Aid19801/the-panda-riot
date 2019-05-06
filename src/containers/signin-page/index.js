@@ -10,6 +10,8 @@ import * as ROUTES from '../../constants/routes';
 import * as actions from './constants';
 import { PasswordForgetLink } from '../password-forget-page';
 
+import './styles.scss';
+
 const INITIAL_STATE = {
   email: '',
   password: '',
@@ -66,7 +68,7 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="form__signin" onSubmit={this.onSubmit}>
         <input
           name="email"
           value={email}
@@ -81,7 +83,7 @@ class SignInFormBase extends Component {
           type="password"
           placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit">
+        <button className="btn__sign-in" disabled={isInvalid} type="submit">
           Sign In
         </button>
 
@@ -108,7 +110,7 @@ const SignInForm = compose(
 )(SignInFormBase);
 
 const SignInPage = () => (
-    <div>
+    <div className="div__signin-page-container padding-on">
       <h1>SignIn</h1>
       <SignInForm />
       <PasswordForgetLink />
