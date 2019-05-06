@@ -11,9 +11,9 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(RootReducer, 
     composeWithDevTools(
-        applyMiddleware(sagaMiddleware)
-    ),
-);
+    applyMiddleware(sagaMiddleware)
+        ),
+    );
 
 function* rootSaga() {
     yield all([
@@ -21,8 +21,6 @@ function* rootSaga() {
         sagas.watcherFetchFilters(),
         sagas.watcherUserFilteringGigs(),
         sagas.watcherFiltersUpdateGigsResults(),
-    //    sagas.watcherCreateMongoActProfile(),
-    //    sagas.watcherGetActDetailsFromMongoDB(),
     ])
 }
 
