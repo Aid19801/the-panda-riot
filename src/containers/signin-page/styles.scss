@@ -15,5 +15,10 @@ input {
 .form__signin {
     display: flex;
     flex-direction: column;
+}
 
+.btn__sign-in {
+    background: orange;
+    color: black;
+    border-radius: 12px;
 }
