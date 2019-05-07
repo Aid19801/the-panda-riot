@@ -14,11 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-<<<<<<< HEAD
-  "/precache-manifest.eaed17f938b23f51df0f5ae1bc510cd8.js"
-=======
   "/precache-manifest.d53fcfd28d5221e51ba521524029c90d.js"
->>>>>>> e965900... chat is back
 );
 
 workbox.clientsClaim();
