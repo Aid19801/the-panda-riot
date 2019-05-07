@@ -44,6 +44,10 @@ class NavigationAuth extends Component {
               <Link to={ROUTES.ACTS}>Acts</Link>
             </div>
 
+            <div className="nav-option-wrapper">
+              <Link to={ROUTES.CHAT}>Chat</Link>
+            </div>
+
             { this.props.isAdmin && 
               <div className="nav-option-wrapper">
                 <Link to={ROUTES.ADMIN}>Admin</Link>

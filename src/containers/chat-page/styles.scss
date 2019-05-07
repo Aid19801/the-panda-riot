@@ -1,0 +1,85 @@
+div.div__chat-page-section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    overflow: scroll;
+    height: 500px;
+    position: relative;
+}
+
+
+.div__chat-page-bg-img-container {
+    padding-top: 20px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    // border: 1px solid red;
+}
+
+.img__chat-page-bg-img {
+    width: 95%;
+    height: 82%;
+    opacity: 0.1;
+    // border: 3px solid lightgreen;
+    position: absolute;
+}
+
+
+.div__chat-page-msgs-row {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background: 1px solid green !important;
+}
+
+.div__chat-page-input-row {
+    display: flex;
+    background: 1px solid red !important;
+}
+
+.div__chat-page-input-container {
+    padding: 30px;
+}
+
+.input__msg__unfocused {
+    width: 40%;
+    padding: 6px;
+    animation: slideBackIn 0.3s;
+}
+
+.input__msg__in-focus {
+    width: 70%;
+    padding: 6px;
+    text-align: left;
+    animation: slideOut 0.3s;
+    background: orange;
+}
+
+@keyframes slideBackIn {
+    from {
+        width: 70%;
+        background: orange;
+        color: white;
+    }
+    to {
+        width: 40%;
+        background: white;
+        color: black;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        width: 40%;
+        background: white;
+        color: black;
+    }
+    to {
+        width: 70% !important;
+        background: orange;
+        color: white !important;
+    }
+}
