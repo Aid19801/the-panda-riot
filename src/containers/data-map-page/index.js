@@ -151,7 +151,7 @@ class DataMapPage extends Component {
               <h3>Rating: </h3><p>coming soon...</p>
             </div>
             <div className="more-info-each-row">
-              <h3 style={{ color: 'black' }}>Get My Gig Here For Free! </h3>
+              <h3 onClick={() => window.open('https://twitter.com/thePandaRiot','_newtab')} style={{ color: 'black' }}>Get My Gig Here For Free! </h3>
             </div>
           </Col>
         </Row> }
