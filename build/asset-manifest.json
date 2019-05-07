@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "main.css": "/static/css/main.a9f31daf.chunk.css",
   "main.js": "/static/js/main.e962ac08.chunk.js",
   "main.js.map": "/static/js/main.e962ac08.chunk.js.map",
@@ -12,6 +13,21 @@
   "service-worker.js": "/service-worker.js",
   "static/css/2.13a41f8e.chunk.css.map": "/static/css/2.13a41f8e.chunk.css.map",
   "static/css/main.a9f31daf.chunk.css.map": "/static/css/main.a9f31daf.chunk.css.map",
+=======
+  "main.css": "/static/css/main.d482807b.chunk.css",
+  "main.js": "/static/js/main.bdafa265.chunk.js",
+  "main.js.map": "/static/js/main.bdafa265.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+  "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+  "static/css/2.13a41f8e.chunk.css": "/static/css/2.13a41f8e.chunk.css",
+  "static/js/2.327456fc.chunk.js": "/static/js/2.327456fc.chunk.js",
+  "static/js/2.327456fc.chunk.js.map": "/static/js/2.327456fc.chunk.js.map",
+  "index.html": "/index.html",
+  "precache-manifest.d53fcfd28d5221e51ba521524029c90d.js": "/precache-manifest.d53fcfd28d5221e51ba521524029c90d.js",
+  "service-worker.js": "/service-worker.js",
+  "static/css/2.13a41f8e.chunk.css.map": "/static/css/2.13a41f8e.chunk.css.map",
+  "static/css/main.d482807b.chunk.css.map": "/static/css/main.d482807b.chunk.css.map",
+>>>>>>> e965900... chat is back
   "static/media/styles.scss": "/static/media/stage.69d6f208.svg",
   "static/media/mic.jpg": "/static/media/mic.969663f7.jpg"
 }
