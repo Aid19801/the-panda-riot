@@ -15,6 +15,30 @@ body {
   background-size: cover;
 }
 
+.div__page-container {
+  display: flex;
+  // justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form__stackable-form{
+  display: flex;
+  flex-direction: column;
+  // border: 1px solid red;
+  padding: 20px;
+}
+
+.btn__orange {
+  background: orange;
+  color: black;
+  border-radius: 12px;
+  transform: rotate(-10deg);
+  max-width: 190px;
+}
+
 h1 {
   font-family: monospace;
   font-weight: 700;

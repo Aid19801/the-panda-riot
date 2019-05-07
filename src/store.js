@@ -9,6 +9,8 @@ import * as sagas from './redux/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
+console.log('env ====>>  ', process.env.NODE_ENV);
+
 const store = createStore(RootReducer, 
     composeWithDevTools(
     applyMiddleware(sagaMiddleware)

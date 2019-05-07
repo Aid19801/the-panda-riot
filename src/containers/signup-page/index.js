@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { withFirebase } from '../../components/Firebase';
+import { PageTitle } from '../../components/';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 import * as ROUTES from '../../constants/routes';
 import * as actions from './constants';
+
+import './styles.scss';
 
 const INITIAL_STATE = {
   username: '',
@@ -82,7 +85,7 @@ class SignUpFormBase extends Component {
       username === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="form__stackable-form" onSubmit={this.onSubmit}>
         <input
           name="username"
           value={username}
@@ -111,7 +114,10 @@ class SignUpFormBase extends Component {
           type="password"
           placeholder="Confirm Password"
         />
-        <button disabled={isInvalid} type="submit">Sign Up</button>
+
+        <button className="btn__orange" disabled={isInvalid} type="submit">
+          Sign Up
+        </button>
 
         {error && <p>{error.message}</p>}
       </form>
@@ -136,8 +142,8 @@ const SignUpForm = compose(
 )(SignUpFormBase);
 
 const SignUpPage = () => (
-  <div>
-    <h1>SignUp</h1>
+  <div className="div__page-container">
+    <PageTitle text="Sign Up" />
     <SignUpForm />
   </div>
 );
