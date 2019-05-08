@@ -108,7 +108,7 @@ class ChatPage extends Component {
         <Container>
 
             <PageTitle text="#chat" />
-            
+            <p>You may wish to update your profile pic in the "me" section...</p>
             <Row className="div__chat-page-msgs-row w-100">
 
               <div className="div__chat-page-bg-img-container">
