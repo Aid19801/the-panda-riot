@@ -56,14 +56,18 @@ class ChatPage extends Component {
         };
 
     componentDidMount() {
+        let myProfilePicture = 'https://patientpattern.com/wp-content/uploads/2018/11/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg';
         let meUid = this.props.firebase.auth.currentUser.uid;
         this.props.firebase.user(meUid)
           .on('value', snapshot => {
               const me = snapshot.val();
               const { username, profilePicture } = me;
+              if (profilePicture) {
+                myProfilePicture = profilePicture;
+              }
               this.setState({
                 from: username,
-                img: profilePicture,
+                img: myProfilePicture,
               })
           })
         this._subscribeToNewChats();
