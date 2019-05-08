@@ -60,18 +60,20 @@ class HomePage extends Component {
 
   fetchNews() {
     this.setState({ showSpinner: true, })
-    request
-      .get('https://the-panda-riot-news-server.herokuapp.com/articles')
-      .then(res => {
-        let firstRow = res.body.slice(0, 3);
-        let secondRow = res.body.slice(3, 6);
-        let thirdRow = res.body.slice(6, 9);
-        this.setState({ firstRow, secondRow, thirdRow })
-        this.setState({ showSpinner: false })
-      })
-      .catch(err => {
-        return console.log('err is ', err);
-      })
+
+    fetch('https://gist.githubusercontent.com/Aid19801/424b043765bf5ad54cb686032f141b34/raw/9f575e4fc9ae0b200273760e3f715b3aaa84d60a/articles.json', {
+            method: 'GET',
+        }).then(res => res.json()).then(json => {
+          let firstRow = json.articles.slice(0, 3);
+          let secondRow = json.articles.slice(3, 6);
+          let thirdRow = json.articles.slice(6, 9);
+
+          this.setState({ firstRow, secondRow, thirdRow })
+          this.setState({ showSpinner: false })
+        })
+        .catch(err => {
+          return console.log('fetching news error: ', err);
+        })
   }
 
   render() {

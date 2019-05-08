@@ -14,20 +14,21 @@ export function* watcherFetchGigs() {
 function* workerFetchGigs() {
     yield put({ type: actions.DATAMAP_FETCHING_GIGS });
 
-    // let gigs = [];
-    // let error = null;
+    let retrievedGigs = [];
+    let error = null;
 
-    // yield fetch('http://localhost:3001/gigs')
-    //     .then(res => res.json())
-    //     .then(json => {
-    //         return gigs = json;
-    //     })
-    //     .catch(err => error = err);
+    yield fetch('https://gist.githubusercontent.com/Aid19801/7c88e1645fd8518999fb9c764c0d1869/raw/f326ab25b8cb7fa8dd2c17dc5c2e4a10e46d2c82/gigs.json')
+        .then(res => res.json())
+        .then(json => {
+            console.log('retieved gigs ', json.gigs)
+            return retrievedGigs =  json.gigs;
+        })
+        .catch(err => error = err);
 
-        // gigs.length > 0 ?
-        yield put({ type: actions.DATAMAP_GIGS_SUCCESS, gigs: gigsDirectlyImportedStaticFile.gigs })
-        // :
-        // yield put({ type: actions.DATAMAP_GIGS_FAILED, error: error })
+        retrievedGigs.length > 0 ?
+        yield put({ type: actions.DATAMAP_GIGS_SUCCESS, gigs: retrievedGigs })
+        :
+        yield put({ type: actions.DATAMAP_GIGS_FAILED, error: error })
 }
 
 export function* watcherFetchFilters() {
