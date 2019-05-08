@@ -37,5 +37,7 @@ span.navbar-brand a {
     .nav-option-wrapper {
         transform: rotate(0deg);
     }
-    
+    .nav-option-wrapper > a {
+        font-size: 40px;
+    }
 }
