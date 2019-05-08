@@ -31,7 +31,6 @@ class ActsPage extends Component {
 
         this.props.firebase.users().on('value', snapshot => {
             const usersObject = snapshot.val();
-            console.log('usersObject: ', usersObject);
 
             const usersList = Object.keys(usersObject)
                 .map(key => ({
@@ -39,8 +38,8 @@ class ActsPage extends Component {
                     uid: key
                 }));
 
-                
-                let sortedActs = usersList.sort((a, b) => a.rating - b.rating).reverse();
+                const filteredOutNonVotingUsers = usersList.filter(each => each.includeInActRater)
+                let sortedActs = filteredOutNonVotingUsers.sort((a, b) => a.rating - b.rating).reverse();
                 this.setState({ acts: sortedActs });
         })
 
@@ -49,7 +48,7 @@ class ActsPage extends Component {
 
     // eg. voteAct('up', actObject)
     voteAct = (upOrDownString, actObject) => {
-        console.log('act obj coming through ', actObject);
+        // console.log('act obj coming through ', actObject);
         let chosenUser = {};
         let isTooSoon = tooSoon();
         // if it was longer than 10 seconds
