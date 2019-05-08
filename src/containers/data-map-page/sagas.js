@@ -20,7 +20,7 @@ function* workerFetchGigs() {
     yield fetch('https://gist.githubusercontent.com/Aid19801/7c88e1645fd8518999fb9c764c0d1869/raw/f326ab25b8cb7fa8dd2c17dc5c2e4a10e46d2c82/gigs.json')
         .then(res => res.json())
         .then(json => {
-            console.log('retieved gigs ', json.gigs)
+            // console.log('retieved gigs ', json.gigs)
             return retrievedGigs =  json.gigs;
         })
         .catch(err => error = err);
@@ -118,28 +118,28 @@ function* workerFiltersUpdateGigsResults({ filters }) {
     }
 
     if (activeFilter === 'Mon' || activeFilter === 'Tue') {
-        console.log('filtering Monday or Tues gigs')
+        // console.log('filtering Monday or Tues gigs')
         updatedGigs = gigs.filter(each => each.nights.includes(activeFilter));
     } 
 
     if (activeFilter === 'Wed' || activeFilter === 'Thu') {
-        console.log('filtering Wed or Thu gigs')
+        // console.log('filtering Wed or Thu gigs')
         updatedGigs = gigs.filter(each => each.nights.includes(activeFilter));
-        console.log('Wed updated ', updatedGigs);
+        // console.log('Wed updated ', updatedGigs);
     }
 
     if (activeFilter === 'Fri' || activeFilter === 'Sat') {
-        console.log('filtering Fri or Sat gigs')
+        // console.log('filtering Fri or Sat gigs')
         updatedGigs = gigs.filter(each => each.nights.includes(activeFilter));
     }
 
     if (activeFilter === 'Sun') {
-        console.log('filtering Sunday gigs')
+        // console.log('filtering Sunday gigs')
         updatedGigs = gigs.filter(each => each.nights.includes(activeFilter));
     }
     
     if (activeFilter === 'All') {
-        console.log('re-setting to show ALL gigs')
+        // console.log('re-setting to show ALL gigs')
         updatedGigs = gigs;
     }
 

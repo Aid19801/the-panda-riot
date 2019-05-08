@@ -6,7 +6,7 @@ const YOUTUBE_KEY = process.env.REACT_APP_YOUTUBE_KEY;
 
 const VideoListItem = ({ video, index }) => {
     const imgURL = video.snippet.thumbnails.default.url;
-    console.log('id is here ', video.id.videoId);
+    // console.log('id is here ', video.id.videoId);
     const { id } = video;
     const { videoId } = id;
 
@@ -64,7 +64,7 @@ class YouTubeEmbed extends React.Component {
 
         YTSearch({key: YOUTUBE_KEY, term: this.props.term }, (data) => {
             this.setState({ videos: data })
-            console.log('AT | data back from YT ', data);
+            // console.log('AT | data back from YT ', data);
         });
     }
 

@@ -28,14 +28,10 @@ class App extends React.Component {
   componentWillMount() {
     this.props.appLoading();
     this.props.firebase.auth.onAuthStateChanged((user) => {
-      
-      // user.uid ? console.log('uid is ', user.uid) : console.log('no user / uid');
-
-      console.log('env var says ', process.env.REACT_APP_PANDA_RIOT_ADMINI)
       if (user && user.uid === process.env.REACT_APP_PANDA_RIOT_ADMINI) {
         this.props.isAdmin();
       } else {
-        console.log('i am NOT admin.');
+        console.log('ixnay');
       }
     })
   }
