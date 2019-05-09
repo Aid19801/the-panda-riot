@@ -15,15 +15,24 @@ function* workerFetchGigs() {
     yield put({ type: actions.DATAMAP_FETCHING_GIGS });
 
     let retrievedGigs = [];
+    let rawUrl = '';
     let error = null;
 
-    yield fetch('https://gist.githubusercontent.com/Aid19801/7c88e1645fd8518999fb9c764c0d1869/raw/f326ab25b8cb7fa8dd2c17dc5c2e4a10e46d2c82/gigs.json')
+    // go to gist
+    yield fetch('https://api.github.com/gists/7c88e1645fd8518999fb9c764c0d1869')
         .then(res => res.json())
         .then(json => {
-            // console.log('retieved gigs ', json.gigs)
-            return retrievedGigs =  json.gigs;
+            return rawUrl = json.files.gigs.raw_url;
         })
         .catch(err => error = err);
+    
+    // get dirty raw url for all the gigs
+    yield fetch(rawUrl)
+        .then(res => res.json())
+        .then(json => {
+            return retrievedGigs = json.gigs;
+        })
+        .catch(err => console.log('err ', err))
 
         retrievedGigs.length > 0 ?
         yield put({ type: actions.DATAMAP_GIGS_SUCCESS, gigs: retrievedGigs })

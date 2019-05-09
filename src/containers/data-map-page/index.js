@@ -23,6 +23,8 @@ import * as actions from './constants';
 
 import './styles.scss';
 
+const showYouTube = false;
+
 class DataMapPage extends Component {
   constructor() {
     super()
@@ -155,11 +157,11 @@ class DataMapPage extends Component {
             </div>
           </Col>
         </Row> }
-        <Row className="centered-row">
+        <Row className="centered-row full-width">
         
         { paneInfo.twitterHandle ? (
           <>
-          <Col className="carousel-columns" sm={6}>
+          <Col className="carousel-columns" sm={12}>
             { showPanels && paneInfo.twitterHandle && <TwitterEmbed twitterHandle={paneInfo.twitterHandle} /> }
           </Col>
           </>
@@ -167,7 +169,7 @@ class DataMapPage extends Component {
           : null
         }
           <Col className="carousel-columns" sm={ paneInfo.twitterHandle ? 6 : 12}>
-            { showPanels && <YouTubeEmbed heading={paneInfo.heading} term={`${paneInfo.heading} London standup comedy`} /> }
+            { showPanels && showYouTube && <YouTubeEmbed heading={paneInfo.heading} term={`${paneInfo.heading} London standup comedy`} /> }
           </Col>
         </Row>
       </Container>

@@ -24,6 +24,7 @@ class HomePage extends Component {
       isSelected: false,
       advertsOn: false,
       photos: [],
+      articles: [],
       firstRow: [],
       secondRow: [],
       thirdRow: [],
@@ -32,8 +33,9 @@ class HomePage extends Component {
 
   componentWillMount() {
     this.props.showProgressBar(true);
+    this.setState({ showSpinner: true })
     this.props.pageLoading();
-    this.fetchNews();
+    this.props.updateStatefetchNews();
     this.fetchPhotos();
   }
 
@@ -58,34 +60,51 @@ class HomePage extends Component {
       })
   }
 
-  fetchNews() {
-    this.setState({ showSpinner: true, })
+  componentWillReceiveProps = (nextProps) => {
+    let firstRow = nextProps.articles.slice(0, 3);
+    let secondRow = nextProps.articles.slice(3, 6);
+    let thirdRow = nextProps.articles.slice(6, 9);
 
-    fetch('https://gist.githubusercontent.com/Aid19801/424b043765bf5ad54cb686032f141b34/raw/9f575e4fc9ae0b200273760e3f715b3aaa84d60a/articles.json', {
-            method: 'GET',
-        }).then(res => res.json()).then(json => {
-          let firstRow = json.articles.slice(0, 3);
-          let secondRow = json.articles.slice(3, 6);
-          let thirdRow = json.articles.slice(6, 9);
+    this.setState({ firstRow, secondRow, thirdRow })
 
-          this.setState({ firstRow, secondRow, thirdRow })
-          this.setState({ showSpinner: false })
-        })
-        .catch(err => {
-          return console.log('fetching news error: ', err);
-        })
   }
+
+
+    // fetch('https://api.github.com/gists/424b043765bf5ad54cb686032f141b34')
+    //   .then(res => res.json())
+    //   .then(json => {
+    //       // console.log('json back? ', json)
+    //       return json.files.articles.raw_url;
+    //   })
+    //   .then(rawUrl => {
+    //     fetch(rawUrl)
+    //     .then(res => res.json())
+    //     .then(json => {
+    //         console.log('rawURL back ', rawUrl);
+    //         return retrievedArticles = json.articles;
+    //     })
+    //     .catch(err => console.log('err ', err))
+
+    //     let firstRow = retrievedArticles.slice(0, 3);
+    //     let secondRow = retrievedArticles.slice(3, 6);
+    //     let thirdRow = retrievedArticles.slice(6, 9);
+
+    //     this.setState({ firstRow, secondRow, thirdRow })
+    //     this.setState({ showSpinner: false });
+    //   })
+    //   .catch(err => error = err);
+  
 
   render() {
     const { firstRow, secondRow, thirdRow, advertsOn, showSpinner } = this.state;
-
+    const { isLoading } = this.props;
     return (
       <>
       <Container>
 
         <PageTitle text="#news" />
 
-        { showSpinner && (
+        { isLoading && (
           <>
             <Row className="spinner-row">
               { showSpinner && (
@@ -167,11 +186,13 @@ const condition = authUser => !!authUser;
 
 const mapStateToProps = state => ({
   isLoading: state.homePage.isLoading,
+  articles: state.homePage.articles,
 });
 
 const mapDispatchToProps = dispatch => ({
   pageLoading: () => dispatch({ type: actions.HOME_PAGE_LOADING }),
   pageLoaded: () => dispatch({ type: actions.HOME_PAGE_LOADED }),
+  updateStatefetchNews: () => dispatch({ type: actions.FETCH_NEWS })
 });
 
 export default compose(

@@ -5,4 +5,17 @@
     padding: 20px;
     width: 70%;
     margin-top: 20px;
+    animation-name: glowTitle;
+    animation-duration: 0.2s;
 }
+
+@keyframes glowTitle {
+    from {
+        margin-top: -37vh;       
+    }
+
+    to {
+        margin-top: 20px;
+    }
+}
+  

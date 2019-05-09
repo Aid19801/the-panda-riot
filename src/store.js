@@ -21,6 +21,7 @@ function* rootSaga() {
     yield all([
         sagas.watcherFetchGigs(),
         sagas.watcherFetchFilters(),
+        sagas.watcherFetchNews(),
         sagas.watcherUserFilteringGigs(),
         sagas.watcherFiltersUpdateGigsResults(),
     ])
