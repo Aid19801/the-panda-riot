@@ -25,8 +25,9 @@ function* workerFetchNews() {
     yield fetch(rawUrl)
         .then(res => res.json())
         .then(json => {
-            console.log('articles are', json.articles);
-            return retrievedArticles = json.articles;
+            retrievedArticles = json.articles.slice(0, 9);
+            console.log('retrieved articals are ', retrievedArticles);
+            return retrievedArticles;
         })
         .catch(err => console.log('saga fucking err ', err))
 

@@ -36,7 +36,7 @@ class HomePage extends Component {
     this.setState({ showSpinner: true })
     this.props.pageLoading();
     this.props.updateStatefetchNews();
-    this.fetchPhotos();
+    // this.fetchPhotos();
   }
 
   componentDidMount() {
@@ -69,33 +69,8 @@ class HomePage extends Component {
 
   }
 
-
-    // fetch('https://api.github.com/gists/424b043765bf5ad54cb686032f141b34')
-    //   .then(res => res.json())
-    //   .then(json => {
-    //       // console.log('json back? ', json)
-    //       return json.files.articles.raw_url;
-    //   })
-    //   .then(rawUrl => {
-    //     fetch(rawUrl)
-    //     .then(res => res.json())
-    //     .then(json => {
-    //         console.log('rawURL back ', rawUrl);
-    //         return retrievedArticles = json.articles;
-    //     })
-    //     .catch(err => console.log('err ', err))
-
-    //     let firstRow = retrievedArticles.slice(0, 3);
-    //     let secondRow = retrievedArticles.slice(3, 6);
-    //     let thirdRow = retrievedArticles.slice(6, 9);
-
-    //     this.setState({ firstRow, secondRow, thirdRow })
-    //     this.setState({ showSpinner: false });
-    //   })
-    //   .catch(err => error = err);
-  
-
   render() {
+
     const { firstRow, secondRow, thirdRow, advertsOn, showSpinner } = this.state;
     const { isLoading } = this.props;
     return (
@@ -119,7 +94,7 @@ class HomePage extends Component {
           </>
         ) }
 
-        <Row className="top-row">
+        <Row className="top-row full-width">
 
             { firstRow.map((each, i) => {
               return (
@@ -132,7 +107,7 @@ class HomePage extends Component {
               }) }
         </Row>
 
-        <Row className="mid-row">
+        <Row className="mid-row full-width">
 
             { secondRow.map((each, i) => {
               return (
@@ -145,7 +120,7 @@ class HomePage extends Component {
               }) }
         </Row>
 
-        <Row className="bottom-row">
+        <Row className="bottom-row full-width">
 
             { thirdRow.map((each, i) => {
               return (
