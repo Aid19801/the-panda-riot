@@ -54,8 +54,6 @@ function* workerFetchFilters() {
         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
     });
 
-    // console.log('sortedFilters: ', sortedFilters);
-
     sortedFilters ? yield put({ type: actions.DATAMAP_FILTERS_SUCCESS, filters: sortedFilters })
     :
     yield put({ type: actions.DATAMAP_FILTERS_FAILED, error: 'saga couldnt load filters' });
@@ -103,16 +101,25 @@ function* workerFiltersUpdateGigsResults({ filters }) {
     
     yield put({ type: actions.GIGS_BEING_FILTERED });
 
-    let gigs = gigsDirectlyImportedStaticFile.gigs;
-    // let gigs = [];
-    // let error = null;
+    let gigs = [];
+    let rawUrl = '';
+    let error = null;
 
-    // yield fetch('http://localhost:3001/gigs')
-    // .then(res => res.json())
-    // .then(json => {
-    //     gigs = json;
-    // })
-    // .catch(err => error = err);
+    // go to gist
+    yield fetch('https://api.github.com/gists/7c88e1645fd8518999fb9c764c0d1869')
+        .then(res => res.json())
+        .then(json => {
+            return rawUrl = json.files.gigs.raw_url;
+        })
+        .catch(err => error = err);
+    
+    // get dirty raw url for all the gigs
+    yield fetch(rawUrl)
+        .then(res => res.json())
+        .then(json => {
+            return gigs = json.gigs;
+        })
+        .catch(err => console.log('err ', err))
 
     let activeFilter = filters.filter(each => each.active === true)[0].filterName;
     
