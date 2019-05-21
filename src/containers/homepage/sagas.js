@@ -25,11 +25,11 @@ function* workerFetchNews() {
     yield fetch(rawUrl)
         .then(res => res.json())
         .then(json => {
-            retrievedArticles = json.articles.slice(0, 9);
-            console.log('retrieved articals are ', retrievedArticles);
+            retrievedArticles = json.articles.slice(0, 12);
+            console.log('retrieved articals are ', retrievedArticles.length);
             return retrievedArticles;
         })
-        .catch(err => console.log('saga fucking err ', err))
+        .catch(err => console.log('saga | news stories error ', err))
 
         retrievedArticles.length > 0 ?
         yield put({ type: actions.FETCH_NEWS_SUCCESS, articles: retrievedArticles })

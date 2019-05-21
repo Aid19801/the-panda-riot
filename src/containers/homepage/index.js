@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import request from 'superagent';
 
 import { withAuthorization } from '../../components/Session';
-import { AdvertBox, BoxCard, PageTitle } from '../../components/';
+import { AdvertBox, Spinner, BoxCard, ImageBox, PageTitle } from '../../components/';
 import * as actions from './constants';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 // import { mockNews } from '../../mock-news';
@@ -20,14 +20,18 @@ class HomePage extends Component {
   constructor() {
     super()
     this.state = {
+      photosRetrieved: false,
+      articlesHaveLoaded: false,
       showSpinner: false,
       isSelected: false,
       advertsOn: false,
       photos: [],
+      morePhotos: [],
       articles: [],
       firstRow: [],
       secondRow: [],
       thirdRow: [],
+      fourthRow: [],
     };
   }
 
@@ -36,7 +40,7 @@ class HomePage extends Component {
     this.setState({ showSpinner: true })
     this.props.pageLoading();
     this.props.updateStatefetchNews();
-    // this.fetchPhotos();
+    this.fetchPhotos();
   }
 
   componentDidMount() {
@@ -54,9 +58,23 @@ class HomePage extends Component {
     request
       .get(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${process.env.REACT_APP_INSTA_KEY}`)
       .then((res) => {
+        console.log('1) res is back: ', res.status)
         this.setState({
-          photos: res.body.data
+          photos: res.body.data,
+          nextURL: res.body.pagination.next_url,
+          photosRetrieved: true,
         })
+      })
+      .then(() => {
+        console.log('nexturl is here?? ', this.state.nextURL);
+        fetch(this.state.nextURL)
+          .then(res => res.json())
+          .then(json => {
+            this.setState({ morePhotos: json.data });
+          })
+      })
+      .catch(err => {
+        console.log('err retrieving insta posts: ', err);
       })
   }
 
@@ -64,37 +82,30 @@ class HomePage extends Component {
     let firstRow = nextProps.articles.slice(0, 3);
     let secondRow = nextProps.articles.slice(3, 6);
     let thirdRow = nextProps.articles.slice(6, 9);
+    let fourthRow = nextProps.articles.slice(9, 12);
 
-    this.setState({ firstRow, secondRow, thirdRow })
+    this.setState({ firstRow, secondRow, thirdRow, fourthRow, articlesHaveLoaded: true })
 
   }
 
   render() {
 
-    const { firstRow, secondRow, thirdRow, advertsOn, showSpinner } = this.state;
-    const { isLoading } = this.props;
+    const { articlesHaveLoaded, photosRetrieved, firstRow, 
+      secondRow, thirdRow, fourthRow, advertsOn, photos, morePhotos } = this.state;
+
+    console.log('photos back: ', photos)
+    console.log('morePhotos back: ', morePhotos)
+    
     return (
       <>
       <Container>
 
-        <PageTitle text="#news" />
+        <PageTitle text="#home" />
 
-        { isLoading && (
-          <>
-            <Row className="spinner-row">
-              { showSpinner && (
-                    <>
-                      <Col className="div__spinner-container" sm={4}>
-                        <h3 className="div__loading-dots"></h3>
-                      </Col>
-                    </>
-                  )
-              }
-            </Row>
-          </>
-        ) }
+          { !articlesHaveLoaded && <Spinner />}
 
         <Row className="top-row full-width">
+
 
             { firstRow.map((each, i) => {
               return (
@@ -120,6 +131,99 @@ class HomePage extends Component {
               }) }
         </Row>
 
+
+
+        <Row id="id__insta-row">
+
+          <div className="div__two-stacklable-rows">
+
+              <div className="insta-row-of-images">
+                { photosRetrieved && photos.slice(0, 5).map((each, i) => (
+                  <div key={i} onClick={() => window.open(each.link, '_newtab')} className="div__each-image">
+                        <img
+                          className="img__each-img"
+                          style={{ height: 90, width: 90 }}
+                          src={each.images.standard_resolution.url}
+                        />
+                  </div>
+              ))}
+              </div>
+
+              <div className="insta-row-of-images">
+                { photosRetrieved && photos.slice(5, 10).map((each, i) => (
+                  <div key={i} onClick={() => window.open(each.link, '_newtab')} className="div__each-image">
+                        <img
+                          className="img__each-img"
+                          style={{ height: 90, width: 90 }}
+                          src={each.images.standard_resolution.url}
+                        />
+                  </div>
+              ))}
+              </div>
+
+          </div>
+
+          <div className="div__two-stacklable-rows">
+
+              <div className="insta-row-of-images">
+                { photosRetrieved && photos.slice(10, 15).map((each, i) => (
+                  <div key={i} onClick={() => window.open(each.link, '_newtab')} className="div__each-image">
+                        <img
+                          className="img__each-img"
+                          style={{ height: 90, width: 90 }}
+                          src={each.images.standard_resolution.url}
+                        />
+                  </div>
+              ))}
+              </div>
+
+              <div className="insta-row-of-images">
+                { photosRetrieved && photos.slice(15, 20).map((each, i) => (
+                  <div key={i} onClick={() => window.open(each.link, '_newtab')} className="div__each-image">
+                        <img
+                          className="img__each-img"
+                          style={{ height: 90, width: 90 }}
+                          src={each.images.standard_resolution.url}
+                        />
+                  </div>
+              ))}
+              </div>
+
+          </div>
+
+          <div className="div__two-stacklable-rows">
+
+              <div className="insta-row-of-images">
+                { photosRetrieved && morePhotos.slice(0, 5).map((each, i) => (
+                  <div key={i} onClick={() => window.open(each.link, '_newtab')} className="div__each-image">
+                        <img
+                          className="img__each-img"
+                          style={{ height: 90, width: 90 }}
+                          src={each.images.standard_resolution.url}
+                        />
+                  </div>
+              ))}
+              </div>
+
+              <div className="insta-row-of-images">
+              { photosRetrieved && morePhotos.slice(5, 10).map((each, i) => (
+                  <div key={i} onClick={() => window.open(each.link, '_newtab')} className="div__each-image">
+                        <img
+                          className="img__each-img"
+                          style={{ height: 90, width: 90 }}
+                          src={each.images.standard_resolution.url}
+                        />
+                  </div>
+              ))}
+              </div>
+
+          </div>
+
+
+
+
+          </Row>
+          
         <Row className="bottom-row full-width">
 
             { thirdRow.map((each, i) => {
@@ -132,6 +236,21 @@ class HomePage extends Component {
               )
               }) }
         </Row>
+
+        <Row className="bottom-row full-width">
+
+            { fourthRow.map((each, i) => {
+              return (
+                
+                <Col key={i} className="mob-margin-bottom" sm={4}>
+                  <BoxCard key={i} link={each.link} img={each.img} headline={each.headline} blurb={each.blurb}  src={each.src} />
+                </Col>
+                
+              )
+              }) }
+        </Row>
+        
+
 
         { advertsOn && 
                 <Row className="adverts-row">      
