@@ -21,6 +21,10 @@ export function InfoCard({ paneInfo, toggleMarker }) {
       <h2 className="h2-subheading">{paneInfo.subheading}</h2>
       <p className="p__gig-blurb">{trimStringSpecifically(paneInfo.paragraph, 290)}</p>
 
+      <div className="div__info-pane-nights">
+        { paneInfo.nights.map((each, i) => <h2 key={i} className="h2-subheading white">{each}</h2>) }
+      </div>
+      
       <div className={ toggleMarker ? "bg-img-div effect" : "bg-img-div" }>
         <img alt="open mic comedy venue promo" className="bg-img" src={ paneInfo.img === '' ? require('./mic.jpg') : paneInfo.img } />
       </div>

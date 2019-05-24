@@ -12,7 +12,13 @@
     flex-direction: column;
 }
 
-
+.div__info-pane-nights {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .div__filters-outer-container > p {
     color: white;
@@ -157,6 +163,19 @@
     border: 3px solid skyblue;
 }
 
+.mapBringerStyle {
+    background-color: pink;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    left: -0.5rem;
+    top: -0.5rem;
+    position: relative;
+    border-radius: 1.5rem 1.5rem 0;
+    transform: rotate(45deg);
+    border: 2px solid darkred;
+}
+
 .info-pane {
     width: 100%;
     display: flex;
@@ -288,6 +307,12 @@ h3, h4 {
 }
 
 @media screen and (max-width: 576px) {
+
+    .div__info-pane-nights {
+        display: flex;
+        flex-direction: row;
+    }
+
     .more-info-each-row {
         flex-direction: column;
     }

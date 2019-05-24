@@ -21,6 +21,7 @@ export const MapBox = ({ selectMarker, lng, lat, gigs }) => {
                     width: "100%"
             }}>
                 { gigs.map((each, i) => {
+
                     return <Markers
                                 key={i}
                                 data={each}
