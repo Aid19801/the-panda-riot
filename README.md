@@ -1,4 +1,4 @@
-#the-panda-riot URL: https://the-panda-riot.herokuapp.com/home
+#the-panda-riot URL: https://www.ThePandaRiot.com
 
 ⭐️ Main Webapp:
 
