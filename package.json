@@ -6,14 +6,20 @@
     "node": "10.15.0"
   },
   "dependencies": {
+    "apollo-client-preset": "^1.0.6",
+    "apollo-link-ws": "^1.0.4",
     "bootstrap": "^4.3.1",
     "express": "^4.16.4",
     "express-favicon": "^2.0.1",
     "firebase": "^5.7.3",
+    "gists": "^2.0.0",
+    "graphql": "^0.12.3",
+    "graphql-tag": "^2.6.1",
     "mapbox-gl": "^0.53.1",
     "node-sass": "^4.11.0",
     "path": "^0.12.7",
     "react": "^16.8.6",
+    "react-apollo": "^2.0.4",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
     "react-mapbox-gl": "^4.2.1",
@@ -27,15 +33,9 @@
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.7",
     "redux-saga": "^1.0.2",
+    "subscriptions-transport-ws": "^0.9.4",
     "supertest": "^4.0.2",
-    "youtube-api-search": "^0.0.5",
-
-    "apollo-client-preset": "^1.0.6",
-    "apollo-link-ws": "^1.0.4",
-    "graphql": "^0.12.3",
-    "graphql-tag": "^2.6.1",
-    "react-apollo": "^2.0.4",
-    "subscriptions-transport-ws": "^0.9.4"
+    "youtube-api-search": "^0.0.5"
   },
   "devDependencies": {
     "json-server": "^0.14.2"

@@ -1,4 +1,34 @@
 
+export const whatDayIsIt = () => {
+    const date = new Date();
+    const day = date.getDay();
+
+    switch(day) {
+        case 0:
+            return 'Sun';
+            break;
+        case 1:
+            return 'Mon';
+            break;
+        case 2:
+            return 'Tue';
+            break;
+        case 3:
+            return 'Wed';
+            break;
+        case 4:
+            return 'Thu';
+            break;
+        case 5:
+            return 'Fri';
+            break;
+        case 6:
+            return 'Sat';
+            break;
+    }
+}
+
+
 export const trimString = str => {
     if (str.length > 540) {
         return str.slice(0, 41040) + '...';

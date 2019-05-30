@@ -26,7 +26,7 @@ function* workerFetchNews() {
         .then(res => res.json())
         .then(json => {
             retrievedArticles = json.articles.slice(0, 12);
-            console.log('retrieved articals are ', retrievedArticles.length);
+            // console.log('retrieved articals are ', retrievedArticles.length);
             return retrievedArticles;
         })
         .catch(err => console.log('saga | news stories error ', err))

@@ -8,10 +8,10 @@ import Col from 'react-bootstrap/Col';
 import request from 'superagent';
 
 import { withAuthorization } from '../../components/Session';
-import { AdvertBox, Spinner, BoxCard, ImageBox, PageTitle } from '../../components/';
+import { AdvertBox, Spinner, BoxCard, 
+  ImageBox, PageTitle, GigsOnTonightContainer } from '../../components/';
 import * as actions from './constants';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
-// import { mockNews } from '../../mock-news';
 
 
 import './styles.scss';
@@ -93,8 +93,8 @@ class HomePage extends Component {
     const { articlesHaveLoaded, photosRetrieved, firstRow, 
       secondRow, thirdRow, fourthRow, advertsOn, photos, morePhotos } = this.state;
 
-    console.log('photos back: ', photos)
-    console.log('morePhotos back: ', morePhotos)
+    // console.log('photos back: ', photos)
+    // console.log('morePhotos back: ', morePhotos)
     
     return (
       <>
@@ -103,6 +103,8 @@ class HomePage extends Component {
         <PageTitle text="#home" />
 
           { !articlesHaveLoaded && <Spinner />}
+
+        <GigsOnTonightContainer />
 
         <Row className="top-row full-width">
 
