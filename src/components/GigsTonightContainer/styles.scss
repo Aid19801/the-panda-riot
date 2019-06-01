@@ -1,0 +1,10 @@
+.div__gigs-tonight-section {
+    border: 1px solid white;
+    width: 120%;
+}
+
+@media screen and (max-width: 550px) {
+    .div__gigs-tonight-section {
+        width: 100%;
+    }
+}
