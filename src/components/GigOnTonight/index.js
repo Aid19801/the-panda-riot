@@ -15,15 +15,10 @@ export default function GigOnTonight({ id, name, nearestTubes, img, bringer }) {
     return (
         <div className="col-sm-3 div__each-gig-tonight">
 
+            <div className="div__inner-box">
 
-            <img className="img__gig-tonight-img" src={img} />
-
-
-            <div className="div__flex-stack-col">
-                <h4 className="h4__gig-tonight-name">{name}</h4>
-                <p className="p__gig-tonight-tubes">{nearestTubes && nearestTubes[0]}</p>
-                { bringer && <p className="p__gig-tonight-bringer">bringer</p>}
             </div>
+
         </div>
     )
 }
