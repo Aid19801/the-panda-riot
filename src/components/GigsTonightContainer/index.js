@@ -49,6 +49,7 @@ const GigsOnTonightContainer = () => {
     return (
 
         <div className="div__gigs-tonight-section row fluid padding-on margin-on">
+            <h1 className="col-sm-12 center">Open Mic Gigs on Tonight</h1>
             { !gigs || gigs.length === 0 && (
                 <Spinner />
             )}

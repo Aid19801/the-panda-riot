@@ -16,7 +16,7 @@ export default function GigOnTonight({ id, name, nearestTubes, img, bringer }) {
         <div className="col-sm-3 div__each-gig-tonight">
 
             <div className="div__inner-box">
-
+                <h4>{name}</h4>
             </div>
 
         </div>
