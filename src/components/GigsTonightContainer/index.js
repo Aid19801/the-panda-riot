@@ -49,7 +49,7 @@ const GigsOnTonightContainer = () => {
     return (
 
         <div className="div__gigs-tonight-section row fluid padding-on margin-on">
-            <h1 className="col-sm-12 center">Open Mic Gigs on Tonight</h1>
+            <h4 className="col-sm-12 center">#London | Open Mic | Tonight</h4>
             { !gigs || gigs.length === 0 && (
                 <Spinner />
             )}
@@ -63,6 +63,7 @@ const GigsOnTonightContainer = () => {
                             name={each.name}
                             bringer={each.bringer}
                             img={each.img}
+                            venue={each.venue}
                         />
                     )
                 })
