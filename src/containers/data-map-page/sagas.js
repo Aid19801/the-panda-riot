@@ -19,7 +19,7 @@ function* workerFetchGigs() {
     let error = null;
 
     // go to gist
-    yield fetch('https://api.github.com/gists/7c88e1645fd8518999fb9c764c0d1869')
+    yield fetch(`https://api.github.com/gists/${process.env.REACT_APP_GIG_GIST}`)
         .then(res => res.json())
         .then(json => {
             return rawUrl = json.files.gigs.raw_url;
@@ -106,7 +106,7 @@ function* workerFiltersUpdateGigsResults({ filters }) {
     let error = null;
 
     // go to gist
-    yield fetch('https://api.github.com/gists/7c88e1645fd8518999fb9c764c0d1869')
+    yield fetch(`https://api.github.com/gists/${process.env.REACT_APP_GIG_GIST}`)
         .then(res => res.json())
         .then(json => {
             return rawUrl = json.files.gigs.raw_url;
