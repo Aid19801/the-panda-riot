@@ -22,18 +22,18 @@ function* workerFetchGigsTonight() {
         .catch(err => error = err);
     
     // get dirty raw url for all the gigs
-    // yield fetch(rawURL)
-    //     .then(res => res.json())
-    //     .then(json => {
-    //         let today = whatDayIsIt();
-    //         retrievedGigs = json.gigs.filter(each => each.nights.includes(today) === true);
-    //         return retrievedGigs;
-    //     })
-    //     .catch(err => console.log('saga | Fetch gigs 2nite error: ', err))
+    yield fetch(rawURL)
+        .then(res => res.json())
+        .then(json => {
+            let today = whatDayIsIt();
+            retrievedGigs = json.gigs.filter(each => each.nights.includes(today) === true);
+            return retrievedGigs;
+        })
+        .catch(err => console.log('saga | Fetch gigs 2nite error: ', err))
 
-    //     retrievedGigs.length > 0 ?
-    //     yield put({ type: actions.FETCH_GIGS_SUCCESS, gigs: retrievedGigs })
-    //     :
-    //     yield put({ type: actions.FETCH_GIGS_FAILED, error: error })
+        retrievedGigs.length > 0 ?
+        yield put({ type: actions.FETCH_GIGS_SUCCESS, gigs: retrievedGigs })
+        :
+        yield put({ type: actions.FETCH_GIGS_FAILED, error: error })
 
 }
