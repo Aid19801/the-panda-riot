@@ -37,7 +37,7 @@ const GigsOnTonightContainer = () => {
                 .catch(err => console.log('error fetching gigs 1.1:', err))
 
                 console.log('today is:',today)
-                let tonightsGigs = await allGigs.gigs.filter(each => each.nights.includes("Wed") === true);
+                let tonightsGigs = await allGigs.gigs.filter(each => each.nights.includes(today) === true);
                 console.log('AT | tonightsGigs: ', tonightsGigs);
                 setGigs(tonightsGigs);
 
@@ -49,10 +49,8 @@ const GigsOnTonightContainer = () => {
     return (
 
         <div className="div__gigs-tonight-section row fluid padding-on margin-on">
-            <h4 className="col-sm-12 center">#London | Open Mic | Tonight</h4>
-            { !gigs || gigs.length === 0 && (
-                <Spinner />
-            )}
+            <h4 className="col-sm-12 center">Happening Tonight</h4>
+
             { gigs && gigs.length > 0 && 
                 gigs.map((each, i) => {
                     return (

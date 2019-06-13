@@ -1,6 +1,5 @@
 .div__each-gig-tonight {
     height: auto;
-    // background: orange;
     padding: 10px;
 }
 
@@ -8,7 +7,6 @@
     background: orange;
     padding: 20px;
     height: auto;
-    // border: 1px solid red;
 }
 
 .img__gig-tonight-img {
@@ -91,7 +89,7 @@
         height: auto;
         position: absolute;
         right: 17px;
-        bottom: 91px;
+        top: 21px;
     }
     .div__stack-underground {
         width: 200px !important;
@@ -101,6 +99,12 @@
 }
 
 @media screen and (max-width: 575px) {
+    .div__each-gig-tonight {
+        margin-bottom: 20px;
+    }
+    .div__inner-box {
+        height: 150px;
+    }
     .h4__gig-tonight {
         color: white;
         font-weight: 300;
