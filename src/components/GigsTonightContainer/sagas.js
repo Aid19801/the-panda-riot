@@ -13,15 +13,15 @@ function* workerFetchGigsTonight() {
     let error;
     let retrievedGigs;
 
-    // // go to gist
-    // yield fetch(`https://api.github.com/gists/${process.env.REACT_APP_GIG_GIST}`)
-    //     .then(res => res.json())
-    //     .then(json => {
-    //         return rawURL = json.files.gigs.raw_url;
-    //     })
-    //     .catch(err => error = err);
+    // go to gist
+    yield fetch(`https://api.github.com/gists/${process.env.REACT_APP_GIG_GIST}`)
+        .then(res => res.json())
+        .then(json => {
+            return rawURL = json.files.gigs.raw_url;
+        })
+        .catch(err => error = err);
     
-    // // get dirty raw url for all the gigs
+    // get dirty raw url for all the gigs
     // yield fetch(rawURL)
     //     .then(res => res.json())
     //     .then(json => {
