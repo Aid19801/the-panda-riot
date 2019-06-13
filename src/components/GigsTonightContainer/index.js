@@ -1,40 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { whatDayIsIt } from '../../lib/utils';
-import Gists from 'gists';
+import { connect } from 'react-redux';
 import './styles.scss';
 
 import GigOnTonight from '../GigOnTonight';
+import { dispatch } from 'rxjs/internal/observable/range';
 
-const GigsOnTonightContainer = () => {
-
-    const [ gigs, setGigs ] = useState([]);
+const GigsOnTonightContainer = ({ fetchGigsTonight, gigs }) => {
     
-    const gists = new Gists({ token: process.env.REACT_APP_TPR_SCRAPER_TOKEN });
-    const today = whatDayIsIt();
+    // const gists = new Gists({ token: process.env.REACT_APP_TPR_SCRAPER_TOKEN });
+    // const today = whatDayIsIt();
 
     useEffect(() => {
-        fetchGigs()
+        fetchGigsTonight()
     }, [])
-
-    const fetchGigs = async () => {
-        try {
-            let rawURL = await gists.get(process.env.REACT_APP_GIG_GIST)
-                .then(res => res.body.files.gigs.raw_url)
-                .catch(err => console.log('error fetching gigs 1.0: ', err));
-
-            let allGigs = await fetch(rawURL)
-                .then(res => res.json())
-                .then(json => json)
-                .catch(err => console.log('error fetching gigs 1.1:', err))
-
-            let tonightsGigs = await allGigs.gigs.filter(each => each.nights.includes(today) === true);
-
-            setGigs(tonightsGigs);
-
-        } catch (error) {
-            console.log('🚨error retrieving gigs from GIST: ', error);
-        }
-    }
 
     return (
 
@@ -59,5 +37,12 @@ const GigsOnTonightContainer = () => {
         </div>
     )
 }
+const mapStateToProps = (state) => ({
+    gigs: state.fetchGigsTonight.gigs,
+})
 
-export default GigsOnTonightContainer;
+const mapDispatchToProps = (dispatch) => ({
+    fetchGigsTonight: () => dispatch({ type: 'FETCH_GIGS_TONIGHT' })
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(GigsOnTonightContainer);

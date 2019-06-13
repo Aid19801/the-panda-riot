@@ -20,6 +20,7 @@ const store = createStore(RootReducer,
 function* rootSaga() {
     yield all([
         sagas.watcherFetchGigs(),
+        sagas.watcherFetchGigsTonight(),
         sagas.watcherFetchFilters(),
         sagas.watcherFetchNews(),
         sagas.watcherUserFilteringGigs(),

@@ -288,7 +288,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   pageLoading: () => dispatch({ type: actions.HOME_PAGE_LOADING }),
   pageLoaded: () => dispatch({ type: actions.HOME_PAGE_LOADED }),
-  updateStatefetchNews: () => dispatch({ type: actions.FETCH_NEWS })
+  updateStatefetchNews: () => dispatch({ type: actions.FETCH_NEWS }),
 });
 
 export default compose(

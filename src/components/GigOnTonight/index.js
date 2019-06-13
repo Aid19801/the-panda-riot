@@ -1,5 +1,4 @@
 import React from 'react';
-import Col from 'react-bootstrap/Col';
 import './styles.scss';
 
 export default function GigOnTonight({ id, venue, name, nearestTubes, img, bringer }) {

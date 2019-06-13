@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import appStateReducer from '../components/App/reducer';
+import fetchGigsTonightReducer from '../components/GigsTonightContainer/reducer';
 import accountPageReducer from '../containers/account-page/reducer';
 import adminPageReducer from '../containers/admin-page/reducer';
 // import aboutPageReducer from '../containers/about-page/reducer';
@@ -17,7 +18,7 @@ const RootReducer = combineReducers({
     appState: appStateReducer,
     accountPage: accountPageReducer,
     adminPage: adminPageReducer,
-    // aboutPage: aboutPageReducer,
+    fetchGigsTonight: fetchGigsTonightReducer,
     chatPage: chatPageReducer,
     dataMapPage: dataMapPageReducer,
     homePage: homePageReducer,
