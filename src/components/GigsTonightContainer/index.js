@@ -3,12 +3,8 @@ import { connect } from 'react-redux';
 import './styles.scss';
 
 import GigOnTonight from '../GigOnTonight';
-import { dispatch } from 'rxjs/internal/observable/range';
 
 const GigsOnTonightContainer = ({ fetchGigsTonight, gigs }) => {
-    
-    // const gists = new Gists({ token: process.env.REACT_APP_TPR_SCRAPER_TOKEN });
-    // const today = whatDayIsIt();
 
     useEffect(() => {
         fetchGigsTonight()
