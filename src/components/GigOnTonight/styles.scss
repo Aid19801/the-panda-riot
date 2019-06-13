@@ -1,0 +1,124 @@
+.div__each-gig-tonight {
+    height: auto;
+    padding: 10px;
+}
+
+.div__inner-box {
+    background: orange;
+    padding: 20px;
+    height: auto;
+}
+
+.img__gig-tonight-img {
+    opacity: 0.5;
+    width: 27%;
+    height: auto;
+    position: absolute;
+    right: 22px;
+}
+
+.div__stack-underground {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: row;
+    border: 1px solid white;
+    width: 250px;
+    max-width: 250px;
+    margin-top: 10px;
+
+    transform: skewY(-2deg);
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    bottom: 1px;
+}
+
+.img__underground {
+    height: 30px;
+    width: 30px;
+    margin-right: 5px;
+    // border: 1px solid red;
+}
+
+.p__gig-tonight-info {
+    // background: #000;
+    // height: 100%;
+    padding-right: 5px;
+    color: white;
+    z-index: 2 ;
+    bottom: 1px;
+}
+
+.h4__gig-tonight {
+    color: white;
+    font-weight: 300;
+    font-size: 190%;
+}
+
+@media screen and (max-width: 991px) {
+    .gig-name {
+        padding-left: 0;
+    }
+
+    .h4__gig-tonight {
+        font-size: 150%;
+    }
+
+    .img__gig-tonight-img {
+        width: 37%;
+        height: auto;
+        position: absolute;
+    }
+    .div__stack-underground {
+        width: 250px !important;
+        max-width: 250px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .gig-name {
+        padding-left: 0;
+    }
+
+    .h4__gig-tonight {
+        font-size: 150%;
+    }
+
+    .img__gig-tonight-img {
+        width: 37%;
+        height: auto;
+        position: absolute;
+        right: 17px;
+        top: 21px;
+    }
+    .div__stack-underground {
+        width: 200px !important;
+        max-width: 200px;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .div__each-gig-tonight {
+        margin-bottom: 20px;
+    }
+    .div__inner-box {
+        height: 150px;
+    }
+    .h4__gig-tonight {
+        color: white;
+        font-weight: 300;
+        font-size: 200%;
+        padding-left: 20px;
+    }
+    .img__gig-tonight-img {
+        width: 17%;
+        height: auto;
+        position: absolute;
+        right: 29px;
+        bottom: 25px;
+    }
+    .div__stack-underground {
+        margin-left: 20px;
+    }
+}

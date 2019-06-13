@@ -5,7 +5,7 @@ import './styles.css';
 const Spinner = () => {
     return (
         <div className="div__spinner">
-            <div class="lds-roller">
+            <div className="lds-roller">
                 <div></div>
                 <div></div>
                 <div></div>
