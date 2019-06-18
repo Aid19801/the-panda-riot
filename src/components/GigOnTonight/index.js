@@ -1,10 +1,41 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import * as ROUTES from '../../constants/routes';
+// import * as actions from './constants';
+
 import './styles.scss';
 
-export default function GigOnTonight({ id, venue, name, nearestTubes, img, bringer }) {
+function GigOnTonight({ toggleMarker, allInfo, venue, name, nearestTubes, img, bringer, history }) {
+
+    let newPaneInfo = {
+        heading: name,
+        subheading: `@ ${venue}`,
+        paragraph: allInfo.blurb,
+        nights: allInfo.nights,
+        img: img,
+        lng: allInfo.lng,
+        lat: allInfo.lat,
+        walkins: allInfo.walkins,
+        walkinSignUp: allInfo.walkinSignUp,
+        prebook: allInfo.prebook,
+        prebookSignUp: allInfo.prebookSignUp,
+        bringer: bringer,
+        nearestTubes: nearestTubes,
+        twitterHandle: allInfo.twitterHandle,
+        website: allInfo.website,
+        howToBook: allInfo.howToBook,
+        venue: venue,
+    }
+
+    const reRouteToMap = () => {
+        toggleMarker(newPaneInfo);
+        history.push('/datamap');
+    }
 
     return (
-        <div className="col-sm-3 div__each-gig-tonight">
+        <div onClick={() => reRouteToMap()} className="col-sm-3 div__each-gig-tonight">
 
             <div className="div__inner-box">
                 <div className="row">
@@ -22,8 +53,18 @@ export default function GigOnTonight({ id, venue, name, nearestTubes, img, bring
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }
 
+// const mapStateToProps = state => ({
+
+// })
+
+const mapDispatchToProps = dispatch => ({
+    toggleMarker: (paneInfo) => dispatch({ type: 'USER_CLICKED_MARKER', paneInfo }),
+})
+export default compose(
+    withRouter,
+    connect(null, mapDispatchToProps),
+)(GigOnTonight)

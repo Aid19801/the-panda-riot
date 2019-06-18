@@ -26,6 +26,7 @@ const GigsOnTonightContainer = ({ fetchGigsTonight, gigs }) => {
                             bringer={each.bringer}
                             img={each.img}
                             venue={each.venue}
+                            allInfo={each}
                         />
                     )
                 })
