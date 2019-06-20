@@ -104,8 +104,6 @@ class HomePage extends Component {
 
           { !articlesHaveLoaded && <Spinner />}
 
-        <GigsOnTonightContainer />
-
         <Row className="top-row full-width">
 
 
