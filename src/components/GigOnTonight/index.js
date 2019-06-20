@@ -3,11 +3,12 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import * as ROUTES from '../../constants/routes';
+import { whatDayIsIt } from '../../lib/utils';
 // import * as actions from './constants';
 
 import './styles.scss';
 
-function GigOnTonight({ toggleMarker, allInfo, venue, name, nearestTubes, img, bringer, history }) {
+function GigOnTonight({ toggleMarker, userFiltered, filters, allInfo, venue, name, nearestTubes, img, bringer, history }) {
 
     let newPaneInfo = {
         heading: name,
@@ -29,7 +30,22 @@ function GigOnTonight({ toggleMarker, allInfo, venue, name, nearestTubes, img, b
         venue: venue,
     }
 
+    const selectTheDayInFilters = (day) => { 
+        let today = whatDayIsIt();
+        let chosenFilter = filters.filter(each => each.filterName === today)[0];
+        console.log('AT | chosen Filter: ', chosenFilter);
+        let updatedFilter = {
+            ...chosenFilter,
+            active: true,
+        }
+
+        console.log('AT | updatedFilter: ', updatedFilter);
+        userFiltered(updatedFilter);
+
+        return updatedFilter;
+    }
     const reRouteToMap = () => {
+        // selectTheDayInFilters();
         toggleMarker(newPaneInfo);
         history.push('/datamap');
     }
@@ -57,14 +73,16 @@ function GigOnTonight({ toggleMarker, allInfo, venue, name, nearestTubes, img, b
     )
 }
 
-// const mapStateToProps = state => ({
 
-// })
+const mapStateToProps = state => ({
+    filters: state.dataMapPage.filters,
+})
 
 const mapDispatchToProps = dispatch => ({
     toggleMarker: (paneInfo) => dispatch({ type: 'USER_CLICKED_MARKER', paneInfo }),
+    userFiltered: (chosenFilter) => dispatch({ type: 'USER_CLICKED_FILTER', filter: chosenFilter }),
 })
 export default compose(
     withRouter,
-    connect(null, mapDispatchToProps),
+    connect(mapStateToProps, mapDispatchToProps),
 )(GigOnTonight)

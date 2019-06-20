@@ -18,6 +18,7 @@ const initialState = {
     filters: [],
     filter: {},
     error: null,
+    showPanels: false,
 }
 
 /* eslint-disable */
@@ -126,6 +127,7 @@ const dataMapPageReducer = (state = initialState, action) => {
         return {
             ...state,
             paneInfo: action.paneInfo,
+            showPanels: true,
         }
         break;
 

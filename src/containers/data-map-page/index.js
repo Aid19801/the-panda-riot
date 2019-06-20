@@ -30,7 +30,6 @@ class DataMapPage extends Component {
     super()
     this.state = {
         toggleMarker: false,
-        showPanels: false,
     };
   }
   
@@ -83,8 +82,8 @@ class DataMapPage extends Component {
   }
 
   render() {
-    const { toggleMarker, showPanels } = this.state;
-    const { paneInfo, gigs } = this.props;
+    const { toggleMarker } = this.state;
+    const { paneInfo, gigs, showPanels } = this.props;
 
     return (
       <>
@@ -181,6 +180,7 @@ class DataMapPage extends Component {
 const condition = authUser => !!authUser;
 
 const mapStateToProps = state => ({
+  showPanels: state.dataMapPage.showPanels,
   isLoading: state.homePage.isLoading,
   paneInfo: state.dataMapPage.paneInfo,
   gigs: state.dataMapPage.gigs,

@@ -68,11 +68,16 @@ export function* watcherUserFilteringGigs() {
 function* workerUserFilteringGigs(actionObj) {
     // take the deets out of the action object
     const { id, filterName, active } = actionObj.filter;
+    
+    console.log('1 before: ', actionObj.filter);
+
     const updatedFilter = {
         id,
         filterName,
         active: !active,
     }
+
+    console.log('1 after: ', actionObj.filter);
 
     // filter existing filters down to ev thing *but* this one
     let otherFilters = allFilterButtonObjects.filter((each) => each.id !== id);
@@ -87,6 +92,7 @@ function* workerUserFilteringGigs(actionObj) {
         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
     });
 
+    console.log('2 updatedFilters: ', updatedFilters);
     // put them back in state so gigs can render accordingly.
     yield put({ type: actions.FILTER_BOOL_UPDATED, filters: updatedFilters });
 }

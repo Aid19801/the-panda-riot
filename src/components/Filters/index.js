@@ -16,6 +16,8 @@ const Filters = ({ userFiltered, filters }) => {
         setThirdRow(filters.slice(7, 10))
     }, [filters])
 
+    console.log('firstRow: ', firstRow);
+    
     return (
         <div className="col-sm-12 div__filters-outer-container">
             <p>filters</p>
