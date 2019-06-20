@@ -1,9 +1,11 @@
-// import React, { useState, useEffect } from 'react';
-// import { connect } from 'react-redux';
-// import './styles.scss';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import './styles.scss';
 
 // import GigOnTonight from '../GigOnTonight';
 
+const GigsOnTonightContainer = () => <div className="foo">news</div>;
+export default GigsOnTonightContainer;
 // const GigsOnTonightContainer = ({ fetchGigsTonight, gigs }) => {
 
 //     useEffect(() => {
