@@ -1,6 +1,7 @@
 .div__each-gig-tonight {
     height: auto;
     padding: 10px;
+    max-width: 553px;
 }
 
 .div__inner-box {
@@ -11,8 +12,9 @@
 
 .img__gig-tonight-img {
     opacity: 0.5;
-    width: 27%;
+    width: 20%;
     height: auto;
+    max-height: 97px;
     position: absolute;
     right: 22px;
 }
@@ -65,7 +67,7 @@
     }
 
     .img__gig-tonight-img {
-        width: 37%;
+        width: 20%;
         height: auto;
         position: absolute;
     }
@@ -85,7 +87,7 @@
     }
 
     .img__gig-tonight-img {
-        width: 37%;
+        width: 20%;
         height: auto;
         position: absolute;
         right: 17px;

@@ -61,7 +61,6 @@ class YouTubeEmbed extends React.Component {
     componentWillMount = () => {
         
         this.setState({ searchTerm: this.props.term });
-
         YTSearch({key: YOUTUBE_KEY, term: this.props.term }, (data) => {
             this.setState({ videos: data })
             // console.log('AT | data back from YT ', data);
@@ -77,6 +76,8 @@ class YouTubeEmbed extends React.Component {
     }
 
     render() {
+
+        console.log('this state ', this.state);
         const { videos } = this.state;
         const { heading } = this.props;
         return (
