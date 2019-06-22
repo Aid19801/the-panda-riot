@@ -26,7 +26,7 @@ function* workerFetchGigsTonight() {
         .then(res => res.json())
         .then(json => {
             let today = whatDayIsIt();
-            retrievedGigs = json.gigs.filter(each => each.nights.includes("Tue") === true);
+            retrievedGigs = json.gigs.filter(each => each.nights.includes(today) === true);
             return retrievedGigs;
         })
         .catch(err => console.log('saga | Fetch gigs 2nite error: ', err))
