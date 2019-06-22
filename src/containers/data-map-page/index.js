@@ -23,7 +23,7 @@ import * as actions from './constants';
 
 import './styles.scss';
 
-const showYouTube = true;
+const showYouTube = false;
 
 class DataMapPage extends Component {
   constructor() {
