@@ -130,6 +130,14 @@ const dataMapPageReducer = (state = initialState, action) => {
             showPanels: true,
         }
         break;
+        // GIG SELECT | popping out info re gig
+        case actions.SELECTED_GIG:
+        return {
+            ...state,
+            selectedGigId: action.id,
+            gigs: action.gigs,
+        }
+        break;
 
         default:
         return state;

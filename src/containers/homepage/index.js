@@ -58,7 +58,7 @@ class HomePage extends Component {
     request
       .get(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${process.env.REACT_APP_INSTA_KEY}`)
       .then((res) => {
-        console.log('1) res is back: ', res.status)
+        console.log('res  is here =>', res.status)
         this.setState({
           photos: res.body.data,
           nextURL: res.body.pagination.next_url,
@@ -66,8 +66,11 @@ class HomePage extends Component {
         })
       })
       .then(() => {
-        console.log('nexturl is here?? ', this.state.nextURL);
-        fetch(this.state.nextURL)
+        console.log('nexturl is here => ', this.state.nextURL);
+        fetch(this.state.nextURL, {
+          method: 'GET',
+          cache: 'force-cache',
+        })
           .then(res => res.json())
           .then(json => {
             this.setState({ morePhotos: json.data });

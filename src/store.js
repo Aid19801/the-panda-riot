@@ -9,7 +9,7 @@ import * as sagas from './redux/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
-console.log('env ====>>  ', process.env.NODE_ENV);
+// console.log('env ====>>  ', process.env.NODE_ENV);
 
 const store = createStore(RootReducer, 
     composeWithDevTools(
@@ -23,6 +23,7 @@ function* rootSaga() {
         sagas.watcherFetchGigsTonight(),
         sagas.watcherFetchFilters(),
         sagas.watcherFetchNews(),
+        sagas.watcherSelectGig(),
         sagas.watcherUserFilteringGigs(),
         sagas.watcherFiltersUpdateGigsResults(),
     ])

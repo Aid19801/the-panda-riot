@@ -176,6 +176,19 @@
     border: 2px solid darkred;
 }
 
+.mapSelectedStyle {
+    background-color: greenyellow;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    left: -0.5rem;
+    top: -0.5rem;
+    position: relative;
+    border-radius: 1.5rem 1.5rem 0;
+    transform: rotate(45deg);
+    border: 2px solid green;
+}
+
 .info-pane {
     width: 100%;
     display: flex;

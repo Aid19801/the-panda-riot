@@ -49,6 +49,7 @@ class DataMapPage extends Component {
   handleSelectMarker = (data) => {
     
     let newPaneInfo = {
+      isSelected: true,
       heading: data.name,
       subheading: `@ ${data.venue}`,
       paragraph: data.blurb,
@@ -70,6 +71,7 @@ class DataMapPage extends Component {
     }
 
     this.props.toggleMarker(newPaneInfo);
+    this.props.updateStateSelectedGig(data.id, this.props.gigs);
     this.setState({ toggleMarker: !this.state.toggleMarker, showPanels: true });
   }
 
@@ -190,6 +192,7 @@ const mapDispatchToProps = dispatch => ({
   pageLoading: () => dispatch({ type: actions.DATAMAP_PAGE_LOADING }),
   pageLoaded: () => dispatch({ type: actions.DATAMAP_PAGE_LOADED }),
   toggleMarker: (paneInfo) => dispatch({ type: actions.USER_CLICKED_MARKER, paneInfo }),
+  updateStateSelectedGig: (id, gigs) => dispatch({ type: actions.SELECTED_GIG, id, gigs })
 });
 
 export default compose(

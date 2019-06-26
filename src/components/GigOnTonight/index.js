@@ -7,7 +7,7 @@ import * as ROUTES from '../../constants/routes';
 
 import './styles.scss';
 
-function GigOnTonight({ toggleMarker, userFiltered, filters, allInfo, venue, name, nearestTubes, img, bringer, history }) {
+function GigOnTonight({ toggleMarker, allInfo, venue, name, nearestTubes, img, bringer, history }) {
 
     let newPaneInfo = {
         heading: name,
