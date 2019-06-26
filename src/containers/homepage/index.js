@@ -116,7 +116,7 @@ class HomePage extends Component {
               return (
                 
                 <Col key={i} className="mob-margin-bottom" sm={4}>
-                  <BoxCard key={i} link={each.link} img={each.img} headline={each.headline} blurb={each.blurb} src={each.src} />
+                  <BoxCard id={each._id} key={i} link={each.link} img={each.img} headline={each.headline} blurb={each.blurb} src={each.src} />
                 </Col>
                 
               )
@@ -129,7 +129,7 @@ class HomePage extends Component {
               return (
                 
                 <Col key={i} className="mob-margin-bottom" sm={4}>
-                  <BoxCard key={i} link={each.link} img={each.img} headline={each.headline} blurb={each.blurb}  src={each.src} />
+                  <BoxCard id={each._id} key={i} link={each.link} img={each.img} headline={each.headline} blurb={each.blurb}  src={each.src} />
                 </Col>
                 
               )
@@ -235,7 +235,7 @@ class HomePage extends Component {
               return (
                 
                 <Col key={i} className="mob-margin-bottom" sm={4}>
-                  <BoxCard key={i} link={each.link} img={each.img} headline={each.headline} blurb={each.blurb}  src={each.src} />
+                  <BoxCard id={each._id} key={i} link={each.link} img={each.img} headline={each.headline} blurb={each.blurb}  src={each.src} />
                 </Col>
                 
               )
@@ -248,7 +248,7 @@ class HomePage extends Component {
               return (
                 
                 <Col key={i} className="mob-margin-bottom" sm={4}>
-                  <BoxCard key={i} link={each.link} img={each.img} headline={each.headline} blurb={each.blurb}  src={each.src} />
+                  <BoxCard id={each._id} key={i} link={each.link} img={each.img} headline={each.headline} blurb={each.blurb}  src={each.src} />
                 </Col>
                 
               )

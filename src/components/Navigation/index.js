@@ -33,6 +33,10 @@ class NavigationAuth extends Component {
             </div>
 
             <div className="nav-option-wrapper">
+              <Link to={ROUTES.ARTICLE}>Blog</Link>
+            </div>
+
+            <div className="nav-option-wrapper">
               <Link to={ROUTES.DATAMAP}>Gigs</Link>
             </div>
 
@@ -49,9 +53,14 @@ class NavigationAuth extends Component {
             </div>
 
             { this.props.isAdmin && 
-              <div className="nav-option-wrapper">
-                <Link to={ROUTES.ADMIN}>Admin</Link>
-              </div>
+              <>
+                <div className="nav-option-wrapper">
+                  <Link to={ROUTES.ADMIN}>Admin</Link>
+                </div>
+                <div className="nav-option-wrapper">
+                  <Link to={ROUTES.ADD_BLOG}>Add Blog</Link>
+                </div>
+              </>
              }
             <div className="nav-option-wrapper">
               <SignOutButton />
