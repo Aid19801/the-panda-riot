@@ -2,6 +2,23 @@
     width: 100%;
 }
 
+.div__editor-container {
+    margin-top: 20px;
+    background: lightgrey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    border: 3px solid orange;
+    height: auto;
+}
+
+.demo-editor {
+    background: white;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
 .div__loading-dots:after {
     content: '.';
     animation: dots 1s steps(5, end) infinite;

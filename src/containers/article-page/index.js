@@ -48,7 +48,7 @@ class ArticlePage extends Component {
 
     const { articleHasLoaded, advertsOn, } = this.state;
     
-    // console.log('this props yo => ', this.props.article);
+    console.log('this props yo => ', this.props.article);
     
     return (
       <>
@@ -58,7 +58,7 @@ class ArticlePage extends Component {
         
         <Row className="article-row">
           <Col sm={12}>
-
+            { this.props.article && this.props.article.content && <div className="div__rendered-html" dangerouslySetInnerHTML={ {__html: this.props.article.content} } /> }
           </Col>
         </Row>
 

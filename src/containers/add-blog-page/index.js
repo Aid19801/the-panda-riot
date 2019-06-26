@@ -6,13 +6,14 @@ import queryString from 'query-string';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
 import { withAuthorization } from '../../components/Session';
-import { AdvertBox, Spinner, PageTitle } from '../../components/';
+import { Spinner, PageTitle } from '../../components/';
 import * as actions from './constants';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 
+import { EditorState } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 import './styles.scss';
 
@@ -21,14 +22,12 @@ class AddBlogPage extends Component {
     super()
     this.state = {
       articleHasLoaded: false,
-      showSpinner: false,
-      advertsOn: false,
+      editorState: EditorState.createEmpty(),
     };
   }
 
   componentWillMount() {
     this.props.showProgressBar(true);
-    this.setState({ showSpinner: true })
     let params = queryString.parse(this.props.location.search);
     this.props.pageLoading(params.id);
   }
@@ -40,12 +39,14 @@ class AddBlogPage extends Component {
     }, 100)
   }
 
-  componentWillReceiveProps = (nextProps) => {
-    this.setState({ articleHasLoaded: true })
-  }
+  onEditorStateChange = (editorState) => {
+    this.setState({
+      editorState,
+    });
+  };
 
   render() {
-
+    const { editorState } = this.state;
     const { isLoading } = this.props;
     
     // console.log('this props yo => ', this.props.article);
@@ -58,6 +59,17 @@ class AddBlogPage extends Component {
         
         <Row className="add-blog-row">
           
+          <div className="col-sm-12 div__editor-container">
+            <h3>Text Editor</h3>
+            <Editor
+              editorState={editorState}
+              wrapperClassName="demo-wrapper"
+              editorClassName="demo-editor"
+              onEditorStateChange={this.onEditorStateChange}
+            />
+
+          </div>
+
         </Row>
 
       </Container>
