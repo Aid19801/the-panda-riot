@@ -64,11 +64,8 @@ class ArticlePage extends Component {
     return (
       <>
       <Container>
-
-    { !articleHasLoaded && <Spinner /> } 
     
-        { isDraft && <PageTitle text="#Preview" /> }
-        { !isDraft && <PageTitle text="#News" /> }
+        <PageTitle text="#News" />
         
         <Row className="article-row">
           <Col sm={12}>

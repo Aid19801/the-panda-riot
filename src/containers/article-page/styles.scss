@@ -13,6 +13,27 @@
     align-items: center;
 }
 
+.div__rendered-html p {
+    color: white;
+    text-align: start;
+    width: 100%;
+}
+
+.div__rendered-html li {
+    color: white;
+    font-family: monospace;
+}
+
+.div__rendered-html h3 {
+    margin: 20px;
+}
+
+.div__rendered-html img {
+    border-radius: 7%;
+    box-shadow: 4px 7px 29px white;
+    margin: 20px;
+}
+
 
 .div__loading-dots:after {
     content: '.';

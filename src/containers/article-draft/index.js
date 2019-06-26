@@ -12,6 +12,7 @@ import { Spinner, PageTitle } from '../../components/';
 import * as actions from './constants';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 
+import * as ROUTES from '../../constants/routes';
 
 import './styles.scss';
 
@@ -24,8 +25,12 @@ class ArticleDraftPage extends Component {
   }
 
   componentWillMount() {
-    console.log('999999');
     this.props.showProgressBar(true);
+    
+    if (!this.props.privs) {
+      this.props.history.push(ROUTES.HOME);
+    }
+
     this.setState({ showSpinner: true })
     
   }
@@ -39,7 +44,8 @@ class ArticleDraftPage extends Component {
   }
 
   postToGist = () => {
-    this.props.postToGist();
+    console.log('article is? ', this.props.article);
+    this.props.postingToGist(this.props.article);
   }
 
   render() {
@@ -60,7 +66,7 @@ class ArticleDraftPage extends Component {
           </Col>
         </Row>
         
-        <button>post</button>
+        <button onClick={this.postToGist}>post</button>
 
       </Container>
       </>
@@ -80,6 +86,7 @@ const mapDispatchToProps = dispatch => ({
   pageLoading: (id) => dispatch({ type: actions.ARTICLE_DRAFT_LOADING, id: id }),
   pageLoaded: () => dispatch({ type: actions.ARTICLE_DRAFT_LOADED }),
   pageFailed: () => dispatch({ type: actions.ARTICLE_DRAFT_FAILED }),
+  postingToGist: (article) => dispatch({ type: actions.ARTICLE_DRAFT_POSTING, content: article })
 });
 
 export default compose(

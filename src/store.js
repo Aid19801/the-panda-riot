@@ -25,6 +25,7 @@ function* rootSaga() {
         sagas.watcherFetchGigsTonight(),
         sagas.watcherFetchFilters(),
         sagas.watcherFetchNews(),
+        sagas.watcherPostingArticle(),
         sagas.watcherSelectGig(),
         sagas.watcherUserFilteringGigs(),
         sagas.watcherFiltersUpdateGigsResults(),

@@ -7,8 +7,10 @@ import queryString from 'query-string';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { withAuthorization } from '../../components/Session';
+import { withFirebase } from '../../components/Firebase';
 import { Spinner, PageTitle } from '../../components/';
 import * as actions from './constants';
+import * as ROUTES from '../../constants/routes';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 
 // draft JS for text editor
@@ -32,6 +34,11 @@ class AddBlogPage extends Component {
 
   componentWillMount() {
     this.props.showProgressBar(true);
+
+    if (!this.props.privs) {
+      this.props.history.push(ROUTES.HOME);
+    }
+
     let params = queryString.parse(this.props.location.search);
     this.props.pageLoading(params.id);
     
@@ -82,6 +89,14 @@ class AddBlogPage extends Component {
     this.props.history.push('/draft');
   }
 
+  handleBeforeInput = (input) => {
+    if (this.props.maxLength) {
+      if (draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())).length >= this.props.maxLength) {
+        return 'handled';
+      }
+    }
+  };
+
   render() {
     const { editorState, html } = this.state;
     const { isLoading } = this.props;
@@ -104,6 +119,7 @@ class AddBlogPage extends Component {
               wrapperClassName="demo-wrapper"
               editorClassName="demo-editor"
               onEditorStateChange={this.onEditorStateChange}
+              handleBeforeInput={this.handleBeforeInput}
             />
 
           </div>
@@ -129,6 +145,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default compose(
+  withFirebase,
   withProgressBar,
   withAuthorization(condition),
   withRouter,
