@@ -11,8 +11,10 @@ import { Spinner, PageTitle } from '../../components/';
 import * as actions from './constants';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 
-import { EditorState } from 'draft-js';
+// draft JS for text editor
+import { EditorState, convertToRaw } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
+import draftToHtml from 'draftjs-to-html';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 import './styles.scss';
@@ -23,6 +25,7 @@ class AddBlogPage extends Component {
     this.state = {
       articleHasLoaded: false,
       editorState: EditorState.createEmpty(),
+      html: '',
     };
   }
 
@@ -45,9 +48,18 @@ class AddBlogPage extends Component {
     });
   };
 
+  convertToAnHTMLArticle = () => {
+    const { editorState } = this.state;    
+    let raw = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+    console.log('html: ', raw);
+    this.setState({ html: raw });
+  }
+
   render() {
-    const { editorState } = this.state;
+    const { editorState, html } = this.state;
     const { isLoading } = this.props;
+
+    console.log('now in state: ', html);
     
     // console.log('this props yo => ', this.props.article);
     
@@ -58,7 +70,7 @@ class AddBlogPage extends Component {
         { isLoading ? <Spinner /> : <PageTitle text="#addBlog" /> }
         
         <Row className="add-blog-row">
-          
+          <button onClick={this.convertToAnHTMLArticle}>Submit</button>
           <div className="col-sm-12 div__editor-container">
             <h3>Text Editor</h3>
             <Editor
@@ -87,7 +99,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   pageLoading: () => dispatch({ type: actions.ADD_BLOG_PAGE_LOADING }),
   pageLoaded: () => dispatch({ type: actions.ADD_BLOG_PAGE_LOADED }),
-  // updateStatefetchNews: () => dispatch({ type: actions.FETCH_NEWS }),
 });
 
 export default compose(

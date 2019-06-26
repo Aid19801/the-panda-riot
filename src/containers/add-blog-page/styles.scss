@@ -19,6 +19,13 @@
     margin-bottom: 20px;
     margin-top: 20px;
 }
+
+.DraftEditor-root h1, h2, h3, h4, p {
+    color: black !important;
+    text-shadow: none;
+}
+
+
 .div__loading-dots:after {
     content: '.';
     animation: dots 1s steps(5, end) infinite;
