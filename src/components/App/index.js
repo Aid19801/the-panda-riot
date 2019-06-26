@@ -61,7 +61,6 @@ class App extends React.Component {
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route path={ROUTES.ACTS} component={ActsPage} />
           <Route path={ROUTES.CHAT} component={ChatPage} />
-          <Route path={ROUTES.ADMIN} component={AdminPage} />
         </div>
       </Router>
         );
