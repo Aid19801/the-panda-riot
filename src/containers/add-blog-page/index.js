@@ -12,9 +12,10 @@ import * as actions from './constants';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 
 // draft JS for text editor
-import { EditorState, convertToRaw } from 'draft-js';
+import { EditorState, ContentState, convertToRaw, convertFromHTML } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 import './styles.scss';
@@ -33,6 +34,23 @@ class AddBlogPage extends Component {
     this.props.showProgressBar(true);
     let params = queryString.parse(this.props.location.search);
     this.props.pageLoading(params.id);
+    
+    const draftInCache = localStorage.getItem('draft-blog');
+    console.log('draftInCache: ', draftInCache);
+    if (draftInCache) {
+      console.log(1)
+      const contentBlock = htmlToDraft(draftInCache);
+      if (contentBlock) {
+        console.log(2)
+        const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
+        const editorState = EditorState.createWithContent(contentState);
+        this.setState({
+          editorState: editorState,
+        });
+      }
+    }
+    console.log(3);
+    return;
   }
 
   componentDidMount() {
@@ -50,9 +68,18 @@ class AddBlogPage extends Component {
 
   convertToAnHTMLArticle = () => {
     const { editorState } = this.state;    
-    let raw = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-    console.log('html: ', raw);
-    this.setState({ html: raw });
+    const { updateStateArticleSubmitted } = this.props;    
+    const rawContentState = convertToRaw(editorState.getCurrentContent());
+    const markup = draftToHtml(
+      rawContentState,
+    );
+    // set in local state
+    this.setState({ html: markup });
+    // push into redux for draft page to collect
+    updateStateArticleSubmitted(markup);
+    // keep in localstorage just incase you refresh the page
+    localStorage.setItem('draft-blog', markup);
+    this.props.history.push('/draft');
   }
 
   render() {
@@ -60,8 +87,6 @@ class AddBlogPage extends Component {
     const { isLoading } = this.props;
 
     console.log('now in state: ', html);
-    
-    // console.log('this props yo => ', this.props.article);
     
     return (
       <>
@@ -73,6 +98,7 @@ class AddBlogPage extends Component {
           <button onClick={this.convertToAnHTMLArticle}>Submit</button>
           <div className="col-sm-12 div__editor-container">
             <h3>Text Editor</h3>
+
             <Editor
               editorState={editorState}
               wrapperClassName="demo-wrapper"
@@ -99,6 +125,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   pageLoading: () => dispatch({ type: actions.ADD_BLOG_PAGE_LOADING }),
   pageLoaded: () => dispatch({ type: actions.ADD_BLOG_PAGE_LOADED }),
+  updateStateArticleSubmitted: (html) => dispatch({ type: actions.BLOG_SUBMITTED, article: html })
 });
 
 export default compose(

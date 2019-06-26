@@ -7,7 +7,7 @@ import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import Navigation from '../Navigation';
 
-import { AdminPage, ArticlePage, AddBlogPage, ActsPage, AccountPage, ChatPage, DataMapPage,
+import { AdminPage, ArticlePage, AddBlogPage, ArticleDraftPage, ActsPage, AccountPage, ChatPage, DataMapPage,
   HomePage, LandingPage, SignInPage, SignUpPage,
   PasswordForgetPage } from '../../containers';
 import * as ROUTES from '../../constants/routes';
@@ -54,6 +54,7 @@ class App extends React.Component {
           
           <Route path={ROUTES.ARTICLE} component={ArticlePage} />
           <Route path={ROUTES.ADD_BLOG} component={AddBlogPage} />
+          <Route path={ROUTES.DRAFT_BLOG} component={ArticleDraftPage} />
 
           <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />

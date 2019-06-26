@@ -4,40 +4,31 @@ const initialState = {
     isLoading: false,
     progressBarStatus: false,
     error: null,
-    isDraft: false,
     article: '',
 }
 
 /* eslint-disable */
-const addBlogPageReducer = (state = initialState, action) => {
+const articleDraftReducer = (state = initialState, action) => {
     switch(action.type) {
-        case actions.ADD_BLOG_PAGE_LOADING:
+        case actions.ARTICLE_DRAFT_LOADING:
         return {
             ...state,
             isLoading: true,
         }
         break;
 
-        case actions.ADD_BLOG_PAGE_LOADED:
+        case actions.ARTICLE_DRAFT_LOADED:
         return {
             ...state,
             isLoading: false,
         }
         break;
 
-        case actions.ADD_BLOG_PAGE_FAILED:
+        case actions.ARTICLE_DRAFT_FAILED:
         return {
             ...state,
             isLoading: false,
             error: action.error,
-        }
-        break;
-
-        case actions.BLOG_SUBMITTED:
-        return {
-            ...state,
-            article: action.article,
-            isDraft: true,
         }
         break;
 
@@ -46,4 +37,4 @@ const addBlogPageReducer = (state = initialState, action) => {
     }
 }
 
-export default addBlogPageReducer;
+export default articleDraftReducer;

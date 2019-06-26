@@ -29,8 +29,18 @@ class ArticlePage extends Component {
   componentWillMount() {
     this.props.showProgressBar(true);
     this.setState({ showSpinner: true })
-    let params = queryString.parse(this.props.location.search);
-    this.props.pageLoading(params.id);
+
+    if (this.props.isDraft) {
+      this.setState({ showSpinner: false })
+      return;
+    }
+
+    if (!this.props.isDraft) {
+      let params = queryString.parse(this.props.location.search);
+      this.props.pageLoading(params.id);
+    }
+    
+    
   }
 
   componentDidMount() {
@@ -47,18 +57,23 @@ class ArticlePage extends Component {
   render() {
 
     const { articleHasLoaded, advertsOn, } = this.state;
+    const { isDraft } = this.props;
     
     console.log('this props yo => ', this.props.article);
-    
+
     return (
       <>
       <Container>
 
-        { !articleHasLoaded ? <Spinner /> : <PageTitle text={`${this.props.article.headline}`} /> }
+    { !articleHasLoaded && <Spinner /> } 
+    
+        { isDraft && <PageTitle text="#Preview" /> }
+        { !isDraft && <PageTitle text="#News" /> }
         
         <Row className="article-row">
           <Col sm={12}>
             { this.props.article && this.props.article.content && <div className="div__rendered-html" dangerouslySetInnerHTML={ {__html: this.props.article.content} } /> }
+            { this.props.articlePreview && <div className="div__rendered-html" dangerouslySetInnerHTML={{ __html: this.props.articlePreview }} /> }
           </Col>
         </Row>
 
@@ -91,6 +106,8 @@ const condition = authUser => !!authUser;
 const mapStateToProps = state => ({
   isLoading: state.articlePage.isLoading,
   article: state.articlePage.article,
+  isDraft: state.addBlog.isDraft,
+  articlePreview: state.addBlog.article,
 });
 
 const mapDispatchToProps = dispatch => ({

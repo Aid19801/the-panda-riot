@@ -12,3 +12,4 @@ export const SIGN_IN = '/signin';
 // ADMIN ONLY
 export const ADMIN = '/admin';
 export const ADD_BLOG = '/add-blog';
+export const DRAFT_BLOG = '/draft';

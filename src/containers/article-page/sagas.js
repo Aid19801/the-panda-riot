@@ -6,6 +6,11 @@ export function* watcherFetchArticle() {
 }
 
 function* workerFetchArticle({ id }) {
+
+    if (!id) {
+        return;
+    }
+    
     yield put({ type: actions.FETCHING_ARTICLE });
 
     let retrievedArticle = {};

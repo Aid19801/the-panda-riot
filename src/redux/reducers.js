@@ -6,6 +6,7 @@ import fetchGigsTonightReducer from '../components/GigsTonightContainer/reducer'
 import accountPageReducer from '../containers/account-page/reducer';
 import adminPageReducer from '../containers/admin-page/reducer';
 import articlePageReducer from '../containers/article-page/reducer';
+import articleDraftReducer from '../containers/article-draft/reducer';
 import chatPageReducer from '../containers/chat-page/reducer';
 import dataMapPageReducer from '../containers/data-map-page/reducer';
 
@@ -23,6 +24,7 @@ const RootReducer = combineReducers({
 
     addBlog: addBlogPageReducer,
     accountPage: accountPageReducer,
+    articleDraft: articleDraftReducer,
     articlePage: articlePageReducer,
     adminPage: adminPageReducer,
     fetchGigsTonight: fetchGigsTonightReducer,
