@@ -22,7 +22,6 @@ class App extends Component {
   componentWillMount() {
     this.props.pageLoading();
     this.props.showProgressBar(true);
-    // this.fetchPhotos();
   }
 
   componentDidMount() {
@@ -31,19 +30,6 @@ class App extends Component {
     }, 100);
     this.props.pageLoaded();
   }
-
-  // fetchPhotos() {
-  //     fetch(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${process.env.REACT_APP_INSTA_KEY}`, {
-  //       method: 'GET',
-  //       cache: 'force-cache',
-  //     })
-  //     .then((res) => {
-  //       console.log('11111 res ', res.json())
-  //       this.setState({
-  //         photos: res.body.data
-  //       })
-  //     })
-  // }
 
   handleClick = () => {
     // console.log('clicked signin')

@@ -7,7 +7,7 @@ import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import Navigation from '../Navigation';
 
-import { AdminPage, ActsPage, AccountPage, ChatPage, DataMapPage,
+import { AdminPage, ArticlePage, AddBlogPage, ArticleDraftPage, ActsPage, AccountPage, ChatPage, DataMapPage,
   HomePage, LandingPage, SignInPage, SignUpPage,
   PasswordForgetPage } from '../../containers';
 import * as ROUTES from '../../constants/routes';
@@ -26,10 +26,11 @@ class App extends React.Component {
 
   
   componentWillMount() {
+    console.log('IS THE TOKEN HERE? ', process.env.REACT_APP_TPR_SCRAPER_TOKEN);
     this.props.appLoading();
     this.props.firebase.auth.onAuthStateChanged((user) => {
       if (user && user.uid === process.env.REACT_APP_PANDA_RIOT_ADMINI) {
-        // console.log('user id is ', user.uid);
+        console.log('user id is an admin: ', user.uid);
         this.props.isAdmin();
       } else {
         console.log('ixnay');
@@ -51,13 +52,16 @@ class App extends React.Component {
         <div className="app-div">
           <Navigation isAdmin={privs} />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
+          
+          <Route path={ROUTES.ARTICLE} component={ArticlePage} />
+          <Route path={ROUTES.ADD_BLOG} component={AddBlogPage} />
+          <Route path={ROUTES.DRAFT_BLOG} component={ArticleDraftPage} />
+
           <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
           <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
           <Route path={ROUTES.HOME} component={HomePage} />
-  
-          <Route path={ROUTES.DATAMAP} component={DataMapPage} />
-  
+          <Route path={ROUTES.DATAMAP} component={DataMapPage} />  
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route path={ROUTES.ACTS} component={ActsPage} />
           <Route path={ROUTES.CHAT} component={ChatPage} />

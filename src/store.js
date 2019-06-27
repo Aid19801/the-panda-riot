@@ -19,10 +19,13 @@ const store = createStore(RootReducer,
 
 function* rootSaga() {
     yield all([
+        sagas.watcherAddBlog(),
+        sagas.watcherFetchArticle(),
         sagas.watcherFetchGigs(),
         sagas.watcherFetchGigsTonight(),
         sagas.watcherFetchFilters(),
         sagas.watcherFetchNews(),
+        sagas.watcherPostingArticle(),
         sagas.watcherSelectGig(),
         sagas.watcherUserFilteringGigs(),
         sagas.watcherFiltersUpdateGigsResults(),

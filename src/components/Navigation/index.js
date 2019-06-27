@@ -51,9 +51,9 @@ class NavigationAuth extends Component {
             </div>
 
             { this.props.privs && (
-              <div className="nav-option-wrapper orange">
-                <Link to={ROUTES.ADMIN}>💻 Admin 📱 </Link>
-              </div>
+                <div className="nav-option-wrapper orange">
+                  <Link to={ROUTES.ADD_BLOG}>Write Blog</Link>
+                </div>
               )
              }
             <div className="nav-option-wrapper">
