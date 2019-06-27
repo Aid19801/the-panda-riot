@@ -1,6 +1,6 @@
 export const ACTS = '/acts';
 export const ACCOUNT = '/account';
-// export const ADMIN = '/admin';
+export const ADMIN = '/admin';
 export const CHAT = '/chat';
 export const DATAMAP = '/datamap';
 export const HOME = '/home';
