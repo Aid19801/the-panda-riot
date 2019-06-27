@@ -27,8 +27,7 @@ class App extends React.Component {
   
   componentWillMount() {
     
-    console.log('IS THE TOKEN HERE 1? ', process.env.REACT_APP_TPR_SCRAPER_TOKEN);
-    console.log('IS THE TOKEN HERE 2? ', process.env.TPR_GIST_TOKEN);
+    console.log('1) IS THE TOKEN HERE ==> ', process.env.REACT_APP_TPR_GIST_TOKEN);
 
     this.props.appLoading();
     this.props.firebase.auth.onAuthStateChanged((user) => {
