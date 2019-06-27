@@ -136,6 +136,7 @@ const condition = authUser => !!authUser;
 
 const mapStateToProps = state => ({
   isLoading: state.articlePage.isLoading,
+  privs: state.appState.privs,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,0 +1,5 @@
+add this back in when ready { this.props.isAdmin && 
+              <div className="nav-option-wrapper">
+                <Link to={ROUTES.ADMIN}>Admin</Link>
+              </div>
+             }

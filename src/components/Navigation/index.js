@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
@@ -8,11 +10,11 @@ import Nav from 'react-bootstrap/Nav';
 import { withFirebase } from '../Firebase/index'
 import './styles.scss';
 
-const Navigation = ({ isAdmin }) => (
+const Navigation = ({ isAdmin, privs }) => (
   <div className="nav-container">
     <AuthUserContext.Consumer>
       {authUser => 
-        authUser ? <NavigationAuth isAdmin={isAdmin} /> : <NavigationNonAuth />
+        authUser ? <NavigationAuth isAdmin={isAdmin} privs={privs} /> : <NavigationNonAuth />
       }
     </AuthUserContext.Consumer>
   </div>
@@ -33,10 +35,6 @@ class NavigationAuth extends Component {
             </div>
 
             <div className="nav-option-wrapper">
-              <Link to={ROUTES.ARTICLE}>Blog</Link>
-            </div>
-
-            <div className="nav-option-wrapper">
               <Link to={ROUTES.DATAMAP}>Gigs</Link>
             </div>
 
@@ -52,15 +50,11 @@ class NavigationAuth extends Component {
               <Link to={ROUTES.CHAT}>Chat</Link>
             </div>
 
-            { this.props.isAdmin && 
-              <>
-                <div className="nav-option-wrapper">
-                  <Link to={ROUTES.ADMIN}>Admin</Link>
+            { this.props.privs && (
+                <div className="nav-option-wrapper orange">
+                  <Link to={ROUTES.ADD_BLOG}>Write Blog</Link>
                 </div>
-                <div className="nav-option-wrapper">
-                  <Link to={ROUTES.ADD_BLOG}>Add Blog</Link>
-                </div>
-              </>
+              )
              }
             <div className="nav-option-wrapper">
               <SignOutButton />
@@ -93,5 +87,11 @@ class NavigationNonAuth extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  privs: state.appState.privs,
+})
 
-export default withFirebase(Navigation);
+export default compose(
+  withFirebase,
+  connect(mapStateToProps, null),
+)(Navigation)

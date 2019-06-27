@@ -78,6 +78,7 @@ const condition = authUser => !!authUser;
 
 const mapStateToProps = state => ({
   isLoading: state.articleDraft.isLoading,
+  privs: state.appState.privs,
   isDraft: state.addBlog.isDraft,
   article: state.addBlog.article,
 });

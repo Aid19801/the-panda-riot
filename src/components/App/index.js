@@ -26,10 +26,11 @@ class App extends React.Component {
 
   
   componentWillMount() {
+    console.log('IS THE TOKEN HERE? ', process.env.REACT_APP_TPR_SCRAPER_TOKEN);
     this.props.appLoading();
     this.props.firebase.auth.onAuthStateChanged((user) => {
       if (user && user.uid === process.env.REACT_APP_PANDA_RIOT_ADMINI) {
-        // console.log('user id is ', user.uid);
+        console.log('user id is an admin: ', user.uid);
         this.props.isAdmin();
       } else {
         console.log('ixnay');
@@ -64,7 +65,6 @@ class App extends React.Component {
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route path={ROUTES.ACTS} component={ActsPage} />
           <Route path={ROUTES.CHAT} component={ChatPage} />
-          <Route path={ROUTES.ADMIN} component={AdminPage} />
         </div>
       </Router>
         );
