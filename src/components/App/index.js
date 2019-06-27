@@ -26,14 +26,17 @@ class App extends React.Component {
 
   
   componentWillMount() {
-    console.log('IS THE TOKEN HERE? ', process.env.REACT_APP_TPR_SCRAPER_TOKEN);
+    
+    console.log('IS THE TOKEN HERE 1? ', process.env.REACT_APP_TPR_SCRAPER_TOKEN);
+    console.log('IS THE TOKEN HERE 2? ', process.env.TPR_GIST_TOKEN);
+
     this.props.appLoading();
     this.props.firebase.auth.onAuthStateChanged((user) => {
       if (user && user.uid === process.env.REACT_APP_PANDA_RIOT_ADMINI) {
         console.log('user id is an admin: ', user.uid);
         this.props.isAdmin();
       } else {
-        console.log('ixnay');
+        console.log('ixnay on the adminay');
       }
     })
   }

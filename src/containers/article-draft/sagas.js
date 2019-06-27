@@ -2,6 +2,7 @@ import { takeLatest, put } from 'redux-saga/effects';
 import * as actions from './constants';
 
 const Gists = require('gists');
+
 const my_gists = new Gists({ token: process.env.REACT_APP_TPR_SCRAPER_TOKEN });
 
 export function* watcherPostingArticle() {
