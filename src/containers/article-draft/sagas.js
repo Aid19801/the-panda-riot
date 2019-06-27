@@ -2,7 +2,6 @@ import { takeLatest, put } from 'redux-saga/effects';
 import * as actions from './constants';
 
 const Gists = require('gists');
-// const my_gists = new Gists({ token: "ce24533585c233e169e27b5896e4493fd95a8c8e" });
 const my_gists = new Gists({ token: process.env.REACT_APP_TPR_SCRAPER_TOKEN });
 
 export function* watcherPostingArticle() {
@@ -21,7 +20,10 @@ function* workerPostingArticle({ content }) {
         .then(json => {
             return rawUrl = json.files.articles.raw_url;
         })
-        .catch(err => error = err);
+        .catch(err => {
+            console.log('saga 1: ', err);
+            return error = err;
+        });
     
     // get dirty raw url for all the articlesx
     yield fetch(rawUrl)
@@ -39,7 +41,10 @@ function* workerPostingArticle({ content }) {
             existingArticles.unshift(newArticle);
             console.log('existing articles: ', existingArticles);
         })
-        .catch(err => error = err);
+        .catch(err => {
+            console.log('saga 2: ', err);
+            return error = err;
+        });
 
         my_gists.edit('424b043765bf5ad54cb686032f141b34', {
             files: { 'articles': { content: JSON.stringify({ articles: existingArticles })}}
