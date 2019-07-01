@@ -7,7 +7,7 @@ export function* watcherFetchGigsTonight() {
 }
 
 function* workerFetchGigsTonight() {
-    console.log('heard fetch gigs tonight');
+    // console.log('heard fetch gigs tonight');
 
     let rawURL;
     let error;
@@ -32,7 +32,7 @@ function* workerFetchGigsTonight() {
             retrievedGigs = json.gigs.filter(each => each.nights.includes(today) === true);
             return retrievedGigs;
         })
-        .catch(err => console.log('saga | Fetch gigs 2nite error: ', err))
+        .catch(err => console.log('saga | Fetch gigs tonight error: ', err))
 
         retrievedGigs.length > 0 ?
         yield put({ type: actions.FETCH_GIGS_SUCCESS, gigs: retrievedGigs })

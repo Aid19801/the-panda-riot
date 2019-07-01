@@ -7,7 +7,7 @@ import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import Navigation from '../Navigation';
 
-import { AdminPage, ArticlePage, AddBlogPage, ArticleDraftPage, ActsPage, AccountPage, ChatPage, DataMapPage,
+import { ArticlePage, AddBlogPage, ArticleDraftPage, ActsPage, AccountPage, ChatPage, DataMapPage,
   HomePage, LandingPage, SignInPage, SignUpPage,
   PasswordForgetPage } from '../../containers';
 import * as ROUTES from '../../constants/routes';
@@ -27,7 +27,7 @@ class App extends React.Component {
   
   componentWillMount() {
     
-    console.log('1) IS THE TOKEN HERE ==> ', process.env.REACT_APP_TPR_GIST_TOKEN);
+    // console.log('1) IS THE TOKEN HERE ==> ', process.env.REACT_APP_TPR_GIST_TOKEN);
 
     this.props.appLoading();
     this.props.firebase.auth.onAuthStateChanged((user) => {

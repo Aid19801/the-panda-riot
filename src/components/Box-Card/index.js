@@ -4,7 +4,7 @@ import { trimStringSpecifically } from '../../lib/utils';
 import './styles.scss';
 
 const BoxCard = ({ id, img, blurb, headline, link, src, history }) => {
-    console.log('id is ', id);
+    // console.log('id is ', id);
     return (
             <div className="box-card hvr-float-shadow" onClick={() => src === 'TPR' ? history.push(`/article?id=${id}`) : window.open(link,'_newtab')}>
                 <h4 className="card-h4">{trimStringSpecifically(headline, 45)}</h4>

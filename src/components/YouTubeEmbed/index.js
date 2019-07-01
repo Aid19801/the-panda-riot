@@ -77,7 +77,7 @@ class YouTubeEmbed extends React.Component {
 
     render() {
 
-        console.log('this state ', this.state);
+        // console.log('this state ', this.state);
         const { videos } = this.state;
         const { heading } = this.props;
         return (

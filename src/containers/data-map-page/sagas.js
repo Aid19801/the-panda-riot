@@ -69,7 +69,7 @@ function* workerUserFilteringGigs(actionObj) {
     // take the deets out of the action object
     const { id, filterName, active } = actionObj.filter;
     
-    console.log('1 before: ', actionObj.filter);
+    // console.log('1 before: ', actionObj.filter);
 
     const updatedFilter = {
         id,
@@ -77,7 +77,7 @@ function* workerUserFilteringGigs(actionObj) {
         active: !active,
     }
 
-    console.log('1 after: ', actionObj.filter);
+    // console.log('1 after: ', actionObj.filter);
 
     // filter existing filters down to ev thing *but* this one
     let otherFilters = allFilterButtonObjects.filter((each) => each.id !== id);
@@ -92,7 +92,7 @@ function* workerUserFilteringGigs(actionObj) {
         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
     });
 
-    console.log('2 updatedFilters: ', updatedFilters);
+    // console.log('2 updatedFilters: ', updatedFilters);
     // put them back in state so gigs can render accordingly.
     yield put({ type: actions.FILTER_BOOL_UPDATED, filters: updatedFilters });
 }
@@ -173,7 +173,7 @@ export function* watcherSelectGig() {
 }
 
 export function* workerSelectGig({ id, gigs }) {
-    console.log('BEFORE ', gigs);
+    // console.log('BEFORE ', gigs);
     let everythingReSetToFalse = [];
 
     let unselectedGigs = gigs.filter(each => each.id !== id);
@@ -198,7 +198,7 @@ export function* workerSelectGig({ id, gigs }) {
         updatedGig,
     ]
 
-    console.log('AFTER ', allGigsBackTogetherInOneArray);
+    // console.log('AFTER ', allGigsBackTogetherInOneArray);
     yield put({ type: 'DATAMAP_GIGS_SUCCESS', gigs: allGigsBackTogetherInOneArray });
 
 }
