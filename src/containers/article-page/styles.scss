@@ -11,6 +11,17 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+
+    animation: slideInArticle 0.3s ease-in;
+}
+
+@keyframes slideInArticle {
+    from {
+        margin-left: -1000px;
+    }
+    to {
+        margin-left: 0;
+    }
 }
 
 .div__rendered-html p {
@@ -21,6 +32,21 @@
     margin-bottom: 15px;
     margin-top: 15px;
 }
+
+a {
+    color: grey !important;
+}
+
+
+p:nth-child(3n+0) {
+    border: 1px solid grey;
+    transform: skewX(4deg);
+    background: orange;
+    color: black;
+    padding: 10px;
+  }
+
+
 
 .div__rendered-html li {
     color: white;
@@ -85,6 +111,15 @@
     to {
         opacity: 1;
     }
+}
+
+@media screen and (max-width: 550px) {
+    .div__rendered-html img {
+        height: auto;
+        width: 345px;
+        max-width: 345px;
+    }
+    
 }
 
 @media screen and (max-width: 488px) {
