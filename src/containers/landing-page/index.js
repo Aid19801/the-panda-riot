@@ -11,6 +11,7 @@ import withProgressBar from '../../components/ProgressBar/with-progressBar';
 import * as actions from './constants';
 import ParallaxCard from './parallax-card';
 import './styles.scss';
+import { analyticsPage } from '../../lib/utils';
 
 class App extends Component {
 
@@ -20,6 +21,7 @@ class App extends Component {
   }
 
   componentWillMount() {
+    analyticsPage('landing-page');
     this.props.pageLoading();
     this.props.showProgressBar(true);
   }

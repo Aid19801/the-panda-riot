@@ -8,6 +8,7 @@ import * as ROUTES from '../../constants/routes';
 import * as actions from './constants';
 
 import './styles.scss';
+import { analyticsPage } from '../../lib/utils';
 const PasswordForgetPage = () => (
   <div>
     <h1>PasswordForget</h1>
@@ -28,6 +29,7 @@ class PasswordForgetFormBase extends Component {
   }
 
   componentWillMount() {
+    analyticsPage('pw-forget');
     this.props.showProgressBar(true);
     this.props.pageLoading();
   }

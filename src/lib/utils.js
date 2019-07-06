@@ -1,3 +1,15 @@
+import ReactGA from 'react-ga';
+
+export const analyticsPage = str => {
+    return ReactGA.pageview(`/${str}`);
+}
+
+export const analyticsEvent = str => {
+    return ReactGA.event({
+        category: 'User',
+        action: str,
+    });
+}
 
 export const whatDayIsIt = () => {
     const date = new Date();

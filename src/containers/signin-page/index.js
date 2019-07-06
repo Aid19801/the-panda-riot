@@ -12,6 +12,7 @@ import * as actions from './constants';
 import { PasswordForgetLink } from '../password-forget-page';
 
 import './styles.scss';
+import { analyticsPage } from '../../lib/utils';
 
 const INITIAL_STATE = {
   email: '',
@@ -29,6 +30,7 @@ class SignInFormBase extends Component {
   
 
   componentWillMount() {
+    analyticsPage('signin-page');
     this.props.showProgressBar(true);
     this.props.pageLoading();
   }

@@ -14,7 +14,13 @@ import * as ROUTES from '../../constants/routes';
 
 import { withAuthentication } from '../Session';
 import * as actions from './constants';
+
+import ReactGA from 'react-ga';
 import './styles.scss';
+
+function initializeReactGA() {
+  ReactGA.initialize('UA-143364010-1');
+}
 
 class App extends React.Component {
   constructor() {
@@ -26,7 +32,8 @@ class App extends React.Component {
 
   
   componentWillMount() {
-    
+
+    initializeReactGA();
     // console.log('1) IS THE TOKEN HERE ==> ', process.env.REACT_APP_TPR_GIST_TOKEN);
 
     this.props.appLoading();
