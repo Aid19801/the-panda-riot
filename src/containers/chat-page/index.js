@@ -17,6 +17,7 @@ import gql from 'graphql-tag';
 
 import './styles.scss';
 import { PageTitle } from '../../components';
+import { analyticsPage } from '../../lib/utils';
 
 class ChatPage extends Component {
     state = {
@@ -56,6 +57,7 @@ class ChatPage extends Component {
         };
 
     componentDidMount() {
+      analyticsPage('chat-page');
         let myProfilePicture = 'https://patientpattern.com/wp-content/uploads/2018/11/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg';
         let meUid = this.props.firebase.auth.currentUser.uid;
         this.props.firebase.user(meUid)

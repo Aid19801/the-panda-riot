@@ -14,6 +14,7 @@ import * as actions from './constants';
 import { compose } from 'recompose';
 
 import './styles.scss';
+import { analyticsPage } from '../../lib/utils';
 class AccountChangeForm extends React.Component {
   constructor() {
     super();
@@ -29,6 +30,7 @@ class AccountChangeForm extends React.Component {
   }
 
   componentWillMount = () => {
+    analyticsPage('me');
     let meUid = this.props.firebase.auth.currentUser.uid;
     this.props.firebase.user(meUid)
       .on('value', snapshot => {

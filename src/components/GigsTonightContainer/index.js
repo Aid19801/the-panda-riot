@@ -19,8 +19,8 @@ const GigsOnTonightContainer = ({ fetchGigsTonight, gigs }) => {
                 gigs.map((each, i) => {
                     return (
                         <GigOnTonight
-                            key={each.id}
-                            id={i+1}
+                            key={i}
+                            id={each.id}
                             nearestTubes={each.nearestTubes}
                             name={each.name}
                             bringer={each.bringer}

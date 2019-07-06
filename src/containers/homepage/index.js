@@ -15,6 +15,7 @@ import withProgressBar from '../../components/ProgressBar/with-progressBar';
 
 
 import './styles.scss';
+import { analyticsPage, analyticsEvent } from '../../lib/utils';
 
 class HomePage extends Component {
   constructor() {
@@ -36,6 +37,7 @@ class HomePage extends Component {
   }
 
   componentWillMount() {
+    analyticsPage('home');
     this.props.showProgressBar(true);
     this.setState({ showSpinner: true })
     this.props.pageLoading();
@@ -79,6 +81,11 @@ class HomePage extends Component {
       .catch(err => {
         console.log('err retrieving insta posts: ', err);
       })
+  }
+
+  handleInstagramClick = (each) => {
+    analyticsEvent(`clicked-insta-${each.id}`)
+    return window.open(each.link, '_newtab');
   }
 
   componentWillReceiveProps = (nextProps) => {
@@ -144,7 +151,7 @@ class HomePage extends Component {
 
               <div className="insta-row-of-images">
                 { photosRetrieved && photos.slice(0, 5).map((each, i) => (
-                  <div key={i} onClick={() => window.open(each.link, '_newtab')} className="div__each-image">
+                  <div key={i} onClick={() => this.handleInstagramClick(each)} className="div__each-image">
                         <img
                           className="img__each-img"
                           style={{ height: 90, width: 90 }}
@@ -156,7 +163,7 @@ class HomePage extends Component {
 
               <div className="insta-row-of-images">
                 { photosRetrieved && photos.slice(5, 10).map((each, i) => (
-                  <div key={i} onClick={() => window.open(each.link, '_newtab')} className="div__each-image">
+                  <div key={i} onClick={() => this.handleInstagramClick(each)} className="div__each-image">
                         <img
                           className="img__each-img"
                           style={{ height: 90, width: 90 }}
@@ -172,7 +179,7 @@ class HomePage extends Component {
 
               <div className="insta-row-of-images">
                 { photosRetrieved && photos.slice(10, 15).map((each, i) => (
-                  <div key={i} onClick={() => window.open(each.link, '_newtab')} className="div__each-image">
+                  <div key={i} onClick={() => this.handleInstagramClick(each)} className="div__each-image">
                         <img
                           className="img__each-img"
                           style={{ height: 90, width: 90 }}
@@ -184,7 +191,7 @@ class HomePage extends Component {
 
               <div className="insta-row-of-images">
                 { photosRetrieved && photos.slice(15, 20).map((each, i) => (
-                  <div key={i} onClick={() => window.open(each.link, '_newtab')} className="div__each-image">
+                  <div key={i} onClick={() => this.handleInstagramClick(each)} className="div__each-image">
                         <img
                           className="img__each-img"
                           style={{ height: 90, width: 90 }}
@@ -200,7 +207,7 @@ class HomePage extends Component {
 
               <div className="insta-row-of-images">
                 { photosRetrieved && morePhotos.slice(0, 5).map((each, i) => (
-                  <div key={i} onClick={() => window.open(each.link, '_newtab')} className="div__each-image">
+                  <div key={i} onClick={() => this.handleInstagramClick(each)} className="div__each-image">
                         <img
                           className="img__each-img"
                           style={{ height: 90, width: 90 }}
@@ -212,7 +219,7 @@ class HomePage extends Component {
 
               <div className="insta-row-of-images">
               { photosRetrieved && morePhotos.slice(5, 10).map((each, i) => (
-                  <div key={i} onClick={() => window.open(each.link, '_newtab')} className="div__each-image">
+                  <div key={i} onClick={() => this.handleInstagramClick(each)} className="div__each-image">
                         <img
                           className="img__each-img"
                           style={{ height: 90, width: 90 }}

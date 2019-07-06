@@ -6,6 +6,7 @@ import { compose } from 'redux';
 import * as ROUTES from '../../constants/routes';
 
 import './styles.scss';
+import { analyticsEvent } from '../../lib/utils';
 
 function GigOnTonight({ toggleMarker, allInfo, venue, name, nearestTubes, img, bringer, history }) {
 
@@ -30,6 +31,7 @@ function GigOnTonight({ toggleMarker, allInfo, venue, name, nearestTubes, img, b
     }
 
     const reRouteToMap = () => {
+        analyticsEvent(`clicked-gig-2nite-${newPaneInfo.heading}`);
         toggleMarker(newPaneInfo);
         history.push('/datamap');
     }

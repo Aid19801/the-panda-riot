@@ -15,6 +15,7 @@ import withProgressBar from '../../components/ProgressBar/with-progressBar';
 
 
 import './styles.scss';
+import { analyticsPage } from '../../lib/utils';
 
 class ArticlePage extends Component {
   constructor() {
@@ -27,6 +28,7 @@ class ArticlePage extends Component {
   }
 
   componentWillMount() {
+    analyticsPage('tpr-article');
     this.props.showProgressBar(true);
     this.setState({ showSpinner: true })
 

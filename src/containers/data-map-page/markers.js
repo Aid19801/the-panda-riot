@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Marker } from "react-mapbox-gl";
 import './styles.scss';
+import { analyticsEvent } from '../../lib/utils';
 
 const Markers = ({ data, coordinates, handleClick }) => {
 
@@ -19,8 +20,13 @@ const Markers = ({ data, coordinates, handleClick }) => {
         return cn;
     }
 
+    const handleClickWithAnalytics = () => {
+        analyticsEvent(`user-clicked-marker-${data.name}`);
+        handleClick(data);
+    }
+
     return (
-        <div onClick={() => handleClick(data)} className="map-marker">
+        <div onClick={() => handleClickWithAnalytics()} className="map-marker">
             <Marker
                 coordinates={coordinates}
                 anchor="bottom"

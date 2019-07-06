@@ -21,9 +21,16 @@ import RatingIcon from './icons/rating-icon';
 
 import * as actions from './constants';
 
+import { analyticsPage } from '../../lib/utils';
+
 import './styles.scss';
 
 const showYouTube = false;
+
+// function initializeReactGA(str) {
+//   ReactGA.initialize('UA-143364010-1');
+//   ReactGA.pageview('/home');
+// }
 
 class DataMapPage extends Component {
   constructor() {
@@ -34,6 +41,7 @@ class DataMapPage extends Component {
   }
   
   componentWillMount() {
+    analyticsPage('datamap');
     this.props.showProgressBar(true);
     this.props.pageLoading();
   }

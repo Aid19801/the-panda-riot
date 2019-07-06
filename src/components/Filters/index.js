@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Col from 'react-bootstrap/Col';
 import * as actions from '../../containers/data-map-page/constants';
 import './styles.scss';
+import { analyticsEvent } from '../../lib/utils';
 
 const Filters = ({ userFiltered, filters }) => {
 
@@ -82,6 +83,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    userFiltered: (chosenFilter) => dispatch({ type: actions.USER_CLICKED_FILTER, filter: chosenFilter })
+    userFiltered: (chosenFilter) => {
+        analyticsEvent(`user-filtered-${chosenFilter.filterName}`);
+        dispatch({ type: actions.USER_CLICKED_FILTER, filter: chosenFilter })
+    }
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);

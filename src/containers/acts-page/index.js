@@ -10,7 +10,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import { tooSoon } from '../../lib/utils';
+import { tooSoon, analyticsPage } from '../../lib/utils';
 
 import './styles.scss';
 import { DownArrow, ClapIcon } from './svgs';
@@ -93,6 +93,7 @@ class ActsPage extends Component {
 
 
     componentWillMount() {
+        analyticsPage('act-rater');
         this.renderActs();
         this.props.showProgressBar(true);
         this.props.pageLoading();

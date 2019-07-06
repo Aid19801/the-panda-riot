@@ -9,6 +9,7 @@ import * as ROUTES from '../../constants/routes';
 import * as actions from './constants';
 
 import './styles.scss';
+import { analyticsPage } from '../../lib/utils';
 
 const INITIAL_STATE = {
   username: '',
@@ -28,6 +29,7 @@ class SignUpFormBase extends Component {
   }
 
   componentWillMount() {
+    analyticsPage('signup-page');
     this.props.showProgressBar(true);
     this.props.pageLoading();
   }
