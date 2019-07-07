@@ -15,7 +15,7 @@ import withProgressBar from '../../components/ProgressBar/with-progressBar';
 
 
 import './styles.scss';
-import { analyticsPage } from '../../lib/utils';
+import { analyticsPage, updateMetaTagsForFacebook } from '../../lib/utils';
 
 class ArticlePage extends Component {
   constructor() {
@@ -67,9 +67,9 @@ class ArticlePage extends Component {
   render() {
 
     const { articleHasLoaded, advertsOn, } = this.state;
-    const { isDraft } = this.props;
+    const { isDraft, article } = this.props;
     
-    console.log('this props yo => ', this.props.article);
+    console.log('this props yo => ', article);
 
     return (
       <>
@@ -79,9 +79,8 @@ class ArticlePage extends Component {
         
         <Row className="article-row">
           <Col sm={12}>
-            { this.props.article && this.props.article.content && <div className="div__rendered-html" dangerouslySetInnerHTML={ {__html: this.props.article.content} } /> }
-            { this.props.article && this.props.article.headline && document.querySelector('meta[property="og:description"]').setAttribute("content", this.props.article.headline) }
-            { this.props.article && this.props.article.headline && document.querySelector('meta[property="og:url"]').setAttribute("content", `https://www.thepandariot.com/article?id=${this.props.article._id}`) }
+            { this.props.article && this.props.article.content && <div className="div__rendered-html" dangerouslySetInnerHTML={ {__html: article.content} } /> }
+            { article && article.headline && updateMetaTagsForFacebook(article.headline, `https://www.thepandariot.com/article?id=${article._id}`, article.blurb) }
             { this.props.articlePreview && <div className="div__rendered-html" dangerouslySetInnerHTML={{ __html: this.props.articlePreview }} /> }
           </Col>
         </Row>

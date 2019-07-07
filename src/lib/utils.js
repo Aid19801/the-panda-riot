@@ -1,5 +1,33 @@
 import ReactGA from 'react-ga';
 
+export const updateMetaTagsForFacebook = (headline, url, descr) => {
+    
+    // update title
+    const metaTitle = document.createElement('meta');
+    metaTitle.setAttribute('property', 'og:title');
+    metaTitle.setAttribute('content', headline);
+
+    // update url
+    const metaURL = document.createElement('meta');
+    metaURL.setAttribute('property', 'og:url');
+    metaURL.setAttribute('content', url);
+
+    // update description
+    const metaDescription = document.createElement('meta');
+    metaDescription.setAttribute('property', 'og:description');
+    metaDescription.setAttribute('content', descr);
+
+    console.log('headline ', metaTitle);
+    console.log('url ', metaURL);
+    console.log('descr ',metaDescription );
+
+
+    document.querySelector('head').appendChild(metaTitle);
+    document.querySelector('head').appendChild(metaURL);
+    document.querySelector('head').appendChild(metaDescription);
+}
+
+
 export const analyticsPage = str => {
     if (process.env.NODE_ENV === 'production') {
         console.log('in prod so firing analytics');
