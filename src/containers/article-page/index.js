@@ -28,15 +28,22 @@ class ArticlePage extends Component {
   }
 
   componentWillMount() {
+    
+    // load analytics
     analyticsPage('tpr-article');
-    this.props.showProgressBar(true);
-    this.setState({ showSpinner: true })
 
+    // show progress 'loading...' bar & show spinner
+    this.props.showProgressBar(true);
+    this.setState({ showSpinner: true });
+
+    // if its a draft kill spinner, not needed
     if (this.props.isDraft) {
       this.setState({ showSpinner: false })
       return;
     }
 
+    // if its not a draft, take the ref from the URL, pass it to redux
+    // to pull in the correct gist article html <content />
     if (!this.props.isDraft) {
       let params = queryString.parse(this.props.location.search);
       this.props.pageLoading(params.id);
@@ -72,6 +79,7 @@ class ArticlePage extends Component {
         <Row className="article-row">
           <Col sm={12}>
             { this.props.article && this.props.article.content && <div className="div__rendered-html" dangerouslySetInnerHTML={ {__html: this.props.article.content} } /> }
+            { this.props.article && this.props.article.headline && document.querySelector('meta[property="og:description"]').setAttribute("content", this.props.article.headline) }
             { this.props.articlePreview && <div className="div__rendered-html" dangerouslySetInnerHTML={{ __html: this.props.articlePreview }} /> }
           </Col>
         </Row>
