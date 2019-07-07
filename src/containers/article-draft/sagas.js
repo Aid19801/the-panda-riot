@@ -3,7 +3,8 @@ import * as actions from './constants';
 
 const Gists = require('gists');
 
-const my_gists = new Gists({ token: "cac9e5d5242153a2bba1c1987a8bbddfb07b3379" });
+// change to token when ready
+const my_gists = new Gists({ token: process.env.REACT_APP_GIG_GIST });
 
 export function* watcherPostingArticle() {
     yield takeLatest(actions.ARTICLE_DRAFT_POSTING, workerPostingArticle);
