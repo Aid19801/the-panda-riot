@@ -99,10 +99,11 @@ class DataMapPage extends Component {
     return (
       <>
       <Helmet>
-          <title>TPR Gig Map</title>
-          <meta name="description" content="Gig Map for open mic comedy in London" />
-          <meta name="og:description" content="Your friendly, useful Gig Map for open mic comedy in London" />
-          <meta name="og:title" content="The Panda Riot" />
+          <title>Helmet title tag gig map</title>
+          <meta name="description" content="meta regular description" />
+          <meta name="og:description" content="helmet meta og description" />
+          <meta name="og:image" content="https://pbs.twimg.com/media/D6C0oplWkAAZ4mw.jpg" />
+          <meta name="og:title" content="helmet meta og title" />
           <meta name="og:url" content="https://www.thepandariot.com/datamap" />
       </Helmet>
 
