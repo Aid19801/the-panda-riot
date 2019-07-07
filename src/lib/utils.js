@@ -3,7 +3,8 @@ import ReactGA from 'react-ga';
 export const updateMetaTagsForFacebook = (headline, url, descr) => {
     
     // page title
-    document.querySelector('title').innerHTML = `TPR | ${headline}`;
+    const pageTitle = document.createElement('title');
+    pageTitle.innerHTML = `TPR | ${headline}`;
 
     // update meta title
     const metaTitle = document.createElement('meta');
@@ -21,7 +22,7 @@ export const updateMetaTagsForFacebook = (headline, url, descr) => {
     metaDescription.setAttribute('content', descr);
 
     // append all of them to the head.
-    // document.querySelector('head').appendChild(pageTitle);
+    document.querySelector('head').appendChild(pageTitle);
     document.querySelector('head').appendChild(metaTitle);
     document.querySelector('head').appendChild(metaURL);
     document.querySelector('head').appendChild(metaDescription);
