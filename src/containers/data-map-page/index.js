@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Helmet } from 'react-helmet';
 
 import { withAuthorization } from '../../components/Session';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
@@ -97,6 +98,14 @@ class DataMapPage extends Component {
 
     return (
       <>
+      <Helmet>
+          <title>TPR Gig Map</title>
+          <meta name="description" content="Gig Map for open mic comedy in London" />
+          <meta name="og:description" content="Your friendly, useful Gig Map for open mic comedy in London" />
+          <meta name="og:title" content="The Panda Riot" />
+          <meta name="og:url" content="https://www.thepandariot.com/datamap" />
+      </Helmet>
+
       <Container>
         <PageTitle text="#gigs" />
         <Row className="full-width-row">

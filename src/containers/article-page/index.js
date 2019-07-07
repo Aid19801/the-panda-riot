@@ -78,7 +78,7 @@ class ArticlePage extends Component {
 
 
       <Helmet>
-          <title>{`TPR | ${article.headline}`}</title>
+          <title>{`${article.headline}`}</title>
           <meta name="description" content={article.blurb} />
           <meta name="og:description" content={article.blurb} />
           <meta name="og:title" content={`${article.headline}`} />
