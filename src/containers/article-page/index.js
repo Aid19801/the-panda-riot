@@ -29,6 +29,7 @@ class ArticlePage extends Component {
 
   componentWillMount() {
     
+    document.createElement('meta').setAttribute("og:type", "article");
     // load analytics
     analyticsPage('tpr-article');
 
@@ -80,6 +81,7 @@ class ArticlePage extends Component {
           <Col sm={12}>
             { this.props.article && this.props.article.content && <div className="div__rendered-html" dangerouslySetInnerHTML={ {__html: this.props.article.content} } /> }
             { this.props.article && this.props.article.headline && document.querySelector('meta[property="og:description"]').setAttribute("content", this.props.article.headline) }
+            { this.props.article && this.props.article.headline && document.querySelector('meta[property="og:url"]').setAttribute("content", `https://www.thepandariot.com/article?id=${this.props.article._id}`) }
             { this.props.articlePreview && <div className="div__rendered-html" dangerouslySetInnerHTML={{ __html: this.props.articlePreview }} /> }
           </Col>
         </Row>
