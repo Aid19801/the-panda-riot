@@ -1,14 +1,24 @@
 import ReactGA from 'react-ga';
 
 export const analyticsPage = str => {
-    return ReactGA.pageview(`/${str}`);
+    if (process.env.NODE_ENV === 'production') {
+        console.log('in prod so firing analytics');
+        return ReactGA.pageview(`/${str}`);
+      } else {
+        console.log('no analytics PAGE because not prod : ', str);
+      }
 }
 
 export const analyticsEvent = str => {
-    return ReactGA.event({
-        category: 'User',
-        action: str,
-    });
+    if (process.env.NODE_ENV === 'production') {
+        console.log('in prod so firing analytics');
+        return ReactGA.event({
+            category: 'User',
+            action: str,
+        });
+      } else {
+        console.log('no analytics EVENT because not prod : ', str);
+      }
 }
 
 export const whatDayIsIt = () => {
