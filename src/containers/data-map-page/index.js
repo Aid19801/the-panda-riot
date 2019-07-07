@@ -98,15 +98,6 @@ class DataMapPage extends Component {
 
     return (
       <>
-      <Helmet>
-          <title>Helmet title tag gig map</title>
-          <meta name="description" content="meta regular description" />
-          <meta name="og:description" content="helmet meta og description" />
-          <meta name="og:image" content="https://pbs.twimg.com/media/D6C0oplWkAAZ4mw.jpg" />
-          <meta name="og:title" content="helmet meta og title" />
-          <meta name="og:url" content="https://www.thepandariot.com/datamap" />
-      </Helmet>
-
       <Container>
         <PageTitle text="#gigs" />
         <Row className="full-width-row">

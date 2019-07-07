@@ -75,16 +75,6 @@ class ArticlePage extends Component {
 
     return (
       <>
-
-      <Helmet>
-          <title>Helmet article title tag gig map</title>
-          <meta name="description" content="meta regular description" />
-          <meta name="og:description" content="helmet article meta og description" />
-          <meta name="og:image" content="https://pbs.twimg.com/media/D6C0oplWkAAZ4mw.jpg" />
-          <meta name="og:title" content="helmet article meta og title" />
-          <meta name="og:url" content={`https://www.thepandariot.com/article?id=${article.id}`} />
-      </Helmet>
-
       <Container>
     
         <PageTitle text="#News" />
