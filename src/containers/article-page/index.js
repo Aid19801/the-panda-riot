@@ -13,6 +13,8 @@ import { AdvertBox, Spinner, PageTitle } from '../../components/';
 import * as actions from './constants';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 
+import { Helmet } from 'react-helmet';
+
 
 import './styles.scss';
 import { analyticsPage, updateMetaTagsForFacebook } from '../../lib/utils';
@@ -73,6 +75,16 @@ class ArticlePage extends Component {
 
     return (
       <>
+
+
+      <Helmet>
+          <title>{`TPR | ${article.headline}`}</title>
+          <meta name="description" content={article.blurb} />
+          <meta name="og:description" content={article.blurb} />
+          <meta name="og:title" content={`${article.headline}`} />
+          <meta name="og:url" content={`https://www.thepandariot.com/article?id=${article.id}`} />
+      </Helmet>
+
       <Container>
     
         <PageTitle text="#News" />
@@ -80,7 +92,6 @@ class ArticlePage extends Component {
         <Row className="article-row">
           <Col sm={12}>
             { this.props.article && this.props.article.content && <div className="div__rendered-html" dangerouslySetInnerHTML={ {__html: article.content} } /> }
-            { article && article.headline && updateMetaTagsForFacebook(article.headline, `https://www.thepandariot.com/article?id=${article._id}`, article.blurb) }
             { this.props.articlePreview && <div className="div__rendered-html" dangerouslySetInnerHTML={{ __html: this.props.articlePreview }} /> }
           </Col>
         </Row>

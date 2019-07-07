@@ -2,30 +2,30 @@ import ReactGA from 'react-ga';
 
 export const updateMetaTagsForFacebook = (headline, url, descr) => {
     
-    // page title
-    const pageTitle = document.createElement('title');
-    pageTitle.innerHTML = `TPR | ${headline}`;
+    // // page title
+    // const pageTitle = document.createElement('title');
+    // pageTitle.innerHTML = `TPR | ${headline}`;
 
-    // update meta title
-    const metaTitle = document.createElement('meta');
-    metaTitle.setAttribute('property', 'og:title');
-    metaTitle.setAttribute('content', headline);
+    // // update meta title
+    // const metaTitle = document.createElement('meta');
+    // metaTitle.setAttribute('property', 'og:title');
+    // metaTitle.setAttribute('content', headline);
 
-    // update meta url
-    const metaURL = document.createElement('meta');
-    metaURL.setAttribute('property', 'og:url');
-    metaURL.setAttribute('content', url);
+    // // update meta url
+    // const metaURL = document.createElement('meta');
+    // metaURL.setAttribute('property', 'og:url');
+    // metaURL.setAttribute('content', url);
 
-    // update meta description
-    const metaDescription = document.createElement('meta');
-    metaDescription.setAttribute('property', 'og:description');
-    metaDescription.setAttribute('content', descr);
+    // // update meta description
+    // const metaDescription = document.createElement('meta');
+    // metaDescription.setAttribute('property', 'og:description');
+    // metaDescription.setAttribute('content', descr);
 
-    // append all of them to the head.
-    document.querySelector('head').appendChild(pageTitle);
-    document.querySelector('head').appendChild(metaTitle);
-    document.querySelector('head').appendChild(metaURL);
-    document.querySelector('head').appendChild(metaDescription);
+    // // append all of them to the head.
+    // document.querySelector('head').appendChild(pageTitle);
+    // document.querySelector('head').appendChild(metaTitle);
+    // document.querySelector('head').appendChild(metaURL);
+    // document.querySelector('head').appendChild(metaDescription);
 }
 
 
