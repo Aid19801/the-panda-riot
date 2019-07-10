@@ -26,11 +26,21 @@
 
 .div__rendered-html p {
     font-size: 19px;
-    color: white;
+    color: white !important;
     text-align: start;
     width: 100%;
     margin-bottom: 15px;
     margin-top: 15px;
+}
+
+.div__rendered-html p span {
+    background: none;
+    // font-size: 19px;
+    // color: white !important;
+    // text-align: start;
+    // width: 100%;
+    // margin-bottom: 15px;
+    // margin-top: 15px;
 }
 
 a {

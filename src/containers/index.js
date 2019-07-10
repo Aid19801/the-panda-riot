@@ -11,6 +11,7 @@ import LandingPage from './landing-page';
 import PasswordForgetPage from './password-forget-page';
 import SignInPage from './signin-page';
 import SignUpPage from './signup-page';
+import UserProfilePage from './user-profile-page';
 
 export {
     ActsPage,
@@ -26,4 +27,5 @@ export {
     PasswordForgetPage,
     SignInPage,
     SignUpPage,
+    UserProfilePage,
 }

@@ -1,6 +1,3 @@
-
-// import Carousel from './Carousel';
-// import CarouselColumnTwo from './Carousel/column-two';
 import AdvertBox from './AdvertBox';
 import BoxCard from './Box-Card';
 import Divider from './Divider';
@@ -12,7 +9,7 @@ import PageTitle from './PageTitle';
 import Spinner from './Spinner';
 import TrafficLights from './TrafficLights';
 import TwitterEmbed from './TwitterEmbed';
-import YouTubeEmbed from './YouTubeEmbed';
+import UserCard from './UserCard';
 
 export {
     // Carousel,
@@ -28,5 +25,5 @@ export {
     TrafficLights,
     TwitterEmbed,
     Spinner,
-    YouTubeEmbed,
+    UserCard,
 }
