@@ -21,6 +21,22 @@
     
 }
 
+.tickbox {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.bg-green {
+    background: green;
+    border: 1px solid lightgreen;
+}
+.bg-red {
+    background: darkred;
+    border: 1px solid red;
+}
+
 .horizontal-two-elements p{
     margin-bottom: 0;
     color: black;

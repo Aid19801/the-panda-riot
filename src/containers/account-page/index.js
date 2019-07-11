@@ -36,12 +36,13 @@ class AccountChangeForm extends React.Component {
       .on('value', snapshot => {
           const me = snapshot.val();
           const { username, tagline, profilePicture, rating, includeInActRater } = me;
+          let includeInActRaterStatus = includeInActRater || false;
           let persistRatingFromDb = rating !== 0 && rating ? rating : 0;
           this.setState({
             username,
             tagline,
             profilePicture,
-            includeInActRater,
+            includeInActRater: includeInActRaterStatus,
             email: this.props.firebase.auth.currentUser.email,
             rating: persistRatingFromDb,
           })
@@ -74,6 +75,7 @@ class AccountChangeForm extends React.Component {
   };
 
   handleIncludeInActRater = (event) => {
+    console.log('event ', event);
     this.setState({ includeInActRater: !this.state.includeInActRater });
   }
 
@@ -108,12 +110,11 @@ class AccountChangeForm extends React.Component {
         />
 
         <div className="horizontal-two-elements">
-          <input
-            className="checkbox"
-            type="checkbox"
-            checked={this.state.includeInActRater}
-            onChange={this.handleIncludeInActRater}
-          />
+          <div
+            style={{ height: 20, width: 20 }}
+            className={this.state.includeInActRater ? "tickbox bg-green" : "tickbox bg-red" }
+            onClick={() => this.handleIncludeInActRater()}
+          >{this.state.includeInActRater ? '✔' : 'X'}</div>
           <p>include me in Act Rater?: </p>
         </div>
         <button disabled={isInvalid} type="submit">

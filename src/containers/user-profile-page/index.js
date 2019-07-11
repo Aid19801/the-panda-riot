@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import { withAuthorization } from '../../components/Session';
-import { PageTitle, UserCard } from '../../components';
+import { UserCard } from '../../components';
 import * as actions from './constants';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 
@@ -15,6 +15,7 @@ import withProgressBar from '../../components/ProgressBar/with-progressBar';
 import './styles.scss';
 import { analyticsPage, analyticsEvent } from '../../lib/utils';
 import UserInfoCard from '../../components/UserInfoCard';
+import GigIvePlayedAt from '../../components/GigIvePlayedAt';
 
 class UserProfilePage extends Component {
   constructor() {
@@ -45,7 +46,7 @@ class UserProfilePage extends Component {
   }
 
   render() {
-    
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
     return (
       <>
       <Container>
@@ -56,7 +57,16 @@ class UserProfilePage extends Component {
           <Col sm={6}>
             <UserInfoCard />
           </Col>
+        </Row>
 
+        <Row className="full-width">
+          <Col sm={12} className="div__flex-center">
+            <p className="p__gigsiveplayed-title center margin-off">Gigs I've Played At</p>
+          </Col>
+        </Row>
+
+        <Row className="full-width margin-top">
+          { arr.map((each, i) => <GigIvePlayedAt img="https://pbs.twimg.com/profile_images/1082972985030524928/2S0z5D5M.jpg" key={i} />) }
         </Row>
 
       </Container>

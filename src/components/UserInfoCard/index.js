@@ -2,6 +2,8 @@ import React from 'react';
 import YouTube from 'react-youtube';
 import SocialIcons from '../SocialIcons';
 import TitleAndValue from '../TitleAndValue';
+import GigsIvePlayedAt from '../GigIvePlayedAt';
+
 import './styles.css';
 
 const UserInfoCard = (props) => {
@@ -37,7 +39,6 @@ const UserInfoCard = (props) => {
                         onReady={_onReady}
                     />
                 </div>
-
                 <SocialIcons />
         </div> 
     )

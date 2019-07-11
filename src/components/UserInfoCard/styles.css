@@ -1,6 +1,6 @@
 .div__user-info-card-medium-container {
-    border: 10px solid orange;
-    background: grey;
+    border: 10px solid black;
+    background: linear-gradient(45deg, grey, lightgrey);
     height: auto;
     width: 100%;
     max-width: 400px;
@@ -13,7 +13,6 @@
 
 
 .div__user-info-card-info-overlay {
-    /* border: 2px solid purple; */
     width: 100%;
     max-width: 70%;
     height: 100%;
@@ -30,11 +29,15 @@
     display: flex;
     justify-content: center;
     border: 2px solid grey;
+    background: orange;
+    transform: skewX(4deg);
 }
 .div__youtube {
-    border-radius: 7px;
     width: 100%;
-    border: 7px solid white;
+    padding: 5px;
+    transform: skewX(-4deg);
+    
+    
 }
 
 @media screen and (max-width: 488px) {
