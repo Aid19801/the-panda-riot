@@ -15,6 +15,7 @@ import { compose } from 'recompose';
 
 import './styles.scss';
 import { analyticsPage } from '../../lib/utils';
+import ProfilePic from '../../components/ProfilePic';
 class AccountChangeForm extends React.Component {
   constructor() {
     super();
@@ -81,8 +82,6 @@ class AccountChangeForm extends React.Component {
 
   render() {
 
-    console.log('Is this new version logging through successfully?');
-
     const { tagline, profilePicture } = this.state;
 
     const isInvalid = tagline === '' || profilePicture === '';
@@ -103,13 +102,17 @@ class AccountChangeForm extends React.Component {
           type="text"
           placeholder="tagline..."
         />
-        <input
-          name="profilePicture"
-          value={this.state.profilePicture}
-          onChange={this.onChange}
-          type="text"
-          placeholder="img URL eg https://my-pics/1_pic.jpg"
-        />
+
+        <div className="div__flex-row">
+          <input
+            name="profilePicture"
+            value={this.state.profilePicture}
+            onChange={this.onChange}
+            type="text"
+            placeholder="img URL eg https://my-pics/1_pic.jpg"
+          />
+          <ProfilePic srcProp={this.state.profilePicture} />
+        </div>
 
         <div className="horizontal-two-elements">
           <div
