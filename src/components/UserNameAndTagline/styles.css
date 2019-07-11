@@ -1,0 +1,18 @@
+.div__user-name-tagline-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.h3__user-name {
+    color: white;
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.p__tagline {
+    text-align: center;
+}

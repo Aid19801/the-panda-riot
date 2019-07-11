@@ -1,0 +1,13 @@
+.div__user-card-container {
+    width: 100%;
+    border: 10px solid orange;
+    background: lightgrey;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center ;
+}

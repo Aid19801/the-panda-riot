@@ -9,7 +9,8 @@ import Navigation from '../Navigation';
 
 import { ArticlePage, AddBlogPage, ArticleDraftPage, ActsPage, AccountPage, ChatPage, DataMapPage,
   HomePage, LandingPage, SignInPage, SignUpPage,
-  PasswordForgetPage } from '../../containers';
+  PasswordForgetPage, 
+  UserProfilePage} from '../../containers';
 import * as ROUTES from '../../constants/routes';
 
 import { withAuthentication } from '../Session';
@@ -66,6 +67,7 @@ class App extends React.Component {
           <Navigation isAdmin={privs} />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           
+          <Route path={ROUTES.USER_PROFILE} component={UserProfilePage} />
           <Route path={ROUTES.ARTICLE} component={ArticlePage} />
           <Route path={ROUTES.ADD_BLOG} component={AddBlogPage} />
           <Route path={ROUTES.DRAFT_BLOG} component={ArticleDraftPage} />

@@ -1,0 +1,11 @@
+.div__gig-ive-played-at {
+    max-width: 40px;
+}
+.img__gig-ive-played-at {
+    border-radius: 50%;
+    height: auto;
+    width: 100%;
+    margin-top: 0px;
+    border: 2px solid white;
+    margin-left: 5px;
+}

@@ -1,5 +1,20 @@
-CMS to add gigs
-filtering on days of the week
-website vs howToBook
-check no one can /delete shit.
-change titles to wobbly box
+on me page
+    id
+    photo
+    act name    
+    tagline
+    GiggingSince drop down
+    Style
+    Favourite Gig
+    Facebook Link
+    Twitter Link
+    YouTube Link
+    Specific YouTube Video Link
+    Website Link
+    GigsIvePlayedAt: []
+
+
+Goes into firebase database
+
+User Page
+    calls in that user 

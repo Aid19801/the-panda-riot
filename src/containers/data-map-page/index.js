@@ -10,7 +10,7 @@ import { withAuthorization } from '../../components/Session';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 import { InfoCard } from './info-card';
 import { MapBox } from './map';
-import { YouTubeEmbed, TwitterEmbed, Filters, PageTitle } from '../../components';
+import { TwitterEmbed, Filters, PageTitle } from '../../components';
 
 import LaptopIcon from './icons/laptop-icon';
 import CalendarIcon from './icons/calendar-icon';
@@ -25,13 +25,6 @@ import * as actions from './constants';
 import { analyticsPage } from '../../lib/utils';
 
 import './styles.scss';
-
-const showYouTube = false;
-
-// function initializeReactGA(str) {
-//   ReactGA.initialize('UA-143364010-1');
-//   ReactGA.pageview('/home');
-// }
 
 class DataMapPage extends Component {
   constructor() {
@@ -171,16 +164,13 @@ class DataMapPage extends Component {
         
         { paneInfo.twitterHandle ? (
           <>
-          <Col className="carousel-columns" sm={12}>
+          <Col className="carousel-columns" sm={8}>
             { showPanels && paneInfo.twitterHandle && <TwitterEmbed twitterHandle={paneInfo.twitterHandle} /> }
           </Col>
           </>
         )
           : null
         }
-          <Col className="carousel-columns" sm={ paneInfo.twitterHandle ? 6 : 12}>
-            { showPanels && showYouTube && <YouTubeEmbed heading={paneInfo.heading} term={`${paneInfo.heading} London standup comedy`} /> }
-          </Col>
         </Row>
       </Container>
       </>

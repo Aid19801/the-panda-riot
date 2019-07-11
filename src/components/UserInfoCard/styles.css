@@ -1,0 +1,49 @@
+.div__user-info-card-medium-container {
+    border: 10px solid black;
+    background: linear-gradient(45deg, grey, lightgrey);
+    height: auto;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;   
+}
+
+
+.div__user-info-card-info-overlay {
+    width: 100%;
+    max-width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    position: absolute;
+}
+.div__user-info-card-info-overlay > p {
+    max-width: inherit;
+}
+
+.div__youtube-container {
+    display: flex;
+    justify-content: center;
+    border: 2px solid grey;
+    background: orange;
+    transform: skewX(4deg);
+}
+.div__youtube {
+    width: 100%;
+    padding: 5px;
+    transform: skewX(-4deg);
+    
+    
+}
+
+@media screen and (max-width: 488px) {
+    .div__user-info-card-medium-container {
+        margin-left: 0px;
+        margin-top: 0px;
+        width: 300px;
+    }
+}
