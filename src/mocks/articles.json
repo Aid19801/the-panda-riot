@@ -1,5 +1,13 @@
 {  
    "articles":[  
+      {
+         "_id": "928659823_2865",
+         "headline": "Why Edinburgh Fringe Rents Are Spiralling",
+         "blurb": "Many of those performing and working at the Edinburgh Fringe this year have been astonished at how much more expensive the already pricey rents have become for accommodation.",
+         "src": "Chortle",
+         "img": "https://www.chortle.co.uk/images/photos/small/ld-louse-dickins.jpg",
+         "link": "https://www.chortle.co.uk/correspondents/2019/07/11/43547/why_edinburgh_fringe_rents_are_spiralling"
+         },
       {  
          "_id":"TPR_1562859416077",
          "headline":"VAULT: Gigs, Basements, Flyers, Online Releases... (Music? Pffff - No, It's the Life of an Open Mic Comedian)",
