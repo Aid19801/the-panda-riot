@@ -81,6 +81,8 @@ class AccountChangeForm extends React.Component {
 
   render() {
 
+    console.log('Is this new version logging through successfully?');
+
     const { tagline, profilePicture } = this.state;
 
     const isInvalid = tagline === '' || profilePicture === '';
