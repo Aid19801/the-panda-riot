@@ -24,6 +24,23 @@ body {
   height: 100vh;
 }
 
+.div__flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.div__flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.div__flex-center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
 .form__stackable-form{
   display: flex;
   flex-direction: column;

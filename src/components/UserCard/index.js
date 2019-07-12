@@ -8,7 +8,7 @@ const UserCard = () => {
 
     return (
         <div className="div__user-card-container">
-            <ProfilePic />
+            <ProfilePic srcProp="https://hungarytoday.hu/wp-content/uploads/2018/02/18ps27.jpg" />
             <UserNameAndTagline />
         </div> 
     )
