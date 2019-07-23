@@ -1,0 +1,1 @@
+export const STORE_PAGES_IN_REDUX = 'STORE_PAGES_IN_REDUX';

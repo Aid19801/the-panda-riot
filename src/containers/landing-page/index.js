@@ -10,6 +10,8 @@ import * as ROUTES from '../../constants/routes';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 import * as actions from './constants';
 import ParallaxCard from './parallax-card';
+import { RichText } from 'prismic-reactjs';
+
 import './styles.scss';
 import { analyticsPage } from '../../lib/utils';
 
@@ -40,11 +42,34 @@ class App extends Component {
 
   render() {
 
+    const { pages } = this.props;
+
     return (
       <div id="landing-page">
         <Container>
             <Row className="div__landing-page-row">
-              <ParallaxCard onClick={this.handleClick} />
+              { pages && pages.length !== 0 && pages.map((each, i) => {
+                if (each.uid.includes('welcome') === true) {
+                  return (
+                    <>
+                      <RichText
+                        key={i}
+                        render={each.data.title}
+                      />
+
+                      <img
+                        src={each.data.image.url}
+                        width={each.data.image.dimensions.width}
+                        height={each.data.image.dimensions.height} alt="London Open Mic Comedy Signup For Acts"
+                      />
+
+                      
+                      
+                    </>
+                  )
+                }
+              })}
+              {/* <ParallaxCard onClick={this.handleClick} /> */}
             </Row>
         </Container>
       </div>
@@ -54,6 +79,7 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   isLoading: state.landingPage.isLoading,
+  pages: state.prismic.pages,
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -5,6 +5,8 @@ import {
 } from 'react-router-dom';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
+import ReactGA from 'react-ga';
+
 import Navigation from '../Navigation';
 
 import { ArticlePage, AddBlogPage, ArticleDraftPage, ActsPage, AccountPage, ChatPage, DataMapPage,
@@ -14,9 +16,9 @@ import { ArticlePage, AddBlogPage, ArticleDraftPage, ActsPage, AccountPage, Chat
 import * as ROUTES from '../../constants/routes';
 
 import { withAuthentication } from '../Session';
-import * as actions from './constants';
+import withPrismicPages from '../Prismic/with-prismic-pages';
 
-import ReactGA from 'react-ga';
+import * as actions from './constants';
 import './styles.scss';
 
 
@@ -57,9 +59,16 @@ class App extends React.Component {
    this.props.appLoaded(); 
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.prismicPage !== this.props.prismicPage) {
+      this.props.updateStatePrismicPages(nextProps.prismicPage);
+    }
+  }
+
   render() {
 
     const { privs } = this.props;
+    console.log('this props at app index js : ', this.props)
     return (
       <Router>
   
@@ -98,10 +107,12 @@ const mapDispatchToProps = dispatch => ({
   appLoaded: () => dispatch({ type: actions.APP_LOADED }),
   appFailed: () => dispatch({ type: actions.APP_FAILED }),
   isAdmin: () => dispatch({ type: actions.IS_ADMIN, privs: true }),
+  updateStatePrismicPages: (pages) => dispatch({ type: 'STORE_PAGES_IN_REDUX', pages: pages })
 })
 
 
 export default compose(
   withAuthentication,
+  withPrismicPages,
   connect(mapStateToProps, mapDispatchToProps)
 )(App);
