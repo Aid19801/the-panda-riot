@@ -31,6 +31,10 @@ body {
   padding: 20px;
 }
 
+.flex-direction-col {
+  display: flex;
+  flex-direction: column;
+}
 .btn__orange {
   background: orange;
   color: black;
@@ -141,6 +145,18 @@ h2, h4 {
   width: 90%;
 }
 
+.slide-in {
+  animation: slideInMyShit 0.3s ease-in;
+}
+
+@keyframes slideInMyShit {
+  from {
+    margin-bottom: 1000px;
+  }
+  to {
+    margin-bottom: 0;
+  }
+}
 
 @media screen and (max-width: 1120px) {
   p {

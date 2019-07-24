@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import request from 'superagent';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import * as ROUTES from '../../constants/routes';
 
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
@@ -45,34 +46,77 @@ class App extends Component {
     const { pages } = this.props;
 
     return (
-      <div id="landing-page">
-        <Container>
-            <Row className="div__landing-page-row">
-              { pages && pages.length !== 0 && pages.map((each, i) => {
-                if (each.uid.includes('welcome') === true) {
-                  return (
-                    <>
-                      <RichText
-                        key={i}
-                        render={each.data.title}
-                      />
+      <>
+      { pages && pages.length !== 0 && pages.map((each, i) => {
+        if (each.uid.includes('welcome') === true) {
+          console.log('each.data ==> ', each.data);
+          return (
+            <div
+              key={i}
+              id="landing-page"
+              style={{
+                backgroundImage: `url(${each.data["background-img"].url})`, 
+                height: '500px',
+                backgroundAttachment: 'fixed',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
 
-                      <img
-                        src={each.data.image.url}
-                        width={each.data.image.dimensions.width}
-                        height={each.data.image.dimensions.height} alt="London Open Mic Comedy Signup For Acts"
-                      />
+              }}
+              >
+                <Container fluid={true}>
 
-                      
-                      
-                    </>
-                  )
-                }
-              })}
-              {/* <ParallaxCard onClick={this.handleClick} /> */}
-            </Row>
-        </Container>
-      </div>
+                  <Row className="lp__first-section div__flex-center">
+                    <Col sm={12}>
+                      <div className="div__flex-center center flex-direction-col">
+                        <RichText render={each.data.title} />
+                        <img
+                          src={each.data["page-image"].url}
+                          alt="the panda riot london comedy gig"
+                          width="70%"
+                          height="auto"
+                          style={{ filter: 'grayscale(100%)', boxShadow: '9px 17px 22px black', maxWidth: '650px', maxHeight: '264px', marginTop: '40px' }}
+
+                        />
+                      </div>
+                    </Col>
+                  </Row>
+
+
+                  <Row className="lp__second-section">
+                    <Col sm={4}>
+                      <div className="div__each-lp-box div__flex-center center flex-direction-col">
+                        <img src={require('./question-mark.svg')} alt="what is this open mic comedy icon" />
+                        <RichText render={each.data["first-box"]} />
+                        
+                      </div>
+                    </Col>
+
+                    <Col sm={4}>
+                      <div className="div__each-lp-box div__flex-center center flex-direction-col">
+                      <img src={require('./payment-method.svg')} alt="is this open mic comedy app free for London people?" />
+                        <RichText render={each.data["second-box"]} />
+                      </div>
+                    </Col>
+
+
+                    <Col sm={4}>
+                      <div className="div__each-lp-box div__flex-center center flex-direction-col">
+                      <img src={require('./laptop.svg')} alt="what extras can I get with the app?" />
+                        <RichText render={each.data["third-box"]} />
+                        
+                      </div>
+                    </Col>
+                  </Row>
+
+
+                </Container>
+            </div>
+              )
+            }
+            return <div />
+          })}
+          </>
     )
   }
 }
