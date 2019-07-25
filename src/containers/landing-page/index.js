@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
-import request from 'superagent';
+// import request from 'superagent';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,11 +10,11 @@ import * as ROUTES from '../../constants/routes';
 
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 import * as actions from './constants';
-import ParallaxCard from './parallax-card';
 import { RichText } from 'prismic-reactjs';
 
 import './styles.scss';
 import { analyticsPage } from '../../lib/utils';
+// import { relative } from 'path';
 
 class App extends Component {
 
@@ -110,7 +110,88 @@ class App extends Component {
                   </Row>
 
 
+
+                  <Row
+                    className="lp__third-section"
+                    style={{
+                      backgroundImage: `url("https://static.designmynight.com/uploads/2018/11/High-Res-Comedyroom-optimised.png")`, 
+                      filter: 'grayscale(100%)',
+                      height: '850px',
+
+                      backgroundAttachment: 'fixed',
+                      backgroundPosition: 'center',
+                      backgroundRepeat: 'no-repeat',
+                      backgroundSize: 'cover',
+                    }}
+                  >
+
+                    <Col sm={5}>
+                      <div className="div__promo-box">
+
+                        <RichText render={each.data["first-promo-box-title"]} />
+                        <RichText render={each.data["first-promo-box-blurb"]} />
+                        <div className="div__lp-insta-container">
+                          <img src={each.data["first-promo-box-img"].url} width={300} height="auto" alt="instagram" />
+                          <img src={each.data["first-promo-box-img-two"].url} width={300} height="auto" alt="instagram" />
+                        </div>
+
+                      </div>
+                    </Col>
+
+                    <Col sm={5}>
+                      <div className="div__promo-box">
+
+                        <RichText render={each.data["second-promo-box-title"]} />
+                        <RichText render={each.data["second-promo-box-blurb"]} />
+                        <div className="div__lp-insta-container">
+                          <img src={each.data["second-promo-box-img"].url} width={300} height="auto" alt="instagram" />
+                          <img src={each.data["second-promo-box-img-two"].url} width={300} height="auto" alt="instagram" />
+                        </div>
+
+                      </div>
+                    </Col>
+                  </Row>
+
+
+
+                <div className="div__lp-footer">
+                  <Row>
+                    <Col sm={2}>
+                      <div onClick={() => window.open(each.data["footer-link-one"].url, '_newtab')}>
+                        <RichText render={each.data["footer-link-text-one"]} />
+                      </div>
+                    </Col>
+
+                    <Col sm={2}>
+                      <div onClick={() => window.open(each.data["footer-link-two"].url, '_newtab')}>
+                        <RichText render={each.data["footer-link-text-two"]} />
+                      </div>
+                    </Col>
+
+
+                    <Col sm={2}>
+                      <div onClick={() => window.open(each.data["footer-link-three"].url, '_newtab')}>
+                        <RichText render={each.data["footer-link-text-three"]} />
+                      </div>
+                    </Col>
+
+
+                    <Col sm={2}>
+                      <div onClick={() => window.open(each.data["footer-link-four"].url, '_newtab')}>
+                        <RichText render={each.data["footer-link-text-four"]} />
+                      </div>
+                    </Col>
+
+
+                    <Col sm={2}>
+                      <div onClick={() => window.open(each.data["footer-link-five"].url, '_newtab')}>
+                        <RichText render={each.data["footer-link-text-five"]} />
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
                 </Container>
+
             </div>
               )
             }

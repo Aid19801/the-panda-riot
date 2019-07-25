@@ -16,6 +16,13 @@ const prismicReducer = (state = initialState, action) => {
         }
         break;
 
+        case 'STORE_NEWS_STORIES_REDUX':
+            return {
+                ...state,
+                stories: action.stories,
+            }
+            break;
+
         default:
         return state;
     }

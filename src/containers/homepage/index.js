@@ -16,6 +16,7 @@ import withProgressBar from '../../components/ProgressBar/with-progressBar';
 
 import './styles.scss';
 import { analyticsPage, analyticsEvent } from '../../lib/utils';
+import withPrismicStories from '../../components/Prismic/with-prismic-stories';
 
 class HomePage extends Component {
   constructor() {
@@ -89,12 +90,20 @@ class HomePage extends Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
-    let firstRow = nextProps.articles.slice(0, 3);
-    let secondRow = nextProps.articles.slice(3, 6);
-    let thirdRow = nextProps.articles.slice(6, 9);
-    let fourthRow = nextProps.articles.slice(9, 12);
 
-    this.setState({ firstRow, secondRow, thirdRow, fourthRow, articlesHaveLoaded: true })
+    console.log('nextProps: ', nextProps);
+    let firstRow = (nextProps && nextProps.prismicStories && nextProps.prismicStories.slice(0, 3));
+    // let secondRow = nextProps.articles.slice(3, 6);
+    // let thirdRow = nextProps.articles.slice(6, 9);
+    // let fourthRow = nextProps.articles.slice(9, 12);
+
+    this.setState({ 
+      firstRow,
+      // secondRow,
+      // thirdRow,
+      // fourthRow,
+      articlesHaveLoaded: true
+    })
 
   }
 
@@ -118,19 +127,18 @@ class HomePage extends Component {
         
         <Row className="top-row full-width">
 
-
-            { firstRow.map((each, i) => {
+            { articlesHaveLoaded && firstRow.map((each, i) => {
               return (
                 
-                <Col key={i} className="mob-margin-bottom" sm={4}>
-                  <BoxCard id={each._id} key={i} link={each.link} img={each.img} headline={each.headline} blurb={each.blurb} src={each.src} />
+                <Col key={each.uid} className="mob-margin-bottom" sm={4}>
+                  <BoxCard id={each.uid} link={each.uid} img={each.data["news-image"].url} headline={each.data["news-headline1"][0].text} blurb={each.data["news-body"][0].text} src="TPR" />
                 </Col>
                 
               )
               }) }
         </Row>
 
-        <Row className="mid-row full-width">
+        {/* <Row className="mid-row full-width">
 
             { secondRow.map((each, i) => {
               return (
@@ -141,7 +149,7 @@ class HomePage extends Component {
                 
               )
               }) }
-        </Row>
+        </Row> */}
 
 
 
@@ -236,7 +244,7 @@ class HomePage extends Component {
 
           </Row>
           
-        <Row className="bottom-row full-width">
+        {/* <Row className="bottom-row full-width">
 
             { thirdRow.map((each, i) => {
               return (
@@ -261,7 +269,7 @@ class HomePage extends Component {
               )
               }) }
         </Row>
-        
+         */}
 
 
         { advertsOn && 
@@ -304,5 +312,6 @@ const mapDispatchToProps = dispatch => ({
 export default compose(
   withProgressBar,
   withAuthorization(condition),
+  withPrismicStories,
   connect(mapStateToProps, mapDispatchToProps),
 )(HomePage);

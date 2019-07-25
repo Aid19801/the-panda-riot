@@ -15,6 +15,11 @@
     animation: slideInArticle 0.3s ease-in;
 }
 
+.block-img {
+    display: flex;
+    justify-content: center;
+}
+
 @keyframes slideInArticle {
     from {
         margin-left: -1000px;

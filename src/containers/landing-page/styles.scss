@@ -20,12 +20,18 @@
   // background: red;
 }
 .lp__second-section {
-  margin-bottom: 20px;
   background: linear-gradient(darkorange, #FF7F50);
-  // background: linear-gradient(to right, grey 1px, transparent 1px), linear-gradient(to bottom, grey 1px, transparent 1px);
+  box-shadow: 6px 12px 20px red;
   height: auto;
   margin-top: 50px;
 }
+
+.lp__third-section {
+  margin-bottom: 20px;
+  background: linear-gradient(darkorange, #FF7F50);
+  height: auto;
+}
+
 
 // 3 boxes of What Is This, Is it Free info
 .div__each-lp-box {
@@ -46,9 +52,73 @@
   padding: 20px;
 }
 
+.lp__third-section {
+  display: flex;
+  justify-content: space-around;
+} 
+
+.lp__third-section .div__promo-box {
+  margin-top: 20px;
+  padding: 20px;
+  // border: 1px solid red;
+  // background: grey;
+}
+
+
+#landing-page .lp__third-section .col-sm-5 .div__promo-box h3 {
+  color: orange !important;
+  background: grey;
+  transform: skewY(0deg);
+  text-align: center;
+}
+
+.div__lp-insta-container {
+  transform: skewY(2deg);
+  // box-shadow: 7px 12px 90px black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.div__lp-insta-container img {
+  box-shadow: 9px 12px 97px orange;
+  border: 5px solid black;
+  border-radius: 5%;
+  filter: 'grayscale(0%)' !important;
+}
+.div__lp-insta-container img:nth-child(2) {
+  transform: skewY(-5deg);
+}
+
+.div__lp-footer {
+  width: 100%;
+  background: orange;
+  transform: skewY(2deg);
+  display: flex;
+  justify-content: space-evenly;
+  color: white;
+  position: relative;
+  bottom: 0px;
+  box-shadow: 90px 17px 50px grey;
+  height: 80px;
+}
+
+
+@media screen and (max-width: 1040px) {
+  .div__lp-insta-container img:nth-child(2) {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 500px) {
 
-  // 3 boxes of What Is This, Is it Free info
+  .lp__third-section {
+    height: 1700px !important;
+  }
+
+  .div__promo-box {
+    margin-top: 0;
+  }
 
 .div__each-lp-box {
   margin-top: 0;
@@ -56,6 +126,33 @@
 #landing-page .col-sm-4:nth-child(1) {
   // border: 7px solid purple;
   margin-top: 30px;
+}
+
+.div__lp-insta-container {
+  flex-direction: column;
+  align-items: center;
+}
+
+.div__lp-footer {
+  width: 100%;
+  transform: skewY(5deg);
+  background: orange;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+  position: relative;
+  bottom: 0px;
+  box-shadow: 90px 17px 50px grey;
+  height: auto;
+}
+
+.div__lp-footer .row {
+  height: auto;
+}
+.div__lp-footer h4 {
+  margin-bottom: 5px;
+  text-align: center;
 }
 
 
