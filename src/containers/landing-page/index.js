@@ -155,7 +155,7 @@ class App extends Component {
 
 
                 <div className="div__lp-footer">
-                  <Row>
+                  <Row className="full-width flex-center">
                     <Col sm={2}>
                       <div onClick={() => window.open(each.data["footer-link-one"].url, '_newtab')}>
                         <RichText render={each.data["footer-link-text-one"]} />

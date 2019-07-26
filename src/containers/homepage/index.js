@@ -91,17 +91,17 @@ class HomePage extends Component {
 
   componentWillReceiveProps = (nextProps) => {
 
-    console.log('nextProps: ', nextProps);
+    // console.log('nextProps: ', nextProps);
     let firstRow = (nextProps && nextProps.prismicStories && nextProps.prismicStories.slice(0, 3));
-    // let secondRow = nextProps.articles.slice(3, 6);
-    // let thirdRow = nextProps.articles.slice(6, 9);
-    // let fourthRow = nextProps.articles.slice(9, 12);
+    let secondRow = nextProps.articles.slice(0, 3);
+    let thirdRow = nextProps.articles.slice(3, 6);
+    let fourthRow = nextProps.articles.slice(6, 9);
 
     this.setState({ 
       firstRow,
-      // secondRow,
-      // thirdRow,
-      // fourthRow,
+      secondRow,
+      thirdRow,
+      fourthRow,
       articlesHaveLoaded: true
     })
 
@@ -127,7 +127,7 @@ class HomePage extends Component {
         
         <Row className="top-row full-width">
 
-            { articlesHaveLoaded && firstRow.map((each, i) => {
+            { articlesHaveLoaded && firstRow && firstRow.map((each, i) => {
               return (
                 
                 <Col key={each.uid} className="mob-margin-bottom" sm={4}>
@@ -138,9 +138,9 @@ class HomePage extends Component {
               }) }
         </Row>
 
-        {/* <Row className="mid-row full-width">
+        <Row className="mid-row full-width">
 
-            { secondRow.map((each, i) => {
+            { articlesHaveLoaded && secondRow.map((each, i) => {
               return (
                 
                 <Col key={i} className="mob-margin-bottom" sm={4}>
@@ -149,7 +149,7 @@ class HomePage extends Component {
                 
               )
               }) }
-        </Row> */}
+        </Row>
 
 
 
@@ -242,11 +242,11 @@ class HomePage extends Component {
 
 
 
-          </Row>
+        </Row>
           
-        {/* <Row className="bottom-row full-width">
+        <Row className="bottom-row full-width">
 
-            { thirdRow.map((each, i) => {
+            { articlesHaveLoaded && thirdRow.map((each, i) => {
               return (
                 
                 <Col key={i} className="mob-margin-bottom" sm={4}>
@@ -259,7 +259,7 @@ class HomePage extends Component {
 
         <Row className="bottom-row full-width">
 
-            { fourthRow.map((each, i) => {
+            { articlesHaveLoaded && fourthRow.map((each, i) => {
               return (
                 
                 <Col key={i} className="mob-margin-bottom" sm={4}>
@@ -269,7 +269,7 @@ class HomePage extends Component {
               )
               }) }
         </Row>
-         */}
+        
 
 
         { advertsOn && 

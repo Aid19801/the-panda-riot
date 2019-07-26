@@ -51,8 +51,8 @@ class NavigationAuth extends Component {
             </div>
 
             { this.props.privs && (
-                <div className="nav-option-wrapper orange">
-                  <Link to={ROUTES.ADD_BLOG}>Write Blog</Link>
+                <div onClick={() => window.open('https://des-lynham.prismic.io/documents/working~l=en-gb/')}className="nav-option-wrapper orange">
+                  <p>Write Blog</p>
                 </div>
               )
              }
