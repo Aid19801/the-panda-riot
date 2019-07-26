@@ -41,12 +41,6 @@
 
 .div__rendered-html p span {
     background: none;
-    // font-size: 19px;
-    // color: white !important;
-    // text-align: start;
-    // width: 100%;
-    // margin-bottom: 15px;
-    // margin-top: 15px;
 }
 
 a {
@@ -76,13 +70,15 @@ p:nth-child(3n+0) {
 
 .div__rendered-html h3:nth-child(1) {
     text-align: center;
-    background: white;
+    font-family: 'Raleway' !important;
+    background: linear-gradient(#FF9135, #C66505);
+    transform: rotateZ(-3deg);
     padding: 5px;
     font-family: monospace;
     padding-right: 20px;
     padding-right: 20px;
     font-size: 43px;
-    color: black;
+    color: white;
 }
 
 .div__rendered-html img {
