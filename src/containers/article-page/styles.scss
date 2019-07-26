@@ -15,6 +15,12 @@
     animation: slideInArticle 0.3s ease-in;
 }
 
+.block-img {
+    display: flex;
+    justify-content: center;
+    max-width: 500px;
+}
+
 @keyframes slideInArticle {
     from {
         margin-left: -1000px;
@@ -68,10 +74,23 @@ p:nth-child(3n+0) {
     margin: 20px;
 }
 
+.div__rendered-html h3:nth-child(1) {
+    text-align: center;
+    background: white;
+    padding: 5px;
+    font-family: monospace;
+    padding-right: 20px;
+    padding-right: 20px;
+    font-size: 43px;
+    color: black;
+}
+
 .div__rendered-html img {
     border-radius: 7%;
     box-shadow: 4px 7px 29px white;
     margin: 20px;
+    max-width: 500px;
+    height: auto;
 }
 
 

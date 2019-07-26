@@ -6,7 +6,7 @@ export function* watcherFetchNews() {
 }
 
 function* workerFetchNews() {
-    // console.log('heard?');
+    console.log('old saga fetch news');
     yield put({ type: actions.FETCHING_NEWS });
 
     let retrievedArticles = [];

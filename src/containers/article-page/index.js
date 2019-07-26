@@ -7,7 +7,7 @@ import queryString from 'query-string';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import { RichText } from 'prismic-reactjs';
 import { withAuthorization } from '../../components/Session';
 import { AdvertBox, Spinner, PageTitle } from '../../components/';
 import * as actions from './constants';
@@ -18,61 +18,50 @@ import { Helmet } from 'react-helmet';
 
 import './styles.scss';
 import { analyticsPage, updateMetaTagsForFacebook } from '../../lib/utils';
+import withPrismicStories from '../../components/Prismic/with-prismic-stories';
 
 class ArticlePage extends Component {
   constructor() {
     super()
     this.state = {
-      articleHasLoaded: false,
-      showSpinner: false,
-      advertsOn: false,
+      story: null,
     };
   }
 
   componentWillMount() {
-    
     document.createElement('meta').setAttribute("og:type", "article");
-    // load analytics
     analyticsPage('tpr-article');
 
-    // show progress 'loading...' bar & show spinner
-    this.props.showProgressBar(true);
-    this.setState({ showSpinner: true });
-
-    // if its a draft kill spinner, not needed
-    if (this.props.isDraft) {
-      this.setState({ showSpinner: false })
-      return;
-    }
-
-    // if its not a draft, take the ref from the URL, pass it to redux
-    // to pull in the correct gist article html <content />
-    if (!this.props.isDraft) {
-      let params = queryString.parse(this.props.location.search);
-      this.props.pageLoading(params.id);
-    }
-    
+    // this.props.pageLoading(params.id);
     
   }
 
   componentDidMount() {
-    this.props.pageLoaded();
-    setTimeout(() => {
-      this.props.showProgressBar(false);
-    }, 100)
+    // this.props.pageLoaded();
+    // setTimeout(() => {
+    //   this.props.showProgressBar(false);
+    // }, 100)
   }
 
-  componentWillReceiveProps = (nextProps) => {
-    this.setState({ articleHasLoaded: true })
+  fetchArticle = (id) => {
+    const { prismicStories } = this.props;
+    let story = (prismicStories && prismicStories.filter((each) => each.uid === id)[0]);
+    this.setState({ story })
+  }
+
+  componentWillReceiveProps = nextProps => {
+    let params = queryString.parse(this.props.location.search);
+    let uid = params.id;
+    let matchedStory = (nextProps.prismicStories && nextProps.prismicStories.filter((each) => each.uid === uid)[0]);
+    this.setState({ story: matchedStory });
   }
 
   render() {
 
-    const { articleHasLoaded, advertsOn, } = this.state;
-    const { isDraft, article } = this.props;
-    
-    console.log('this props yo => ', article);
+    console.log('this state ', this.state);
+    console.log('this props ', this.props);
 
+    const { story } = this.state;
     return (
       <>
       <Container>
@@ -81,28 +70,16 @@ class ArticlePage extends Component {
         
         <Row className="article-row">
           <Col sm={12}>
-            { this.props.article && this.props.article.content && <div className="div__rendered-html" dangerouslySetInnerHTML={ {__html: article.content} } /> }
-            { this.props.articlePreview && <div className="div__rendered-html" dangerouslySetInnerHTML={{ __html: this.props.articlePreview }} /> }
+            { story &&(
+              <div className="div__rendered-html">
+                <RichText render={this.state.story.data["news-headline1"]} />
+                <img src={this.state.story.data["news-image"].url} alt="news for open mic comedy" />
+                <RichText render={this.state.story.data["news-body"]} />
+              </div>
+                )
+                }
           </Col>
         </Row>
-
-        { advertsOn && 
-                <Row className="adverts-row">      
-                  <Col className="mob-margin-bottom" sm={4}>
-                    <AdvertBox
-                      link="https://google.com" src="https://via.placeholder.com/300" text="You Wont Believe What Kim Basinger Looks Like Now!" />
-                  </Col>
-                  <Col className="mob-margin-bottom" sm={4}>
-                    <AdvertBox
-                      link="https://google.com" src="https://via.placeholder.com/300" text="You Wont Believe What Kim Basinger Looks Like Now!" />
-                  </Col>
-                  <Col className="mob-margin-bottom" sm={4}>
-                    <AdvertBox
-                      link="https://google.com" src="https://via.placeholder.com/300" text="You Wont Believe What Kim Basinger Looks Like Now!" />
-                  </Col>
-                </Row>
-
-        }
 
       </Container>
       </>
@@ -114,9 +91,9 @@ const condition = authUser => !!authUser;
 
 const mapStateToProps = state => ({
   isLoading: state.articlePage.isLoading,
-  article: state.articlePage.article,
-  isDraft: state.addBlog.isDraft,
-  articlePreview: state.addBlog.article,
+  // article: state.articlePage.article,
+  // isDraft: state.addBlog.isDraft,
+  // articlePreview: state.addBlog.article,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -129,5 +106,6 @@ export default compose(
   withProgressBar,
   withAuthorization(condition),
   withRouter,
+  withPrismicStories,
   connect(mapStateToProps, mapDispatchToProps),
 )(ArticlePage);

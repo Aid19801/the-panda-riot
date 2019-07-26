@@ -21,6 +21,8 @@
     "mapbox-gl": "^0.53.1",
     "node-sass": "^4.11.0",
     "path": "^0.12.7",
+    "prismic-javascript": "^2.1.1",
+    "prismic-reactjs": "^1.0.0",
     "query-string": "^6.8.1",
     "react": "^16.8.6",
     "react-apollo": "^2.0.4",

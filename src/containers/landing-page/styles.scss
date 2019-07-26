@@ -4,92 +4,195 @@
 }
 
 .div__landing-page-row {
-    padding-top: 20vh;
-    padding-bottom: 20vh;
+    padding-top: 5vh;
     width: 100%;
     justify-content: center;
 }
 
-.h1__alarmingly-big-h1 {
-
-    font-size: 10vh;
+#landing-page h3 {
+  background: orange;
+  color: white;
+  // padding: 20px;
+  transform: skewY(-2deg);
+  text-align: center;
+  // font-size: 100%;
+  // border: 1px solid red;
 }
 
-#id__altered-size {
-    width: 400px;
-    height: 400px;
-    border: 2px solid white;
+.lp__first-section {
+  // background: red;
+}
+.lp__second-section {
+  background: linear-gradient(darkorange, #FF7F50);
+  box-shadow: 6px 12px 20px red;
+  height: auto;
+  margin-top: 50px;
 }
 
-.card1,
-.card2,
-.card3,
-.card4 {
-  position: absolute;
-  border-radius: 5px;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  will-change: transform;
+.lp__third-section {
+  margin-bottom: 20px;
+  background: linear-gradient(darkorange, #FF7F50);
+  height: auto;
 }
 
-.card1 {
-    min-width: 60ch;
-    min-height: 60ch;
-    width: 45vw;
-    height: 45vw;
-    max-width: 100ch;
-    max-height: 100ch;
-    background-image: url(stage.svg);
+
+// 3 boxes of What Is This, Is it Free info
+.div__each-lp-box {
+  justify-content: flex-start;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  min-height: 300px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.lp__second-section img {
+  height: 90px;
+  width: 90px;
+}
+.lp__second-section .div__flex-center p {
+  color: white;
+  padding: 20px;
+}
+
+.lp__third-section {
+  display: flex;
+  justify-content: space-around;
+} 
+
+.lp__third-section .div__promo-box {
+  margin-top: 20px;
+  padding: 20px;
+  // border: 1px solid red;
+  // background: grey;
+}
+
+
+#landing-page .lp__third-section .col-sm-5 .div__promo-box h3 {
+  color: orange !important;
+  background: grey;
+  transform: skewY(0deg);
+  text-align: center;
+}
+
+.div__lp-insta-container {
+  transform: skewY(2deg);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.div__promo-box h3, .div__promo-box p {
+  color: white;
+  z-index: 10;
+  position: relative;
+}
+
+.div__lp-insta-container img {
+  box-shadow: 0px 0px 40px 40px #000000;
+  z-index: 1;
+  border: 5px solid black;
+  border-radius: 5%;
+  filter: 'grayscale(0%)' !important;
+}
+.div__lp-insta-container img:nth-child(2) {
+  transform: skewY(-5deg);
+}
+
+.div__lp-footer {
+  width: 100%;
+  background: orange;
+  transform: skewY(2deg);
+  display: flex;
+  justify-content: space-evenly;
+  color: white;
+  position: relative;
+  bottom: 0px;
+  box-shadow: 90px 17px 50px grey;
+  height: 80px;
+}
+
+
+@media screen and (max-width: 1040px) {
+  .div__lp-insta-container img:nth-child(2) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .div__lp-footer {
+    width: 100%;
+    transform: skewY(5deg);
+    background: orange;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+    position: relative;
+    bottom: -456px;
+    box-shadow: 90px 17px 50px grey;
+    height: auto;
   }
   
-  .card2 {
-    width: 25ch;
-    height: 25ch;
-    background-image: url(mic.svg);
+  .div__lp-footer .row {
+    height: auto;
   }
-  
-  .card3 {
-    opacity: 0.9;
-    width: 25ch;
-    height: 25ch;
-    background-image: url(laugh.svg);
+  .div__lp-footer h4 {
+    margin-bottom: 5px;
+    text-align: center;
   }
-  
-  .card4 {
-    width: 25ch;
-    height: 25ch;
-    background-image: url(login.svg);
+}
+
+
+@media screen and (max-width: 500px) {
+
+  .lp__third-section {
+    height: 1700px !important;
   }
-  
 
-// .card1 {
-//   min-width: 60ch;
-//   min-height: 60ch;
-//   width: 45vw;
-//   height: 45vw;
-//   max-width: 100ch;
-//   max-height: 100ch;
-//   background-image: url(stage.svg);
-// }
+  .lp__third-section .col-sm-5:nth-child(2) {
+    border: 3px solid white;
+    padding: 0;
+  }
 
-// .card3 {
-//   opacity: 0.9;
-//   width: 25ch;
-//   height: 25ch;
-//   background-image: url(mic.svg);
-// }
+  .div__promo-box {
+    margin-top: 0 !important;
+  }
 
-// .card4 {
-//   width: 25ch;
-//   height: 25ch;
-//   background-image: url(laugh.svg);
-// }
+.div__each-lp-box {
+  margin-top: 0;
+}
+#landing-page .col-sm-4:nth-child(1) {
+  // border: 7px solid purple;
+  margin-top: 30px;
+}
+
+.div__lp-insta-container {
+  flex-direction: column;
+  align-items: center;
+}
+
+.div__lp-footer {
+  width: 100%;
+  transform: skewY(5deg);
+  background: orange;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+  position: relative;
+  bottom: 0px;
+  box-shadow: 90px 17px 50px grey;
+  height: auto;
+}
+
+.div__lp-footer .row {
+  height: auto;
+}
+.div__lp-footer h4 {
+  margin-bottom: 5px;
+  text-align: center;
+}
 
 
-// .div__landing-page {
-//     align-items: center;
-//     flex-direction: column;
-//     display: flex;
-//     justify-content: center;
-// }
+}

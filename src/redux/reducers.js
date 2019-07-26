@@ -18,6 +18,7 @@ import signinPageReducer from '../containers/signin-page/reducer';
 import signupPageReducer from '../containers/signup-page/reducer';
 import userProfileReducer from '../containers/user-profile-page/reducer';
 
+import prismicReducer from '../components/Prismic/reducer';
 
 const RootReducer = combineReducers({
     
@@ -35,6 +36,7 @@ const RootReducer = combineReducers({
     landingPage: landingPageReducer,
     passwordForgetPage: passwordForgetPageReducer,
     passwordChangeForm: passwordChangeFormReducer,
+    prismic: prismicReducer,
     signinPage: signinPageReducer,
     signupPage: signupPageReducer,
     userProfile: userProfileReducer,
