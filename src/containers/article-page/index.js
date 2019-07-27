@@ -30,7 +30,9 @@ class ArticlePage extends Component {
 
   componentWillMount() {
     document.createElement('meta').setAttribute("og:type", "article");
-    analyticsPage('tpr-article');
+    let params = queryString.parse(this.props.location.search);
+    let uid = params.id;
+    analyticsPage(`tpr-art-${uid}`);
 
     // this.props.pageLoading(params.id);
     

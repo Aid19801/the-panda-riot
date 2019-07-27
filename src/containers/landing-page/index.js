@@ -4,6 +4,7 @@ import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 // import request from 'superagent';
 import Container from 'react-bootstrap/Container';
+import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import * as ROUTES from '../../constants/routes';
@@ -70,14 +71,19 @@ class App extends Component {
                     <Col sm={12}>
                       <div className="div__flex-center center flex-direction-col">
                         <RichText render={each.data.title} />
-                        <img
-                          src={each.data["page-image"].url}
-                          alt="the panda riot london comedy gig"
-                          width="70%"
-                          height="auto"
-                          style={{ filter: 'grayscale(100%)', boxShadow: '9px 17px 22px black', maxWidth: '650px', maxHeight: '264px', marginTop: '40px' }}
 
-                        />
+                        
+                          <Link to={'/signin'}>
+                            <img
+                              src={each.data["page-image"].url}
+                              alt="the panda riot london comedy gig"
+                              width="70%"
+                              height="auto"
+                              style={{ filter: 'grayscale(100%)', boxShadow: '9px 17px 22px black', maxWidth: '650px', maxHeight: '264px', marginTop: '40px' }}
+                            />
+                            <h1 style={{ position: 'relative', top: '-80px', opacity: '0.3' }}>Enter</h1>
+
+                          </Link>
                       </div>
                     </Col>
                   </Row>
