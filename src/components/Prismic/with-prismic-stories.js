@@ -13,11 +13,15 @@ const withPrismicStories = PlatformSpecificComponent => {
 
         componentWillMount = () => {
             const client = Prismic.client(this.apiEndpoint);
-            client.query([
+            client.query(
                 Prismic.Predicates.at('document.type', 'news-story'),
-                // Prismic.Predicates.at('document.type', 'news-story'),
-            ]).then(res => {
-                this.setState({ prismicStories: res.results });
+                { orderings : '[document.last_publication_date]' }
+
+            ).then(res => {
+                // console.log('res is ', res.results);
+                const rev = res.results.reverse();
+                // console.log('REV is ', rev);
+                this.setState({ prismicStories: rev });
             })
             .catch(err => {
                 console.log('err is ', err);

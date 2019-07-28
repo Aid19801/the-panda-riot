@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 
 import Container from 'react-bootstrap/Container';
@@ -17,7 +18,7 @@ import { Helmet } from 'react-helmet';
 
 
 import './styles.scss';
-import { analyticsPage, updateMetaTagsForFacebook } from '../../lib/utils';
+import { analyticsPage } from '../../lib/utils';
 import withPrismicStories from '../../components/Prismic/with-prismic-stories';
 
 class ArticlePage extends Component {
@@ -25,6 +26,7 @@ class ArticlePage extends Component {
     super()
     this.state = {
       story: null,
+      nextStory: null,
     };
   }
 
@@ -48,14 +50,19 @@ class ArticlePage extends Component {
   fetchArticle = (id) => {
     const { prismicStories } = this.props;
     let story = (prismicStories && prismicStories.filter((each) => each.uid === id)[0]);
-    this.setState({ story })
+    let nextStory = (prismicStories && prismicStories.filter((each) => each.uid !== id))[0];
+    this.setState({ story, nextStory, })
   }
 
   componentWillReceiveProps = nextProps => {
     let params = queryString.parse(this.props.location.search);
     let uid = params.id;
     let matchedStory = (nextProps.prismicStories && nextProps.prismicStories.filter((each) => each.uid === uid)[0]);
-    this.setState({ story: matchedStory });
+    let nextStory = (nextProps.prismicStories && nextProps.prismicStories.filter((each) => each.uid !== uid)[0]);
+    this.setState({
+      story: matchedStory,
+      nextStory: nextStory
+    });
   }
 
   render() {
@@ -72,6 +79,10 @@ class ArticlePage extends Component {
         
         <Row className="article-row">
           <Col sm={12}>
+
+            {
+              !story && <div className="flex-center margin-top"><Spinner /></div>
+            }
             { story &&(
               <div className="div__rendered-html">
                 <RichText render={this.state.story.data["news-headline1"]} />
@@ -80,6 +91,16 @@ class ArticlePage extends Component {
               </div>
                 )
                 }
+            { this.state.nextStory && (
+              <div className="div__end-art-container">
+                <Link to={`/datamap`}>
+                  <h3 className="h3__end-art-links">Gig Map</h3>
+                </Link>
+                <Link to={`/home`}>
+                  <h3 className="h3__end-art-links">More News...</h3>
+                </Link>
+              </div>
+            ) }
           </Col>
         </Row>
 
@@ -89,13 +110,10 @@ class ArticlePage extends Component {
   }
 }
 
-const condition = authUser => !!authUser;
+// const condition = authUser => !!authUser;
 
 const mapStateToProps = state => ({
   isLoading: state.articlePage.isLoading,
-  // article: state.articlePage.article,
-  // isDraft: state.addBlog.isDraft,
-  // articlePreview: state.addBlog.article,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -106,7 +124,7 @@ const mapDispatchToProps = dispatch => ({
 
 export default compose(
   withProgressBar,
-  withAuthorization(condition),
+  // withAuthorization(condition),
   withRouter,
   withPrismicStories,
   connect(mapStateToProps, mapDispatchToProps),

@@ -14,11 +14,58 @@
 
     animation: slideInArticle 0.3s ease-in;
 }
+.div__rendered-html p a {
+    font-weight: 700;
+    
+}
+
+.article-row .white {
+    padding: 20px;
+    background: grey;
+    color: orange;
+    margin: 20px;
+    width: auto;
+}
+
+.div__end-art-container {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    // border: 1px solid red;
+    flex-direction: column;
+}
+
+.div__end-art-container a {
+    width: 100%;
+    text-align: end;
+    display: flex;
+    justify-content: flex-end;
+    // border: 1px solid red;
+}
+.h3__end-art-links {
+    width: 40%;
+    text-align: center;
+    font-family: 'Raleway' !important;
+    background: linear-gradient(#FF9135, #C66505);
+    -webkit-transform: rotateZ(-3deg);
+    transform: rotateZ(-3deg);
+    padding: 5px;
+    font-family: monospace;
+    padding-right: 20px;
+    padding-right: 20px;
+    font-size: 43px;
+    color: white;
+}
+
 
 .block-img {
     display: flex;
     justify-content: center;
     max-width: 500px;
+    border: none !important;
+    background: none !important;
+    transform: skewY(0deg) !important;
 }
 
 @keyframes slideInArticle {
