@@ -73,6 +73,15 @@ class ArticlePage extends Component {
     const { story } = this.state;
     return (
       <>
+      <Helmet>
+        <title>{this.state.story && this.state.story.data["news-headline1"][0].text}</title>
+        <meta name="description" content="Nested component" />
+        <meta property="og:title" content={this.state.story && this.state.story.data["news-headline1"][0].text} />
+        <meta property="og:description" content={this.state.story && this.state.story.data["news-body"][0].text} />
+        <meta property="og:image" content={this.state.story && this.state.story.data["news-image"].url} />
+        <meta property="og:url" content={this.state.story && `https://www.thePandaRiot.com/article?id=${this.state.story.uid}`} />
+      </Helmet>
+      
       <Container>
     
         <PageTitle text="#News" />
