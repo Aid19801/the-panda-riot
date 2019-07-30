@@ -92,7 +92,7 @@ class AccountChangeForm extends React.Component {
       <form className="act-profile-form" onSubmit={this.onSubmit}>
         
         <ProfilePic srcProp={this.state.profilePicture} />
-        
+
         <InputWithTag
           tagline="Photo URL"
           value={this.state.profilePicture}
@@ -159,7 +159,7 @@ const AccountPage = (props) => {
   return (
       <div id="account-page-container">
         <Container className="margin-top-20" >
-          <Row>
+          <Row className="full-width">
             <Col sm={6}>
               <AccountChangeForm {...props} />
             </Col>
