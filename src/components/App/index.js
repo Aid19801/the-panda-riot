@@ -9,7 +9,7 @@ import ReactGA from 'react-ga';
 
 import Navigation from '../Navigation';
 
-import { ArticlePage, AddBlogPage, ArticleDraftPage, ActsPage, AccountPage, ChatPage, DataMapPage,
+import { ArticlePage, ActsPage, AccountPage, ChatPage, DataMapPage,
   HomePage, LandingPage, SignInPage, SignUpPage,
   PasswordForgetPage, 
   UserProfilePage} from '../../containers';
@@ -78,8 +78,6 @@ class App extends React.Component {
           
           <Route path={ROUTES.USER_PROFILE} component={UserProfilePage} />
           <Route path={ROUTES.ARTICLE} component={ArticlePage} />
-          <Route path={ROUTES.ADD_BLOG} component={AddBlogPage} />
-          <Route path={ROUTES.DRAFT_BLOG} component={ArticleDraftPage} />
 
           <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />

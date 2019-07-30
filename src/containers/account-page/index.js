@@ -16,6 +16,8 @@ import { compose } from 'recompose';
 import './styles.scss';
 import { analyticsPage } from '../../lib/utils';
 import ProfilePic from '../../components/ProfilePic';
+import InputWithTag from '../../components/InputWithTag';
+
 class AccountChangeForm extends React.Component {
   constructor() {
     super();
@@ -88,32 +90,41 @@ class AccountChangeForm extends React.Component {
 
     return (
       <form className="act-profile-form" onSubmit={this.onSubmit}>
-        <input
-          name="username"
+        
+        <ProfilePic srcProp={this.state.profilePicture} />
+        
+        <InputWithTag
+          tagline="Photo URL"
+          value={this.state.profilePicture}
+          onChange={this.onChange}
+          placeholder="img URL eg https://my-pics/1_pic.jpg"
+          name="profilePicture"
+          disabled={false}
+        />
+        
+
+        <InputWithTag
+          tagline="username"
           value={this.state.username}
           onChange={this.onChange}
-          type="text"
           placeholder="act name eg. Lily Savage"
+          name="username"
+          disabled={false}
         />
-        <input
-          name="tagline"
+
+        <InputWithTag
+          tagline="tagline"
           value={this.state.tagline}
           onChange={this.onChange}
-          type="text"
           placeholder="tagline..."
+          name="tagline"
+          disabled={false}
         />
 
-        <div className="div__flex-row">
-          <input
-            name="profilePicture"
-            value={this.state.profilePicture}
-            onChange={this.onChange}
-            type="text"
-            placeholder="img URL eg https://my-pics/1_pic.jpg"
-          />
-          <ProfilePic srcProp={this.state.profilePicture} />
-        </div>
-
+      
+        
+      
+        
         <div className="horizontal-two-elements">
           <div
             style={{ height: 20, width: 20 }}
@@ -144,17 +155,16 @@ const AccountPage = (props) => {
     props.pageLoaded();
   }, []);
 
+  // console.log('FUCK this.props ', props)
   return (
       <div id="account-page-container">
-        <PageTitle text="#myAccount" />
-
         <Container className="margin-top-20" >
           <Row>
             <Col sm={6}>
-              <PasswordForgetForm />
+              <AccountChangeForm {...props} />
             </Col>
             <Col sm={6}>
-              <AccountChangeForm {...props} />
+              <PasswordForgetForm email={props.email}/>
             </Col>
           </Row>
         </Container>
@@ -166,7 +176,8 @@ const AccountPage = (props) => {
 
 const mapStateToProps = state => ({
   isLoading: state.accountPage.isLoading,
-
+  email: state.accountPage.email,
+  uid: state.accountPage.uid,
 });
 
 const mapDispatchToProps = dispatch => ({

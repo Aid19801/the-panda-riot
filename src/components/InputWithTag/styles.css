@@ -1,0 +1,25 @@
+.div__input-w-tag {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    align-items: start;
+    /* border: 1px solid white; */
+}
+
+.p__input-w-tag {
+    /* border: 1px solid red; */
+    margin: 0;
+    padding: 0;
+    color: white;
+    text-align: start;
+}
+
+.input__input-w-tag {
+    /* height: 50px;
+    margin-bottom: 5px; */
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid grey;
+    margin-left: 0;
+
+}

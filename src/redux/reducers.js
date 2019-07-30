@@ -1,12 +1,11 @@
 import { combineReducers } from 'redux';
 import appStateReducer from '../components/App/reducer';
 
-import addBlogPageReducer from '../containers/add-blog-page/reducer';
+
 import fetchGigsTonightReducer from '../components/GigsTonightContainer/reducer';
 import accountPageReducer from '../containers/account-page/reducer';
 import adminPageReducer from '../containers/admin-page/reducer';
 import articlePageReducer from '../containers/article-page/reducer';
-import articleDraftReducer from '../containers/article-draft/reducer';
 import chatPageReducer from '../containers/chat-page/reducer';
 import dataMapPageReducer from '../containers/data-map-page/reducer';
 
@@ -24,9 +23,8 @@ const RootReducer = combineReducers({
     
     appState: appStateReducer,
 
-    addBlog: addBlogPageReducer,
+    
     accountPage: accountPageReducer,
-    articleDraft: articleDraftReducer,
     articlePage: articlePageReducer,
     adminPage: adminPageReducer,
     fetchGigsTonight: fetchGigsTonightReducer,

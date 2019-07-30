@@ -9,6 +9,7 @@ import * as actions from './constants';
 
 import './styles.scss';
 import { analyticsPage } from '../../lib/utils';
+import InputWithTag from '../../components/InputWithTag';
 const PasswordForgetPage = () => (
   <div>
     <h1>PasswordForget</h1>
@@ -61,6 +62,10 @@ class PasswordForgetFormBase extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  componentWillReceiveProps = nextProps => {
+    this.setState({ email: nextProps.email });
+  }
+
   render() {
     const { email, error } = this.state;
 
@@ -68,13 +73,15 @@ class PasswordForgetFormBase extends Component {
 
     return (
       <form className="email-me-form" onSubmit={this.onSubmit}>
-        <input
+
+        <InputWithTag
+          tagline="email"
           name="email"
-          value={this.state.email}
           onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
+          disabled={true}
+          placeholder={this.state.email}
         />
+
         <button disabled={isInvalid} type="submit">
           Email Me A Password Re-set
         </button>

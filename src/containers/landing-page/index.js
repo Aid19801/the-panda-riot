@@ -38,7 +38,6 @@ class App extends Component {
   }
 
   handleClick = () => {
-    // console.log('clicked signin')
     this.props.history.push(ROUTES.SIGN_IN);
   }
 
