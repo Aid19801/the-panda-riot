@@ -21,6 +21,7 @@
     
 }
 
+
 .tickbox {
     display: flex;
     justify-content: center;
@@ -54,8 +55,25 @@ input {
 
 .email-me-form {
     display: flex;
+    height: 100%;
+    justify-content: flex-end;
     align-items: center;
     flex-direction: column;
+    margin-top: 40px;
+}
+
+.email-me-form button {
+    height: 50px;
+    border-radius: 12px;
+    background: orange;
+    margin-bottom: 5px;
+    margin-top: 20px;
+    width: 45%;
+    border: 3px solid black;
+}
+
+.email-me-form button:hover {
+    background: darkorange;
 }
 
 .act-profile-form {
@@ -68,11 +86,61 @@ input {
     height: 50px;
     margin-bottom: 5px;
 }
+
+.act-profile-form button {
+    height: 50px;
+    border-radius: 12px;
+    background: orange;
+    margin-bottom: 5px;
+    margin-top: 20px;
+    width: 45%;
+    border: 3px solid black;
+}
+
+
+.act-profile-form button:hover {
+    background: darkorange;
+}
+
 .pw-me-form input {
     height: 50px;
     margin-bottom: 5px;
 }
 
+.div__acct-dropdown-container {
+    // border: 1px solid orange;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    // width: 80%;
+}
+
+.select__faveGig {
+    width: 80%;
+    border-radius: 12px;
+    background: white;
+    margin-top: 5px;
+    height: 40px;
+    // margin-left: 20px;
+}
+
+.select__faveGig option {
+    background: grey;
+    color: white;
+    font-size: 25px;
+    height: 40px;
+    width: 100px;
+    animation-name: fadeInDropDownOptions;
+    animation-duration: 0.4s;
+}
+
+@keyframes fadeInDropDownOptions {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
 @media screen and (max-width: 570px) {
     .act-profile-form {

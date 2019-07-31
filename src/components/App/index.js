@@ -46,10 +46,10 @@ class App extends React.Component {
     this.props.appLoading();
     this.props.firebase.auth.onAuthStateChanged((user) => {
       if (user && user.uid === process.env.REACT_APP_PANDA_RIOT_ADMINI) {
-        console.log('user id is an admin: ', user.uid);
+        // console.log('user id is an admin: ', user.uid);
         this.props.isAdmin();
       } else {
-        console.log('ixnay on the adminay');
+        console.log('ixnay');
       }
     })
   }
@@ -68,7 +68,7 @@ class App extends React.Component {
   render() {
 
     const { privs } = this.props;
-    console.log('this props at app index js : ', this.props)
+    // console.log('this props at app index js : ', this.props)
     return (
       <Router>
   

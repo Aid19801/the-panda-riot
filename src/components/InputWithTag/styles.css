@@ -1,8 +1,12 @@
 .div__input-w-tag {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    
     flex-direction: column;
-    width: 70%;
-    align-items: start;
+    width: 80%;
+
+    /* align-items: start; */
     /* border: 1px solid white; */
 }
 

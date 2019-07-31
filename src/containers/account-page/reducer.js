@@ -6,6 +6,7 @@ const initialState = {
     error: null,
     uid: '',
     email: '',
+    gigs: [],
 }
 
 /* eslint-disable */
@@ -40,6 +41,31 @@ const accountPageReducer = (state = initialState, action) => {
         }
         break;
 
+        case actions.ACCOUNT_PAGE_FETCH_GIGS:
+            return {
+                ...state,
+                isLoading: true,
+            }
+            break;
+
+        case actions.ACCOUNT_PAGE_GOT_GIGS:
+                return {
+                    ...state,
+                    isLoading: false,
+                    gigs: action.gigs,
+                }
+            break;
+
+
+        case actions.ACCOUNT_PAGE_FAIL_GIGS:
+                return {
+                    ...state,
+                    isLoading: false,
+                    error: action.error,
+                }
+            break;
+    
+            
         default:
         return state;
     }

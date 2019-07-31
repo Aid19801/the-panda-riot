@@ -34,7 +34,7 @@ export const analyticsPage = str => {
         console.log('in prod so firing analytics');
         return ReactGA.pageview(`/${str}`);
       } else {
-        console.log('no analytics PAGE because not prod : ', str);
+        console.log('no analytics');
       }
 }
 
@@ -46,7 +46,7 @@ export const analyticsEvent = str => {
             action: str,
         });
       } else {
-        console.log('no analytics EVENT because not prod : ', str);
+        console.log('no analytics EVENT');
       }
 }
 

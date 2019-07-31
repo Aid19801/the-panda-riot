@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import { PasswordForgetForm } from '../../containers/password-forget-page';
 import { withAuthorization } from '../../components/Session';
 import { withFirebase } from '../../components/Firebase';
-import { PageTitle } from '../../components';
+import { Spinner } from '../../components';
 import * as ROUTES from '../../constants/routes';
 import * as actions from './constants';
 import { compose } from 'recompose';
@@ -29,16 +29,29 @@ class AccountChangeForm extends React.Component {
       rating: 0,
       updated: false,
       includeInActRater: false,
+      faveGig: '',
     }
   }
 
   componentWillMount = () => {
+
     analyticsPage('me');
+    this.fetchAllGigs();
     let meUid = this.props.firebase.auth.currentUser.uid;
     this.props.firebase.user(meUid)
       .on('value', snapshot => {
+          
+          let faveGig = '';
+          let genre = '';
+          let youtube = '';
+
           const me = snapshot.val();
           const { username, tagline, profilePicture, rating, includeInActRater } = me;
+          
+          me && !me.faveGig ? faveGig = 'n/a' : faveGig = me.faveGig;
+          me && !me.genre ? genre = 'unknown' : genre = me.genre;
+          me && !me.youtube ? youtube = 'unknown' : youtube = me.youtube;
+          
           let includeInActRaterStatus = includeInActRater || false;
           let persistRatingFromDb = rating !== 0 && rating ? rating : 0;
           this.setState({
@@ -48,13 +61,20 @@ class AccountChangeForm extends React.Component {
             includeInActRater: includeInActRaterStatus,
             email: this.props.firebase.auth.currentUser.email,
             rating: persistRatingFromDb,
+            faveGig,
+            genre,
+            youtube,
           })
-      })
-    
+      }) 
+  }
+
+  fetchAllGigs = () => {
+    this.props.updateStateFetchAllGigs();
   }
 
   onSubmit = event => {
-    const { tagline, profilePicture, username, includeInActRater } = this.state;
+    const { tagline, profilePicture, username, includeInActRater,
+      faveGig, genre, youtube } = this.state;
     let uid = this.props.firebase.auth.currentUser.uid;
     let email = this.props.firebase.auth.currentUser.email;
     this.props.firebase
@@ -66,6 +86,10 @@ class AccountChangeForm extends React.Component {
           profilePicture,
           includeInActRater,
           rating: this.state.rating,
+
+          faveGig,
+          genre,
+          youtube,
         })
 
     event.preventDefault();
@@ -84,14 +108,15 @@ class AccountChangeForm extends React.Component {
 
   render() {
 
-    const { tagline, profilePicture } = this.state;
+    const { tagline, profilePicture, youtube } = this.state;
+    const { gigs } = this.props;
 
     const isInvalid = tagline === '' || profilePicture === '';
 
     return (
       <form className="act-profile-form" onSubmit={this.onSubmit}>
         
-        <ProfilePic srcProp={this.state.profilePicture} />
+        { profilePicture ? <ProfilePic srcProp={this.state.profilePicture} /> : <Spinner />}
 
         <InputWithTag
           tagline="Photo URL"
@@ -121,17 +146,53 @@ class AccountChangeForm extends React.Component {
           disabled={false}
         />
 
-      
+          { gigs && gigs.length !== 0 && (
+              <div className="div__acct-dropdown-container">
+                  <p className="p__input-w-tag">Favourite Gig: </p>
+                    <select
+                      className="select__faveGig"
+                      name="faveGig"
+                      onChange={this.onChange}
+                    >
+
+                      <option>{this.state.faveGig}</option>
+
+                      { this.props.gigs && this.props.gigs.length !== 0 && this.props.gigs.map((each, i) => {
+                        return (
+                          <option key={i}>{each.name}</option>
+                        )
+                      })}
+
+                    </select>
+                </div>
+          ) }
         
-      
+        <InputWithTag
+          tagline="Type Of Comedian (observational, pun, music)"
+          name="genre"
+          onChange={this.onChange}
+          placeholder="what type of comedian are you?"
+          value={this.state.genre}
+          disabled={false}
+        />
+
+        <InputWithTag
+          tagline="My Youtube Vid"
+          name="youtube"
+          onChange={this.onChange}
+          placeholder="a link to your youtube"
+          value={this.state.youtube}
+          disabled={false}
+        />
         
+
         <div className="horizontal-two-elements">
           <div
             style={{ height: 20, width: 20 }}
             className={this.state.includeInActRater ? "tickbox bg-green" : "tickbox bg-red" }
             onClick={() => this.handleIncludeInActRater()}
           >{this.state.includeInActRater ? '✔' : 'X'}</div>
-          <p>include me in Act Rater?: </p>
+          <p> {`<=`} include me in Act Rater?</p>
         </div>
         <button disabled={isInvalid} type="submit">
           Update My Deets
@@ -159,12 +220,10 @@ const AccountPage = (props) => {
   return (
       <div id="account-page-container">
         <Container className="margin-top-20" >
-          <Row className="full-width">
-            <Col sm={6}>
+          <Row className="full-width flex-center">
+            <Col sm={10}>
               <AccountChangeForm {...props} />
-            </Col>
-            <Col sm={6}>
-              <PasswordForgetForm email={props.email}/>
+              <PasswordForgetForm email={props.email} {...props} />
             </Col>
           </Row>
         </Container>
@@ -178,12 +237,14 @@ const mapStateToProps = state => ({
   isLoading: state.accountPage.isLoading,
   email: state.accountPage.email,
   uid: state.accountPage.uid,
+  gigs: state.accountPage.gigs,
 });
 
 const mapDispatchToProps = dispatch => ({
   pageLoading: () => dispatch({ type: actions.ACCOUNT_PAGE_LOADING }),
   pageLoaded: () => dispatch({ type: actions.ACCOUNT_PAGE_LOADED }),
   storeUserProfile: (uid, email) => dispatch({ type: actions.STORE_USER_PROFILE, uid, email }),
+  updateStateFetchAllGigs: () => dispatch({ type: actions.ACCOUNT_PAGE_FETCH_GIGS })
 });
 
 const condition = authUser => !!authUser;
