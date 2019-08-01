@@ -13,11 +13,9 @@ import { UserCard } from '../../components';
 import * as actions from './constants';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
 
-
-import './styles.scss';
 import { analyticsPage, analyticsEvent } from '../../lib/utils';
 import UserInfoCard from '../../components/UserInfoCard';
-import GigIvePlayedAt from '../../components/GigIvePlayedAt';
+import './styles.scss';
 
 class UserProfilePage extends Component {
   constructor() {
@@ -33,6 +31,10 @@ class UserProfilePage extends Component {
       faveGig: '',
       genre: '',
       youtube: '',
+      twitter: '',
+      facebook: '',
+      youtubeChannelURL: '',
+      website: '',
     };
   }
 
@@ -58,6 +60,10 @@ class UserProfilePage extends Component {
         let faveGig = '';
         let genre = '';
         let youtube = '';
+        let twitter = '';
+        let facebook = '';
+        let youtubeChannelURL = '';
+        let website = '';
 
         const user = snapshot.val();
         const { username, tagline, profilePicture, rating, includeInActRater } = user;
@@ -65,6 +71,10 @@ class UserProfilePage extends Component {
         user && !user.faveGig ? faveGig = 'n/a' : faveGig = user.faveGig;
         user && !user.genre ? genre = 'unknown' : genre = user.genre;
         user && !user.youtube ? youtube = 'unknown' : youtube = user.youtube;
+        user && !user.twitter ? twitter = 'unknown' : twitter = user.twitter;
+        user && !user.facebook ? facebook = 'unknown' : facebook = user.facebook;
+        user && !user.youtubeChannelURL ? youtubeChannelURL = 'unknown' : youtubeChannelURL = user.youtubeChannelURL;
+        user && !user.website ? website = 'unknown' : website = user.website;
         
         let includeInActRaterStatus = includeInActRater || false;
         let persistRatingFromDb = rating !== 0 && rating ? rating : 0;
@@ -78,6 +88,10 @@ class UserProfilePage extends Component {
           faveGig,
           genre,
           youtube,
+          twitter,
+          facebook,
+          youtubeChannelURL,
+          website,
         })
     }) 
   }
@@ -106,6 +120,10 @@ class UserProfilePage extends Component {
       genre,
       rating,
       youtube,
+      twitter,
+      facebook,
+      youtubeChannelURL,
+      website,
     } = this.state;
 
     return (
@@ -125,6 +143,10 @@ class UserProfilePage extends Component {
               genre={genre}
               rating={rating}
               youtube={youtube}
+              twitter={twitter}
+              facebook={facebook}
+              youtubeChannelURL={youtubeChannelURL}
+              website={website}
             />
           </Col>
         </Row>

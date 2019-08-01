@@ -2,11 +2,12 @@ import React from 'react';
 import YouTube from 'react-youtube';
 import SocialIcons from '../SocialIcons';
 import TitleAndValue from '../TitleAndValue';
-import GigsIvePlayedAt from '../GigIvePlayedAt';
-
 import './styles.css';
 
-const UserInfoCard = ({ faveGig, genre, rating, youtube }) => {
+const UserInfoCard = ({
+  faveGig, genre, rating,
+  youtube, twitter, facebook,
+  youtubeChannelURL, website }) => {
 
     const opts = {
         height: '100%',
@@ -33,7 +34,6 @@ const UserInfoCard = ({ faveGig, genre, rating, youtube }) => {
 
     return (
         <div
-            onClick={() => alert('where should i go to?')}
             className="div__user-info-card-medium-container"
             >
 
@@ -59,7 +59,12 @@ const UserInfoCard = ({ faveGig, genre, rating, youtube }) => {
                       />
                   ) }
                 </div>
-                <SocialIcons />
+                <SocialIcons
+                  facebook={facebook}
+                  twitter={twitter}
+                  youtube={youtubeChannelURL}
+                  website={website}
+                />
         </div> 
     )
 }

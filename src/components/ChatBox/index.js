@@ -4,7 +4,13 @@ import './styles.scss';
 const Chatbox = ({ message }) => (
     <div className="chat-box margin-bottom">
     <div className="chat-message">
-        <img className="chat-msg-img" src={message.img} width={45} height={45} />
+        <img 
+            className="chat-msg-img" 
+            src={message.img}
+            width={45}
+            height={45}
+            alt="open mic comedian chat message"
+        />
 
         <div className="chat-msg-col padding-left">
         <p className="p__tpr-blurb white margin-off">{message.from}</p>

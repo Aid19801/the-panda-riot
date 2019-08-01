@@ -30,6 +30,11 @@ class AccountChangeForm extends React.Component {
       updated: false,
       includeInActRater: false,
       faveGig: '',
+      twitter: '',
+      facebook: '',
+      youtube: '',
+      youtubeChannelURL: '',
+      website: '',
     }
   }
 
@@ -44,6 +49,10 @@ class AccountChangeForm extends React.Component {
           let faveGig = '';
           let genre = '';
           let youtube = '';
+          let twitter = '';
+          let facebook = '';
+          let youtubeChannelURL = '';
+          let website = '';
 
           const me = snapshot.val();
           const { username, tagline, profilePicture, rating, includeInActRater } = me;
@@ -51,7 +60,11 @@ class AccountChangeForm extends React.Component {
           me && !me.faveGig ? faveGig = 'n/a' : faveGig = me.faveGig;
           me && !me.genre ? genre = 'unknown' : genre = me.genre;
           me && !me.youtube ? youtube = 'unknown' : youtube = me.youtube;
-          
+          me && !me.twitter ? twitter = 'unknown' : twitter = me.twitter;
+          me && !me.facebook ? facebook = 'unknown' : facebook = me.facebook;
+          me && !me.youtubeChannelURL ? youtubeChannelURL = 'unknown' : youtubeChannelURL = me.youtubeChannelURL;
+          me && !me.website ? website = 'unknown' : website = me.website;
+
           let includeInActRaterStatus = includeInActRater || false;
           let persistRatingFromDb = rating !== 0 && rating ? rating : 0;
           this.setState({
@@ -64,6 +77,10 @@ class AccountChangeForm extends React.Component {
             faveGig,
             genre,
             youtube,
+            twitter,
+            facebook,
+            youtubeChannelURL,
+            website,
           })
       }) 
   }
@@ -74,7 +91,7 @@ class AccountChangeForm extends React.Component {
 
   onSubmit = event => {
     const { tagline, profilePicture, username, includeInActRater,
-      faveGig, genre, youtube } = this.state;
+      faveGig, genre, youtube, twitter, facebook, youtubeChannelURL, website } = this.state;
     let uid = this.props.firebase.auth.currentUser.uid;
     let email = this.props.firebase.auth.currentUser.email;
     this.props.firebase
@@ -90,6 +107,10 @@ class AccountChangeForm extends React.Component {
           faveGig,
           genre,
           youtube,
+          twitter,
+          facebook,
+          youtubeChannelURL,
+          website,
         })
 
     event.preventDefault();
@@ -102,13 +123,12 @@ class AccountChangeForm extends React.Component {
   };
 
   handleIncludeInActRater = (event) => {
-    console.log('event ', event);
     this.setState({ includeInActRater: !this.state.includeInActRater });
   }
 
   render() {
 
-    const { tagline, profilePicture, youtube } = this.state;
+    const { tagline, profilePicture } = this.state;
     const { gigs } = this.props;
 
     const isInvalid = tagline === '' || profilePicture === '';
@@ -186,7 +206,42 @@ class AccountChangeForm extends React.Component {
         />
 
 
+        <InputWithTag
+          tagline="Link to my twitter"
+          name="twitter"
+          onChange={this.onChange}
+          placeholder="eg. https://twitter.com/catGuy1978"
+          value={this.state.twitter}
+          disabled={false}
+        />
+
         
+        <InputWithTag
+          tagline="Link to my FB page"
+          name="facebook"
+          onChange={this.onChange}
+          placeholder="eg. https://facebook.com/funnyDAVE1987"
+          value={this.state.facebook}
+          disabled={false}
+        />
+        
+        <InputWithTag
+          tagline="Link to my YouTube channel"
+          name="youtubeChannelURL"
+          onChange={this.onChange}
+          placeholder="eg. https://youtube.com/channel/funnyDAVE1987"
+          value={this.state.youtubeChannelURL}
+          disabled={false}
+        />
+
+        <InputWithTag
+          tagline="Link to my Website"
+          name="website"
+          onChange={this.onChange}
+          placeholder="eg. www.funnyDave.net"
+          value={this.state.website}
+          disabled={false}
+        />
 
         <div className="horizontal-two-elements">
           <div
