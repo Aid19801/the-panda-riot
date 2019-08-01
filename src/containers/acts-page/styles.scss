@@ -14,19 +14,26 @@
 }
 
 .each-act-container {
-    border: 1px solid white;
+    // border: 1px solid white;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: orange;
+    transform: skewY(-2deg);
     width: 100%;
 }
 
 .each-act-row {
     // border: 1px solid red;
+    max-height: 190px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+}
+
+.each-act-row a {
+    display: flex;
+    flex-direction: row;
 }
 
 .each-act-rating-container {
@@ -50,26 +57,34 @@
     // border: 1px solid purple;
     width: 120px;
     height: 100px;
-    border: 1px solid orange;
+    border: 3px solid grey;
     box-shadow: 6px 6px 17px orange;
-    border-radius: 17px;
-    margin-top: 10px;
+    border-radius: 50%;
+    // margin-top: 10px;
     margin-bottom: 10px;
 }
 
 .each-act-name {
     // border: 1px solid green;
     width: 50%;
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
 }
 .each-act-name h1 {
-    font-size: 122%;
     margin-bottom: 0;
     text-align: start;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: 0 0 0 !important;
 }
 .each-act-name p {
-    font-size: 90%;
+    padding-bottom: 10px;
+    // padding-left: 10px;
+    color: white;
+    width: 110%;
+    font-size: 100%;
     margin-bottom: 0;
     text-align: start;
 }
@@ -103,6 +118,6 @@
         text-align: start;
         margin-left: 10px;
         font-size: 55%;
-        color: black;
+        color: white;
     }
 }

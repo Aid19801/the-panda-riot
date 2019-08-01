@@ -43,38 +43,80 @@
           display: flex;
           align-items: center;
           flex-direction: column;
-          justify-content: center;
+          /* justify-content: center; */
           position: absolute;
           top: 0;
           right: 0;
           left: 0;
           bottom: 0;
+          background: linear-gradient(grey, orange);
+        }
+
+        .app-div {
+          height: auto;
+          padding-bottom: 40px;
         }
         
+        .nav-container {
+          background: rgba(0, 0, 0, 0.6);
+        }
+
         p {
           font-family: monospace;
         }
         
-        .full-page-loader > img {
-          animation: 1.8s infinite heartbeat;
-        }
         
-        @keyframes heartbeat {
-          0% { transform: scale(1); }
-          25% { transform: scale(1.05); }
-          50% { transform: scale(1); }
-          75% { transform: scale(1.05); }
-          100% { transform: scale(1); }
+        .navbar-brand a {
+          font-family: monospace;
+          color: white;
+          font-size: 25px;
         }
 
       </style>
 
     <div id="root">
       <div class="full-page-loader">
-        <p>Loading The Panda Riot - The Open Mic Comedy Webapp For London</p>
-        <img width="200" src="/open-mic-comedy.png" alt="The Panda Riot Logo" />
+  
+          <div class="app-div">
+              <div class="nav-container">
+                <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+                  <span class="navbar-brand">
+                    <a href="/">The Panda Riot</a>
+                  </span>
+                  <button aria-controls="basic-navbar-nav" type="button" aria-label="Toggle navigation" class="navbar-toggler">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="navbar-collapse collapse" id="basic-navbar-nav">
+                    <div class="mr-auto navbar-nav">
+                      <div class="nav-option-wrapper">
+                        <a href="/home">Home</a>
+                      </div>
+                      <div class="nav-option-wrapper">
+                        <a href="/datamap">Gigs</a>
+                      </div>
+                      <div class="nav-option-wrapper">
+                        <a href="/account">Me</a>
+                      </div>
+                      <div class="nav-option-wrapper">
+                        <a href="/acts">Acts</a>
+                      </div>
+                      <div class="nav-option-wrapper">
+                        <a href="/chat">Chat</a>
+                      </div>
+                      <div class="nav-option-wrapper">
+                        <button class="btn__signout" type="button">Sign Out</button>
+                      </div>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+  
+        <p>The Panda Riot - The Open Mic Comedy Webapp For London</p>
       </div>
     </div>
+      
+    </div>
+
 
 
   </body>

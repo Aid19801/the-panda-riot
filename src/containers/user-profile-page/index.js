@@ -6,6 +6,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import queryString from 'query-string';
+
 import { withAuthorization } from '../../components/Session';
 import { UserCard } from '../../components';
 import * as actions from './constants';
@@ -22,7 +24,15 @@ class UserProfilePage extends Component {
     super()
     this.state = {
       advertsOn: false,
-      user: {},
+      username: '',
+      tagline: '',
+      profilePicture: '',
+      includeInActRater: false,
+      email: '',
+      rating: null,
+      faveGig: '',
+      genre: '',
+      youtube: '',
     };
   }
 
@@ -31,7 +41,45 @@ class UserProfilePage extends Component {
     this.props.showProgressBar(true);
     this.setState({ showSpinner: true })
     this.props.pageLoading();
-    this.props.updateStateFetchUser();
+    this.fetchUser();
+  }
+
+  fetchUser = () => {
+    // http://localhost:3000/user?id=seVFOFwaXJh8z20Mx6vdmut7SuI2
+    // 0D8ZSflLohc9LWiQgJZs6zT65vg1
+    // seVFOFwaXJh8z20Mx6vdmut7SuI2
+    // 6Rk5ZlGX04TTvQEGy0JuVdXwCgv2
+    let params = queryString.parse(this.props.location.search);
+    let uid = params.id;
+    this.props.updateStateFetchUser(uid);
+    this.props.firebase.user(uid)
+    .on('value', snapshot => {
+        
+        let faveGig = '';
+        let genre = '';
+        let youtube = '';
+
+        const user = snapshot.val();
+        const { username, tagline, profilePicture, rating, includeInActRater } = user;
+        
+        user && !user.faveGig ? faveGig = 'n/a' : faveGig = user.faveGig;
+        user && !user.genre ? genre = 'unknown' : genre = user.genre;
+        user && !user.youtube ? youtube = 'unknown' : youtube = user.youtube;
+        
+        let includeInActRaterStatus = includeInActRater || false;
+        let persistRatingFromDb = rating !== 0 && rating ? rating : 0;
+
+        this.setState({
+          username,
+          tagline,
+          profilePicture,
+          includeInActRater: includeInActRaterStatus,
+          rating: persistRatingFromDb,
+          faveGig,
+          genre,
+          youtube,
+        })
+    }) 
   }
 
   componentDidMount() {
@@ -46,27 +94,39 @@ class UserProfilePage extends Component {
   }
 
   render() {
-    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
+
+    console.log('this props ', this.props);
+    console.log('this state ', this.state);
+    
+    const { 
+      profilePicture,
+      username,
+      tagline,
+      faveGig,
+      genre,
+      rating,
+      youtube,
+    } = this.state;
+
     return (
       <>
       <Container>
         <Row className="full-width">
           <Col sm={6}>
-            <UserCard />
+            <UserCard
+              profilePicture={profilePicture}
+              username={username}
+              tagline={tagline}
+            />
           </Col>
           <Col sm={6}>
-            <UserInfoCard />
+            <UserInfoCard
+              faveGig={faveGig}
+              genre={genre}
+              rating={rating}
+              youtube={youtube}
+            />
           </Col>
-        </Row>
-
-        <Row className="full-width">
-          <Col sm={12} className="div__flex-center">
-            <p className="p__gigsiveplayed-title center margin-off">Gigs I've Played At</p>
-          </Col>
-        </Row>
-
-        <Row className="full-width margin-top">
-          { arr.map((each, i) => <GigIvePlayedAt img="https://pbs.twimg.com/profile_images/1082972985030524928/2S0z5D5M.jpg" key={i} />) }
         </Row>
 
       </Container>
@@ -84,7 +144,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   pageLoading: () => dispatch({ type: actions.USER_PROFILE_LOADING }),
   pageLoaded: () => dispatch({ type: actions.USER_PROFILE_LOADED }),
-  updateStateFetchUser: () => dispatch({ type: actions.FETCH_USER }),
+  updateStateFetchUser: (uid) => dispatch({ type: actions.FETCH_USER, uid,  }),
 });
 
 export default compose(

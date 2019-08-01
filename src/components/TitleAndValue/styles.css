@@ -1,21 +1,27 @@
 .div__title-and-value-container {
     display: flex;
+    background: orange;
+    margin-bottom: 5px;
+    margin-top: 5px;
     justify-content: start;
     flex-direction: row;
+    align-items: center;
     width: 100%;
 }
 
 .div__title-and-value-container h3 {
-    color: lightgrey;
+    color: white;
     text-align: center;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
 }
 
-.div__title-and-value-container h4 {
-    color: rgb(214, 143, 11);
-    font-weight: 700;
+.div__title-and-value-container .h3__title-value__value {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: darkslategrey;
+    font-weight: 300;
     text-shadow: rgba(0,0,0,.01) 0 0 1px;
     text-align: center;
     -webkit-font-smoothing: antialiased;

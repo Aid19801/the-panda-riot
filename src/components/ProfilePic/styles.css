@@ -9,6 +9,14 @@
     padding: 20px;
 }
 
+.div__profile-pic-container img {
+  border: 5px solid grey;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  animation: fadeinprofilepicture 0.4s ease-in;
+}
+
 .img__person-info-card-profile-pic {
     border: 5px solid grey;
     width: 120px;

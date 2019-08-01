@@ -4,6 +4,7 @@ const initialState = {
     isLoading: false,
     user: {},
     error: null,
+    uid: '',
 }
 
 /* eslint-disable */
@@ -27,6 +28,7 @@ const userProfileReducer = (state = initialState, action) => {
         return {
             ...state,
             isLoading: true,
+            uid: action.uid,
         }
         break;
 

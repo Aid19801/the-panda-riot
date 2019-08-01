@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import { withAuthorization } from '../../components/Session';
@@ -110,6 +111,10 @@ class ActsPage extends Component {
         this.props.firebase.users().off();
         this.props.firebase.user().off();
     }
+
+    bounceToActsProfile = uid => {
+
+    }
         
   render() {
       const { showModal, downVoteSwitchedOn } = this.state;
@@ -119,8 +124,9 @@ class ActsPage extends Component {
             <Row className="act-rows">
                 <Col id={showModal ? 'fadeContainer' : ''} sm={9}>
                     { this.state.acts.map((each, i) => {
+                        console.log('each is ', each);
                         return (
-                            <div key={i} className="each-act-container">
+                            <div key={i} className="each-act-container" onClick={() => this.bounceToActsProfile(each)}>
 
                                 <div className="each-act-row">
 
@@ -137,16 +143,19 @@ class ActsPage extends Component {
                                     </div> }
                                 </div>
 
+                                <Link to={`/user?id=${each.uid}`}>
                                     <img
+                                        className="each-act-img"
                                         alt="open mic comedy act profile"
                                         src={each.profilePicture}
-                                        className="each-act-img"
-                                        />
+                                    />
                                     <div className="each-act-name">
                                         <h1>{each.username}</h1>
                                         <p>{each.tagline}</p>
                                     </div>
-                                </div>
+                                </Link>
+
+                            </div>
                                 
                             
                             </div>

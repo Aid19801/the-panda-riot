@@ -6,7 +6,7 @@ import GigsIvePlayedAt from '../GigIvePlayedAt';
 
 import './styles.css';
 
-const UserInfoCard = (props) => {
+const UserInfoCard = ({ faveGig, genre, rating, youtube }) => {
 
     const opts = {
         height: '100%',
@@ -21,6 +21,15 @@ const UserInfoCard = (props) => {
         // event.target.pauseVideo();
       }
 
+      const handleYouTubeLink = link => {
+        let video_id = link.split('v=')[1];
+        // let ampersandPosition = video_id.indexOf('&');
+          // if (ampersandPosition && ampersandPosition !== -1) {
+          //   video_id = video_id.substring(0, ampersandPosition);
+          // }
+        return video_id;
+      }
+
 
     return (
         <div
@@ -28,16 +37,27 @@ const UserInfoCard = (props) => {
             className="div__user-info-card-medium-container"
             >
 
-                <TitleAndValue title="Gigging Since: " value="2017" />
-                <TitleAndValue title="Style: " value="Observational / Story-Telling" />
-                <TitleAndValue title="Find Me At: " value="Farrs on a Monday" />
+                <TitleAndValue title="Fave Gig: " value={faveGig} />
+                <TitleAndValue title="Style: " value={genre} />
+                <TitleAndValue title="Current Rating: " value={rating} />
                 <div className="div__youtube-container">
-                    <YouTube
-                        className="div__youtube"
-                        videoId="tZdYXyiatic"
-                        opts={opts}
-                        onReady={_onReady}
-                    />
+
+                  { youtube !== 'unknown' && (
+                      <YouTube
+                          className="div__youtube"
+                          videoId={handleYouTubeLink(youtube)}
+                          opts={opts}
+                          onReady={_onReady}
+                      />
+                  ) }
+
+                  { youtube === 'unknown' && (
+                      <img
+                        className="div__youtube no-youtube"
+                        src={require('./no_youtube.jpg')}
+                        alt="open mic comedian no youtube video"
+                      />
+                  ) }
                 </div>
                 <SocialIcons />
         </div> 

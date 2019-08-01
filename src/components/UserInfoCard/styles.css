@@ -1,6 +1,7 @@
 .div__user-info-card-medium-container {
-    border: 10px solid black;
-    background: linear-gradient(45deg, grey, lightgrey);
+    /* border: 10px solid darkorange; */
+    /* background: linear-gradient(45deg, grey, lightgrey); */
+    transform: skewY(2deg);
     height: auto;
     width: 100%;
     max-width: 400px;
@@ -36,8 +37,10 @@
     width: 100%;
     padding: 5px;
     transform: skewX(-4deg);
-    
-    
+}
+
+.no-youtube {
+    padding: 20px;
 }
 
 @media screen and (max-width: 488px) {
