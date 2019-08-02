@@ -80,7 +80,7 @@ class App extends Component {
                               height="auto"
                               style={{ filter: 'grayscale(100%)', boxShadow: '9px 17px 22px black', maxWidth: '650px', maxHeight: '264px', marginTop: '40px' }}
                             />
-                            <h1 style={{ position: 'relative', top: '-80px', opacity: '0.3' }}>Enter</h1>
+                            <h1 style={{ position: 'relative', top: '-80px', opacity: '0.8' }}>Enter</h1>
 
                           </Link>
                       </div>
