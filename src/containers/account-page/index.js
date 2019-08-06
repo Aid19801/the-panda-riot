@@ -145,6 +145,7 @@ class AccountChangeForm extends React.Component {
           placeholder="img URL eg https://my-pics/1_pic.jpg"
           name="profilePicture"
           disabled={false}
+          orange
         />
         
 
@@ -155,6 +156,7 @@ class AccountChangeForm extends React.Component {
           placeholder="act name eg. Lily Savage"
           name="username"
           disabled={false}
+          orange
         />
 
         <InputWithTag
@@ -164,11 +166,12 @@ class AccountChangeForm extends React.Component {
           placeholder="tagline..."
           name="tagline"
           disabled={false}
+          orange
         />
 
           { gigs && gigs.length !== 0 && (
-              <div className="div__acct-dropdown-container">
-                  <p className="p__input-w-tag">Favourite Gig: </p>
+              <div className="div__acct-dropdown-container margin-bottom">
+                  <h3 className="p__input-w-tag bold-thick orange">favourite Gig: </h3>
                     <select
                       className="select__faveGig"
                       name="faveGig"
@@ -194,6 +197,7 @@ class AccountChangeForm extends React.Component {
           placeholder="what type of comedian are you?"
           value={this.state.genre}
           disabled={false}
+          orange
         />
 
         <InputWithTag
@@ -203,6 +207,7 @@ class AccountChangeForm extends React.Component {
           placeholder="a link to your youtube"
           value={this.state.youtube}
           disabled={false}
+          orange
         />
 
 
@@ -213,6 +218,7 @@ class AccountChangeForm extends React.Component {
           placeholder="eg. https://twitter.com/catGuy1978"
           value={this.state.twitter}
           disabled={false}
+          orange
         />
 
         
@@ -223,6 +229,7 @@ class AccountChangeForm extends React.Component {
           placeholder="eg. https://facebook.com/funnyDAVE1987"
           value={this.state.facebook}
           disabled={false}
+          orange
         />
         
         <InputWithTag
@@ -232,6 +239,7 @@ class AccountChangeForm extends React.Component {
           placeholder="eg. https://youtube.com/channel/funnyDAVE1987"
           value={this.state.youtubeChannelURL}
           disabled={false}
+          orange
         />
 
         <InputWithTag
@@ -241,6 +249,7 @@ class AccountChangeForm extends React.Component {
           placeholder="eg. www.funnyDave.net"
           value={this.state.website}
           disabled={false}
+          orange
         />
 
         <div className="horizontal-two-elements">

@@ -13,7 +13,7 @@ const Chatbox = ({ message }) => (
         />
 
         <div className="chat-msg-col padding-left">
-        <p className="p__tpr-blurb white margin-off">{message.from}</p>
+        <p className="p__tpr-blurb msg-from white margin-off orange bold-thick">{message.from}</p>
         <p className="p__tpr-blurb">{message.content}</p>
         </div>
     </div>

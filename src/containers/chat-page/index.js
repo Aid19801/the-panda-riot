@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 
 import { withAuthorization } from '../../components/Session';
@@ -100,6 +101,11 @@ class ChatPage extends Component {
     changeFocus = () => {
       this.setState({ inputInFocus: !this.state.inputInFocus, })
     }
+
+    reRouteToMePage = () => {
+      this.props.history.push('/account');
+    }
+
   render() {
 
     const allChats = this.props.allChatsQuery.allChats || [];
@@ -110,7 +116,12 @@ class ChatPage extends Component {
         <Container>
 
             <PageTitle text="#chat" />
-            <p>You may wish to update your profile pic in the "me" section...</p>
+
+            <Button
+                onClick={this.reRouteToMePage}
+                variant="warning"
+            >Update My Photo?</Button>
+
             <Row className="div__chat-page-msgs-row w-100">
 
               <div className="div__chat-page-bg-img-container">

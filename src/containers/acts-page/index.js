@@ -115,14 +115,31 @@ class ActsPage extends Component {
     bounceToActsProfile = uid => {
 
     }
+
+    reRouteToMePage = () => {
+        this.props.history.push('/account');
+    }
         
   render() {
       const { showModal, downVoteSwitchedOn } = this.state;
     return (
         <Container>
-            <PageTitle text="#clapOff" />
             <Row className="act-rows">
-                <Col id={showModal ? 'fadeContainer' : ''} sm={9}>
+                <Col sm={9}>
+                    <PageTitle text="#clapOff" />
+                    <div className="flex-right">
+                        <Button
+                            onClick={this.reRouteToMePage}
+                            variant="warning"
+                        >Add Me</Button>
+                    </div>
+                </Col>
+            </Row>
+
+
+            
+            <Row className="act-rows">
+                <Col id={showModal ? 'fadeContainer' : ''} sm={10}>
                     { this.state.acts.map((each, i) => {
                         console.log('each is ', each);
                         return (

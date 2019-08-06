@@ -41,6 +41,15 @@ body {
   align-items: center;
 }
 
+.flex-right {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  // border: 1px solid red;
+
+}
+
 .flex-direction-col {
   display: flex;
   flex-direction: column;
@@ -58,6 +67,14 @@ h1 {
   font-weight: 700;
   text-shadow: 5px 6px 8px black;
   color: white;
+}
+
+.bold-thick {
+  font-weight: 700;
+  text-shadow: 2px 4px 4px black;
+  background: black;
+  padding: 5px;
+  transform: skewY(-2deg);
 }
 
 h3, p {

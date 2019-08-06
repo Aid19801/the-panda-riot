@@ -16,7 +16,7 @@
     width: 100%;
     justify-content: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 }
 
@@ -223,7 +223,7 @@
   .card {
     margin-top: 20px;
     width: 45ch;
-    height: 45ch;
+    height: auto;
     background: grey;
     border-radius: 12px;
     background-size: cover;

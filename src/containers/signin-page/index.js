@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { compose } from 'recompose';
 
 import { SignUpLink } from '../signup-page';
@@ -12,7 +12,7 @@ import * as actions from './constants';
 import { PasswordForgetLink } from '../password-forget-page';
 
 import './styles.scss';
-import { analyticsPage } from '../../lib/utils';
+import { analyticsPage, analyticsEvent } from '../../lib/utils';
 
 const INITIAL_STATE = {
   email: '',
@@ -45,6 +45,7 @@ class SignInFormBase extends Component {
   
   onSubmit = event => {
     // console.log('this props. ', this.props);
+    analyticsEvent('user signing in: ', this.state.email);
     const { email, password } = this.state;
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
@@ -89,6 +90,10 @@ class SignInFormBase extends Component {
         <button className="btn__orange" disabled={isInvalid} type="submit">
           Sign In
         </button>
+        
+        <Link to="/pw-forget">
+          <p className="white">I forgot my password</p>
+        </Link>
 
         {error && <p>{error.message}</p>}
       </form>

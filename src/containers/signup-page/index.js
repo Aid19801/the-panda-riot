@@ -9,7 +9,7 @@ import * as ROUTES from '../../constants/routes';
 import * as actions from './constants';
 
 import './styles.scss';
-import { analyticsPage } from '../../lib/utils';
+import { analyticsPage, analyticsEvent } from '../../lib/utils';
 
 const INITIAL_STATE = {
   username: '',
@@ -35,6 +35,7 @@ class SignUpFormBase extends Component {
   }
 
   componentDidMount() {
+    analyticsEvent('signup page loaded');
     setTimeout(() => {
       this.props.showProgressBar(false);
     }, 100) 
@@ -44,6 +45,7 @@ class SignUpFormBase extends Component {
 
   onSubmit = event => {
     const { username, email, passwordOne } = this.state;
+    analyticsEvent(`user is registering: ${email}`);
 
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -57,16 +59,20 @@ class SignUpFormBase extends Component {
       })
       .then(() => {
         this.setState({ ...INITIAL_STATE });
+        analyticsEvent(`user regd success: ${email}`);
         this.props.history.push(ROUTES.HOME);
       })
       .catch(error => {
+        analyticsEvent(`user regd FAIL: ${email}`);
         this.setState({ error });
       });
 
+    
     event.preventDefault();
   }
 
   onChange = event => {
+    analyticsEvent(`user is entering ${event.target.name}`);
     this.setState({ [event.target.name]: event.target.value });
   };
 

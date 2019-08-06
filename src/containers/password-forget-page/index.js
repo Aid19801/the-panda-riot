@@ -8,7 +8,7 @@ import * as ROUTES from '../../constants/routes';
 import * as actions from './constants';
 
 import './styles.scss';
-import { analyticsPage } from '../../lib/utils';
+import { analyticsPage, analyticsEvent } from '../../lib/utils';
 import InputWithTag from '../../components/InputWithTag';
 const PasswordForgetPage = () => (
   <div>
@@ -45,7 +45,7 @@ class PasswordForgetFormBase extends Component {
 
   onSubmit = event => {
     const { email } = this.state;
-
+    analyticsEvent(`pw-forget-${email}`);
     this.props.firebase
       .doPasswordReset(email)
       .then(() => {

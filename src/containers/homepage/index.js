@@ -85,7 +85,7 @@ class HomePage extends Component {
   }
 
   handleInstagramClick = (each) => {
-    analyticsEvent(`clicked-insta-${each.id}`)
+    analyticsEvent(`clicked-insta-${each.id}`);
     return window.open(each.link, '_newtab');
   }
 
@@ -93,9 +93,9 @@ class HomePage extends Component {
 
     // console.log('nextProps: ', nextProps);
     let firstRow = (nextProps && nextProps.prismicStories && nextProps.prismicStories.slice(0, 3));
-    let secondRow = nextProps.articles.slice(0, 3);
-    let thirdRow = nextProps.articles.slice(3, 6);
-    let fourthRow = nextProps.articles.slice(6, 9);
+    let secondRow = (nextProps && nextProps.articles && nextProps.articles.slice(0, 3));
+    let thirdRow = (nextProps && nextProps.articles && nextProps.articles.slice(3, 6));
+    let fourthRow = (nextProps && nextProps.articles && nextProps.articles.slice(6, 9));
 
     this.setState({ 
       firstRow,
@@ -119,7 +119,7 @@ class HomePage extends Component {
       <>
       <Container>
 
-        <PageTitle text="#home" />
+        <PageTitle text="The Panda Riot" />
 
           { !articlesHaveLoaded && <Spinner />}
 
@@ -140,7 +140,7 @@ class HomePage extends Component {
 
         <Row className="mid-row full-width">
 
-            { articlesHaveLoaded && secondRow.map((each, i) => {
+            { articlesHaveLoaded && secondRow && secondRow.map((each, i) => {
               return (
                 
                 <Col key={i} className="mob-margin-bottom" sm={4}>
@@ -158,47 +158,20 @@ class HomePage extends Component {
           <div className="div__two-stacklable-rows">
 
               <div className="insta-row-of-images">
-                { photosRetrieved && photos.slice(0, 5).map((each, i) => (
+                { photosRetrieved && photos && photos.slice(0, 5).map((each, i) => (
                   <div key={i} onClick={() => this.handleInstagramClick(each)} className="div__each-image">
                         <img
                           className="img__each-img"
                           style={{ height: 90, width: 90 }}
                           src={each.images.standard_resolution.url}
+                          alt="open mic instagram for London"
                         />
                   </div>
               ))}
               </div>
 
               <div className="insta-row-of-images">
-                { photosRetrieved && photos.slice(5, 10).map((each, i) => (
-                  <div key={i} onClick={() => this.handleInstagramClick(each)} className="div__each-image">
-                        <img
-                          className="img__each-img"
-                          style={{ height: 90, width: 90 }}
-                          src={each.images.standard_resolution.url}
-                        />
-                  </div>
-              ))}
-              </div>
-
-          </div>
-
-          <div className="div__two-stacklable-rows">
-
-              <div className="insta-row-of-images">
-                { photosRetrieved && photos.slice(10, 15).map((each, i) => (
-                  <div key={i} onClick={() => this.handleInstagramClick(each)} className="div__each-image">
-                        <img
-                          className="img__each-img"
-                          style={{ height: 90, width: 90 }}
-                          src={each.images.standard_resolution.url}
-                        />
-                  </div>
-              ))}
-              </div>
-
-              <div className="insta-row-of-images">
-                { photosRetrieved && photos.slice(15, 20).map((each, i) => (
+                { photosRetrieved && photos && photos.slice(5, 10).map((each, i) => (
                   <div key={i} onClick={() => this.handleInstagramClick(each)} className="div__each-image">
                         <img
                           className="img__each-img"
@@ -214,7 +187,7 @@ class HomePage extends Component {
           <div className="div__two-stacklable-rows">
 
               <div className="insta-row-of-images">
-                { photosRetrieved && morePhotos.slice(0, 5).map((each, i) => (
+                { photosRetrieved && photos && photos.slice(10, 15).map((each, i) => (
                   <div key={i} onClick={() => this.handleInstagramClick(each)} className="div__each-image">
                         <img
                           className="img__each-img"
@@ -226,7 +199,35 @@ class HomePage extends Component {
               </div>
 
               <div className="insta-row-of-images">
-              { photosRetrieved && morePhotos.slice(5, 10).map((each, i) => (
+                { photosRetrieved && photos && photos.slice(15, 20).map((each, i) => (
+                  <div key={i} onClick={() => this.handleInstagramClick(each)} className="div__each-image">
+                        <img
+                          className="img__each-img"
+                          style={{ height: 90, width: 90 }}
+                          src={each.images.standard_resolution.url}
+                        />
+                  </div>
+              ))}
+              </div>
+
+          </div>
+
+          <div className="div__two-stacklable-rows">
+
+              <div className="insta-row-of-images">
+                { photosRetrieved && morePhotos && morePhotos.slice(0, 5).map((each, i) => (
+                  <div key={i} onClick={() => this.handleInstagramClick(each)} className="div__each-image">
+                        <img
+                          className="img__each-img"
+                          style={{ height: 90, width: 90 }}
+                          src={each.images.standard_resolution.url}
+                        />
+                  </div>
+              ))}
+              </div>
+
+              <div className="insta-row-of-images">
+              { photosRetrieved && morePhotos && morePhotos.slice(5, 10).map((each, i) => (
                   <div key={i} onClick={() => this.handleInstagramClick(each)} className="div__each-image">
                         <img
                           className="img__each-img"
@@ -246,7 +247,7 @@ class HomePage extends Component {
           
         <Row className="bottom-row full-width">
 
-            { articlesHaveLoaded && thirdRow.map((each, i) => {
+            { articlesHaveLoaded && thirdRow && thirdRow.map((each, i) => {
               return (
                 
                 <Col key={i} className="mob-margin-bottom" sm={4}>
@@ -259,7 +260,7 @@ class HomePage extends Component {
 
         <Row className="bottom-row full-width">
 
-            { articlesHaveLoaded && fourthRow.map((each, i) => {
+            { articlesHaveLoaded && fourthRow && fourthRow.map((each, i) => {
               return (
                 
                 <Col key={i} className="mob-margin-bottom" sm={4}>

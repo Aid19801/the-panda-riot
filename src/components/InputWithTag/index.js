@@ -1,16 +1,17 @@
 import React from 'react';
 import './styles.css';
 
-const InputWithTag = (props) => (
+const InputWithTag = ({ tagline, onChange, value,
+    placeholder, name, disabled, orange }) => (
     <div className={`div__input-w-tag`}>
-        <p className={`p__input-w-tag`}>{props.tagline}</p>
+        <h4 className={ orange ? "p__input-w-tag orange bold-thick" : "p__input-w-tag"}>{tagline}</h4>
         <input
-            onChange={props.onChange}
-            value={props.value}
-            placeholder={props.placeholder}
-            name={props.name}
+            onChange={onChange}
+            value={value}
+            placeholder={placeholder}
+            name={name}
             type="text"
-            disabled={props.disabled}
+            disabled={disabled}
             className={`input__input-w-tag`}
         />
     </div>

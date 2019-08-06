@@ -72,7 +72,7 @@ class App extends Component {
                         <RichText render={each.data.title} />
 
                         
-                          <Link to={'/signin'}>
+                          <Link to={'/home'}>
                             <img
                               src={each.data["page-image"].url}
                               alt="the panda riot london comedy gig"
