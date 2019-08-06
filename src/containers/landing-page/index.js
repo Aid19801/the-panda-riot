@@ -68,7 +68,7 @@ class App extends Component {
 
                   <Row className="lp__first-section div__flex-center">
                     <Col sm={12}>
-                      <div className="div__flex-center center flex-direction-col">
+                      <div className="div__flex-center center flex-direction-col push-down-top-fix">
                         <RichText render={each.data.title} />
 
                         

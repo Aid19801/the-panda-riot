@@ -10,6 +10,7 @@
     padding-bottom: 20px;
     display: flex;
     flex-direction: column;   
+    margin-top: 65px;
 }
 
 
@@ -43,10 +44,10 @@
     padding: 20px;
 }
 
-@media screen and (max-width: 488px) {
+@media screen and (max-width: 600px) {
     .div__user-info-card-medium-container {
         margin-left: 0px;
-        margin-top: 0px;
-        width: 300px;
+        margin-top: 20px;
+        width: 100%;
     }
 }

@@ -285,7 +285,7 @@ const AccountPage = (props) => {
   // console.log('FUCK this.props ', props)
   return (
       <div id="account-page-container">
-        <Container className="margin-top-20" >
+        <Container className="push-down-top-fix" >
           <Row className="full-width flex-center">
             <Col sm={10}>
               <AccountChangeForm {...props} />

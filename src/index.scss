@@ -54,6 +54,11 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.push-down-top-fix {
+  margin-top: 65px;
+}
+
 .btn__orange {
   background: orange;
   color: black;

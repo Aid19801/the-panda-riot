@@ -5,12 +5,16 @@
     justify-content: center;
     padding: 20px;
     width: 70%;
-    margin-top: 20px;
+    margin-top: 75px;
     animation: fadeOutTitle 0.4s ease;
 }
 .div__page-title:hover {
     background-color: rgba(0, 0, 0, 0.5);
     animation: fadeInTitle 0.4s ease;
+}
+
+.div__page-title h1 {
+    text-align: center;
 }
 
 @keyframes fadeOutTitle {

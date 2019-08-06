@@ -129,7 +129,7 @@ class UserProfilePage extends Component {
     return (
       <>
       <Container>
-        <Row className="full-width">
+        <Row className="full-width margin-top">
           <Col sm={6}>
             <UserCard
               profilePicture={profilePicture}
