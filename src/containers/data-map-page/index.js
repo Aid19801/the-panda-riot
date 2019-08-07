@@ -100,6 +100,7 @@ class DataMapPage extends Component {
               lng={paneInfo.lng}
               lat={paneInfo.lat}
               gigs={gigs}
+              zoom={paneInfo && paneInfo.zoom ? paneInfo.zoom : null}
               />
           </Col>
           <Col className="aid-col" sm={5}>

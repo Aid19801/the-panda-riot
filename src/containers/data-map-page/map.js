@@ -32,15 +32,17 @@ class MapBox extends React.Component {
             lng: -0.0826,
             lat: 51.5160,
             clickedCluster: false,
+            zoom: [9],
         }
-        this.zoom = [9];
+        // this.zoom = [9];
     }
 
     componentWillMount = () => {
+        console.log('this props CWM ', this.props)
+        this.manageZoom();
         this.storeGigsFromReduxInState()
       }
   
-
     onMove = () => {
         return;
     };
@@ -49,14 +51,13 @@ class MapBox extends React.Component {
     clusterClick = (coordinates, total, getLeaves) => {
         // console.log('? coords clicked ', coordinates);
         this.setState({
-        clickedCluster: true,
-        lng: coordinates[0],
-        lat: coordinates[1],
+            clickedCluster: true,
+            lng: coordinates[0],
+            lat: coordinates[1],
+            zoom: [14],
         });
     };
 
-
-    
     clusterMarker = (coordinates, pointCount, getLeaves) => {
     return (
         <Marker
@@ -75,7 +76,6 @@ class MapBox extends React.Component {
         return onStyleLoad && onStyleLoad(map);
     };
 
-
     storeGigsFromReduxInState = () => {
         if (this.props.gigs && this.props.gigs.length !== 0) {
             this.setState({ gigs: this.props.gigs })
@@ -92,6 +92,17 @@ class MapBox extends React.Component {
         }
     }
 
+    manageZoom = () => {
+        if (this.props.zoom) {
+            this.setState({ zoom: [15] });
+        }
+        if (this.state.clickedCluster) {
+            this.setState({ zoom: [12] });
+        }
+        if (!this.props.zoom && !this.state.clickedCluster) {
+            this.setState({ zoom: [9] });
+        }
+    }
 
     render() {
         const { selectMarker, lng, lat } = this.props;
@@ -103,7 +114,7 @@ class MapBox extends React.Component {
             <Map
                 style="mapbox://styles/mapbox/streets-v9"
                 center={[this.state.lng, this.state.lat] || [lng, lat]}
-                zoom={clickedCluster ? [15] : this.zoom}
+                zoom={this.state.zoom}
                 onStyleLoad={this.onStyleLoad}
                 onMove={this.onMove}
                 containerStyle={{

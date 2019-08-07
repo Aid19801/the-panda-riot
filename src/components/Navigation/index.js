@@ -25,42 +25,45 @@ class NavigationAuth extends Component {
     return (
         <Navbar bg="dark" expand="lg">
         
-        <Navbar.Brand><Link to={ROUTES.LANDING}>The Panda Riot</Link></Navbar.Brand>
+          <Navbar.Brand><Link to={ROUTES.LANDING}>The Panda Riot</Link></Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <div className="nav-option-wrapper">
-              <Link to={ROUTES.HOME}>Home</Link>
-            </div>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-            <div className="nav-option-wrapper">
-              <Link to={ROUTES.DATAMAP}>Gigs</Link>
-            </div>
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <div className="nav-option-wrapper">
+                <Link to={ROUTES.HOME}>Home</Link>
+              </div>
 
-            <div className="nav-option-wrapper">
-              <Link to={ROUTES.ACCOUNT}>Me</Link>
-            </div>
+              <div className="nav-option-wrapper">
+                <Link to={ROUTES.DATAMAP}>Gigs</Link>
+              </div>
 
-            <div className="nav-option-wrapper">
-              <Link to={ROUTES.ACTS}>Acts</Link>
-            </div>
 
-            <div className="nav-option-wrapper">
-              <Link to={ROUTES.CHAT}>Chat</Link>
-            </div>
+              <div className="nav-option-wrapper">
+                <Link to={ROUTES.ACTS}>Acts</Link>
+              </div>
 
-            { this.props.privs && (
-                <div onClick={() => window.open('https://des-lynham.prismic.io/documents/working~l=en-gb/')}className="nav-option-wrapper orange">
-                  <p>Write Blog</p>
-                </div>
-              )
-             }
-            <div className="nav-option-wrapper">
-              <SignOutButton />
-            </div>
-          </Nav>
-        </Navbar.Collapse>
+              <div className="nav-option-wrapper">
+                <Link to={ROUTES.CHAT}>Chat</Link>
+              </div>
+
+              <div className="nav-option-wrapper">
+                <Link to={ROUTES.ACCOUNT}>ME!</Link>
+              </div>
+              
+              { this.props.privs && (
+                  <div onClick={() => window.open('https://des-lynham.prismic.io/documents/working~l=en-gb/')}className="nav-option-wrapper orange">
+                    <p>Write Blog</p>
+                  </div>
+                )
+              }
+              <div className="nav-option-wrapper">
+                <SignOutButton />
+              </div>
+            </Nav>
+          </Navbar.Collapse>
+
       </Navbar>
     );
   }
