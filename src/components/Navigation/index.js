@@ -89,20 +89,20 @@ class NavigationAuth extends Component {
                   <div className="nav__my-acc__popout" onClick={this.handleClick}>
                     <Link to={ROUTES.ACCOUNT}>My Account</Link>
                     <Link to={`/user?id=${uid}`}>My Profile</Link>
+                { this.props.privs && 
+                  (
+                    <div 
+                      onClick={() => window.open('https://des-lynham.prismic.io/documents/working~l=en-gb/')}
+                      className="nav__admin-option"
+                    >Write Blog</div>
 
+                    )}
                       <SignOutButton />
 
                   </div>
                 ) }
               </div>
-              
-              { this.props.privs && (
-                  <div onClick={() => window.open('https://des-lynham.prismic.io/documents/working~l=en-gb/')}className="nav-option-wrapper orange">
-                    <p>Write Blog</p>
-                  </div>
-                )
-              }
-
+            
             </Nav>
           </Navbar.Collapse>
 

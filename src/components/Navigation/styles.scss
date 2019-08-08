@@ -4,7 +4,7 @@
     background: rgba(0, 0, 0, 0.6);
     z-index: 12;
     position: absolute;
-    // border: 1px solid red;
+    
     width: 100%;
 }
 
@@ -14,16 +14,15 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    // border: 1px solid red;
+    
 }
 
 .nav-option-wrapper {
-    // align-content: center;
+
     margin-left: 20px;
     margin-right: 20px;
     -webkit-transform: rotate(-10deg);
     transform: rotate(-10deg);
-    // justify-content: center;
     display: flex;
 }
 
@@ -36,11 +35,23 @@ a {
     background: black;
     color: orange !important;
     font-weight: 700;
-    margin-bottom: 5px;
+    // margin-bottom: 5px;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
 }
+
+.nav__admin-option {
+    background: black;
+    color: orange;
+    font-weight: 700;
+    -webkit-transform: skewY(-2deg);
+    transform: skewY(-2deg);
+    margin-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 
 .mr-auto {
     // border: 1px solid blue;
@@ -174,7 +185,6 @@ span.navbar-brand a {
 
     .nav__my-acc__popout {
         width: 230px;
-        margin-left: 60px;
         margin-top: 60px;
     }
     .nav__my-acc__popout a {
@@ -190,10 +200,11 @@ span.navbar-brand a {
 
 .nav__prof-pic-container {
     display: flex;
-    justify-content: center;
     margin-top: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
+    width: 90%;
+    justify-content: flex-end;
 }
     
 }

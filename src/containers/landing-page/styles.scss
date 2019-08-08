@@ -40,7 +40,7 @@
 // 3 boxes of What Is This, Is it Free info
 .div__each-lp-box {
   justify-content: flex-start;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
   min-height: 300px;
   margin-top: 40px;
@@ -148,7 +148,7 @@
 @media screen and (max-width: 500px) {
 
   .lp__third-section {
-    height: 1700px !important;
+    height: 1464px !important;
   }
 
   .lp__third-section .col-sm-5:nth-child(2) {
