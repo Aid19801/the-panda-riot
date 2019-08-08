@@ -42,6 +42,16 @@ a {
     padding-top: 10px;
 }
 
+.mr-auto {
+    // border: 1px solid blue;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.div__flex-row {
+    display: flex;
+    flex-direction: row;
+}
 
 .nav-option-wrapper p {
     color: white;
@@ -62,7 +72,13 @@ span.navbar-brand a {
     margin-top: 10px;
 }
 
-
+.nav__prof-pic-container {
+    width: 100px;
+    transform: skewY(0deg);
+    // border: 1px solid red;
+    display: flex;
+    justify-content: flex-end;
+}
 .nav-option-wrapper:nth-child(5) a {
     padding-top: 0 !important;
 }
@@ -90,7 +106,7 @@ span.navbar-brand a {
 
 .nav__my-acc__popout {
     position: absolute;
-    margin-left: 56px;
+    margin-top: 47px;
     border: 5px solid white;
     display: flex;
     // justify-content: flex-start;
@@ -125,6 +141,11 @@ span.navbar-brand a {
 @media screen and (max-width: 991px) {
     .nav-option-wrapper {
         transform: rotate(0deg);
+        margin-bottom: 5px;
+        background: black;
+    color: orange;
+    font-weight: 700;
+    transform: skewY(-2deg);
     }
     .nav-option-wrapper > a {
         font-size: 40px;
@@ -153,10 +174,26 @@ span.navbar-brand a {
 
     .nav__my-acc__popout {
         width: 230px;
+        margin-left: 60px;
+        margin-top: 60px;
     }
     .nav__my-acc__popout a {
         font-size: 40px;
     }
 
+
+.div__flex-row {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.nav__prof-pic-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
     
 }

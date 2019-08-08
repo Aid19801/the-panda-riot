@@ -16,8 +16,10 @@ import './styles.scss';
 const Navigation = ({ isAdmin, privs, uid }) => (
   <div className="nav-container">
     <AuthUserContext.Consumer>
-      {authUser => 
-        authUser ? <NavigationAuth isAdmin={isAdmin} privs={privs} uid={uid} /> : <NavigationNonAuth />
+      {authUser => {
+        // console.log('auuuth user: ', authUser.uid)
+        return authUser ? <NavigationAuth isAdmin={isAdmin} privs={privs} uid={authUser.uid} /> : <NavigationNonAuth />
+      }
       }
     </AuthUserContext.Consumer>
   </div>
@@ -59,26 +61,28 @@ class NavigationAuth extends Component {
 
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <div className="nav-option-wrapper">
-                <Link to={ROUTES.HOME}>Home</Link>
+              <div className="div__flex-row">
+                <div className="nav-option-wrapper">
+                  <Link to={ROUTES.HOME}>Home</Link>
+                </div>
+
+                <div className="nav-option-wrapper">
+                  <Link to={ROUTES.DATAMAP}>Gigs</Link>
+                </div>
+
+
+                <div className="nav-option-wrapper">
+                  <Link to={ROUTES.ACTS}>Acts</Link>
+                </div>
+
+                <div className="nav-option-wrapper">
+                  <Link to={ROUTES.CHAT}>Chat</Link>
+                </div>
               </div>
 
-              <div className="nav-option-wrapper">
-                <Link to={ROUTES.DATAMAP}>Gigs</Link>
-              </div>
+              <div className="nav-option-wrapper nav__prof-pic-container">
 
-
-              <div className="nav-option-wrapper">
-                <Link to={ROUTES.ACTS}>Acts</Link>
-              </div>
-
-              <div className="nav-option-wrapper">
-                <Link to={ROUTES.CHAT}>Chat</Link>
-              </div>
-
-              <div className="nav-option-wrapper">
-
-                <div className="nav__prof-pic" onClick={this.handleClick}>
+                <div className="nav__prof-pic" onClick={this.handleClick}>  
                   <ProfilePic srcProp={profilePic ? profilePic : require('../../containers/account-page/user.svg')} />
                 </div>
                 { popOut && (
