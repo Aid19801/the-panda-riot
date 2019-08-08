@@ -18,17 +18,28 @@
 }
 
 .nav-option-wrapper {
+    // align-content: center;
     margin-left: 20px;
     margin-right: 20px;
+    -webkit-transform: rotate(-10deg);
     transform: rotate(-10deg);
+    // justify-content: center;
+    display: flex;
 }
+
 
 a {
     text-decoration: none !important;
 }
 
 .nav-option-wrapper a {
-    color: white;
+    background: black;
+    color: orange !important;
+    font-weight: 700;
+    margin-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
 }
 
 
@@ -44,6 +55,73 @@ span.navbar-brand a {
     font-size: 25px;
 }
 
+.nav-option-wrapper:nth-child(5) {
+    margin-left: 20px;
+    margin-right: 20px;
+    transform: rotate(0deg) !important;
+    margin-top: 10px;
+}
+
+
+.nav-option-wrapper:nth-child(5) a {
+    padding-top: 0 !important;
+}
+
+.nav__prof-pic {
+    width: 40px;
+    height: 40px;
+}
+
+.nav__prof-pic div {
+    width: 40px;
+    height: 40px;
+}
+
+.nav__prof-pic div img {
+    width: 40px;
+    height: 40px;
+    border: 2px solid lightgrey;
+}
+
+.nav-option-wrapper .btn__signout {
+    // height: 30px;
+    // margin-top: 9px;
+}
+
+.nav__my-acc__popout {
+    position: absolute;
+    margin-left: 56px;
+    border: 5px solid white;
+    display: flex;
+    // justify-content: flex-start;
+    align-items: flex-start;
+    width: 190px;
+    padding: 10px;
+    flex-direction: column;
+    background: grey;
+    animation: fadeInNavPopOut 0.3s ease-in;
+}
+
+.nav__my-acc__popout a {
+    background: black;
+    color: orange;
+    font-weight: 700;
+    transform: skewY(-2deg);
+    margin-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+@keyframes fadeInNavPopOut {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
 @media screen and (max-width: 991px) {
     .nav-option-wrapper {
         transform: rotate(0deg);
@@ -51,4 +129,34 @@ span.navbar-brand a {
     .nav-option-wrapper > a {
         font-size: 40px;
     }
+
+    .nav-option-wrapper:nth-child(5) {
+        // border: 2px solid red;
+        margin-bottom: 9px;
+    }
+
+    .nav__prof-pic {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .nav__prof-pic div {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .nav__prof-pic div img {
+        width: 50px;
+        height: 50px;
+        border: 5px solid lightgrey;
+    }
+
+    .nav__my-acc__popout {
+        width: 230px;
+    }
+    .nav__my-acc__popout a {
+        font-size: 40px;
+    }
+
+    
 }

@@ -115,6 +115,9 @@ class AccountChangeForm extends React.Component {
 
     event.preventDefault();
     this.setState({ updated: true })
+    
+    sessionStorage.setItem('cached-profilePicture', profilePicture);
+
     this.props.history.push(ROUTES.HOME);
   }
 
@@ -136,7 +139,7 @@ class AccountChangeForm extends React.Component {
     return (
       <form className="act-profile-form" onSubmit={this.onSubmit}>
         
-        { profilePicture ? <ProfilePic srcProp={this.state.profilePicture} /> : <Spinner />}
+        { profilePicture ? <ProfilePic srcProp={this.state.profilePicture} /> : <ProfilePic srcProp={require('./user.svg')} />}
 
         <InputWithTag
           tagline="Photo URL"

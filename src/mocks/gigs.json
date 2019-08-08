@@ -1,29 +1,8 @@
 {
     "gigs": [
         { 
-            "id": 1,
-            "name": "We Are Funny Project",
-            "website": "http://wearefunnyproject.com",
-            "howToBook": "http://wearefunnyproject.com/contact#block-83a2e05c69a653d2dad5",
-            "venue": "Farrs School of Dance",
-            "img": "http://static1.squarespace.com/static/57b31fb45016e16882ac0fc9/t/57e3b1b5197aeac8122b37b4/1536853866236/?format=1500w",
-            "imgs": ["https://media.timeout.com/images/100449091/image.jpg", "https://media.timeout.com/images/24664/image.jpg", "https://media-cdn.tripadvisor.com/media/photo-s/11/75/dc/f7/mr-trevor-lock.jpg"],
-            "blurb": "Stretch your brain, open your mind and laugh. Or think. Maybe Both. We Are Funny Project runs free comedy nights every Monday and Tuesdays at Farrs in Dalston. Most weekends we run a one day workshop on some aspect of performance and comedy... from “MCing” to “Improv Fun and Games”, “Comedy Storytelling” to “Writing A Sit-Com” and a whole load more.",
-            "lat": 51.5464,
-            "lng": -0.0737,
-            "nights": ["Mon", "Tue"],
-            "walkins": true,
-            "walkinSignUp": "18:30",
-            "prebook": true,
-            "prebookSignUp": "contact via email - booked a month in advance",
-            "bringer": false,
-            "nearestTubes": ["Dalston Junction"],
-            "twitterHandle": "WeRFunnyProject"
-            
-        },
-        { 
             "id": 2,
-            "name": "Comedy Virgins!",
+            "name": "MOCK Comedy Virgins!",
             "venue": "The Cavendish Arms",
             "img": "http://www.thecavendisharmsstockwell.co.uk/images/comedy_virgins_logo.jpg?crc=458167020",
             "imgs": ["https://pbs.twimg.com/media/DfziteJXkAA9Ioj.jpg", "http://media.virbcdn.com/cdn_images/resize_500x500/c5/12b784cd041995f0-TheCav-4-min.jpg", "http://3.bp.blogspot.com/-Axgg1ZvCRdY/UOlXQ22CAnI/AAAAAAAAMA8/pyW2w3dGnhw/s1600/Max_Turner_Prize_Cavendish_Arms.jpg"],
@@ -41,7 +20,7 @@
         },
         { 
             "id": 4,
-            "name": "42 Comedy Club",
+            "name": "MOCK 42 Comedy Club",
             "venue": "Fannys Bar",
             "img": "https://media-cdn.tripadvisor.com/media/photo-s/16/6e/7b/9f/getlstd-property-photo.jpg",
             "imgs": ["https://media.timeout.com/images/105399612/630/472/image.jpg", "https://static1.squarespace.com/static/56cb5b0fb09f95c550166caf/t/5b8a819140ec9a2651d39cd9/1535803799950/IMG_20180818_223225_390.jpg", "https://images1.the-dots.com/1792084/fannys6.jpeg?p=projectImageFullJpg"],
@@ -59,7 +38,7 @@
         },
         { 
             "id": 5,
-            "name": "Jester Jesters",
+            "name": "MOCK Jester Jesters",
             "venue": "The Betsey Trotwood",
             "img": "http://jesterjesters.com/image/jesterjesters-logo.jpeg",
             "imgs": ["http://www.jamesquintin.co.uk/wp-content/uploads/2015/02/jesters.jpg", "https://media-cdn.tripadvisor.com/media/photo-s/0f/65/b2/89/got-to-see-fern-brady.jpg", "https://www.shepherdneame.co.uk/sites/default/files/The%20Betsey%20Trotwood%20Clerkenwell%20Exterior.jpg"],
@@ -77,7 +56,7 @@
         },
         { 
             "id": 6,
-            "name": "Jester Jesters",
+            "name": "MOCK Jester Jesters",
             "venue": "Oak & Pastor",
             "img": "http://jesterjesters.com/image/jesterjesters-logo.jpeg",
             "imgs": ["http://www.jamesquintin.co.uk/wp-content/uploads/2015/02/jesters.jpg", "https://media-cdn.tripadvisor.com/media/photo-s/0f/65/b2/89/got-to-see-fern-brady.jpg", "https://www.shepherdneame.co.uk/sites/default/files/The%20Betsey%20Trotwood%20Clerkenwell%20Exterior.jpg"],
@@ -96,7 +75,7 @@
         },
         { 
             "id": 7,
-            "name": "Angel Comedy RAW",
+            "name": "MOCK Angel Comedy RAW",
             "venue": "The Camden Head",
             "img": "https://media.timeout.com/images/103343547/image.jpg",
             "imgs": ["https://www.angelcomedy.co.uk/wp-content/uploads/2016/04/Angel_Comedy_audience-e1519062430787.jpg", "https://www.thinkingbob.co.uk/wp-content/uploads/2015/04/ARTS-Barry-Ferns-Angel-Comedy.jpg", "https://media-cdn.tripadvisor.com/media/photo-s/0d/90/65/8c/getlstd-property-photo.jpg"],
@@ -115,7 +94,7 @@
         },
         { 
             "id": 8,
-            "name": "Big Nose Comedy",
+            "name": "MOCK Big Nose Comedy",
             "venue": "The Boogaloo",
             "img": "https://pbs.twimg.com/profile_images/739835411233673216/SvghrKWg.jpg",
             "imgs": ["https://i.ytimg.com/vi/UlnUgkq4Mzo/maxresdefault.jpg", "https://theboogaloo.co.uk/wp-content/uploads/2017/09/bignose2.jpg"],
@@ -134,7 +113,7 @@
         },
         { 
             "id": 9,
-            "name": "Big Nose Comedy",
+            "name": "MOCK Big Nose Comedy",
             "venue": "The Old Dairy",
             "img": "https://pbs.twimg.com/profile_images/739835411233673216/SvghrKWg.jpg",
             "imgs": ["https://i.ytimg.com/vi/UlnUgkq4Mzo/maxresdefault.jpg", "https://theboogaloo.co.uk/wp-content/uploads/2017/09/bignose2.jpg"],
@@ -153,7 +132,7 @@
         },
         { 
             "id": 10,
-            "name": "King Gong",
+            "name": "MOCK King Gong",
             "venue": "The Comedy Store",
             "img": "https://headbox-media.imgix.net/uploads/space_photo/filename/9855/detail_Venue_Photo_2.jpg?auto=compress,format",
             "imgs": ["https://thecomedystore.co.uk/london/wp-content/uploads/sites/4/2013/11/king-gong-banner-560x359.jpg", "https://i.ytimg.com/vi/xxzpxXshlcU/hqdefault.jpg", "https://d1wx4w35ubmdix.cloudfront.net/media/event/3ZU9/king-gong-triplet-one-dG1h.jpg?versionId=hoR.xKvbGL0rq4GYPuHP2lhcsdKgLzub"],
@@ -173,7 +152,7 @@
         },
         { 
             "id": 11,
-            "name": "Colindale Comedy",
+            "name": "MOCK Colindale Comedy",
             "venue": "The Chandos Arms",
             "img": "http://www.times-series.co.uk/resources/images/4390291.jpg?display=1&htype=0&type=responsive-gallery",
             "imgs": ["https://media-cdn.tripadvisor.com/media/photo-s/09/95/6e/a5/the-chandos-arms.jpg", "https://static1.squarespace.com/static/575c2598c2ea51b70d40d0f5/59872fa9d482e9f06c7c5470/5a66091c085229f6b1f0de08/1548503393033/26685299_2127847750779959_8455135345491965087_o.jpg", "https://pbs.twimg.com/media/DfuEe9CX0AAmnLO.jpg"],
@@ -193,7 +172,7 @@
         },
         { 
             "id": 12,
-            "name": "Comedy by Bow",
+            "name": "MOCK Comedy by Bow",
             "venue": "The Galvanisers Union",
             "img": "https://galvanisersunion.com/wp-content/gallery/home/Galvanisers12.jpg",
             "imgs": ["https://galvanisersunion.com/wp-content/uploads/MG_0217.jpg", "https://galvanisersunion.com/wp-content/uploads/comedy-galva.jpg", "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F59076785%2F50083380638%2F1%2Foriginal.20190325-163035?h=230&w=460&auto=compress&rect=0%2C24%2C2000%2C1000&s=1de0f2769a9db367a6d396446373fe0f"],
@@ -213,7 +192,7 @@
         },
         { 
             "id": 13,
-            "name": "Comedy Cabin",
+            "name": "MOCK Comedy Cabin",
             "venue": "Hoxton Cabin",
             "img": "https://media-cdn.tripadvisor.com/media/photo-s/15/fd/5d/d6/every-wednesday-night.jpg",
             "imgs": ["https://media-cdn.tripadvisor.com/media/photo-s/13/99/d2/26/a-great-evening.jpg", "https://media-cdn.tripadvisor.com/media/photo-s/13/99/d1/c0/a-funny-evening.jpg"],
@@ -233,7 +212,7 @@
         },
         { 
             "id": 14,
-            "name": "TNT Comedy",
+            "name": "MOCK TNT Comedy",
             "venue": "The Vine NW5",
             "img": "http://foodnoise.co.uk/wp-content/uploads/2018/03/Vine-exterior-copy.jpg",
             "imgs": ["https://i.ytimg.com/vi/rUw6tb4wGTg/hqdefault.jpg", "https://scontent-atl3-1.cdninstagram.com/vp/3f49dc31629d26821ff4230e74e9189a/5D42111D/t51.2885-15/e35/56249806_410685376193286_2708287825261618844_n.jpg?_nc_ht=scontent-atl3-1.cdninstagram.com"],
@@ -253,7 +232,7 @@
         },
         { 
             "id": 15,
-            "name": "Comedy East",
+            "name": "MOCK Comedy East",
             "venue": "The White Hart Brew Pub",
             "img": "https://static.wixstatic.com/media/b2dfba_6569610491b14ca1a153d27fe858262a~mv2_d_2000_1500_s_2.jpg",
             "imgs": ["https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F59126565%2F142923865471%2F1%2Foriginal.20190326-102809?w=1000&auto=compress&rect=0%2C62%2C1162%2C581&s=92ff12c90a0023801c80814415721c1a", "https://static1.squarespace.com/static/57e90e18e6f2e191cbf2ff5f/t/58bd3d35db29d66bb3bd6569/1488797004846/DSC_9087.JPG?format=1500w"],
@@ -273,7 +252,7 @@
         },
         { 
             "id": 15,
-            "name": "The Comedy Tavern",
+            "name": "MOCK The Comedy Tavern",
             "venue": "North London Tavern",
             "img": "https://d31fr2pwly4c4s.cloudfront.net/b/b/3/1156130_0_the-comedy-tavern_400.jpg",
             "imgs": ["https://d31fr2pwly4c4s.cloudfront.net/b/b/3/1156130_0_the-comedy-tavern_400.jpg", "https://assets.londonist.com/uploads/2013/08/i640/nlondontavern.png"],
@@ -293,7 +272,7 @@
         },
         { 
             "id": 16,
-            "name": "Funny Feckers",
+            "name": "MOCK Funny Feckers",
             "venue": "The Constitution",
             "img": "http://slam.org.uk/wp-content/uploads/2015/07/funny-fecker1-1-701x388.jpg",
             "imgs": ["https://media-cdn.tripadvisor.com/media/photo-s/11/dc/c2/c5/fun-times-at-funny-feckers.jpg", "http://slam.org.uk/wp-content/uploads/2016/07/13843675_10153610553812407_132639003_o-1-e1469384690828-701x392.jpg"],
@@ -313,7 +292,7 @@
         },
         { 
             "id": 17,
-            "name": "G&B Comedy",
+            "name": "MOCK G&B Comedy",
             "venue": "Arch 1",
             "img": "https://i.ytimg.com/vi/00xrXWCeUls/maxresdefault.jpg",
             "imgs": ["https://i.ytimg.com/vi/00xrXWCeUls/maxresdefault.jpg", "https://i.ytimg.com/vi/00xrXWCeUls/maxresdefault.jpg"],
@@ -333,7 +312,7 @@
         },
         { 
             "id": 17,
-            "name": "Nice N' Spiky Comedy",
+            "name": "MOCK Nice N' Spiky Comedy",
             "venue": "The Regent Islington",
             "img": "https://pbs.twimg.com/profile_images/991412911091408898/a_6QKyPw_400x400.jpg",
             "imgs": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw9PwWkn5_69aRS_ULvPtiQZQ1rcZ3K6IYqebQI2zi_qFEG8wZ", "https://pbs.twimg.com/media/DdwGMLJU8AA7iIf.jpg"],
@@ -353,7 +332,7 @@
         },
         { 
             "id": 18,
-            "name": "ZAM Comedy | Riffin at The Griffin",
+            "name": "MOCK ZAM Comedy | Riffin at The Griffin",
             "venue": "The Vauxhall Griffin",
             "img": "https://pbs.twimg.com/media/D374A9FUIAAluRD.jpg",
             "imgs": ["https://d3ph2ovtiyj37.cloudfront.net/wp-content/uploads/2017/12/05173839/crowd-laughing.jpg", "https://media.timeout.com/images/102962379/630/472/image.jpg"],
@@ -373,7 +352,7 @@
         },
         { 
             "id": 19,
-            "name": "Downstairs @ The Kings Head",
+            "name": "MOCK Downstairs @ The Kings Head",
             "venue": "The Kings Head",
             "img": "https://i.ytimg.com/vi/Em6FsKMspEE/maxresdefault.jpg",
             "imgs": ["http://www.crouchenders.co.uk/wp-content/uploads/2016/02/kings-head-festival-300x169.png", "http://dantamblingcomedy.com/wp-content/uploads/2014/03/Kings-Head-image.jpg"],
@@ -393,7 +372,7 @@
         },
         { 
             "id": 20,
-            "name": "Lions Den Comedy Club",
+            "name": "MOCK Lions Den Comedy Club",
             "venue": "Bar Rumba",
             "img": "https://www.chortle.co.uk/images/photos/small/lionsden_logo.jpg",
             "imgs": ["https://i.ytimg.com/vi/snpDam9DOgY/maxresdefault.jpg", "https://www.lionsdencomedy.co.uk/images/logocarcrash_on_black_295x295px.jpg"],
@@ -413,7 +392,7 @@
         },
         { 
             "id": 21,
-            "name": "Battersea Power Comedy",
+            "name": "MOCK Battersea Power Comedy",
             "venue": "The Duchess Pub",
             "img": "https://i.opencomedy.com/uploads/1yw98qnvdofgqh28_n.jpg",
             "imgs": ["https://i2.wp.com/basic-comedy.com/wp-content/uploads/2018/09/lance-at-battersea-power-comedy-e1536355310855-300x212.jpg?resize=300%2C212", "https://media.timeout.com/images/103967665/630/472/image.jpg"],
@@ -433,7 +412,7 @@
         },
         { 
             "id": 22,
-            "name": "Lost Comedy Club",
+            "name": "MOCK Lost Comedy Club",
             "venue": "Lost Society",
             "img": "https://scontent-lht6-1.xx.fbcdn.net/v/t31.0-8/30420628_144399663073196_5615109259859228875_o.jpg?_nc_cat=102&_nc_ht=scontent-lht6-1.xx&oh=081dc47e260d548429e7fed6b0b20c20&oe=5D609E39",
             "imgs": ["https://media-cdn.tripadvisor.com/media/photo-s/0f/e9/88/f7/lost-co-battersea.jpg", "https://scontent-lht6-1.xx.fbcdn.net/v/t31.0-8/30420628_144399663073196_5615109259859228875_o.jpg?_nc_cat=102&_nc_ht=scontent-lht6-1.xx&oh=081dc47e260d548429e7fed6b0b20c20&oe=5D609E39"],
@@ -453,7 +432,7 @@
         },
         { 
             "id": 22,
-            "name": "Freedom Fridge",
+            "name": "MOCK Freedom Fridge",
             "venue": "The Rose & Crown",
             "img": "https://pbs.twimg.com/profile_images/2550189831/4je7rgbi81324xl52sqq_400x400.jpeg",
             "imgs": ["https://i.ytimg.com/vi/HOL_lerRHfk/maxresdefault.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvuCIvG8ub23uMzHn_GIgzE_9F-WwxN8timseQPuU3j7W5ZcjR"],
@@ -473,7 +452,7 @@
         },
         { 
             "id": 22,
-            "name": "Instant Laughs",
+            "name": "MOCK Instant Laughs",
             "venue": "The Grove",
             "img": "http://i0.wp.com/www.instant-laughs.com/wp-content/uploads/2017/12/instantlaughs-1-e1514263886117-300x265.jpeg?resize=432%2C381",
             "imgs": ["http://i2.wp.com/www.instant-laughs.com/wp-content/uploads/2017/12/14691992_697931937047765_4716562416321268379_o.jpg?resize=640%2C427", "http://i0.wp.com/www.instant-laughs.com/wp-content/uploads/2016/05/Jakebaker-2.jpg?zoom=2&fit=513%2C385"],
@@ -493,7 +472,7 @@
         },
         { 
             "id": 22,
-            "name": "Heavenly Comedy",
+            "name": "MOCK Heavenly Comedy",
             "venue": "The Princess Victoria",
             "img": "http://www.sadiqsamani.com/wp-content/uploads/2015/06/heavenly-comedy-the-angelic.jpg",
             "imgs": ["https://pbs.twimg.com/profile_images/926474145692553216/8917jbVo.jpg", "https://princessvictoria.co.uk/assets/fullsizeoutput_47c7-1158x500.jpeg"],
@@ -513,7 +492,7 @@
         },
         { 
             "id": 22,
-            "name": "Vauxhall Comedy Club",
+            "name": "MOCK Vauxhall Comedy Club",
             "venue": "Vauxhall Comedy Club",
             "img": "https://media-cdn.tripadvisor.com/media/photo-s/16/98/8a/67/vauxhall-comedy-club.jpg",
             "imgs": ["https://ents24.imgix.net/image/000/184/376/db05bb62d0e91868ee9274c44d5d8cee753d4504.jpg?w=358&h=268&auto=format", "https://static1.squarespace.com/static/5b8963597c93278fbdbe0e91/t/5c7be8d0104c7b336a2c869b/1551624538116/WEEL%3AY+EVENTS", "https://pbs.twimg.com/media/D2M8icxX4AAf_K9.jpg"],

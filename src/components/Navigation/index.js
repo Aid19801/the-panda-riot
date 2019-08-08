@@ -8,20 +8,48 @@ import { AuthUserContext } from '../Session';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { withFirebase } from '../Firebase/index'
+
+import ProfilePic from '../ProfilePic';
+
 import './styles.scss';
 
-const Navigation = ({ isAdmin, privs }) => (
+const Navigation = ({ isAdmin, privs, uid }) => (
   <div className="nav-container">
     <AuthUserContext.Consumer>
       {authUser => 
-        authUser ? <NavigationAuth isAdmin={isAdmin} privs={privs} /> : <NavigationNonAuth />
+        authUser ? <NavigationAuth isAdmin={isAdmin} privs={privs} uid={uid} /> : <NavigationNonAuth />
       }
     </AuthUserContext.Consumer>
   </div>
 );
 
 class NavigationAuth extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      profilePic: null,
+      popOut: false,
+    }
+  }
+
+  componentWillMount = () => {
+    let profilePic = sessionStorage.getItem('cached-profilePicture');
+    if (profilePic) {
+      this.setState({ profilePic });
+    }
+    
+  }
+
+  handleClick = () => {
+    this.setState({ popOut: !this.state.popOut });
+  }
+
   render() {
+    
+    const { uid } = this.props;
+    const { popOut, profilePic } = this.state;
+    
     return (
         <Navbar bg="dark" expand="lg">
         
@@ -49,7 +77,19 @@ class NavigationAuth extends Component {
               </div>
 
               <div className="nav-option-wrapper">
-                <Link to={ROUTES.ACCOUNT}>ME!</Link>
+
+                <div className="nav__prof-pic" onClick={this.handleClick}>
+                  <ProfilePic srcProp={profilePic ? profilePic : require('../../containers/account-page/user.svg')} />
+                </div>
+                { popOut && (
+                  <div className="nav__my-acc__popout" onClick={this.handleClick}>
+                    <Link to={ROUTES.ACCOUNT}>My Account</Link>
+                    <Link to={`/user?id=${uid}`}>My Profile</Link>
+
+                      <SignOutButton />
+
+                  </div>
+                ) }
               </div>
               
               { this.props.privs && (
@@ -58,9 +98,7 @@ class NavigationAuth extends Component {
                   </div>
                 )
               }
-              <div className="nav-option-wrapper">
-                <SignOutButton />
-              </div>
+
             </Nav>
           </Navbar.Collapse>
 
@@ -92,6 +130,7 @@ class NavigationNonAuth extends Component {
 
 const mapStateToProps = state => ({
   privs: state.appState.privs,
+  uid: state.accountPage.uid,
 })
 
 export default compose(
