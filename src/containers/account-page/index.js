@@ -43,6 +43,8 @@ class AccountChangeForm extends React.Component {
     analyticsPage('me');
     this.fetchAllGigs();
     let meUid = this.props.firebase.auth.currentUser.uid;
+    console.log('meUid: ', meUid);
+    this.setState({ foo: meUid });
     this.props.firebase.user(meUid)
       .on('value', snapshot => {
           
@@ -90,12 +92,25 @@ class AccountChangeForm extends React.Component {
   }
 
   onSubmit = event => {
+    
     const { tagline, profilePicture, username, includeInActRater,
       faveGig, genre, youtube, twitter, facebook, youtubeChannelURL, website } = this.state;
-    let uid = this.props.firebase.auth.currentUser.uid;
-    let email = this.props.firebase.auth.currentUser.email;
+    // let uid = this.props.firebase.auth.currentUser.uid;
+    let email = this.props.email;
+    console.log('userName: ', username);
+    console.log('tagline: ', tagline);
+    console.log('profilePicture: ', profilePicture);
+    console.log('includeInActRater: ', includeInActRater);
+    console.log('faveGig: ', faveGig);
+    console.log('genre: ', genre);
+    console.log('youtube: ', youtube);
+    console.log('twitter: ', twitter);
+    console.log('facebook: ', facebook);
+    console.log('youtubeChannelURL: ', youtubeChannelURL);
+    console.log('website: ', website);
+    
     this.props.firebase
-      .user(uid)
+      .user(this.state.foo)
         .set({
           username,
           email,
@@ -112,7 +127,7 @@ class AccountChangeForm extends React.Component {
           youtubeChannelURL,
           website,
         })
-
+debugger;
     event.preventDefault();
     this.setState({ updated: true })
     
