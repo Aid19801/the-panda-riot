@@ -97,17 +97,17 @@ class AccountChangeForm extends React.Component {
       faveGig, genre, youtube, twitter, facebook, youtubeChannelURL, website } = this.state;
     // let uid = this.props.firebase.auth.currentUser.uid;
     let email = this.props.email;
-    console.log('userName: ', username);
-    console.log('tagline: ', tagline);
-    console.log('profilePicture: ', profilePicture);
-    console.log('includeInActRater: ', includeInActRater);
-    console.log('faveGig: ', faveGig);
-    console.log('genre: ', genre);
-    console.log('youtube: ', youtube);
-    console.log('twitter: ', twitter);
-    console.log('facebook: ', facebook);
-    console.log('youtubeChannelURL: ', youtubeChannelURL);
-    console.log('website: ', website);
+    // console.log('userName: ', username);
+    // console.log('tagline: ', tagline);
+    // console.log('profilePicture: ', profilePicture);
+    // console.log('includeInActRater: ', includeInActRater);
+    // console.log('faveGig: ', faveGig);
+    // console.log('genre: ', genre);
+    // console.log('youtube: ', youtube);
+    // console.log('twitter: ', twitter);
+    // console.log('facebook: ', facebook);
+    // console.log('youtubeChannelURL: ', youtubeChannelURL);
+    // console.log('website: ', website);
     
     this.props.firebase
       .user(this.state.foo)
@@ -127,7 +127,7 @@ class AccountChangeForm extends React.Component {
           youtubeChannelURL,
           website,
         })
-debugger;
+// debugger;
     event.preventDefault();
     this.setState({ updated: true })
     
