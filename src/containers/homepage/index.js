@@ -112,14 +112,11 @@ class HomePage extends Component {
     const { articlesHaveLoaded, photosRetrieved, firstRow, 
       secondRow, thirdRow, fourthRow, advertsOn, photos, morePhotos } = this.state;
 
-    // console.log('photos back: ', photos)
     // console.log('morePhotos back: ', morePhotos)
     
     return (
       <>
       <Container>
-
-        <PageTitle text="The Panda Riot" />
 
           { !articlesHaveLoaded && <Spinner />}
 

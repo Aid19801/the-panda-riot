@@ -12,8 +12,11 @@ const GigsOnTonightContainer = ({ fetchGigsTonight, gigs }) => {
 
     return (
 
-        <div className="div__gigs-tonight-section row fluid padding-on margin-on">
-            <h4 className="col-sm-12 center">Happening Tonight</h4>
+        <div className="div__gigs-tonight-section row fluid padding-on">
+
+            <div className="col-sm-12">
+                <h4 className="funky-title center">Happening Tonight</h4>
+            </div>
 
             { gigs && gigs.length > 0 && 
                 gigs.map((each, i) => {

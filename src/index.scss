@@ -24,6 +24,17 @@ body {
   height: 100vh;
 }
 
+.funky-title {
+  background: black;
+  color: orange !important;
+  font-weight: 700;
+  font-size: 7vh;
+  padding: 20px;
+  transform: skewY(2deg);
+  text-align: center;
+  width: 50%;
+}
+
 .form__stackable-form{
   display: flex;
   flex-direction: column;
@@ -195,3 +206,11 @@ h2, h4 {
     font-size: 12px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .funky-title {
+    width: 100%;
+    font-size: 7vh;
+  }
+}
+
