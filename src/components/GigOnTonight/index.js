@@ -50,8 +50,8 @@ function GigOnTonight({ id, toggleMarker, allInfo, venue, name, nearestTubes, im
 
     return (
 
-        <animated.div style={props}>
-            <div onClick={() => reRouteToMap()} className="col-sm-3 div__each-gig-tonight">
+        <animated.div style={props} onClick={() => reRouteToMap()} className="col-sm-4 div__each-gig-tonight">
+            
                 <div className="div__inner-box">
                     <div className="row">
                         <img 
@@ -73,7 +73,7 @@ function GigOnTonight({ id, toggleMarker, allInfo, venue, name, nearestTubes, im
                         </div>
                     </div>
                 </div>
-            </div>
+            
         </animated.div>
     )
     

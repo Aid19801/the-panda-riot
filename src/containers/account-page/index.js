@@ -23,6 +23,7 @@ class AccountChangeForm extends React.Component {
     super();
     this.state = {
       me: {},
+      gigs: [],
       username: '',
       tagline: '',
       profilePicture: '',
@@ -127,7 +128,7 @@ class AccountChangeForm extends React.Component {
           youtubeChannelURL,
           website,
         })
-// debugger;
+
     event.preventDefault();
     this.setState({ updated: true })
     
@@ -144,10 +145,19 @@ class AccountChangeForm extends React.Component {
     this.setState({ includeInActRater: !this.state.includeInActRater });
   }
 
+  // componentWillReceiveProps = (nextProps) => {
+  //   if (nextProps.gigs.length !== 0) {
+  //     this.setState({
+  //       gigs: nextProps.gigs,
+  //     })
+  //   }
+  // }
+
   render() {
 
     const { tagline, profilePicture } = this.state;
     const { gigs } = this.props;
+    console.log('AT | gigs are ', gigs)
 
     const isInvalid = tagline === '' || profilePicture === '';
 
@@ -165,6 +175,7 @@ class AccountChangeForm extends React.Component {
           disabled={false}
           orange
         />
+        <p className="margin-bottom" onClick={() => window.open('https://www.tineye.com/imageurl', '_newtab')}> ↑ What is this? ↑</p>
         
 
         <InputWithTag

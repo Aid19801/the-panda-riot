@@ -11,9 +11,9 @@ function* workerFetchGigsTonight() {
     // console.log('heard fetch gigs tonight');
 
     let rawURL;
-    let error;
     let retrievedGigs;
     let today = whatDayIsIt();
+    let error;
 
 
 

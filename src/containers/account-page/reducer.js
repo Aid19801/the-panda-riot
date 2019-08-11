@@ -21,6 +21,7 @@ const accountPageReducer = (state = initialState, action) => {
 
         case actions.STORE_USER_PROFILE:
         return {
+            ...state,
             uid: action.uid,
             email: action.email,
         }
@@ -49,20 +50,20 @@ const accountPageReducer = (state = initialState, action) => {
             break;
 
         case actions.ACCOUNT_PAGE_GOT_GIGS:
-                return {
-                    ...state,
-                    isLoading: false,
-                    gigs: action.gigs,
-                }
+            return {
+                ...state,
+                isLoading: false,
+                gigs: action.gigs,
+            }
             break;
 
 
         case actions.ACCOUNT_PAGE_FAIL_GIGS:
-                return {
-                    ...state,
-                    isLoading: false,
-                    error: action.error,
-                }
+            return {
+                ...state,
+                isLoading: false,
+                error: action.error,
+            }
             break;
     
             

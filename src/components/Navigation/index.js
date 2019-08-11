@@ -8,17 +8,16 @@ import { AuthUserContext } from '../Session';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { withFirebase } from '../Firebase/index'
-
+// import userIcon from '../../icons/user.svg';
 import ProfilePic from '../ProfilePic';
 
 import './styles.scss';
 
-const Navigation = ({ isAdmin, privs, uid }) => (
+const Navigation = ({ isAdmin, privs, firebase }) => (
   <div className="nav-container">
     <AuthUserContext.Consumer>
       {authUser => {
-        // console.log('auuuth user: ', authUser.uid)
-        return authUser ? <NavigationAuth isAdmin={isAdmin} privs={privs} uid={authUser.uid} /> : <NavigationNonAuth />
+        return authUser ? <NavigationAuth isAdmin={isAdmin} privs={privs} uid={authUser.uid} firebase={firebase} /> : <NavigationNonAuth />
       }
       }
     </AuthUserContext.Consumer>
@@ -36,11 +35,32 @@ class NavigationAuth extends Component {
   }
 
   componentWillMount = () => {
-    let profilePic = sessionStorage.getItem('cached-profilePicture');
-    if (profilePic) {
-      this.setState({ profilePic });
+    const cachePic = sessionStorage.getItem('cached-profilePicture');
+    if (cachePic) {
+      this.setState({ profilePic: cachePic });
     }
-    
+    if (!cachePic) {
+      const newPic = this.fetchProfilePicFromFirebase();
+      this.setState({ profilePic: newPic });
+    }
+  }
+
+  fetchProfilePicFromFirebase = () => {
+    const { uid } = this.props;
+    this.props.firebase.user(uid)
+      .on('value', snapshot => {
+          
+          let profilePic = '';
+
+          const me = snapshot.val();
+          
+          me && !me.profilePicture ? profilePic = '' : profilePic = me.profilePicture;
+          me && me.profilePicture && sessionStorage.setItem('cached-profilePicture', me.profilePicture);
+          
+          this.setState({
+            profilePic: profilePic,
+          })
+      }) 
   }
 
   handleClick = () => {
@@ -83,7 +103,7 @@ class NavigationAuth extends Component {
               <div className="nav-option-wrapper nav__prof-pic-container">
 
                 <div className="nav__prof-pic" onClick={this.handleClick}>  
-                  <ProfilePic srcProp={profilePic ? profilePic : require('../../containers/account-page/user.svg')} />
+                  <ProfilePic srcProp={profilePic && profilePic !== '' ? profilePic : require('../../icons/user.svg')} />
                 </div>
                 { popOut && (
                   <div className="nav__my-acc__popout" onClick={this.handleClick}>

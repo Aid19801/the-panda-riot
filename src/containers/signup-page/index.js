@@ -60,7 +60,7 @@ class SignUpFormBase extends Component {
       .then(() => {
         this.setState({ ...INITIAL_STATE });
         analyticsEvent(`user regd success: ${email}`);
-        this.props.history.push(ROUTES.HOME);
+        this.props.history.push(ROUTES.ACCOUNT);
       })
       .catch(error => {
         analyticsEvent(`user regd FAIL: ${email}`);

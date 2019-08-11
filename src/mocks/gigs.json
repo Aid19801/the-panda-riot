@@ -9,7 +9,7 @@
             "blurb": "It's the Comedy Virgins show featuring newish acts doing 5 min sets and the crowd voting for the best in the Infamous clap-off. Hosts keep it rolling with free drinks for their favourite audience members!",
             "lat": 51.4766,
             "lng": -0.1276,
-            "nights": ["Mon", "Tue", "Wed"],
+            "nights": ["Mon", "Tue", "Wed", "Sat"],
             "walkins": true,
             "walkinSignUp": "18:30",
             "prebook": true,
