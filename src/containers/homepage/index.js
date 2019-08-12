@@ -44,6 +44,14 @@ class HomePage extends Component {
     this.props.pageLoading();
     this.props.updateStatefetchNews();
     this.fetchPhotos();
+    this.checkIfUserHasProfile();
+  }
+
+  checkIfUserHasProfile = () => {
+    // TO-DO check if user has a completed profile
+    // if yes => return; / stay on home
+    // if not => show modal
+    
   }
 
   componentDidMount() {

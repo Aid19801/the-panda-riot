@@ -56,6 +56,7 @@ class AccountChangeForm extends React.Component {
           let facebook = '';
           let youtubeChannelURL = '';
           let website = '';
+          let profilePic = '';
 
           const me = snapshot.val();
           const { username, tagline, profilePicture, rating, includeInActRater } = me;
@@ -67,13 +68,15 @@ class AccountChangeForm extends React.Component {
           me && !me.facebook ? facebook = 'unknown' : facebook = me.facebook;
           me && !me.youtubeChannelURL ? youtubeChannelURL = 'unknown' : youtubeChannelURL = me.youtubeChannelURL;
           me && !me.website ? website = 'unknown' : website = me.website;
+          me && !me.profilePicture ? profilePic = 'https://miamivalleycap.org/wp-content/uploads/2017/01/placeholder-person.png' : profilePic = me.profilePicture;
+
 
           let includeInActRaterStatus = includeInActRater || false;
           let persistRatingFromDb = rating !== 0 && rating ? rating : 0;
           this.setState({
             username,
             tagline,
-            profilePicture,
+            profilePicture: profilePic,
             includeInActRater: includeInActRaterStatus,
             email: this.props.firebase.auth.currentUser.email,
             rating: persistRatingFromDb,
@@ -109,6 +112,7 @@ class AccountChangeForm extends React.Component {
     // console.log('facebook: ', facebook);
     // console.log('youtubeChannelURL: ', youtubeChannelURL);
     // console.log('website: ', website);
+
     
     this.props.firebase
       .user(this.state.foo)
