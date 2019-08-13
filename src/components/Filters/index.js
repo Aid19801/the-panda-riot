@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Col from 'react-bootstrap/Col';
-import * as actions from '../../containers/data-map-page/constants';
+import * as actions from './constants';
 import './styles.scss';
 import { analyticsEvent } from '../../lib/utils';
 
-const Filters = ({ userFiltered, filters }) => {
+const Filters = ({ updateStateFiltersChanged, filters }) => {
 
     const [ firstRow, setFirstRow ] = useState([]);
     const [ secondRow, setSecondRow ] = useState([]);
@@ -18,6 +18,26 @@ const Filters = ({ userFiltered, filters }) => {
     }, [filters])
 
     // console.log('firstRow: ', firstRow);
+
+    const handleFilterClick = filter => {
+        let existingFilters = filters;
+        let filterToChange = existingFilters.filter(each => each.id === filter.id)[0];
+        const updatedOneFilter = {
+            ...filterToChange,
+            active: !filterToChange.active,
+        }
+        let allOtherFilters = existingFilters.filter(each => each.id !== filter.id);
+        
+        allOtherFilters.push(updatedOneFilter);
+
+        const sortedFilters = allOtherFilters.sort((a, b) => {
+            var textA = a.id;
+            var textB = b.id;
+            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+        });
+        updateStateFiltersChanged(sortedFilters);
+
+    }
     
     return (
         <div className="col-sm-12 div__filters-outer-container">
@@ -29,7 +49,7 @@ const Filters = ({ userFiltered, filters }) => {
                         return (
                             <React.Fragment key={i}>
                                 <Col className="center-column" sm={3}>
-                                    <button className={each.active ? 'btn__active' : 'btn__notactive'} onClick={() => userFiltered(each)}>{each.filterName}</button>
+                                    <button className={each.active ? 'btn__active' : 'btn__notactive'} onClick={() => handleFilterClick(each)}>{each.filterName}</button>
                                 </Col>
                             </React.Fragment>
                         )
@@ -46,7 +66,7 @@ const Filters = ({ userFiltered, filters }) => {
                 return (
                     <React.Fragment key={i}>
                         <Col className="center-column" sm={3}>
-                            <button className={each.active ? 'btn__active' : 'btn__notactive'} onClick={() => userFiltered(each)}>{each.filterName}</button>
+                            <button className={each.active ? 'btn__active' : 'btn__notactive'} onClick={() => handleFilterClick(each)}>{each.filterName}</button>
                         </Col>
                     </React.Fragment>
 
@@ -64,7 +84,7 @@ const Filters = ({ userFiltered, filters }) => {
                 return (
                     <React.Fragment key={i}>
                         <Col className="center-column" sm={3}>
-                            <button className={each.active ? 'btn__active' : 'btn__notactive'} onClick={() => userFiltered(each)}>{each.filterName}</button>                    
+                            <button className={each.active ? 'btn__active' : 'btn__notactive'} onClick={() => handleFilterClick(each)}>{each.filterName}</button>                    
                         </Col>
                     </React.Fragment>
 
@@ -79,13 +99,14 @@ const Filters = ({ userFiltered, filters }) => {
 }
 
 const mapStateToProps = state => ({
-    filters: state.dataMapPage.filters,
+    filters: state.filters.filters,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    userFiltered: (chosenFilter) => {
-        analyticsEvent(`user-filtered-${chosenFilter.filterName}`);
-        dispatch({ type: actions.USER_CLICKED_FILTER, filter: chosenFilter })
+    updateStateFiltersChanged: (updatedFilters) => {
+        dispatch({ type: actions.FILTERS_CHANGED, filters: updatedFilters });
+        // analyticsEvent(`user-filtered-${selectedFilter.filterName}`);
+        // dispatch({ type: actions.GET_CURRENT_FILTER_STATUSES, filters: allCurrentFilters })
     }
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);

@@ -25,6 +25,7 @@ import * as actions from './constants';
 import { analyticsPage } from '../../lib/utils';
 
 import './styles.scss';
+import WithGigs from '../../components/WithGigs';
 
 class DataMapPage extends Component {
   constructor() {
@@ -185,18 +186,19 @@ const mapStateToProps = state => ({
   showPanels: state.dataMapPage.showPanels,
   isLoading: state.homePage.isLoading,
   paneInfo: state.dataMapPage.paneInfo,
-  gigs: state.dataMapPage.gigs,
+  gigs: state.gigs.gigs,
 });
 
 const mapDispatchToProps = dispatch => ({
   pageLoading: () => dispatch({ type: actions.DATAMAP_PAGE_LOADING }),
   pageLoaded: () => dispatch({ type: actions.DATAMAP_PAGE_LOADED }),
   toggleMarker: (paneInfo) => dispatch({ type: actions.USER_CLICKED_MARKER, paneInfo }),
-  updateStateSelectedGig: (id, gigs) => dispatch({ type: actions.SELECTED_GIG, id, gigs })
+  // updateStateSelectedGig: (id, gigs) => dispatch({ type: actions.SELECTED_GIG, id, gigs })
 });
 
 export default compose(
   withProgressBar,
+  WithGigs,
   withAuthorization(condition),
   connect(mapStateToProps, mapDispatchToProps),
 )(DataMapPage);

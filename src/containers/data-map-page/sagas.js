@@ -1,204 +1,154 @@
-import { takeLatest, put } from 'redux-saga/effects';
-import * as actions from './constants';
-import { allFilterButtonObjects } from '../../lib/utils';
-import gigsDirectlyImportedStaticFile from '../../mocks/gigs.json';
+// import { takeLatest, put } from 'redux-saga/effects';
+// import * as actions from './constants';
+// import { allFilterButtonObjects } from '../../lib/utils';
+// import mockGigs from '../../mocks/gigs.json';
 
-// 1. currently setup for direclty pulling in static json file
-// 2. at some point deploy json-server style thing to heroku
-// 3. code for that is commented out lines 17-30 & 
+// // 1. currently setup for direclty pulling in static json file
+// // 2. at some point deploy json-server style thing to heroku
+// // 3. code for that is commented out lines 17-30 & 
 
-export function* watcherFetchGigs() {
-    yield takeLatest(actions.DATAMAP_PAGE_LOADING, workerFetchGigs);
-}
 
-function* workerFetchGigs() {
-    yield put({ type: actions.DATAMAP_FETCHING_GIGS });
+// // clicking on a filter changes the status of the filterName / active bool
+// export function* watcherUserFilteringGigs() {
+//     yield takeLatest(actions.USER_CLICKED_FILTER, workerUserFilteringGigs);
+// }
 
-    let retrievedGigs = [];
-    let rawUrl = '';
-    let error = null;
+// function* workerUserFilteringGigs(actionObj) {
+//     // take the deets out of the action object
+//    const { id, filterName, active } = actionObj.filter;
+//     // const allCurrentFilters = actionObj.filters;
+//     console.log('actionObj: ', actionObj);
+//     // console.log('1 before: ', actionObj.filter);
 
-    // go to gist
-    yield fetch(`https://api.github.com/gists/${process.env.REACT_APP_GIG_GIST}`)
-        .then(res => res.json())
-        .then(json => {
-            return rawUrl = json.files.gigs.raw_url;
-        })
-        .catch(err => error = err);
+//     const updatedFilter = {
+//         id,
+//         filterName,
+//         active: !active,
+//     }
+
+//     // console.log('1 after: ', actionObj.filter);
+
+//     // // identify the other filters that are not true
+//     // // filter existing filters down to ev thing *but* this one
+//     // let otherFilters = allCurrentFilters.filter((each) => each.id !== id);
+
+//     // // push the new updated bool back into the array
+//     otherFilters.push(updatedFilter);
+
+//     // // re-sort them to correct order
+//     let updatedFilters = otherFilters.sort((a, b) => {
+//         var textA = a.id;
+//         var textB = b.id;
+//         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+//     });
+
+//     // // console.log('2 updatedFilters: ', updatedFilters);
+//     // // put them back in state so gigs can render accordingly.
+//     yield put({ type: actions.FILTER_BOOL_UPDATED, filters: updatedFilters });
+// }
+
+// // listens for when filters have happened
+// export function* watcherFiltersUpdateGigsResults() {
+//     yield takeLatest(actions.FILTER_BOOL_UPDATED, workerFiltersUpdateGigsResults);
+// }
+
+// // updates props.gigs accordingly
+// function* workerFiltersUpdateGigsResults({ filters }) {
     
-    // get dirty raw url for all the gigs
-    yield fetch(rawUrl)
-        .then(res => res.json())
-        .then(json => {
-            return retrievedGigs = json.gigs;
-        })
-        .catch(err => console.log('err ', err))
+//     yield put({ type: actions.GIGS_BEING_FILTERED });
 
-        retrievedGigs.length > 0 ?
-        yield put({ type: actions.DATAMAP_GIGS_SUCCESS, gigs: retrievedGigs })
-        :
-        yield put({ type: actions.DATAMAP_GIGS_FAILED, error: error })
-}
+//     let gigs = [];
+//     let rawUrl = '';
+//     let error = null;
 
-export function* watcherFetchFilters() {
-    yield takeLatest(actions.DATAMAP_PAGE_LOADING, workerFetchFilters);
-}
-
-// titlesOfFilterButtons
-function* workerFetchFilters() {
-    yield put({ type: actions.DATAMAP_FETCHING_FILTERS });
-
-    let sortedFilters = allFilterButtonObjects.sort((a, b) => {
-        var textA = a.id;
-        var textB = b.id;
-        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-    });
-
-    sortedFilters ? yield put({ type: actions.DATAMAP_FILTERS_SUCCESS, filters: sortedFilters })
-    :
-    yield put({ type: actions.DATAMAP_FILTERS_FAILED, error: 'saga couldnt load filters' });
-
-}
-
-// clicking on a filter changes the status of the filterName / active bool
-export function* watcherUserFilteringGigs() {
-    yield takeLatest(actions.USER_CLICKED_FILTER, workerUserFilteringGigs);
-}
-
-function* workerUserFilteringGigs(actionObj) {
-    // take the deets out of the action object
-    const { id, filterName, active } = actionObj.filter;
+//     // go to gist
+//     yield fetch(`https://api.github.com/gists/${process.env.REACT_APP_GIG_GIST}`)
+//         .then(res => res.json())
+//         .then(json => {
+//             return rawUrl = json.files.gigs.raw_url;
+//         })
+//         .catch(err => error = err);
     
-    // console.log('1 before: ', actionObj.filter);
+//     // get dirty raw url for all the gigs
+//     yield fetch(rawUrl)
+//         .then(res => res.json())
+//         .then(json => {
+//             return gigs = json.gigs;
+//         })
+//         .catch(err => console.log('err ', err))
 
-    const updatedFilter = {
-        id,
-        filterName,
-        active: !active,
-    }
-
-    // console.log('1 after: ', actionObj.filter);
-
-    // filter existing filters down to ev thing *but* this one
-    let otherFilters = allFilterButtonObjects.filter((each) => each.id !== id);
-
-    // push the new updated bool back into the array
-    otherFilters.push(updatedFilter);
-
-    // re-sort them to correct order
-    let updatedFilters = otherFilters.sort((a, b) => {
-        var textA = a.id;
-        var textB = b.id;
-        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-    });
-
-    // console.log('2 updatedFilters: ', updatedFilters);
-    // put them back in state so gigs can render accordingly.
-    yield put({ type: actions.FILTER_BOOL_UPDATED, filters: updatedFilters });
-}
-
-// listens for when filters have happened
-export function* watcherFiltersUpdateGigsResults() {
-    yield takeLatest(actions.FILTER_BOOL_UPDATED, workerFiltersUpdateGigsResults);
-}
-
-// updates props.gigs accordingly
-function* workerFiltersUpdateGigsResults({ filters }) {
+//     let activeFilter = filters.filter(each => each.active === true)[0].filterName;
     
-    yield put({ type: actions.GIGS_BEING_FILTERED });
+//     let updatedGigs = [];
 
-    let gigs = [];
-    let rawUrl = '';
-    let error = null;
+//     if (activeFilter === 'Bringers') {
+//         updatedGigs = gigs.filter(each => each.bringer === true);
+//     }
 
-    // go to gist
-    yield fetch(`https://api.github.com/gists/${process.env.REACT_APP_GIG_GIST}`)
-        .then(res => res.json())
-        .then(json => {
-            return rawUrl = json.files.gigs.raw_url;
-        })
-        .catch(err => error = err);
+//     if (activeFilter === 'Non-bringers') {
+//         updatedGigs = gigs.filter(each => each.bringer !== true);
+//     }
+
+//     if (activeFilter === 'Mon' || activeFilter === 'Tue') {
+//         // console.log('filtering Monday or Tues gigs')
+//         updatedGigs = gigs.filter(each => each.nights.includes(activeFilter));
+//     } 
+
+//     if (activeFilter === 'Wed' || activeFilter === 'Thu') {
+//         // console.log('filtering Wed or Thu gigs')
+//         updatedGigs = gigs.filter(each => each.nights.includes(activeFilter));
+//         // console.log('Wed updated ', updatedGigs);
+//     }
+
+//     if (activeFilter === 'Fri' || activeFilter === 'Sat') {
+//         // console.log('filtering Fri or Sat gigs')
+//         updatedGigs = gigs.filter(each => each.nights.includes(activeFilter));
+//     }
+
+//     if (activeFilter === 'Sun') {
+//         // console.log('filtering Sunday gigs')
+//         updatedGigs = gigs.filter(each => each.nights.includes(activeFilter));
+//     }
     
-    // get dirty raw url for all the gigs
-    yield fetch(rawUrl)
-        .then(res => res.json())
-        .then(json => {
-            return gigs = json.gigs;
-        })
-        .catch(err => console.log('err ', err))
+//     if (activeFilter === 'All') {
+//         // console.log('re-setting to show ALL gigs')
+//         updatedGigs = gigs;
+//     }
 
-    let activeFilter = filters.filter(each => each.active === true)[0].filterName;
-    
-    let updatedGigs = [];
+//     yield put({ type: actions.GIGS_FILTERED_DONE, gigs: updatedGigs });
+// }
 
-    if (activeFilter === 'Bringers') {
-        updatedGigs = gigs.filter(each => each.bringer === true);
-    }
+// export function* watcherSelectGig() {
+//     yield takeLatest(actions.SELECTED_GIG, workerSelectGig);
+// }
 
-    if (activeFilter === 'Non-bringers') {
-        updatedGigs = gigs.filter(each => each.bringer !== true);
-    }
+// export function* workerSelectGig({ id, gigs }) {
+//     // console.log('BEFORE ', gigs);
+//     let everythingReSetToFalse = [];
 
-    if (activeFilter === 'Mon' || activeFilter === 'Tue') {
-        // console.log('filtering Monday or Tues gigs')
-        updatedGigs = gigs.filter(each => each.nights.includes(activeFilter));
-    } 
+//     let unselectedGigs = gigs.filter(each => each.id !== id);
 
-    if (activeFilter === 'Wed' || activeFilter === 'Thu') {
-        // console.log('filtering Wed or Thu gigs')
-        updatedGigs = gigs.filter(each => each.nights.includes(activeFilter));
-        // console.log('Wed updated ', updatedGigs);
-    }
+//     unselectedGigs.map((each, i) => {
+//         let newObj = {
+//             ...each,
+//             isSelected: false,
+//         }
+//         everythingReSetToFalse.push(newObj);
+//     });
 
-    if (activeFilter === 'Fri' || activeFilter === 'Sat') {
-        // console.log('filtering Fri or Sat gigs')
-        updatedGigs = gigs.filter(each => each.nights.includes(activeFilter));
-    }
+//     const selectedGig = gigs.filter(each => each.id === id)[0];
 
-    if (activeFilter === 'Sun') {
-        // console.log('filtering Sunday gigs')
-        updatedGigs = gigs.filter(each => each.nights.includes(activeFilter));
-    }
-    
-    if (activeFilter === 'All') {
-        // console.log('re-setting to show ALL gigs')
-        updatedGigs = gigs;
-    }
+//     const updatedGig = {
+//         ...selectedGig,
+//         isSelected: !selectedGig.isSelected,
+//     }
 
-    yield put({ type: actions.GIGS_FILTERED_DONE, gigs: updatedGigs });
-}
+//     const allGigsBackTogetherInOneArray = [
+//         ...everythingReSetToFalse,
+//         updatedGig,
+//     ]
 
-export function* watcherSelectGig() {
-    yield takeLatest(actions.SELECTED_GIG, workerSelectGig);
-}
+//     // console.log('AFTER ', allGigsBackTogetherInOneArray);
+//     yield put({ type: 'DATAMAP_GIGS_SUCCESS', gigs: allGigsBackTogetherInOneArray });
 
-export function* workerSelectGig({ id, gigs }) {
-    // console.log('BEFORE ', gigs);
-    let everythingReSetToFalse = [];
-
-    let unselectedGigs = gigs.filter(each => each.id !== id);
-
-    unselectedGigs.map((each, i) => {
-        let newObj = {
-            ...each,
-            isSelected: false,
-        }
-        everythingReSetToFalse.push(newObj);
-    });
-
-    const selectedGig = gigs.filter(each => each.id === id)[0];
-
-    const updatedGig = {
-        ...selectedGig,
-        isSelected: !selectedGig.isSelected,
-    }
-
-    const allGigsBackTogetherInOneArray = [
-        ...everythingReSetToFalse,
-        updatedGig,
-    ]
-
-    // console.log('AFTER ', allGigsBackTogetherInOneArray);
-    yield put({ type: 'DATAMAP_GIGS_SUCCESS', gigs: allGigsBackTogetherInOneArray });
-
-}
+// }

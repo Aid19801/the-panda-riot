@@ -18,11 +18,14 @@ import signupPageReducer from '../containers/signup-page/reducer';
 import userProfileReducer from '../containers/user-profile-page/reducer';
 
 import prismicReducer from '../components/Prismic/reducer';
+import gigsReducer from '../components/WithGigs/reducer';
+import filtersReducer from '../components/Filters/reducer';
 
 const RootReducer = combineReducers({
     
     appState: appStateReducer,
-
+    gigs: gigsReducer,
+    filters: filtersReducer,
     
     accountPage: accountPageReducer,
     articlePage: articlePageReducer,

@@ -1,44 +1,34 @@
 import * as actions from './constants';
+import { allFilterButtonObjects } from '../../lib/utils';
 
 const initialState = {
     isLoading: false,
-    progressBarStatus: false,
-    paneInfo: {
-        heading: 'select a marker',
-        subheading: 'for more information',
-        paragraph: 'about a gig...',
-        nights: [],
-        imgs: [],
-        img: '',
-        lng: -0.0826,
-        lat: 51.5160,
-        twitterHandle: '',
-    },
     gigs: [],
+    filters: allFilterButtonObjects,
     error: null,
-    showPanels: false,
 }
 
 /* eslint-disable */
-const dataMapPageReducer = (state = initialState, action) => {
+const gigsReducer = (state = initialState, action) => {
     switch(action.type) {
 
         // App State | basic page loading
-        case actions.DATAMAP_PAGE_LOADING:
+        case actions.GET_GIGS:
         return {
             ...state,
             isLoading: true,
         }
         break;
 
-        case actions.DATAMAP_PAGE_LOADED:
+        case actions.GOT_GIGS:
         return {
             ...state,
             isLoading: false,
+            gigs: action.gigs,
         }
         break;
 
-        case actions.DATAMAP_PAGE_FAILED:
+        case actions.GIGS_API_FAIL:
         return {
             ...state,
             isLoading: false,
@@ -51,4 +41,4 @@ const dataMapPageReducer = (state = initialState, action) => {
     }
 }
 
-export default dataMapPageReducer;
+export default gigsReducer;

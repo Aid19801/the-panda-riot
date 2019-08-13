@@ -20,16 +20,16 @@ const store = createStore(RootReducer,
 function* rootSaga() {
     yield all([
         // sagas.watcherAddBlog(),
-        sagas.watcherAccountPageLoadGigs(),
+        // sagas.watcherAccountPageLoadGigs(),
         sagas.watcherFetchArticle(),
-        sagas.watcherFetchGigs(),
-        sagas.watcherFetchGigsTonight(),
-        sagas.watcherFetchFilters(),
+        // sagas.watcherFetchGigs(),
+        // sagas.watcherFetchGigsTonight(),
+        // sagas.watcherFetchFilters(),
         sagas.watcherFetchNews(),
         // sagas.watcherPostingArticle(),
-        sagas.watcherSelectGig(),
-        sagas.watcherUserFilteringGigs(),
-        sagas.watcherFiltersUpdateGigsResults(),
+        // sagas.watcherSelectGig(),
+        // sagas.watcherUserFilteringGigs(),
+        // sagas.watcherFiltersUpdateGigsResults(),
     ])
 }
 
