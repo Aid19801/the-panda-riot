@@ -2,6 +2,7 @@ import { allFilterButtonObjects } from '../../lib/utils';
 import * as actions from './constants';
 
 const initialState = {
+    loading: false,
     filters: allFilterButtonObjects,
 }
 
@@ -12,7 +13,6 @@ const filtersReducer = (state = initialState, action) => {
         case actions.GET_FILTERS:
         return {
             ...state,
-            filters: allFilterButtonObjects,
         }
         break;
 

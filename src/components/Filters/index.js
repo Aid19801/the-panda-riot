@@ -19,24 +19,32 @@ const Filters = ({ updateStateFiltersChanged, filters }) => {
 
     // console.log('firstRow: ', firstRow);
 
-    const handleFilterClick = filter => {
-        let existingFilters = filters;
-        let filterToChange = existingFilters.filter(each => each.id === filter.id)[0];
-        const updatedOneFilter = {
+    const handleFilterClick = filterName => {
+        let existingFilters = filters; // existing filters brought in through redux => props.
+        let filterToChange = existingFilters.filter(each => each.id === filterName.id)[0]; // filter it down
+        // into just the filter that you've clicked on.
+
+        // switch the boolean from false/true
+        const filterWithUpdatedBool = {
             ...filterToChange,
             active: !filterToChange.active,
         }
-        let allOtherFilters = existingFilters.filter(each => each.id !== filter.id);
         
-        allOtherFilters.push(updatedOneFilter);
+        // get all the other filters that werent clicked
+        let allOtherFilters = existingFilters.filter(each => each.id !== filterName.id);
+        
+        // push the filter thats been switched to true into it.
+        allOtherFilters.push(filterWithUpdatedBool);
 
+        // sort them back into the correct order id: 0, id: 1 etc.
         const sortedFilters = allOtherFilters.sort((a, b) => {
             var textA = a.id;
             var textB = b.id;
             return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
         });
-        updateStateFiltersChanged(sortedFilters);
 
+        // put the filters back into redux again.
+        updateStateFiltersChanged(sortedFilters);
     }
     
     return (
