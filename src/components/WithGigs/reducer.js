@@ -1,10 +1,9 @@
 import * as actions from './constants';
-import { allFilterButtonObjects } from '../../lib/utils';
 
 const initialState = {
     isLoading: false,
     gigs: [],
-    filters: allFilterButtonObjects,
+    filteredDownGigs: [],
     error: null,
 }
 

@@ -5,7 +5,12 @@ import * as actions from './constants';
 import './styles.scss';
 import { analyticsEvent } from '../../lib/utils';
 
-const Filters = ({ updateStateFiltersChanged, filters }) => {
+const Filters = ({ 
+    updateStateFiltersChanged,
+    updateStateFilteredGigs,
+    filters,
+    filteredDownGigs,
+    gigs }) => {
 
     const [ firstRow, setFirstRow ] = useState([]);
     const [ secondRow, setSecondRow ] = useState([]);
@@ -45,6 +50,7 @@ const Filters = ({ updateStateFiltersChanged, filters }) => {
 
         // put the filters back into redux again.
         updateStateFiltersChanged(sortedFilters);
+
     }
     
     return (
@@ -108,6 +114,8 @@ const Filters = ({ updateStateFiltersChanged, filters }) => {
 
 const mapStateToProps = state => ({
     filters: state.filters.filters,
+    gigs: state.gigs.gigs,
+    filteredDownGigs: state.gigs.filteredDownGigs,
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -115,6 +123,6 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch({ type: actions.FILTERS_CHANGED, filters: updatedFilters });
         // analyticsEvent(`user-filtered-${selectedFilter.filterName}`);
         // dispatch({ type: actions.GET_CURRENT_FILTER_STATUSES, filters: allCurrentFilters })
-    }
+    },
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);

@@ -14,7 +14,6 @@ const filtersReducer = (state = initialState, action) => {
         return {
             ...state,
         }
-        break;
 
 
         case actions.FILTERS_CHANGED:
@@ -22,7 +21,6 @@ const filtersReducer = (state = initialState, action) => {
             ...state,
             filters: action.filters,
         }
-        break;
 
         default:
         return state;
