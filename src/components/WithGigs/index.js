@@ -10,13 +10,15 @@ const WithGigs = PlatformSpecificComponent => {
             super();
             this.state = {
                 rawUrl: '',
-                retrievedGigs: [],
                 gigs: [],
             }
             
         }
 
         componentDidMount = () => {
+
+            this.setState({ filters: this.props.filters });
+
             if (process.env.NODE_ENV === 'production') {
                 this.fetchAllGigs();
             } else if (process.env.NODE_ENV === 'development') {
@@ -26,7 +28,8 @@ const WithGigs = PlatformSpecificComponent => {
 
         fetchMockGigs = () => {
             this.props.updateStateFetchingGigs(); // just app state changing/logging
-            this.props.updateStateWithAllGigs(mockGigs.gigs); // loads all gigs into Store
+            this.props.updateStateGotGigs();
+            // this.props.updateStateWithAllGigs(mockGigs.gigs); // loads all gigs into Store
             this.setState({ gigs: mockGigs.gigs }) // loads gigs in locally
         }
 
@@ -44,29 +47,91 @@ const WithGigs = PlatformSpecificComponent => {
         }
 
         componentWillReceiveProps = nextProps => {
-            console.log('nextProps: ', nextProps.gigs);
-            if (this.props.gigs === nextProps.gigs) {
+            if (this.state.filters === nextProps.filters) {
                 return;
             }
 
-            if (this.props.gigs !== nextProps.gigs) {
+            const activeFilters = nextProps.filters.filter((each) => each.active === true);
 
+            for (let i = 0; i < activeFilters.length; i++) {
+                if (activeFilters[i].filterName === 'Bringers') {
+                    setTimeout(() => {
+                        let gigsThatMatchFilter = this.state.gigs.filter(each => each.bringer === true)
+                        this.setState({ gigs: gigsThatMatchFilter });
+                    }, 500)
+                }
+                if (activeFilters[i].filterName === 'Non-bringers') {
+                    setTimeout(() => {
+                        let gigsThatMatchFilter = this.state.gigs.filter(each => each.bringer === false)
+                        console.log('non bringers: ', gigsThatMatchFilter)
+                        this.setState({ gigs: gigsThatMatchFilter });
+                    }, 500)
+                }
+                if (activeFilters[i].filterName === 'Mon') {
+                    setTimeout(() => {
+                        let gigsThatMatchFilter = this.state.gigs.filter(each => each.nights.includes('Mon'))
+                        this.setState({ gigs: gigsThatMatchFilter });
+                    }, 500)
+                }
+                if (activeFilters[i].filterName === 'Tue') {
+                    setTimeout(() => {
+                        let gigsThatMatchFilter = this.state.gigs.filter(each => each.nights.includes('Tue'))
+                        this.setState({ gigs: gigsThatMatchFilter });
+                    }, 500)
+                }
+                if (activeFilters[i].filterName === 'Wed') {
+                    setTimeout(() => {
+                        let gigsThatMatchFilter = this.state.gigs.filter(each => each.nights.includes('Wed'))
+                        this.setState({ gigs: gigsThatMatchFilter });
+                    }, 500)
+                }
+                if (activeFilters[i].filterName === 'Thu') {
+                    setTimeout(() => {
+                        let gigsThatMatchFilter = this.state.gigs.filter(each => each.nights.includes('Thu'))
+                        this.setState({ gigs: gigsThatMatchFilter });
+                    }, 500)
+                }
+                if (activeFilters[i].filterName === 'Fri') {
+                    setTimeout(() => {
+                        let gigsThatMatchFilter = this.state.gigs.filter(each => each.nights.includes('Fri'))
+                        console.log('fri: ', gigsThatMatchFilter)
+                        this.setState({ gigs: gigsThatMatchFilter });
+                    }, 500)
+                }
+                if (activeFilters[i].filterName === 'Sat') {
+                    setTimeout(() => {
+                        let gigsThatMatchFilter = this.state.gigs.filter(each => each.nights.includes('Sat'))
+                        this.setState({ gigs: gigsThatMatchFilter });
+                    }, 500)
+                }
+                if (activeFilters[i].filterName === 'Sun') {
+                    setTimeout(() => {
+                        let gigsThatMatchFilter = this.state.gigs.filter(each => each.nights.includes('Sun'))
+                        this.setState({ gigs: gigsThatMatchFilter });
+                    }, 500)
+                }
             }
-            console.log('this props: ', this.props.gigs);
+
         }
+
+        // shouldComponentUpdate = () => {
+        //     return this.state.gigs.length === 0;
+        // }
+
         render() {
-            return <PlatformSpecificComponent {...this.props} />
+            console.log('this state ', this.state.gigs)
+            return <PlatformSpecificComponent {...this.props} gigs={this.state.gigs} />
         }
     }
 
     const mapStateToProps = state => ({
-        gigs: state.gigs.gigs,
+        // gigs: state.gigs.gigs,
         filters: state.filters.filters,
     });
     
     const mapDispatchToProps = dispatch => ({
         updateStateFetchingGigs: () => dispatch({ type: GET_GIGS }),
-        updateStateWithAllGigs: (gigs) => dispatch({ type: GOT_GIGS, gigs }),
+        updateStateGotGigs: () => dispatch({ type: GOT_GIGS }),
     });
 
     return connect(mapStateToProps, mapDispatchToProps)(Inner);

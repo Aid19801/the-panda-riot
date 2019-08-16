@@ -2,8 +2,8 @@ import * as actions from './constants';
 
 const initialState = {
     isLoading: false,
-    gigs: [],
-    filteredDownGigs: [],
+    // gigs: [],
+    // filteredDownGigs: [],
     error: null,
 }
 
@@ -23,7 +23,7 @@ const gigsReducer = (state = initialState, action) => {
         return {
             ...state,
             isLoading: false,
-            gigs: action.gigs,
+            // gigs: action.gigs,
         }
         break;
 

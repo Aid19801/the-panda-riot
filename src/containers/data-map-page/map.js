@@ -41,6 +41,7 @@ class MapBox extends React.Component {
         console.log('this props CWM ', this.props)
         this.manageZoom();
         this.storeGigsFromReduxInState()
+        this.setState({ gigs: this.props.gigs });
       }
   
     onMove = () => {
@@ -88,6 +89,11 @@ class MapBox extends React.Component {
                 gigs: nextProps.gigs,
                 lng: nextProps.lng,
                 lat: nextProps.lat,
+            })
+        }
+        if (nextProps.gigs !== this.state.gigs) {
+            this.setState({
+                gigs: nextProps.gigs
             })
         }
     }

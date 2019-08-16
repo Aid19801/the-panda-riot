@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Helmet } from 'react-helmet';
+// import { Helmet } from 'react-helmet';
 
 import { withAuthorization } from '../../components/Session';
 import withProgressBar from '../../components/ProgressBar/with-progressBar';
@@ -32,6 +32,7 @@ class DataMapPage extends Component {
     super()
     this.state = {
         toggleMarker: false,
+        gigs: [],
     };
   }
   
@@ -39,6 +40,9 @@ class DataMapPage extends Component {
     analyticsPage('datamap');
     this.props.showProgressBar(true);
     this.props.pageLoading();
+    this.setState({
+      gigs: this.props.gigs,
+    })
   }
 
   componentDidMount() {
@@ -86,9 +90,17 @@ class DataMapPage extends Component {
     }
   }
 
+  componentWillReceiveProps = nextProps => {
+    if (this.state.gigs !== nextProps.gigs) {
+      console.log('DATA MAP something changed: ', nextProps.gigs);
+      this.setState({ gigs: nextProps.gigs });
+    }
+  }
+
   render() {
-    const { toggleMarker } = this.state;
-    const { paneInfo, gigs, showPanels } = this.props;
+    const { toggleMarker, gigs } = this.state;
+    const { paneInfo, showPanels } = this.props;
+    console.log('DATA MAP state gigs: ', gigs);
 
     return (
       <>
@@ -186,7 +198,7 @@ const mapStateToProps = state => ({
   showPanels: state.dataMapPage.showPanels,
   isLoading: state.homePage.isLoading,
   paneInfo: state.dataMapPage.paneInfo,
-  gigs: state.gigs.gigs,
+  // gigs: state.gigs.gigs,
 });
 
 const mapDispatchToProps = dispatch => ({
