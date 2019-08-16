@@ -85,6 +85,7 @@ class MapBox extends React.Component {
 
     componentWillReceiveProps = nextProps => {
         if (nextProps.gigs && nextProps.gigs.length !== 0) {
+            console.log('nextProps lang: ', nextProps.lng)
             this.setState({ 
                 gigs: nextProps.gigs,
                 lng: nextProps.lng,
@@ -93,7 +94,9 @@ class MapBox extends React.Component {
         }
         if (nextProps.gigs !== this.state.gigs) {
             this.setState({
-                gigs: nextProps.gigs
+                gigs: nextProps.gigs,
+                lng: nextProps.lng,
+                lat: nextProps.lat,
             })
         }
     }

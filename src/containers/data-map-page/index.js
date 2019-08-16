@@ -54,6 +54,7 @@ class DataMapPage extends Component {
   }
 
   handleSelectMarker = (data) => {
+    console.log('data is ===> ', data);
     
     let newPaneInfo = {
       isSelected: true,

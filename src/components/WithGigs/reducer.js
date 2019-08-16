@@ -4,6 +4,7 @@ const initialState = {
     isLoading: false,
     // gigs: [],
     // filteredDownGigs: [],
+    selectedGig: {},
     error: null,
 }
 
@@ -33,6 +34,13 @@ const gigsReducer = (state = initialState, action) => {
             isLoading: false,
             error: action.error,
         }
+        break;
+
+        case actions.SELECTED_GIG:
+            return {
+                ...state,
+                selectedGig: action.gig,
+            }
         break;
 
         default:

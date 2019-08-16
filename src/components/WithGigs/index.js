@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import mockGigs from '../../mocks/gigs.json';
 
-import { GOT_GIGS, GET_GIGS } from './constants';
+import { GOT_GIGS, GET_GIGS, SELECTED_GIG } from './constants';
 
 const WithGigs = PlatformSpecificComponent => {
     class Inner extends React.Component {
@@ -114,24 +114,23 @@ const WithGigs = PlatformSpecificComponent => {
 
         }
 
-        // shouldComponentUpdate = () => {
-        //     return this.state.gigs.length === 0;
-        // }
-
+        // TO-DO put handle select gig back in
+        
         render() {
-            console.log('this state ', this.state.gigs)
-            return <PlatformSpecificComponent {...this.props} gigs={this.state.gigs} />
+            const { gigs } = this.state;
+            const { updateStateSelectedGig } = this.props;
+            return <PlatformSpecificComponent {...this.props} gigs={gigs} />
         }
     }
 
     const mapStateToProps = state => ({
-        // gigs: state.gigs.gigs,
         filters: state.filters.filters,
     });
     
     const mapDispatchToProps = dispatch => ({
         updateStateFetchingGigs: () => dispatch({ type: GET_GIGS }),
         updateStateGotGigs: () => dispatch({ type: GOT_GIGS }),
+        // updateStateSelectedGig: (id, gigs) => dispatch({ type: SELECTED_GIG, id, gigs }),
     });
 
     return connect(mapStateToProps, mapDispatchToProps)(Inner);
