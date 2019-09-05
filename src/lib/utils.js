@@ -1,34 +1,16 @@
 import ReactGA from 'react-ga';
 
-export const updateMetaTagsForFacebook = (headline, url, descr) => {
-    
-    // // page title
-    // const pageTitle = document.createElement('title');
-    // pageTitle.innerHTML = `TPR | ${headline}`;
+// example youtube url https://www.youtube.com/watch?v=8wfY4TGtMUo
 
-    // // update meta title
-    // const metaTitle = document.createElement('meta');
-    // metaTitle.setAttribute('property', 'og:title');
-    // metaTitle.setAttribute('content', headline);
+export const processYouTubeLink = url => {
+    let str = 'https://www.youtube.com/watch?v=';
+    if (url.includes('?v=')) {
+        url.indexOf('?v=');
 
-    // // update meta url
-    // const metaURL = document.createElement('meta');
-    // metaURL.setAttribute('property', 'og:url');
-    // metaURL.setAttribute('content', url);
+    }
 
-    // // update meta description
-    // const metaDescription = document.createElement('meta');
-    // metaDescription.setAttribute('property', 'og:description');
-    // metaDescription.setAttribute('content', descr);
-
-    // // append all of them to the head.
-    // document.querySelector('head').appendChild(pageTitle);
-    // document.querySelector('head').appendChild(metaTitle);
-    // document.querySelector('head').appendChild(metaURL);
-    // document.querySelector('head').appendChild(metaDescription);
 }
-
-
+ 
 export const analyticsPage = str => {
     if (process.env.NODE_ENV === 'production') {
         console.log('in prod so firing analytics');

@@ -46,6 +46,15 @@ const dataMapPageReducer = (state = initialState, action) => {
         }
         break;
 
+
+        case actions.SELECTED_GIG:
+        return {
+            ...state,
+            
+        }
+        break;
+
+
         default:
         return state;
     }

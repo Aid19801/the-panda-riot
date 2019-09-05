@@ -36,6 +36,7 @@ class AccountChangeForm extends React.Component {
       youtube: '',
       youtubeChannelURL: '',
       website: '',
+      showErrors: false,
     }
   }
 
@@ -44,7 +45,6 @@ class AccountChangeForm extends React.Component {
     analyticsPage('me');
     this.fetchAllGigs();
     let meUid = this.props.firebase.auth.currentUser.uid;
-    console.log('meUid: ', meUid);
     this.setState({ foo: meUid });
     this.props.firebase.user(meUid)
       .on('value', snapshot => {
@@ -68,7 +68,7 @@ class AccountChangeForm extends React.Component {
           me && !me.facebook ? facebook = 'unknown' : facebook = me.facebook;
           me && !me.youtubeChannelURL ? youtubeChannelURL = 'unknown' : youtubeChannelURL = me.youtubeChannelURL;
           me && !me.website ? website = 'unknown' : website = me.website;
-          me && !me.profilePicture ? profilePic = 'https://miamivalleycap.org/wp-content/uploads/2017/01/placeholder-person.png' : profilePic = me.profilePicture;
+          me && !me.profilePicture ? profilePic = 'https://miamivalleycap.org/wp-content/uploads/2017/01/placeholder-person.png' : profilePic = profilePicture;
 
 
           let includeInActRaterStatus = includeInActRater || false;
@@ -98,22 +98,10 @@ class AccountChangeForm extends React.Component {
   onSubmit = event => {
     
     const { tagline, profilePicture, username, includeInActRater,
-      faveGig, genre, youtube, twitter, facebook, youtubeChannelURL, website } = this.state;
-    // let uid = this.props.firebase.auth.currentUser.uid;
+    faveGig, genre, youtube, twitter, facebook, youtubeChannelURL, website } = this.state;
     let email = this.props.email;
-    // console.log('userName: ', username);
-    // console.log('tagline: ', tagline);
-    // console.log('profilePicture: ', profilePicture);
-    // console.log('includeInActRater: ', includeInActRater);
-    // console.log('faveGig: ', faveGig);
-    // console.log('genre: ', genre);
-    // console.log('youtube: ', youtube);
-    // console.log('twitter: ', twitter);
-    // console.log('facebook: ', facebook);
-    // console.log('youtubeChannelURL: ', youtubeChannelURL);
-    // console.log('website: ', website);
-
     
+
     this.props.firebase
       .user(this.state.foo)
         .set({
@@ -134,7 +122,7 @@ class AccountChangeForm extends React.Component {
         })
 
     event.preventDefault();
-    this.setState({ updated: true })
+    this.setState({ updated: true, showErrors: true })
     
     sessionStorage.setItem('cached-profilePicture', profilePicture);
 
@@ -149,19 +137,10 @@ class AccountChangeForm extends React.Component {
     this.setState({ includeInActRater: !this.state.includeInActRater });
   }
 
-  // componentWillReceiveProps = (nextProps) => {
-  //   if (nextProps.gigs.length !== 0) {
-  //     this.setState({
-  //       gigs: nextProps.gigs,
-  //     })
-  //   }
-  // }
-
   render() {
 
-    const { tagline, profilePicture } = this.state;
+    const { tagline, profilePicture, showErrors } = this.state;
     const { gigs } = this.props;
-    console.log('AT | gigs are ', gigs)
 
     const isInvalid = tagline === '' || profilePicture === '';
 
@@ -241,6 +220,8 @@ class AccountChangeForm extends React.Component {
           value={this.state.youtube}
           disabled={false}
           orange
+          showErrors={showErrors}
+          errorMessage="Error With YouTube Address - should resemble this: https://www.youtube.com/watch?v=8wfY4TGtMUo"
         />
 
 

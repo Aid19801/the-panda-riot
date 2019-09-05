@@ -121,6 +121,8 @@ class HomePage extends Component {
       secondRow, thirdRow, fourthRow, advertsOn, photos, morePhotos } = this.state;
 
     // console.log('morePhotos back: ', morePhotos)
+    // TO-DO Add gigs back into gigs tonight container!
+    // 
     
     return (
       <>
