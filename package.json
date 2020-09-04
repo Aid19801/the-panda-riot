@@ -19,7 +19,7 @@
     "graphql-tag": "^2.6.1",
     "html-to-draftjs": "^1.4.0",
     "mapbox-gl": "^0.53.1",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "path": "^0.12.7",
     "prismic-javascript": "^2.1.1",
     "prismic-reactjs": "^1.0.0",
